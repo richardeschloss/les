@@ -1,0 +1,3 @@
+# LESKY - Lightweight Express-ish (Koa) Server -- Type `les` not more!
+
+STATUS: Initial commit. Not ready for public consumption...

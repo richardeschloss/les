@@ -1,0 +1,38 @@
+{
+  "name": "lesky",
+  "version": "0.0.1",
+  "description": "Lightweight Express-ish (Koa) Server - Type les not More!",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node les.js",
+    "build": "babel server.js les.js -d bin",
+    "start": "bin/run.js",
+    "test": "ava"
+  },
+  "bin": {
+    "les": "./bin/run.js"
+  },
+  "keywords": [
+    "les",
+    "koajs",
+    "server",
+    "cli",
+    "expressjs"
+  ],
+  "author": "Richard Schloss",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "koa": "^2.11.0",
+    "koa-static": "^5.0.0",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "nodemon": "^1.19.4"
+  }
+}
