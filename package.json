@@ -12,6 +12,11 @@
   "bin": {
     "les": "./bin/run.js"
   },
+  "files": [
+    "bin",
+    "test",
+    "server.js"
+  ],
   "keywords": [
     "les",
     "koajs",

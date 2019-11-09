@@ -1,3 +1,8 @@
+/*
+ * les - CLI for lightweight koa server
+ * Copyright 2019 Richard Schloss (https://github.com/richardeschloss)
+ */
+
 import { app, Server } from './server'
 import fs from 'fs'
 import serve from 'koa-static'
