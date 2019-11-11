@@ -1,4 +1,8 @@
 [{
   "host": "localhost",
-  "proto": "http"
+  "proto": "http2",
+  "sslKey": ".ssl/server.key",
+  "sslCert": ".ssl/server.crt"
+},{
+  "proto": "https"
 }]

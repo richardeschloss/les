@@ -90,16 +90,32 @@ function CLI(cfg) {
       console.log(err)
     }
 
-    let fndCfgIdx = localCfg.findIndex((entry) => {
-      entry.proto === cliCfg.proto
-    })
+    let fndCfgIdx = localCfg.findIndex(({ proto }) => proto === cliCfg.proto)
     if (fndCfgIdx === -1) {
       fndCfgIdx = 0
     }
 
+    let { sslKey, sslCert } = localCfg.find(
+      ({ sslKey, sslCert }) => sslKey && sslCert
+    )
+    let fndSSL = { sslKey, sslCert }
+
     Object.assign(localCfg[fndCfgIdx], cliCfg)
     app.use(serve(path.resolve(cwd, cliCfg.staticDir)))
-    localCfg.forEach((serverCfg) => {
+    localCfg.forEach((serverCfg, idx) => {
+      if (!serverCfg.port) {
+        serverCfg.port = localCfg[fndCfgIdx].port || options.port.dflt
+        if (idx !== fndCfgIdx) {
+          serverCfg.port += idx - fndCfgIdx
+        }
+      }
+
+      Object.entries(fndSSL).forEach(([k, v]) => {
+        if (!serverCfg[k]) {
+          serverCfg[k] = v
+        }
+      })
+
       const server = Server(serverCfg)
       server.start()
     })
