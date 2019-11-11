@@ -4,7 +4,7 @@
   "description": "Lightweight Express-ish (Koa) Server - Type les not More!",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node les.js",
+    "dev": "nodemon --exec babel-node les.js --port 3111",
     "build": "babel server.js les.js -d bin",
     "start": "bin/run.js",
     "test": "ava"
