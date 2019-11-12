@@ -4,5 +4,6 @@
   "sslKey": ".ssl/server.key",
   "sslCert": ".ssl/server.crt"
 },{
-  "proto": "https"
+  "proto": "https",
+  "portRange": [8000, 9000]
 }]

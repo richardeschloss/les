@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon --exec babel-node les.js",
-    "build": "babel server.js les.js -d bin",
+    "build": "babel utils.js server.js les.js -d bin",
     "start": "bin/run.js",
     "test": "ava"
   },
@@ -15,7 +15,8 @@
   "files": [
     "bin",
     "test",
-    "server.js"
+    "server.js",
+    "utils.js"
   ],
   "keywords": [
     "les",
@@ -34,7 +35,8 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "koa": "^2.11.0",
     "koa-static": "^5.0.0",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "node-netstat": "^1.8.0"
   },
   "devDependencies": {
     "eslint": "^6.6.0",
