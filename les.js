@@ -16,7 +16,7 @@ const config = path.resolve(cwd, '.lesrc')
 const options = {
   init: {
     alias: 'i',
-    desc: `Init lesky in current workding directory [(${cwd})]`
+    desc: `Init lesky in current working directory [(${cwd})]`
   },
   host: {
     alias: 'a',
@@ -31,7 +31,11 @@ const options = {
   proto: {
     desc: 'Protocol to use',
     dflt: 'http',
-    limitTo: '{ http, https, http2 }'
+    limitTo: '{ http, https, http2, http2s }'
+  },
+  range: {
+    desc: 'Port Range (in case port is taken)',
+    dflt: [8000, 9000]
   },
   sslKey: {
     desc: 'Path to SSL Key'
@@ -76,6 +80,16 @@ function CLI(cfg) {
       }
     })
     cliCfg.staticDir = cfg['_'][0] || 'public'
+    if (cliCfg.range && typeof cliCfg.range === 'string') {
+      if (cliCfg.range.match(/[0-9]+-[0-9]+/)) {
+        cliCfg.portRange = cliCfg.range.split('-')
+      } else {
+        console.log(
+          'port range incorrectly formatted. Format as --range=start-end'
+        )
+      }
+    }
+
     return cliCfg
   }
 

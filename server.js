@@ -11,8 +11,7 @@ const app = new Koa()
 const protos = {
   http,
   https,
-  http2,
-  http2s: http2
+  http2
 }
 
 function Server({
