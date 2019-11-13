@@ -20,5 +20,5 @@ cache:
 test_server:
   script:
     - npm install
-    - npm run test
+    - npm run test:cov
   coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
