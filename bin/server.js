@@ -14,19 +14,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const app = new _koa.default();
 exports.app = app;
+const protos = {
+  http: _http.default
+};
 
 function Server({
   host = 'localhost',
-  port = 3000
+  port = 8080,
+  proto = 'http'
 }) {
   let _host = host;
   let _port = port;
+  let _proto = protos[proto];
 
   let _server;
 
   return Object.freeze({
     build() {
-      _server = _http.default.createServer(app.callback());
+      _server = _proto.createServer(app.callback());
     },
 
     listen({

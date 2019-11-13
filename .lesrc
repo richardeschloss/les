@@ -1,6 +1,9 @@
-{
-  "http": {
-    "host": "localhost",
-    "port": "3004"
-  }
-}
+[{
+  "host": "localhost",
+  "proto": "http2",
+  "sslKey": ".ssl/server.key",
+  "sslCert": ".ssl/server.crt"
+},{
+  "proto": "https",
+  "portRange": [8000, 9000]
+}]
