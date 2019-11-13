@@ -42,7 +42,7 @@ function Server({
       const createFn = proto === 'http2' ? 'createSecureServer' : 'createServer'
       _server = _proto[createFn](serverOpts, app.callback())
     },
-    listen({ host = _host, port = _port }) {
+    listen({ host = _host, port = _port, notify }) {
       const ctx = this
       function onError(err) {
         const errMap = {
@@ -57,6 +57,12 @@ function Server({
             console.info(
               `Port ${port} in use, using free port instead ${freePort}`
             )
+            if (notify) {
+              notify({
+                evt: 'EADDRINUSE',
+                data: { proto, host, port, assignedPort: freePort }
+              })
+            }
             _server
               .removeListener('error', onError)
               .removeListener('listening', onSuccess)
@@ -70,9 +76,16 @@ function Server({
         }
       }
       function onSuccess() {
+        const assignedPort = _server.address().port
         console.log(
-          `listening at: (proto = ${proto}, host = ${host}, port = ${port})`
+          `listening at: (proto = ${proto}, host = ${host}, port = ${assignedPort})`
         )
+        if (notify) {
+          notify({
+            evt: 'serverListening',
+            data: { proto, host, port: assignedPort }
+          })
+        }
       }
 
       _server
@@ -80,9 +93,9 @@ function Server({
         .on('error', onError)
         .on('listening', onSuccess)
     },
-    start() {
+    start({ notify }) {
       this.build()
-      this.listen({})
+      this.listen({ notify })
     }
   })
 }
