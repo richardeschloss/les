@@ -2,13 +2,13 @@
 
 var _minimist = _interopRequireDefault(require("minimist"));
 
-var _server = require("./server");
-
 var _fs = _interopRequireDefault(require("fs"));
 
 var _koaStatic = _interopRequireDefault(require("koa-static"));
 
 var _path = _interopRequireDefault(require("path"));
+
+var _server = require("./server");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16,43 +16,169 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * les - CLI for lightweight koa server
  * Copyright 2019 Richard Schloss (https://github.com/richardeschloss)
  */
-//argv = require('minimist')(process.argv.slice(2));
 const argv = (0, _minimist.default)(process.argv.slice(2));
 const cwd = process.cwd();
 
-const config = _path.default.resolve(cwd, '.lesrcx');
+const config = _path.default.resolve(cwd, '.lesrc');
 
-const usage = ['usage: les [path] [options]', '', 'options:', '  -p, --port  Port to use [8080]', '  -a, --host  Address to use [localhost]'].join('\n');
+const options = {
+  init: {
+    alias: 'i',
+    desc: `Init lesky in current working directory [(${cwd})]`
+  },
+  host: {
+    alias: 'a',
+    desc: 'Address to use',
+    dflt: 'localhost'
+  },
+  port: {
+    alias: 'p',
+    desc: 'Port to use',
+    dflt: 8080
+  },
+  proto: {
+    desc: 'Protocol to use',
+    dflt: 'http',
+    limitTo: '{ http, https, http2, http2s }'
+  },
+  range: {
+    desc: 'Port Range (in case port is taken)',
+    dflt: [8000, 9000]
+  },
+  sslKey: {
+    desc: 'Path to SSL Key'
+  },
+  sslCert: {
+    desc: 'Path to SSL Certificate'
+  }
+};
 
-function CLI() {
-  let localConfig = {};
+const buildUsage = () => {
+  const usage = ['usage: les [path] [options]', '', 'options:'];
+  Object.entries(options).forEach(([option, {
+    alias = '',
+    desc = '',
+    dflt,
+    limitTo
+  }]) => {
+    if (alias !== '') {
+      alias = `-${alias},`;
+    }
 
-  try {
-    localConfig = JSON.parse(_fs.default.readFileSync(config));
-  } catch (e) {}
+    if (dflt) {
+      desc = `${desc} [${dflt}]`;
+    }
 
-  const {
-    http = {}
-  } = localConfig;
-  const server = (0, _server.Server)(http);
+    if (limitTo) {
+      desc = `${desc} (${limitTo})`;
+    }
 
-  _server.app.use((0, _koaStatic.default)(_path.default.resolve(cwd, 'public')));
+    const optStr = ['', alias, `--${option}`, desc];
+    usage.push(optStr.join('\t'));
+  });
+  return usage.join('\n');
+};
+
+const usage = buildUsage();
+
+function CLI(cfg) {
+  function buildCliCfg() {
+    const cliCfg = {};
+    Object.entries(options).forEach(([option, {
+      alias
+    }]) => {
+      const optionVal = cfg[option] || cfg[alias];
+
+      if (optionVal) {
+        cliCfg[option] = optionVal;
+      }
+    });
+    cliCfg.staticDir = cfg['_'][0] || 'public';
+
+    if (cliCfg.range && typeof cliCfg.range === 'string') {
+      if (cliCfg.range.match(/[0-9]+-[0-9]+/)) {
+        cliCfg.portRange = cliCfg.range.split('-');
+      } else {
+        console.log('port range incorrectly formatted. Format as --range=start-end');
+      }
+    }
+
+    return cliCfg;
+  }
+
+  function run() {
+    const cliCfg = buildCliCfg();
+    let localCfg = [];
+
+    try {
+      if (_fs.default.existsSync(config)) {
+        localCfg = JSON.parse(_fs.default.readFileSync(config));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+
+    let fndCfgIdx = localCfg.findIndex(({
+      proto
+    }) => proto === cliCfg.proto);
+
+    if (fndCfgIdx === -1) {
+      fndCfgIdx = 0;
+    }
+
+    let {
+      sslKey,
+      sslCert
+    } = localCfg.find(({
+      sslKey,
+      sslCert
+    }) => sslKey && sslCert);
+    let fndSSL = {
+      sslKey,
+      sslCert
+    };
+    Object.assign(localCfg[fndCfgIdx], cliCfg);
+
+    _server.app.use((0, _koaStatic.default)(_path.default.resolve(cwd, cliCfg.staticDir)));
+
+    localCfg.forEach((serverCfg, idx) => {
+      if (!serverCfg.port) {
+        serverCfg.port = localCfg[fndCfgIdx].port || options.port.dflt;
+
+        if (idx !== fndCfgIdx) {
+          serverCfg.port += idx - fndCfgIdx;
+        }
+      }
+
+      Object.entries(fndSSL).forEach(([k, v]) => {
+        if (!serverCfg[k]) {
+          serverCfg[k] = v;
+        }
+      });
+      const server = (0, _server.Server)(serverCfg);
+      server.start({});
+    });
+  }
 
   return Object.freeze({
     help() {
       console.log(usage);
     },
 
-    run() {
-      server.start();
-    }
+    init() {
+      console.log('[les] init project'); // If other args are provided, init .lesrc with those
+    },
 
+    run
   });
 }
 
-console.log('argv', argv);
-const cli = CLI();
+const cli = CLI(argv);
 
 if (argv.h || argv.help) {
   cli.help();
+} else if (argv.i || argv.init) {
+  cli.init();
+} else {
+  cli.run();
 }

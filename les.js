@@ -109,10 +109,10 @@ function CLI(cfg) {
       fndCfgIdx = 0
     }
 
-    let { sslKey, sslCert } = localCfg.find(
+    const { sslKey, sslCert } = localCfg.find(
       ({ sslKey, sslCert }) => sslKey && sslCert
     )
-    let fndSSL = { sslKey, sslCert }
+    const fndSSL = { sslKey, sslCert }
 
     Object.assign(localCfg[fndCfgIdx], cliCfg)
     app.use(serve(path.resolve(cwd, cliCfg.staticDir)))
@@ -131,7 +131,7 @@ function CLI(cfg) {
       })
 
       const server = Server(serverCfg)
-      server.start()
+      server.start({})
     })
   }
 
