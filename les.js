@@ -47,6 +47,7 @@ const options = {
 
 const buildUsage = () => {
   const usage = ['usage: les [path] [options]', '', 'options:']
+  usage.push(['', '-h', '--help', 'Print this help menu'])
   Object.entries(options).forEach(
     ([option, { alias = '', desc = '', dflt, limitTo }]) => {
       if (alias !== '') {
