@@ -1,7 +1,9 @@
 import { app, Server } from './server'
 import { IOServer } from './io'
+import { loadServerConfigs } from './utils'
 
 /* Load config from .lesrc (if it exists) */
+const cfgs = loadServerConfigs()
 
 /* Use middleware (as-needed) */
 // app.use(...)
@@ -10,14 +12,24 @@ import { IOServer } from './io'
 // db.connect({})
 
 /* Finally, start server */
-const server = Server({})
-server.start({
-  notify: ({evt, data}) => {
-    const { proto, host, port } = data
-    console.log(evt, { proto, host, port })
+cfgs.forEach((cfg) => {
+  const evtMap = {
+    serverListening(data) {
+      const { proto, host, port } = data
+      console.log('serverListening', { proto, host, port })
 
-    /* Start IO server */
-    const ioServer = IOServer(data)
-    ioServer.start()
+      /* Start IO server */
+      const ioServer = IOServer(data)
+      ioServer.start()
+    }
   }
+
+  const server = Server(cfg)
+  server.start({
+    notify: ({ evt, data }) => {
+      if (evtMap[evt]) {
+        evtMap[evt](data)
+      }
+    }
+  })
 })

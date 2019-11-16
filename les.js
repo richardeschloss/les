@@ -9,7 +9,6 @@ import serve from 'koa-static'
 import path from 'path'
 import { app, Server } from './server'
 
-
 const argv = minimist(process.argv.slice(2))
 const cwd = process.cwd()
 const config = path.resolve(cwd, '.lesrc')
