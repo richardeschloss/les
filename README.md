@@ -44,7 +44,7 @@ options:
 		--sslCert	Path to SSL Certificate
 ```
 
-## Custominzing (.lesrc config file)
+## Customizing (.lesrc config file)
 
 If a `.lesrc` config file is in the current working directory, it will be consumed. If CLI args are _also_ provided, those will override the entry in .lesrc that matches protocol used by the CLI. The config file is simply a JSON file, specifying an array of configurations to use. If a desired port is already taken, an attempt will be made to find a free port.
 

@@ -1,4 +1,6 @@
 .ssl
 .nyc_output
 node_modules
-bin
+bin/les.js
+bin/server.js
+bin/utils.js
