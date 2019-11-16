@@ -47,6 +47,7 @@ const options = {
 
 const buildUsage = () => {
   const usage = ['usage: les [path] [options]', '', 'options:']
+  usage.push(['', '-h', '--help', 'Print this help menu'])
   Object.entries(options).forEach(
     ([option, { alias = '', desc = '', dflt, limitTo }]) => {
       if (alias !== '') {
@@ -95,24 +96,30 @@ function CLI(cfg) {
 
   function run() {
     const cliCfg = buildCliCfg()
-    let localCfg = []
-    try {
-      if (fs.existsSync(config)) {
+    let localCfg = [{}]
+    const sslPair = { sslKey: '', sslCert: '' }
+
+    if (fs.existsSync(config)) {
+      try {
         localCfg = JSON.parse(fs.readFileSync(config))
+        const { sslKey, sslCert } = localCfg.find(
+          ({ sslKey, sslCert }) => sslKey && sslCert
+        )
+        Object.assign(sslPair, { sslKey, sslCert })
+      } catch (err) {
+        console.log(
+          'Error parsing .lesrc JSON. Is it formatted as JSON correctly?',
+          err
+        )
       }
-    } catch (err) {
-      console.log(err)
+    } else {
+      console.info('.lesrc does not exist. Using CLI only')
     }
 
     let fndCfgIdx = localCfg.findIndex(({ proto }) => proto === cliCfg.proto)
     if (fndCfgIdx === -1) {
       fndCfgIdx = 0
     }
-
-    const { sslKey, sslCert } = localCfg.find(
-      ({ sslKey, sslCert }) => sslKey && sslCert
-    )
-    const fndSSL = { sslKey, sslCert }
 
     Object.assign(localCfg[fndCfgIdx], cliCfg)
     app.use(serve(path.resolve(cwd, cliCfg.staticDir)))
@@ -124,7 +131,7 @@ function CLI(cfg) {
         }
       }
 
-      Object.entries(fndSSL).forEach(([k, v]) => {
+      Object.entries(sslPair).forEach(([k, v]) => {
         if (!serverCfg[k]) {
           serverCfg[k] = v
         }
