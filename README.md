@@ -1,4 +1,8 @@
-(Dashboard here)
+[![npm](https://img.shields.io/npm/v/lesky)](https://www.npmjs.com/package/lesky)
+[![npm](https://img.shields.io/npm/dt/lesky)](https://www.npmjs.com/package/lesky)
+[![](https://gitlab.com/richardeschloss/les/badges/master/pipeline.svg)](https://gitlab.com/richardeschloss/les)
+[![](https://gitlab.com/richardeschloss/les/badges/master/coverage.svg)](https://gitlab.com/richardeschloss/les)
+[![NPM](https://img.shields.io/npm/l/lesky)](https://github.com/richardeschloss/les/blob/development/LICENSE)
 
 # LES - Lightweight Express-ish (Koa) Server -- `les` not more!
 
@@ -8,7 +12,7 @@ STATUS: Not ready for public consumption...still a bit buggy. Works fine for me,
 
 ## Installation
 
-npm i -g lesky
+> npm i -g lesky
 
 (I wanted les, but it was taken. No worries though...the "k" in the name makes it a little more accurate)
 
