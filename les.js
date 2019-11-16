@@ -102,10 +102,13 @@ function CLI(cfg) {
     if (fs.existsSync(config)) {
       try {
         localCfg = JSON.parse(fs.readFileSync(config))
-        const { sslKey, sslCert } = localCfg.find(
+        const sslFound = localCfg.find(
           ({ sslKey, sslCert }) => sslKey && sslCert
         )
-        Object.assign(sslPair, { sslKey, sslCert })
+        if (sslFound) {
+          const { sslKey, sslCert } = sslFound
+          Object.assign(sslPair, { sslKey, sslCert })
+        }
       } catch (err) {
         console.log(
           'Error parsing .lesrc JSON. Is it formatted as JSON correctly?',
