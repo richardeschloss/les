@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon --exec babel-node les.js",
     "build": "babel utils.js server.js les.js -d bin",
-    "start": "bin/run.js",
+    "start": "babel-node les.js",
     "test": "ava",
     "test:watch": "ava --watch",
     "test:cov": "nyc ava"
@@ -44,7 +44,11 @@
   "devDependencies": {
     "ava": "^2.4.0",
     "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "nodemon": "^1.19.4",
-    "nyc": "^14.1.1"
+    "nyc": "^14.1.1",
+    "prettier": "^1.19.1",
+    "socket.io": "^2.3.0"
   }
 }

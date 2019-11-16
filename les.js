@@ -9,11 +9,16 @@ import serve from 'koa-static'
 import path from 'path'
 import { app, Server } from './server'
 
+
 const argv = minimist(process.argv.slice(2))
 const cwd = process.cwd()
 const config = path.resolve(cwd, '.lesrc')
 
 const options = {
+  help: {
+    alias: 'h',
+    desc: 'Print this help menu'
+  },
   init: {
     alias: 'i',
     desc: `Init lesky in current working directory [(${cwd})]`
@@ -47,7 +52,6 @@ const options = {
 
 const buildUsage = () => {
   const usage = ['usage: les [path] [options]', '', 'options:']
-  usage.push(['', '-h', '--help', 'Print this help menu'])
   Object.entries(options).forEach(
     ([option, { alias = '', desc = '', dflt, limitTo }]) => {
       if (alias !== '') {
@@ -94,8 +98,19 @@ function CLI(cfg) {
     return cliCfg
   }
 
+  function init(cliCfg) {
+    console.log('init', cliCfg)
+  }
+
   function run() {
     const cliCfg = buildCliCfg()
+    if (cliCfg.help) {
+      console.log(usage)
+      return
+    } else if (cliCfg.init) {
+      init(cliCfg)
+      return
+    }
     let localCfg = [{}]
     const sslPair = { sslKey: '', sslCert: '' }
 
@@ -146,22 +161,9 @@ function CLI(cfg) {
   }
 
   return Object.freeze({
-    help() {
-      console.log(usage)
-    },
-    init() {
-      console.log('[les] init project')
-      // If other args are provided, init .lesrc with those
-    },
     run
   })
 }
 
 const cli = CLI(argv)
-if (argv.h || argv.help) {
-  cli.help()
-} else if (argv.i || argv.init) {
-  cli.init()
-} else {
-  cli.run()
-}
+cli.run()

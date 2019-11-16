@@ -3,15 +3,15 @@ module.exports = {
     es6: true,
     node: true
   },
-  extends: 'eslint:recommended',
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
-  },
   parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
+    parser: 'babel-eslint'
   },
+  extends: [
+    'prettier',
+    'plugin:prettier/recommended'
+  ],
+  plugins: ['prettier'],
   rules: {
     "comma-dangle": ["error", "never"],
     "prefer-const": ["error"],
