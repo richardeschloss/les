@@ -41,19 +41,30 @@ async function portTaken({ port }) {
   return usedPorts.includes(port)
 }
 
+function attachSSL(cfgs) {
+  const sslPair = {}
+  const sslFound = cfgs.find(({ sslKey, sslCert }) => sslKey && sslCert)
+  if (sslFound) {
+    const { sslKey, sslCert } = sslFound
+    Object.assign(sslPair, { sslKey, sslCert })
+  }
+
+  cfgs.forEach((cfg) => {
+    Object.entries(sslPair).forEach(([k, v]) => {
+      if (!cfg[k]) {
+        cfg[k] = v
+      }
+    })
+  })
+}
+
 function loadServerConfigs() {
   const cwd = process.cwd()
   const config = pResolve(cwd, '.lesrc')
-  const sslPair = {}
   let localCfg = [{}]
   if (existsSync(config)) {
     try {
       localCfg = JSON.parse(readFileSync(config))
-      const sslFound = localCfg.find(({ sslKey, sslCert }) => sslKey && sslCert)
-      if (sslFound) {
-        const { sslKey, sslCert } = sslFound
-        Object.assign(sslPair, { sslKey, sslCert })
-      }
     } catch (err) {
       console.log(
         'Error parsing .lesrc JSON. Is it formatted as JSON correctly?',
@@ -66,4 +77,4 @@ function loadServerConfigs() {
   return localCfg
 }
 
-export { findFreePort, portTaken, loadServerConfigs }
+export { findFreePort, portTaken, attachSSL, loadServerConfigs }

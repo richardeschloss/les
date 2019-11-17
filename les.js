@@ -4,14 +4,13 @@
  */
 
 import minimist from 'minimist'
-import fs from 'fs'
 import serve from 'koa-static'
 import path from 'path'
 import { app, Server } from './server'
+import { attachSSL, loadServerConfigs } from './utils'
 
 const argv = minimist(process.argv.slice(2))
 const cwd = process.cwd()
-const config = path.resolve(cwd, '.lesrc')
 
 const options = {
   help: {
@@ -110,28 +109,8 @@ function CLI(cfg) {
       init(cliCfg)
       return
     }
-    let localCfg = [{}]
-    const sslPair = { sslKey: '', sslCert: '' }
-
-    if (fs.existsSync(config)) {
-      try {
-        localCfg = JSON.parse(fs.readFileSync(config))
-        const sslFound = localCfg.find(
-          ({ sslKey, sslCert }) => sslKey && sslCert
-        )
-        if (sslFound) {
-          const { sslKey, sslCert } = sslFound
-          Object.assign(sslPair, { sslKey, sslCert })
-        }
-      } catch (err) {
-        console.log(
-          'Error parsing .lesrc JSON. Is it formatted as JSON correctly?',
-          err
-        )
-      }
-    } else {
-      console.info('.lesrc does not exist. Using CLI only')
-    }
+    const localCfg = loadServerConfigs()
+    attachSSL(localCfg)
 
     let fndCfgIdx = localCfg.findIndex(({ proto }) => proto === cliCfg.proto)
     if (fndCfgIdx === -1) {
@@ -147,12 +126,6 @@ function CLI(cfg) {
           serverCfg.port += idx - fndCfgIdx
         }
       }
-
-      Object.entries(sslPair).forEach(([k, v]) => {
-        if (!serverCfg[k]) {
-          serverCfg[k] = v
-        }
-      })
 
       const server = Server(serverCfg)
       server.start({})

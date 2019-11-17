@@ -1,9 +1,10 @@
 import { app, Server } from './server'
 import { IOServer } from './io'
-import { loadServerConfigs } from './utils'
+import { attachSSL, loadServerConfigs } from './utils'
 
 /* Load config from .lesrc (if it exists) */
 const cfgs = loadServerConfigs()
+attachSSL(cfgs)
 
 /* Use middleware (as-needed) */
 // app.use(...)
