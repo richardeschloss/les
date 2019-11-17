@@ -8,7 +8,11 @@ module.exports = {
     sourceType: 'module',
     parser: 'babel-eslint',
   },
-  extends: ['eslint:recommended', 'prettier', 'plugin:prettier/recommended'],
+  extends: [
+    // 'eslint:recommended',
+    'prettier',
+    'plugin:prettier/recommended'
+  ],
   plugins: ['prettier'],
   rules: {
     'comma-dangle': ['error', 'never'],

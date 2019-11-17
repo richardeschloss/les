@@ -16,7 +16,17 @@
   },
   "files": [
     "bin",
+    "channels",
+    "public",
+    "test",
+    ".babelrc",
+    "eslintrc.js",
+    ".gitignore",
     ".lesrc",
+    "app.js",
+    "ava.config.js",
+    "io.js",
+    "LICENSE",
     "server.js",
     "utils.js"
   ],

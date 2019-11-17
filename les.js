@@ -3,11 +3,14 @@
  * Copyright 2019 Richard Schloss (https://github.com/richardeschloss)
  */
 
+import gentlyCopy from 'gently-copy'
 import minimist from 'minimist'
 import serve from 'koa-static'
 import path from 'path'
 import { app, Server } from './server'
 import { attachSSL, loadServerConfigs } from './utils'
+
+console.log(gentlyCopy)
 
 const argv = minimist(process.argv.slice(2))
 const cwd = process.cwd()
@@ -19,7 +22,8 @@ const options = {
   },
   init: {
     alias: 'i',
-    desc: `Init lesky in current working directory [(${cwd})]`
+    desc: `Init lesky in workspace specified by path, defaults to cwd`,
+    dflt: cwd
   },
   host: {
     alias: 'a',
@@ -82,7 +86,8 @@ function CLI(cfg) {
         cliCfg[option] = optionVal
       }
     })
-    cliCfg.staticDir = cfg['_'][0] || 'public'
+
+    cliCfg.staticDir = cfg['_'][0] || (cliCfg.init ? cwd : 'public')
     if (cliCfg.range && typeof cliCfg.range === 'string') {
       if (cliCfg.range.match(/[0-9]+-[0-9]+/)) {
         cliCfg.portRange = cliCfg.range.split('-')
@@ -97,7 +102,13 @@ function CLI(cfg) {
   }
 
   function init(cliCfg) {
-    console.log('init', cliCfg)
+    const { staticDir: dest, ...initCfg } = cliCfg
+    const srcRelative = __dirname.includes('bin') ? '..' : '.'
+    const pJson = require('package.json')
+    console.log('pJson', pJson)
+    // const files = ['app.js', 'server.js', 'utils.js']
+    // gentlyCopy(files, dest)
+    // console.log('init', { dest, initCfg })
   }
 
   function run() {
@@ -128,7 +139,18 @@ function CLI(cfg) {
       }
 
       const server = Server(serverCfg)
-      server.start({})
+      const evtMap = {
+        serverListening() {
+          console.log('serving static dir', cliCfg.staticDir)
+        }
+      }
+      server.start({
+        notify({ evt, data }) {
+          if (evtMap[evt]) {
+            evtMap[evt](data)
+          }
+        }
+      })
     })
   }
 
