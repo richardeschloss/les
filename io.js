@@ -4,7 +4,9 @@ import socketIO from 'socket.io'
 
 function IOServer({ host, port, server = http.createServer() }) {
   function registerIO(io) {
-    const ioChannels = readdirSync('./channels').map((f) => f.replace('.js', ''))
+    const ioChannels = readdirSync('./channels').map((f) =>
+      f.replace('.js', '')
+    )
 
     ioChannels.forEach((channel) => {
       io.of(`/${channel}`).on('connection', async (socket) => {
@@ -51,6 +53,4 @@ function IOServer({ host, port, server = http.createServer() }) {
   })
 }
 
-export {
-  IOServer
-}
+export { IOServer }
