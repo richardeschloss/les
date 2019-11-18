@@ -79,6 +79,7 @@ Specifically, running this command will initialize a `package.json` file in your
 When initialization is done, the following should work:
 
 > npm start 
+
 > npm run dev 
 
 ## TODO Items and Notes
