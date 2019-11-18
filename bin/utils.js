@@ -5,6 +5,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.findFreePort = findFreePort;
 exports.portTaken = portTaken;
+exports.attachSSL = attachSSL;
+exports.loadServerConfigs = loadServerConfigs;
+
+var _fs = require("fs");
+
+var _path = require("path");
 
 var _nodeNetstat = _interopRequireDefault(require("node-netstat"));
 
@@ -31,7 +37,7 @@ async function findFreePort({
   })).map(({
     local
   }) => local.port);
-  let [startPort, endPort] = range;
+  const [startPort, endPort] = range;
   let freePort;
 
   for (let port = startPort; port <= endPort; port++) {
@@ -55,4 +61,49 @@ async function portTaken({
     local
   }) => local.port);
   return usedPorts.includes(port);
+}
+
+function attachSSL(cfgs) {
+  const sslPair = {};
+  const sslFound = cfgs.find(({
+    sslKey,
+    sslCert
+  }) => sslKey && sslCert);
+
+  if (sslFound) {
+    const {
+      sslKey,
+      sslCert
+    } = sslFound;
+    Object.assign(sslPair, {
+      sslKey,
+      sslCert
+    });
+  }
+
+  cfgs.forEach(cfg => {
+    Object.entries(sslPair).forEach(([k, v]) => {
+      if (!cfg[k]) {
+        cfg[k] = v;
+      }
+    });
+  });
+}
+
+function loadServerConfigs() {
+  const cwd = process.cwd();
+  const config = (0, _path.resolve)(cwd, '.lesrc');
+  let localCfg = [{}];
+
+  if ((0, _fs.existsSync)(config)) {
+    try {
+      localCfg = JSON.parse((0, _fs.readFileSync)(config));
+    } catch (err) {
+      console.log('Error parsing .lesrc JSON. Is it formatted as JSON correctly?', err);
+    }
+  } else {
+    console.info('.lesrc does not exist. Using CLI only');
+  }
+
+  return localCfg;
 }

@@ -22,9 +22,9 @@ function Server({
   sslKey,
   sslCert
 }) {
-  let _host = host
-  let _port = port
-  let _proto = protos[proto] || http
+  const _host = host
+  const _port = port
+  const _proto = protos[proto] || http
   let _server
 
   return Object.freeze({
@@ -83,7 +83,7 @@ function Server({
         if (notify) {
           notify({
             evt: 'serverListening',
-            data: { proto, host, port: assignedPort }
+            data: { proto, host, port: assignedPort, server: _server }
           })
         }
       }

@@ -3,20 +3,26 @@
  * Copyright 2019 Richard Schloss (https://github.com/richardeschloss)
  */
 
+import gentlyCopy from 'gently-copy'
 import minimist from 'minimist'
-import fs from 'fs'
 import serve from 'koa-static'
-import path from 'path'
+import { existsSync, writeFileSync } from 'fs'
+import { resolve as pResolve } from 'path'
 import { app, Server } from './server'
+import { attachSSL, loadServerConfigs } from './utils'
 
 const argv = minimist(process.argv.slice(2))
 const cwd = process.cwd()
-const config = path.resolve(cwd, '.lesrc')
 
 const options = {
+  help: {
+    alias: 'h',
+    desc: 'Print this help menu'
+  },
   init: {
     alias: 'i',
-    desc: `Init lesky in current working directory [(${cwd})]`
+    desc: `Init lesky in workspace specified by path, defaults to cwd`,
+    dflt: cwd
   },
   host: {
     alias: 'a',
@@ -47,7 +53,6 @@ const options = {
 
 const buildUsage = () => {
   const usage = ['usage: les [path] [options]', '', 'options:']
-  usage.push(['', '-h', '--help', 'Print this help menu'])
   Object.entries(options).forEach(
     ([option, { alias = '', desc = '', dflt, limitTo }]) => {
       if (alias !== '') {
@@ -80,7 +85,8 @@ function CLI(cfg) {
         cliCfg[option] = optionVal
       }
     })
-    cliCfg.staticDir = cfg['_'][0] || 'public'
+
+    cliCfg.staticDir = cfg['_'][0] || (cliCfg.init ? cwd : 'public')
     if (cliCfg.range && typeof cliCfg.range === 'string') {
       if (cliCfg.range.match(/[0-9]+-[0-9]+/)) {
         cliCfg.portRange = cliCfg.range.split('-')
@@ -94,30 +100,74 @@ function CLI(cfg) {
     return cliCfg
   }
 
+  async function init(cliCfg) {
+    const { staticDir: dest, init, ...initCfg } = cliCfg
+    if (!init) return
+    const srcDir = __dirname.includes('bin')
+      ? pResolve(__dirname, '..')
+      : __dirname
+    const srcPackage = await import(pResolve(srcDir, 'package.json'))
+    const { files, dependencies, devDependencies } = srcPackage
+    const destPackageFile = pResolve(dest, 'package.json')
+    if (!existsSync(destPackageFile)) {
+      console.log(
+        'writing dependencies to new package.json file:',
+        destPackageFile
+      )
+      const scripts = {
+        dev: 'nodemon --exec npm start',
+        start: 'babel-node app.js',
+        test: 'ava',
+        'test:watch': 'ava --watch',
+        'test:cov': 'nyc ava'
+      }
+      const destPackage = Object.assign(
+        {},
+        { scripts, dependencies, devDependencies }
+      )
+      writeFileSync(destPackageFile, JSON.stringify(destPackage, null, '  '))
+    }
+
+    const destLesrcFile = pResolve(dest, '.lesrc')
+    if (!existsSync(destLesrcFile)) {
+      console.log('writing config to new .lesrc file:', destLesrcFile)
+      const lesCfg = [Object.assign({}, initCfg)]
+      console.log('.lesrc:', lesCfg)
+      writeFileSync(destLesrcFile, JSON.stringify(lesCfg, null, '  '))
+    }
+    const skipFiles = ['bin', '.lesrc']
+    const srcFiles = files
+      .filter((f) => !skipFiles.includes(f))
+      .map((f) => pResolve(srcDir, f))
+    gentlyCopy(srcFiles, dest)
+    console.log('copied files over')
+
+    console.log('Installing deps in', dest)
+    process.chdir(dest)
+    const { execSync } = await import('child_process')
+    execSync('npm i', { stdio: [0, 1, 2] })
+    console.log('Done initializing lesky app! Some notes:')
+    const postInstallNotes = [
+      'You might want to init .gitignore and git here before continuing (git init; git add .)',
+      'You might want to add author, project name, version number to package.json',
+      'You might want different dependencies. Use `npm prune` to remove unused deps (optional)'
+    ]
+      .map((note, idx) => `${idx + 1}. ${note}`)
+      .join('\n')
+    console.log(postInstallNotes)
+  }
+
   function run() {
     const cliCfg = buildCliCfg()
-    let localCfg = [{}]
-    const sslPair = { sslKey: '', sslCert: '' }
-
-    if (fs.existsSync(config)) {
-      try {
-        localCfg = JSON.parse(fs.readFileSync(config))
-        const sslFound = localCfg.find(
-          ({ sslKey, sslCert }) => sslKey && sslCert
-        )
-        if (sslFound) {
-          const { sslKey, sslCert } = sslFound
-          Object.assign(sslPair, { sslKey, sslCert })
-        }
-      } catch (err) {
-        console.log(
-          'Error parsing .lesrc JSON. Is it formatted as JSON correctly?',
-          err
-        )
-      }
-    } else {
-      console.info('.lesrc does not exist. Using CLI only')
+    if (cliCfg.help) {
+      console.log(usage)
+      return
+    } else if (cliCfg.init) {
+      init(cliCfg)
+      return
     }
+    const localCfg = loadServerConfigs()
+    attachSSL(localCfg)
 
     let fndCfgIdx = localCfg.findIndex(({ proto }) => proto === cliCfg.proto)
     if (fndCfgIdx === -1) {
@@ -125,7 +175,7 @@ function CLI(cfg) {
     }
 
     Object.assign(localCfg[fndCfgIdx], cliCfg)
-    app.use(serve(path.resolve(cwd, cliCfg.staticDir)))
+    app.use(serve(pResolve(cwd, cliCfg.staticDir)))
     localCfg.forEach((serverCfg, idx) => {
       if (!serverCfg.port) {
         serverCfg.port = localCfg[fndCfgIdx].port || options.port.dflt
@@ -134,34 +184,26 @@ function CLI(cfg) {
         }
       }
 
-      Object.entries(sslPair).forEach(([k, v]) => {
-        if (!serverCfg[k]) {
-          serverCfg[k] = v
+      const server = Server(serverCfg)
+      const evtMap = {
+        serverListening() {
+          console.log('serving static dir', cliCfg.staticDir)
+        }
+      }
+      server.start({
+        notify({ evt, data }) {
+          if (evtMap[evt]) {
+            evtMap[evt](data)
+          }
         }
       })
-
-      const server = Server(serverCfg)
-      server.start({})
     })
   }
 
   return Object.freeze({
-    help() {
-      console.log(usage)
-    },
-    init() {
-      console.log('[les] init project')
-      // If other args are provided, init .lesrc with those
-    },
     run
   })
 }
 
 const cli = CLI(argv)
-if (argv.h || argv.help) {
-  cli.help()
-} else if (argv.i || argv.init) {
-  cli.init()
-} else {
-  cli.run()
-}
+cli.run()

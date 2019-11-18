@@ -1,30 +1,36 @@
 "use strict";
 
-var _minimist = _interopRequireDefault(require("minimist"));
+var _gentlyCopy = _interopRequireDefault(require("gently-copy"));
 
-var _fs = _interopRequireDefault(require("fs"));
+var _minimist = _interopRequireDefault(require("minimist"));
 
 var _koaStatic = _interopRequireDefault(require("koa-static"));
 
-var _path = _interopRequireDefault(require("path"));
+var _fs = require("fs");
+
+var _path = require("path");
 
 var _server = require("./server");
 
+var _utils = require("./utils");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*
- * les - CLI for lightweight koa server
- * Copyright 2019 Richard Schloss (https://github.com/richardeschloss)
- */
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 const argv = (0, _minimist.default)(process.argv.slice(2));
 const cwd = process.cwd();
-
-const config = _path.default.resolve(cwd, '.lesrc');
-
 const options = {
+  help: {
+    alias: 'h',
+    desc: 'Print this help menu'
+  },
   init: {
     alias: 'i',
-    desc: `Init lesky in current working directory [(${cwd})]`
+    desc: `Init lesky in workspace specified by path, defaults to cwd`,
+    dflt: cwd
   },
   host: {
     alias: 'a',
@@ -55,7 +61,6 @@ const options = {
 
 const buildUsage = () => {
   const usage = ['usage: les [path] [options]', '', 'options:'];
-  usage.push(['', '-h', '--help', 'Print this help menu']);
   Object.entries(options).forEach(([option, {
     alias = '',
     desc = '',
@@ -94,7 +99,7 @@ function CLI(cfg) {
         cliCfg[option] = optionVal;
       }
     });
-    cliCfg.staticDir = cfg['_'][0] || 'public';
+    cliCfg.staticDir = cfg['_'][0] || (cliCfg.init ? cwd : 'public');
 
     if (cliCfg.range && typeof cliCfg.range === 'string') {
       if (cliCfg.range.match(/[0-9]+-[0-9]+/)) {
@@ -107,39 +112,78 @@ function CLI(cfg) {
     return cliCfg;
   }
 
-  function run() {
-    const cliCfg = buildCliCfg();
-    let localCfg = [{}];
-    const sslPair = {
-      sslKey: '',
-      sslCert: ''
-    };
+  async function init(cliCfg) {
+    const {
+      staticDir: dest,
+      init,
+      ...initCfg
+    } = cliCfg;
+    if (!init) return;
+    const srcDir = __dirname.includes('bin') ? (0, _path.resolve)(__dirname, '..') : __dirname;
+    const srcPackage = await Promise.resolve().then(() => _interopRequireWildcard(require(`${(0, _path.resolve)(srcDir, 'package.json')}`)));
+    const {
+      files,
+      dependencies,
+      devDependencies
+    } = srcPackage;
+    const destPackageFile = (0, _path.resolve)(dest, 'package.json');
 
-    if (_fs.default.existsSync(config)) {
-      try {
-        localCfg = JSON.parse(_fs.default.readFileSync(config));
-        const sslFound = localCfg.find(({
-          sslKey,
-          sslCert
-        }) => sslKey && sslCert);
-
-        if (sslFound) {
-          const {
-            sslKey,
-            sslCert
-          } = sslFound;
-          Object.assign(sslPair, {
-            sslKey,
-            sslCert
-          });
-        }
-      } catch (err) {
-        console.log('Error parsing .lesrc JSON. Is it formatted as JSON correctly?', err);
-      }
-    } else {
-      console.info('.lesrc does not exist. Using CLI only');
+    if (!(0, _fs.existsSync)(destPackageFile)) {
+      console.log('writing dependencies to new package.json file:', destPackageFile);
+      const scripts = {
+        dev: 'nodemon --exec npm start',
+        start: 'babel-node app.js',
+        test: 'ava',
+        'test:watch': 'ava --watch',
+        'test:cov': 'nyc ava'
+      };
+      const destPackage = Object.assign({}, {
+        scripts,
+        dependencies,
+        devDependencies
+      });
+      (0, _fs.writeFileSync)(destPackageFile, JSON.stringify(destPackage, null, '  '));
     }
 
+    const destLesrcFile = (0, _path.resolve)(dest, '.lesrc');
+
+    if (!(0, _fs.existsSync)(destLesrcFile)) {
+      console.log('writing config to new .lesrc file:', destLesrcFile);
+      const lesCfg = [Object.assign({}, initCfg)];
+      console.log('.lesrc:', lesCfg);
+      (0, _fs.writeFileSync)(destLesrcFile, JSON.stringify(lesCfg, null, '  '));
+    }
+
+    const skipFiles = ['bin', '.lesrc'];
+    const srcFiles = files.filter(f => !skipFiles.includes(f)).map(f => (0, _path.resolve)(srcDir, f));
+    (0, _gentlyCopy.default)(srcFiles, dest);
+    console.log('copied files over');
+    console.log('Installing deps in', dest);
+    process.chdir(dest);
+    const {
+      execSync
+    } = await Promise.resolve().then(() => _interopRequireWildcard(require('child_process')));
+    execSync('npm i', {
+      stdio: [0, 1, 2]
+    });
+    console.log('Done initializing lesky app! Some notes:');
+    const postInstallNotes = ['You might want to init .gitignore and git here before continuing (git init; git add .)', 'You might want to add author, project name, version number to package.json', 'You might want different dependencies. Use `npm prune` to remove unused deps (optional)'].map((note, idx) => `${idx + 1}. ${note}`).join('\n');
+    console.log(postInstallNotes);
+  }
+
+  function run() {
+    const cliCfg = buildCliCfg();
+
+    if (cliCfg.help) {
+      console.log(usage);
+      return;
+    } else if (cliCfg.init) {
+      init(cliCfg);
+      return;
+    }
+
+    const localCfg = (0, _utils.loadServerConfigs)();
+    (0, _utils.attachSSL)(localCfg);
     let fndCfgIdx = localCfg.findIndex(({
       proto
     }) => proto === cliCfg.proto);
@@ -150,7 +194,7 @@ function CLI(cfg) {
 
     Object.assign(localCfg[fndCfgIdx], cliCfg);
 
-    _server.app.use((0, _koaStatic.default)(_path.default.resolve(cwd, cliCfg.staticDir)));
+    _server.app.use((0, _koaStatic.default)((0, _path.resolve)(cwd, cliCfg.staticDir)));
 
     localCfg.forEach((serverCfg, idx) => {
       if (!serverCfg.port) {
@@ -161,35 +205,31 @@ function CLI(cfg) {
         }
       }
 
-      Object.entries(sslPair).forEach(([k, v]) => {
-        if (!serverCfg[k]) {
-          serverCfg[k] = v;
-        }
-      });
       const server = (0, _server.Server)(serverCfg);
-      server.start({});
+      const evtMap = {
+        serverListening() {
+          console.log('serving static dir', cliCfg.staticDir);
+        }
+
+      };
+      server.start({
+        notify({
+          evt,
+          data
+        }) {
+          if (evtMap[evt]) {
+            evtMap[evt](data);
+          }
+        }
+
+      });
     });
   }
 
   return Object.freeze({
-    help() {
-      console.log(usage);
-    },
-
-    init() {
-      console.log('[les] init project'); // If other args are provided, init .lesrc with those
-    },
-
     run
   });
 }
 
 const cli = CLI(argv);
-
-if (argv.h || argv.help) {
-  cli.help();
-} else if (argv.i || argv.init) {
-  cli.init();
-} else {
-  cli.run();
-}
+cli.run();

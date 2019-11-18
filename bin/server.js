@@ -38,10 +38,10 @@ function Server({
   sslKey,
   sslCert
 }) {
-  let _host = host;
-  let _port = port;
+  const _host = host;
+  const _port = port;
 
-  let _proto = protos[proto] || _http.default;
+  const _proto = protos[proto] || _http.default;
 
   let _server;
 
@@ -124,7 +124,8 @@ function Server({
             data: {
               proto,
               host,
-              port: assignedPort
+              port: assignedPort,
+              server: _server
             }
           });
         }

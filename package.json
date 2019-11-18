@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon --exec babel-node les.js",
     "build": "babel utils.js server.js les.js -d bin",
-    "start": "bin/run.js",
+    "start": "babel-node les.js",
     "test": "ava",
     "test:watch": "ava --watch",
     "test:cov": "nyc ava"
@@ -16,7 +16,18 @@
   },
   "files": [
     "bin",
+    "channels",
+    "public",
+    "test",
+    ".babelrc",
+    ".editorconfig",
+    ".eslintrc.js",
+    ".gitignore",
     ".lesrc",
+    "app.js",
+    "ava.config.js",
+    "io.js",
+    "LICENSE",
     "server.js",
     "utils.js"
   ],
@@ -35,6 +46,7 @@
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
     "babel-plugin-module-resolver": "^3.2.0",
+    "gently-copy": "^3.2.0",
     "koa": "^2.11.0",
     "koa-static": "^5.0.0",
     "minimist": "^1.2.0",
@@ -42,8 +54,13 @@
   },
   "devDependencies": {
     "ava": "^2.4.0",
+    "babel-eslint": "^10.0.3",
     "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "nodemon": "^1.19.4",
-    "nyc": "^14.1.1"
+    "nyc": "^14.1.1",
+    "prettier": "^1.19.1",
+    "socket.io": "^2.3.0"
   }
 }
