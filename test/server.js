@@ -11,9 +11,11 @@ test('Server Start (defaults)', async (t) => {
   return new Promise((resolve) => {
     s.start({
       notify: ({ evt, data }) => {
+        const { server, ...serverCfg } = data
+        t.truthy(server)
         t.is(evt, 'serverListening')
-        Object.keys(data).forEach((key) => {
-          t.is(data[key], defaults[key])
+        Object.entries(serverCfg).forEach(([key, val]) => {
+          t.is(val, defaults[key])
         })
 
         resolve()
