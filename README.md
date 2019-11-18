@@ -66,6 +66,22 @@ Example `.lesrc` file:
 }]
 ```
 
+## Initializing a workspace to be a lesky app
+
+If it is desired to initialize the current workspace as a lesky app, it's accomplished by:
+
+> les [path] --init [options]
+
+Where path defaults to the current working directory if not specified. The options passed in are the same as those passed to the CLI above. The only difference is that these options will be used to initialize the `.lesrc` config file that gets copied over, so that when you start the app, it will use your provided settings. 
+
+Specifically, running this command will initialize a `package.json` file in your workspace with useful scripts and dependencies (such as Koa). Then it will copy over several sample files, including `server.js` and `app.js` which will be the entry point. It will also automatically install the dependencies. 
+
+When initialization is done, the following should work:
+
+> npm start 
+> npm run dev 
+
 ## TODO Items and Notes
 
-- The "init" option isn't implemented yet. The idea to be implemented is: `les --init` would initialize the workspace with the `server.js` and maybe some other useful files, and install npm dependencies to quickly get a new Koa project started.
+- Code coverage can be improved in automated tests. I've tested a lot manually, but I think I can do better with automated tests as time permits.
+- Auto-launch browser to served application
