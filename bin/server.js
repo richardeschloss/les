@@ -45,6 +45,12 @@ function Server({
 
   let _server;
 
+  let _protoStr = 'http';
+
+  if (Object.keys(protos).includes(proto)) {
+    _protoStr = proto;
+  }
+
   return Object.freeze({
     build() {
       const serverOpts = {};
@@ -55,7 +61,7 @@ function Server({
           serverOpts.cert = (0, _fs.readFileSync)((0, _path.resolve)(sslCert));
           serverOpts.ca = [serverOpts.cert];
         } catch (err) {
-          console.log('[les:server] error reading ssl cert');
+          throw new Error('[les:server] error reading ssl cert');
         }
       }
 
@@ -101,28 +107,39 @@ function Server({
             _server.removeListener('error', onError).removeListener('listening', onSuccess);
 
             ctx.listen({
-              port: freePort
+              port: freePort,
+              notify
             });
+          },
+          dflt: () => {
+            _server.removeListener('error', onError).removeListener('listening', onSuccess);
+
+            if (notify) {
+              notify({
+                evt: 'serverError',
+                err
+              });
+            }
           }
         };
 
         if (errMap[err.code]) {
           errMap[err.code]();
         } else {
-          console.error(err);
+          errMap.dflt();
         }
       }
 
       function onSuccess() {
         const assignedPort = _server.address().port;
 
-        console.log(`listening at: (proto = ${proto}, host = ${host}, port = ${assignedPort})`);
+        console.log(`listening at: (proto = ${_protoStr}, host = ${host}, port = ${assignedPort})`);
 
         if (notify) {
           notify({
             evt: 'serverListening',
             data: {
-              proto,
+              proto: _protoStr,
               host,
               port: assignedPort,
               server: _server
@@ -140,6 +157,27 @@ function Server({
       this.build();
       this.listen({
         notify
+      });
+    },
+
+    stop({
+      notify
+    }) {
+      const {
+        port
+      } = _server.address() || {};
+
+      _server.close(() => {
+        if (notify) {
+          notify({
+            evt: 'serverStopped',
+            data: {
+              proto: _protoStr,
+              host,
+              port
+            }
+          });
+        }
       });
     }
 

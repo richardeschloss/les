@@ -1,9 +1,11 @@
 [{
   "host": "localhost",
   "proto": "http2",
-  "sslKey": ".ssl/server.key",
-  "sslCert": ".ssl/server.crt"
+  "sslKey": ".ssl/localhost.key",
+  "sslCert": ".ssl/localhost.crt"
 },{
   "proto": "https",
-  "portRange": [8000, 9000]
+  "portRange": [5000, 6000]
+},{
+  "port": 8111
 }]
