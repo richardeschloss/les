@@ -1,7 +1,6 @@
 export default {
   require: ['@babel/register'],
   sources: ['**/*.{js}'],
-  files: ['test/server.js'],
   babel: {
     testOptions: {
       plugins: [
@@ -18,6 +17,6 @@ export default {
       ]
     }
   },
-  tap: true,
+  tap: false,
   verbose: true
 }

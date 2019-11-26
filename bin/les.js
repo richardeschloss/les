@@ -1,5 +1,10 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.testCLI = exports.mergeConfigs = void 0;
+
 var _gentlyCopy = _interopRequireDefault(require("gently-copy"));
 
 var _minimist = _interopRequireDefault(require("minimist"));
@@ -14,6 +19,8 @@ var _server = require("./server");
 
 var _utils = require("./utils");
 
+var _child_process = require("child_process");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -22,73 +29,43 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 const argv = (0, _minimist.default)(process.argv.slice(2));
 const cwd = process.cwd();
-const options = {
-  help: {
-    alias: 'h',
-    desc: 'Print this help menu'
-  },
-  init: {
-    alias: 'i',
-    desc: `Init lesky in workspace specified by path, defaults to cwd`,
-    dflt: cwd
-  },
-  host: {
-    alias: 'a',
-    desc: 'Address to use',
-    dflt: 'localhost'
-  },
-  port: {
-    alias: 'p',
-    desc: 'Port to use',
-    dflt: 8080
-  },
-  proto: {
-    desc: 'Protocol to use',
-    dflt: 'http',
-    limitTo: '{ http, https, http2, http2s }'
-  },
-  range: {
-    desc: 'Port Range (in case port is taken)',
-    dflt: [8000, 9000]
-  },
-  sslKey: {
-    desc: 'Path to SSL Key'
-  },
-  sslCert: {
-    desc: 'Path to SSL Certificate'
+const options = {};
+
+function _mergeConfigs(cliCfg, options) {
+  const merged = (0, _utils.loadServerConfigs)();
+  (0, _utils.attachSSL)(merged);
+  let fndCfgIdx = merged.findIndex(({
+    proto
+  }) => proto === cliCfg.proto);
+
+  if (fndCfgIdx === -1) {
+    fndCfgIdx = 0;
   }
-};
 
-const buildUsage = () => {
-  const usage = ['usage: les [path] [options]', '', 'options:'];
-  Object.entries(options).forEach(([option, {
-    alias = '',
-    desc = '',
-    dflt,
-    limitTo
-  }]) => {
-    if (alias !== '') {
-      alias = `-${alias},`;
+  Object.assign(merged[fndCfgIdx], cliCfg);
+  merged.forEach((serverCfg, idx) => {
+    serverCfg.proto = serverCfg.proto || options.proto.dflt;
+    serverCfg.host = serverCfg.host || options.host.dflt;
+
+    if (!serverCfg.port) {
+      if (serverCfg.portRange) {
+        serverCfg.port = parseInt(serverCfg.portRange[0]);
+      } else {
+        serverCfg.port = merged[fndCfgIdx].port || options.port.dflt;
+
+        if (idx !== fndCfgIdx) {
+          serverCfg.port += idx - fndCfgIdx;
+        }
+      }
     }
-
-    if (dflt) {
-      desc = `${desc} [${dflt}]`;
-    }
-
-    if (limitTo) {
-      desc = `${desc} (${limitTo})`;
-    }
-
-    const optStr = ['', alias, `--${option}`, desc];
-    usage.push(optStr.join('\t'));
   });
-  return usage.join('\n');
-};
-
-const usage = buildUsage();
+  return merged;
+}
 
 function CLI(cfg) {
-  function buildCliCfg() {
+  cfg['_'] = cfg['_'] || [];
+
+  function buildCliCfg(options) {
     const cliCfg = {};
     Object.entries(options).forEach(([option, {
       alias
@@ -103,22 +80,23 @@ function CLI(cfg) {
 
     if (cliCfg.range && typeof cliCfg.range === 'string') {
       if (cliCfg.range.match(/[0-9]+-[0-9]+/)) {
-        cliCfg.portRange = cliCfg.range.split('-');
+        cliCfg.portRange = cliCfg.range.split('-').map(i => parseInt(i));
+
+        if (!cliCfg.port) {
+          cliCfg.port = cliCfg.portRange[0];
+        }
       } else {
-        console.log('port range incorrectly formatted. Format as --range=start-end');
+        throw new Error('port range incorrectly formatted. Format as --range=start-end');
       }
     }
 
     return cliCfg;
   }
 
-  async function init(cliCfg) {
-    const {
-      staticDir: dest,
-      init,
-      ...initCfg
-    } = cliCfg;
-    if (!init) return;
+  async function init({
+    dest,
+    initCfg
+  }) {
     const srcDir = __dirname.includes('bin') ? (0, _path.resolve)(__dirname, '..') : __dirname;
     const srcPackage = await Promise.resolve().then(() => _interopRequireWildcard(require(`${(0, _path.resolve)(srcDir, 'package.json')}`)));
     const {
@@ -143,6 +121,8 @@ function CLI(cfg) {
         devDependencies
       });
       (0, _fs.writeFileSync)(destPackageFile, JSON.stringify(destPackage, null, '  '));
+    } else {
+      console.log('package.json already exists...will not overwrite');
     }
 
     const destLesrcFile = (0, _path.resolve)(dest, '.lesrc');
@@ -152,6 +132,8 @@ function CLI(cfg) {
       const lesCfg = [Object.assign({}, initCfg)];
       console.log('.lesrc:', lesCfg);
       (0, _fs.writeFileSync)(destLesrcFile, JSON.stringify(lesCfg, null, '  '));
+    } else {
+      console.log('.lesrc already exists...will not overwrite');
     }
 
     const skipFiles = ['bin', '.lesrc'];
@@ -169,59 +151,84 @@ function CLI(cfg) {
     console.log('Done initializing lesky app! Some notes:');
     const postInstallNotes = ['You might want to init .gitignore and git here before continuing (git init; git add .)', 'You might want to add author, project name, version number to package.json', 'You might want different dependencies. Use `npm prune` to remove unused deps (optional)'].map((note, idx) => `${idx + 1}. ${note}`).join('\n');
     console.log(postInstallNotes);
+    return 'done';
   }
 
-  function run() {
-    const cliCfg = buildCliCfg();
+  function open({
+    proto,
+    host,
+    port
+  }) {
+    const {
+      platform
+    } = process;
+    const cmdMap = {
+      win32: ['cmd', ['/c', 'start']],
+      darwin: ['open', []]
+    };
+    const [cmd, args] = cmdMap[platform] || ['xdg-open', []];
+    args.push(`${proto == 'http2' ? 'https' : proto}://${host}:${port}`);
+    const browser = (0, _child_process.spawn)(cmd, args);
+    console.log('browser opened');
+    return browser;
+  }
+
+  function run(options) {
+    const cliCfg = buildCliCfg(options);
 
     if (cliCfg.help) {
+      const usage = (0, _utils.buildCLIUsage)('usage: les [path] [options]', options);
       console.log(usage);
-      return;
+      return usage;
     } else if (cliCfg.init) {
-      init(cliCfg);
-      return;
+      // eslint-disable-next-line no-unused-vars
+      const {
+        staticDir: dest,
+        init: initVal,
+        ...initCfg
+      } = cliCfg;
+      return init({
+        dest,
+        initCfg
+      });
     }
 
-    const localCfg = (0, _utils.loadServerConfigs)();
-    (0, _utils.attachSSL)(localCfg);
-    let fndCfgIdx = localCfg.findIndex(({
-      proto
-    }) => proto === cliCfg.proto);
-
-    if (fndCfgIdx === -1) {
-      fndCfgIdx = 0;
-    }
-
-    Object.assign(localCfg[fndCfgIdx], cliCfg);
+    const mergedCfgs = _mergeConfigs(cliCfg, options);
 
     _server.app.use((0, _koaStatic.default)((0, _path.resolve)(cwd, cliCfg.staticDir)));
 
-    localCfg.forEach((serverCfg, idx) => {
-      if (!serverCfg.port) {
-        serverCfg.port = localCfg[fndCfgIdx].port || options.port.dflt;
+    return new Promise((resolve, reject) => {
+      const cfgsLoaded = Array(mergedCfgs.length);
+      let doneCnt = 0;
 
-        if (idx !== fndCfgIdx) {
-          serverCfg.port += idx - fndCfgIdx;
+      function onSuccess({
+        data,
+        idx
+      }) {
+        if (cliCfg.open) {
+          data.browser = open(data);
+        }
+
+        cfgsLoaded[idx] = data;
+        console.log('serving static dir', cliCfg.staticDir);
+
+        if (++doneCnt == mergedCfgs.length) {
+          console.log('All server configs started');
+          resolve({
+            evt: 'cfgsLoaded',
+            data: cfgsLoaded
+          });
         }
       }
 
-      const server = (0, _server.Server)(serverCfg);
-      const evtMap = {
-        serverListening() {
-          console.log('serving static dir', cliCfg.staticDir);
-        }
-
-      };
-      server.start({
-        notify({
-          evt,
+      mergedCfgs.forEach((serverCfg, idx) => {
+        const server = (0, _server.Server)(serverCfg);
+        server.start().then(({
           data
-        }) {
-          if (evtMap[evt]) {
-            evtMap[evt](data);
-          }
-        }
-
+        }) => onSuccess({
+          data,
+          idx
+        })).catch(reject);
       });
     });
   }
@@ -231,5 +238,22 @@ function CLI(cfg) {
   });
 }
 
-const cli = CLI(argv);
-cli.run();
+if (require.main === module) {
+  ;
+
+  (async function () {
+    await (0, _utils.importCLIOptions)(options);
+    const cli = CLI(argv);
+    cli.run(options);
+  })();
+}
+
+let mergeConfigs;
+exports.mergeConfigs = mergeConfigs;
+let testCLI;
+exports.testCLI = testCLI;
+
+if (process.env.TEST) {
+  exports.mergeConfigs = mergeConfigs = _mergeConfigs;
+  exports.testCLI = testCLI = CLI;
+}

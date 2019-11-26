@@ -4,7 +4,7 @@ import https from 'https'
 import http2 from 'http2'
 import Koa from 'koa'
 import { resolve as pResolve } from 'path'
-import { findFreePort } from './utils'
+import { findFreePort } from '@/utils'
 
 const app = new Koa()
 
@@ -26,6 +26,10 @@ function Server({
   const _port = port
   const _proto = protos[proto] || http
   let _server
+  let _protoStr = 'http'
+  if (Object.keys(protos).includes(proto)) {
+    _protoStr = proto
+  }
 
   return Object.freeze({
     build() {
@@ -36,15 +40,52 @@ function Server({
           serverOpts.cert = readFileSync(pResolve(sslCert))
           serverOpts.ca = [serverOpts.cert]
         } catch (err) {
-          console.log('[les:server] error reading ssl cert')
+          throw new Error('[les:server] error reading ssl cert')
         }
       }
       const createFn = proto === 'http2' ? 'createSecureServer' : 'createServer'
       _server = _proto[createFn](serverOpts, app.callback())
     },
-    listen({ host = _host, port = _port, notify }) {
-      const ctx = this
-      function onError(err) {
+    listen({ host = _host, port = _port }) {
+      return new Promise((resolve, reject) => {
+        function onError(err) {
+          _server
+            .removeListener('error', onError)
+            .removeListener('listening', onSuccess)
+
+          reject({
+            err,
+            data: { proto, host, port }
+          })
+        }
+
+        function onSuccess() {
+          const assignedPort = _server.address().port
+          console.log(
+            `listening at: (proto = ${_protoStr}, host = ${host}, port = ${assignedPort})`
+          )
+
+          resolve({
+            evt: 'serverListening',
+            data: {
+              proto: _protoStr,
+              host,
+              port: assignedPort,
+              server: _server
+            }
+          })
+        }
+
+        _server
+          .listen(port, host)
+          .on('error', onError)
+          .on('listening', onSuccess)
+      })
+    },
+    start() {
+      this.build()
+      return this.listen({}).catch(({ err, data }) => {
+        const { port } = data
         const errMap = {
           EADDRINUSE: async () => {
             let range
@@ -57,45 +98,34 @@ function Server({
             console.info(
               `Port ${port} in use, using free port instead ${freePort}`
             )
-            if (notify) {
-              notify({
-                evt: 'EADDRINUSE',
-                data: { proto, host, port, assignedPort: freePort }
-              })
-            }
-            _server
-              .removeListener('error', onError)
-              .removeListener('listening', onSuccess)
-            ctx.listen({ port: freePort })
+            return this.listen({ port: freePort })
           }
         }
         if (errMap[err.code]) {
-          errMap[err.code]()
+          return errMap[err.code]()
         } else {
-          console.error(err)
+          throw err
         }
-      }
-      function onSuccess() {
-        const assignedPort = _server.address().port
-        console.log(
-          `listening at: (proto = ${proto}, host = ${host}, port = ${assignedPort})`
-        )
-        if (notify) {
-          notify({
-            evt: 'serverListening',
-            data: { proto, host, port: assignedPort, server: _server }
-          })
-        }
-      }
-
-      _server
-        .listen(port, host)
-        .on('error', onError)
-        .on('listening', onSuccess)
+      })
     },
-    start({ notify }) {
-      this.build()
-      this.listen({ notify })
+
+    stop() {
+      return new Promise((resolve) => {
+        if (!_server) {
+          resolve()
+        }
+        const { port } = _server.address()
+        _server.close(() => {
+          resolve({
+            evt: 'serverStopped',
+            data: {
+              proto: _protoStr,
+              host,
+              port
+            }
+          })
+        })
+      })
     }
   })
 }

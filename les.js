@@ -8,76 +8,50 @@ import minimist from 'minimist'
 import serve from 'koa-static'
 import { existsSync, writeFileSync } from 'fs'
 import { resolve as pResolve } from 'path'
-import { app, Server } from './server'
-import { attachSSL, loadServerConfigs } from './utils'
+import { app, Server } from '@/server'
+import {
+  attachSSL,
+  buildCLIUsage,
+  importCLIOptions,
+  loadServerConfigs
+} from '@/utils'
+import { spawn } from 'child_process'
 
 const argv = minimist(process.argv.slice(2))
 const cwd = process.cwd()
+const options = {}
 
-const options = {
-  help: {
-    alias: 'h',
-    desc: 'Print this help menu'
-  },
-  init: {
-    alias: 'i',
-    desc: `Init lesky in workspace specified by path, defaults to cwd`,
-    dflt: cwd
-  },
-  host: {
-    alias: 'a',
-    desc: 'Address to use',
-    dflt: 'localhost'
-  },
-  port: {
-    alias: 'p',
-    desc: 'Port to use',
-    dflt: 8080
-  },
-  proto: {
-    desc: 'Protocol to use',
-    dflt: 'http',
-    limitTo: '{ http, https, http2, http2s }'
-  },
-  range: {
-    desc: 'Port Range (in case port is taken)',
-    dflt: [8000, 9000]
-  },
-  sslKey: {
-    desc: 'Path to SSL Key'
-  },
-  sslCert: {
-    desc: 'Path to SSL Certificate'
+function _mergeConfigs(cliCfg, options) {
+  const merged = loadServerConfigs()
+  attachSSL(merged)
+
+  let fndCfgIdx = merged.findIndex(({ proto }) => proto === cliCfg.proto)
+  if (fndCfgIdx === -1) {
+    fndCfgIdx = 0
   }
-}
 
-const buildUsage = () => {
-  const usage = ['usage: les [path] [options]', '', 'options:']
-  Object.entries(options).forEach(
-    ([option, { alias = '', desc = '', dflt, limitTo }]) => {
-      if (alias !== '') {
-        alias = `-${alias},`
+  Object.assign(merged[fndCfgIdx], cliCfg)
+  merged.forEach((serverCfg, idx) => {
+    serverCfg.proto = serverCfg.proto || options.proto.dflt
+    serverCfg.host = serverCfg.host || options.host.dflt
+
+    if (!serverCfg.port) {
+      if (serverCfg.portRange) {
+        serverCfg.port = parseInt(serverCfg.portRange[0])
+      } else {
+        serverCfg.port = merged[fndCfgIdx].port || options.port.dflt
+        if (idx !== fndCfgIdx) {
+          serverCfg.port += idx - fndCfgIdx
+        }
       }
-
-      if (dflt) {
-        desc = `${desc} [${dflt}]`
-      }
-
-      if (limitTo) {
-        desc = `${desc} (${limitTo})`
-      }
-      const optStr = ['', alias, `--${option}`, desc]
-
-      usage.push(optStr.join('\t'))
     }
-  )
-  return usage.join('\n')
+  })
+  return merged
 }
-
-const usage = buildUsage()
 
 function CLI(cfg) {
-  function buildCliCfg() {
+  cfg['_'] = cfg['_'] || []
+  function buildCliCfg(options) {
     const cliCfg = {}
     Object.entries(options).forEach(([option, { alias }]) => {
       const optionVal = cfg[option] || cfg[alias]
@@ -89,9 +63,12 @@ function CLI(cfg) {
     cliCfg.staticDir = cfg['_'][0] || (cliCfg.init ? cwd : 'public')
     if (cliCfg.range && typeof cliCfg.range === 'string') {
       if (cliCfg.range.match(/[0-9]+-[0-9]+/)) {
-        cliCfg.portRange = cliCfg.range.split('-')
+        cliCfg.portRange = cliCfg.range.split('-').map((i) => parseInt(i))
+        if (!cliCfg.port) {
+          cliCfg.port = cliCfg.portRange[0]
+        }
       } else {
-        console.log(
+        throw new Error(
           'port range incorrectly formatted. Format as --range=start-end'
         )
       }
@@ -100,9 +77,7 @@ function CLI(cfg) {
     return cliCfg
   }
 
-  async function init(cliCfg) {
-    const { staticDir: dest, init, ...initCfg } = cliCfg
-    if (!init) return
+  async function init({ dest, initCfg }) {
     const srcDir = __dirname.includes('bin')
       ? pResolve(__dirname, '..')
       : __dirname
@@ -126,6 +101,8 @@ function CLI(cfg) {
         { scripts, dependencies, devDependencies }
       )
       writeFileSync(destPackageFile, JSON.stringify(destPackage, null, '  '))
+    } else {
+      console.log('package.json already exists...will not overwrite')
     }
 
     const destLesrcFile = pResolve(dest, '.lesrc')
@@ -134,6 +111,8 @@ function CLI(cfg) {
       const lesCfg = [Object.assign({}, initCfg)]
       console.log('.lesrc:', lesCfg)
       writeFileSync(destLesrcFile, JSON.stringify(lesCfg, null, '  '))
+    } else {
+      console.log('.lesrc already exists...will not overwrite')
     }
     const skipFiles = ['bin', '.lesrc']
     const srcFiles = files
@@ -155,47 +134,60 @@ function CLI(cfg) {
       .map((note, idx) => `${idx + 1}. ${note}`)
       .join('\n')
     console.log(postInstallNotes)
+    return 'done'
   }
 
-  function run() {
-    const cliCfg = buildCliCfg()
+  function open({ proto, host, port }) {
+    const { platform } = process
+    const cmdMap = {
+      win32: ['cmd', ['/c', 'start']],
+      darwin: ['open', []]
+    }
+    const [cmd, args] = cmdMap[platform] || ['xdg-open', []]
+    args.push(`${proto == 'http2' ? 'https' : proto}://${host}:${port}`)
+    const browser = spawn(cmd, args)
+    console.log('browser opened')
+    return browser
+  }
+
+  function run(options) {
+    const cliCfg = buildCliCfg(options)
     if (cliCfg.help) {
+      const usage = buildCLIUsage('usage: les [path] [options]', options)
       console.log(usage)
-      return
+      return usage
     } else if (cliCfg.init) {
-      init(cliCfg)
-      return
-    }
-    const localCfg = loadServerConfigs()
-    attachSSL(localCfg)
-
-    let fndCfgIdx = localCfg.findIndex(({ proto }) => proto === cliCfg.proto)
-    if (fndCfgIdx === -1) {
-      fndCfgIdx = 0
+      // eslint-disable-next-line no-unused-vars
+      const { staticDir: dest, init: initVal, ...initCfg } = cliCfg
+      return init({ dest, initCfg })
     }
 
-    Object.assign(localCfg[fndCfgIdx], cliCfg)
+    const mergedCfgs = _mergeConfigs(cliCfg, options)
     app.use(serve(pResolve(cwd, cliCfg.staticDir)))
-    localCfg.forEach((serverCfg, idx) => {
-      if (!serverCfg.port) {
-        serverCfg.port = localCfg[fndCfgIdx].port || options.port.dflt
-        if (idx !== fndCfgIdx) {
-          serverCfg.port += idx - fndCfgIdx
-        }
-      }
 
-      const server = Server(serverCfg)
-      const evtMap = {
-        serverListening() {
-          console.log('serving static dir', cliCfg.staticDir)
+    return new Promise((resolve, reject) => {
+      const cfgsLoaded = Array(mergedCfgs.length)
+      let doneCnt = 0
+      function onSuccess({ data, idx }) {
+        if (cliCfg.open) {
+          data.browser = open(data)
+        }
+        cfgsLoaded[idx] = data
+        console.log('serving static dir', cliCfg.staticDir)
+        if (++doneCnt == mergedCfgs.length) {
+          console.log('All server configs started')
+          resolve({
+            evt: 'cfgsLoaded',
+            data: cfgsLoaded
+          })
         }
       }
-      server.start({
-        notify({ evt, data }) {
-          if (evtMap[evt]) {
-            evtMap[evt](data)
-          }
-        }
+      mergedCfgs.forEach((serverCfg, idx) => {
+        const server = Server(serverCfg)
+        server
+          .start()
+          .then(({ data }) => onSuccess({ data, idx }))
+          .catch(reject)
       })
     })
   }
@@ -205,5 +197,17 @@ function CLI(cfg) {
   })
 }
 
-const cli = CLI(argv)
-cli.run()
+if (require.main === module) {
+  ;(async function() {
+    await importCLIOptions(options)
+    const cli = CLI(argv)
+    cli.run(options)
+  })()
+}
+
+export let mergeConfigs
+export let testCLI
+if (process.env.TEST) {
+  mergeConfigs = _mergeConfigs
+  testCLI = CLI
+}
