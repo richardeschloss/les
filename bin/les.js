@@ -1,3 +1,9 @@
+#!/usr/bin/env node
+
+/*
+ * les - CLI for lightweight koa server
+ * Copyright 2019 Richard Schloss (https://github.com/richardeschloss)
+ */
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -238,6 +244,16 @@ function CLI(cfg) {
   });
 }
 
+if (require.main === module) {
+  ;
+
+  (async function () {
+    await (0, _utils.importCLIOptions)(options);
+    const cli = CLI(argv);
+    cli.run(options);
+  })();
+}
+
 let mergeConfigs;
 exports.mergeConfigs = mergeConfigs;
 let testCLI;
@@ -246,12 +262,4 @@ exports.testCLI = testCLI;
 if (process.env.TEST) {
   exports.mergeConfigs = mergeConfigs = _mergeConfigs;
   exports.testCLI = testCLI = CLI;
-} else {
-  ;
-
-  (async function () {
-    await (0, _utils.importCLIOptions)(options);
-    const cli = CLI(argv);
-    cli.run(options);
-  })();
 }

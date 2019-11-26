@@ -17,7 +17,7 @@
     "kill:node": "pkill node"
   },
   "bin": {
-    "les": "./bin/run.js"
+    "les": "./bin/les.js"
   },
   "files": [
     "bin",

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /*
  * les - CLI for lightweight koa server
  * Copyright 2019 Richard Schloss (https://github.com/richardeschloss)
@@ -197,15 +198,17 @@ function CLI(cfg) {
   })
 }
 
-export let mergeConfigs
-export let testCLI
-if (process.env.TEST) {
-  mergeConfigs = _mergeConfigs
-  testCLI = CLI
-} else {
+if (require.main === module) {
   ;(async function() {
     await importCLIOptions(options)
     const cli = CLI(argv)
     cli.run(options)
   })()
+}
+
+export let mergeConfigs
+export let testCLI
+if (process.env.TEST) {
+  mergeConfigs = _mergeConfigs
+  testCLI = CLI
 }
