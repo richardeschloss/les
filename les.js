@@ -197,17 +197,15 @@ function CLI(cfg) {
   })
 }
 
-if (require.main === module) {
-  ;(async function() {
-    await importCLIOptions(options)
-    const cli = CLI(argv)
-    cli.run(options)
-  })()
-}
-
 export let mergeConfigs
 export let testCLI
 if (process.env.TEST) {
   mergeConfigs = _mergeConfigs
   testCLI = CLI
+} else {
+  ;(async function() {
+    await importCLIOptions(options)
+    const cli = CLI(argv)
+    cli.run(options)
+  })()
 }
