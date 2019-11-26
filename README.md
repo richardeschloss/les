@@ -6,15 +6,26 @@
 
 # LES - Lightweight Express-ish (Koa) Server -- `les` not more!
 
-(lightweight for real this time...)
+Super configurable, easy-to-use lightweight Koa Server that lets you
+1. Statically serve any directory with `les` (not more). 
 
-STATUS: Not ready for public consumption...still a bit buggy. Works fine for me, but probably won't work for you just yet...
+--> If the directory contains a .lesrc config file, it will be used (FYI, the "rc" suffix stands for "run commands", a typical convention in Linux)
+
+--> If CLI args are provided, those will be used
+
+--> If both .lesrc and CLI args are provided, both will be used, but the CLI args will get priority. 
+
+2. Init a Koa application in any directory with `les --init` (EASY)
+
+--> The actual `server.js` boilerplate is kept separate from `app.js`, so you can focus more on your app and less on boilerplate! 
+
 
 ## Installation
 
 > npm i -g lesky
 
 (I wanted les, but it was taken. No worries though...the "k" in the name makes it a little more accurate)
+(Global installation is recommended...install only once)
 
 ## Usage
 
@@ -76,6 +87,8 @@ Where path defaults to the current working directory if not specified. The optio
 
 Specifically, running this command will initialize a `package.json` file in your workspace with useful scripts and dependencies (such as Koa). Then it will copy over several sample files, including `server.js` and `app.js` which will be the entry point. It will also automatically install the dependencies. 
 
+Protections in place: if `package.json` or `.lesrc` already exist in the destination folder, they will not be overwritten.
+
 When initialization is done, the following should work:
 
 > npm start 
@@ -84,5 +97,11 @@ When initialization is done, the following should work:
 
 ## TODO Items and Notes
 
-- Code coverage can be improved in automated tests. I've tested a lot manually, but I think I can do better with automated tests as time permits.
-- Auto-launch browser to served application
+- Improved i18n support. Currently the locales folder has a "en_US" locale, but I would like to support more languages, to make this tool easier for devs across the world to use. At the same time, I want to figure out how to do it and still keep things lightweight. Some thoughts:
+
+--> It would be nice if the commands could be entered in the user's preferred language 
+
+--> It would be nice if the console log messages appeared in the user's preferred language.
+
+
+

@@ -49,7 +49,6 @@ function _mergeConfigs(cliCfg, options) {
 
     if (!serverCfg.port) {
       if (serverCfg.portRange) {
-        console.log('range', serverCfg.portRange);
         serverCfg.port = parseInt(serverCfg.portRange[0]);
       } else {
         serverCfg.port = merged[fndCfgIdx].port || options.port.dflt;
@@ -87,20 +86,17 @@ function CLI(cfg) {
           cliCfg.port = cliCfg.portRange[0];
         }
       } else {
-        console.log('port range incorrectly formatted. Format as --range=start-end');
+        throw new Error('port range incorrectly formatted. Format as --range=start-end');
       }
     }
 
     return cliCfg;
   }
 
-  async function init(cliCfg) {
-    const {
-      staticDir: dest,
-      init,
-      ...initCfg
-    } = cliCfg;
-    if (!init) return;
+  async function init({
+    dest,
+    initCfg
+  }) {
     const srcDir = __dirname.includes('bin') ? (0, _path.resolve)(__dirname, '..') : __dirname;
     const srcPackage = await Promise.resolve().then(() => _interopRequireWildcard(require(`${(0, _path.resolve)(srcDir, 'package.json')}`)));
     const {
@@ -125,6 +121,8 @@ function CLI(cfg) {
         devDependencies
       });
       (0, _fs.writeFileSync)(destPackageFile, JSON.stringify(destPackage, null, '  '));
+    } else {
+      console.log('package.json already exists...will not overwrite');
     }
 
     const destLesrcFile = (0, _path.resolve)(dest, '.lesrc');
@@ -134,6 +132,8 @@ function CLI(cfg) {
       const lesCfg = [Object.assign({}, initCfg)];
       console.log('.lesrc:', lesCfg);
       (0, _fs.writeFileSync)(destLesrcFile, JSON.stringify(lesCfg, null, '  '));
+    } else {
+      console.log('.lesrc already exists...will not overwrite');
     }
 
     const skipFiles = ['bin', '.lesrc'];
@@ -151,6 +151,7 @@ function CLI(cfg) {
     console.log('Done initializing lesky app! Some notes:');
     const postInstallNotes = ['You might want to init .gitignore and git here before continuing (git init; git add .)', 'You might want to add author, project name, version number to package.json', 'You might want different dependencies. Use `npm prune` to remove unused deps (optional)'].map((note, idx) => `${idx + 1}. ${note}`).join('\n');
     console.log(postInstallNotes);
+    return 'done';
   }
 
   function open({
@@ -162,22 +163,17 @@ function CLI(cfg) {
       platform
     } = process;
     const cmdMap = {
-      win32: () => `cmd`,
-      darwin: () => `open`
+      win32: ['cmd', ['/c', 'start']],
+      darwin: ['open', []]
     };
-    const cmd = cmdMap[platform] || 'xdg-open';
-    const args = [];
-
-    if (platform == 'win32') {
-      args.push('/c', 'start');
-    }
-
+    const [cmd, args] = cmdMap[platform] || ['xdg-open', []];
     args.push(`${proto == 'http2' ? 'https' : proto}://${host}:${port}`);
-    (0, _child_process.spawn)(cmd, args);
+    const browser = (0, _child_process.spawn)(cmd, args);
     console.log('browser opened');
+    return browser;
   }
 
-  function run(options, notify) {
+  function run(options) {
     const cliCfg = buildCliCfg(options);
 
     if (cliCfg.help) {
@@ -185,74 +181,54 @@ function CLI(cfg) {
       console.log(usage);
       return usage;
     } else if (cliCfg.init) {
-      init(cliCfg);
-      return;
+      // eslint-disable-next-line no-unused-vars
+      const {
+        staticDir: dest,
+        init: initVal,
+        ...initCfg
+      } = cliCfg;
+      return init({
+        dest,
+        initCfg
+      });
     }
 
     const mergedCfgs = _mergeConfigs(cliCfg, options);
 
     _server.app.use((0, _koaStatic.default)((0, _path.resolve)(cwd, cliCfg.staticDir)));
 
-    const cfgsLoaded = [];
+    return new Promise((resolve, reject) => {
+      const cfgsLoaded = Array(mergedCfgs.length);
+      let doneCnt = 0;
 
-    function handleDone() {
-      if (cfgsLoaded.length == mergedCfgs.length) {
-        console.log('All server configs started');
+      function onSuccess({
+        data,
+        idx
+      }) {
+        if (cliCfg.open) {
+          data.browser = open(data);
+        }
 
-        if (notify) {
-          notify({
+        cfgsLoaded[idx] = data;
+        console.log('serving static dir', cliCfg.staticDir);
+
+        if (++doneCnt == mergedCfgs.length) {
+          console.log('All server configs started');
+          resolve({
             evt: 'cfgsLoaded',
             data: cfgsLoaded
           });
         }
       }
-    }
 
-    function handleError({
-      evt,
-      err
-    }) {
-      if (notify) {
-        notify({
-          evt,
-          err
-        });
-      } else {
-        throw err;
-      }
-    }
-
-    const evtMap = {
-      serverListening(data) {
-        cfgsLoaded.push(data);
-        console.log('serving static dir', cliCfg.staticDir);
-
-        if (cliCfg.open) {
-          open(data);
-        }
-
-        handleDone();
-      }
-
-    };
-    mergedCfgs.forEach(serverCfg => {
-      const server = (0, _server.Server)(serverCfg);
-      server.start({
-        notify({
-          evt,
-          err,
+      mergedCfgs.forEach((serverCfg, idx) => {
+        const server = (0, _server.Server)(serverCfg);
+        server.start().then(({
           data
-        }) {
-          if (evtMap[evt]) {
-            evtMap[evt](data);
-          } else if (err) {
-            handleError({
-              evt,
-              err
-            });
-          }
-        }
-
+        }) => onSuccess({
+          data,
+          idx
+        })).catch(reject);
       });
     });
   }

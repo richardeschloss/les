@@ -71,12 +71,50 @@ function Server({
 
     listen({
       host = _host,
-      port = _port,
-      notify
+      port = _port
     }) {
-      const ctx = this;
+      return new Promise((resolve, reject) => {
+        function onError(err) {
+          _server.removeListener('error', onError).removeListener('listening', onSuccess);
 
-      function onError(err) {
+          reject({
+            err,
+            data: {
+              proto,
+              host,
+              port
+            }
+          });
+        }
+
+        function onSuccess() {
+          const assignedPort = _server.address().port;
+
+          console.log(`listening at: (proto = ${_protoStr}, host = ${host}, port = ${assignedPort})`);
+          resolve({
+            evt: 'serverListening',
+            data: {
+              proto: _protoStr,
+              host,
+              port: assignedPort,
+              server: _server
+            }
+          });
+        }
+
+        _server.listen(port, host).on('error', onError).on('listening', onSuccess);
+      });
+    },
+
+    start() {
+      this.build();
+      return this.listen({}).catch(({
+        err,
+        data
+      }) => {
+        const {
+          port
+        } = data;
         const errMap = {
           EADDRINUSE: async () => {
             let range;
@@ -91,85 +129,32 @@ function Server({
               range
             });
             console.info(`Port ${port} in use, using free port instead ${freePort}`);
-
-            if (notify) {
-              notify({
-                evt: 'EADDRINUSE',
-                data: {
-                  proto,
-                  host,
-                  port,
-                  assignedPort: freePort
-                }
-              });
-            }
-
-            _server.removeListener('error', onError).removeListener('listening', onSuccess);
-
-            ctx.listen({
-              port: freePort,
-              notify
+            return this.listen({
+              port: freePort
             });
-          },
-          dflt: () => {
-            _server.removeListener('error', onError).removeListener('listening', onSuccess);
-
-            if (notify) {
-              notify({
-                evt: 'serverError',
-                err
-              });
-            }
           }
         };
 
         if (errMap[err.code]) {
-          errMap[err.code]();
+          return errMap[err.code]();
         } else {
-          errMap.dflt();
+          throw err;
         }
-      }
-
-      function onSuccess() {
-        const assignedPort = _server.address().port;
-
-        console.log(`listening at: (proto = ${_protoStr}, host = ${host}, port = ${assignedPort})`);
-
-        if (notify) {
-          notify({
-            evt: 'serverListening',
-            data: {
-              proto: _protoStr,
-              host,
-              port: assignedPort,
-              server: _server
-            }
-          });
-        }
-      }
-
-      _server.listen(port, host).on('error', onError).on('listening', onSuccess);
-    },
-
-    start({
-      notify
-    }) {
-      this.build();
-      this.listen({
-        notify
       });
     },
 
-    stop({
-      notify
-    }) {
-      const {
-        port
-      } = _server.address() || {};
+    stop() {
+      return new Promise(resolve => {
+        if (!_server) {
+          resolve();
+        }
 
-      _server.close(() => {
-        if (notify) {
-          notify({
+        const {
+          port
+        } = _server.address();
+
+        _server.close(() => {
+          resolve({
             evt: 'serverStopped',
             data: {
               proto: _protoStr,
@@ -177,7 +162,7 @@ function Server({
               port
             }
           });
-        }
+        });
       });
     }
 
