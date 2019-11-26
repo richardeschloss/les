@@ -4,12 +4,12 @@
 [![](https://gitlab.com/richardeschloss/les/badges/master/coverage.svg)](https://gitlab.com/richardeschloss/les)
 [![NPM](https://img.shields.io/npm/l/lesky)](https://github.com/richardeschloss/les/blob/development/LICENSE)
 
-# LES - Lightweight Express-ish (Koa) Server -- `les` not more!
+# Lightweight Express-ish (Koa) Server -- Type `les` not more!
 
 Super configurable, easy-to-use lightweight Koa Server that lets you
 1. Statically serve any directory with `les` (not more). 
 
---> If the directory contains a .lesrc config file, it will be used (FYI, the "rc" suffix stands for "run commands", a typical convention in Linux)
+--> If the directory contains a `.lesrc` config file, it will be used (FYI, the "rc" suffix stands for "run commands", a typical convention in Linux)
 
 --> If CLI args are provided, those will be used
 
@@ -49,14 +49,17 @@ The latest CLI options can always be found in the help menu:
 usage: les [path] [options]
 
 options:
-  -h, --help  Print this menu
-	-i,	--init	Init lesky in current working directory [(/home/user/Software/les)]
+	-h,	--help	Print this help menu
+	-i,	--init	Init lesky in workspace specified by path, defaults to cwd [[cwd]]
 	-a,	--host	Address to use [localhost]
 	-p,	--port	Port to use [8080]
 		--proto	Protocol to use [http] ({ http, https, http2, http2s })
 		--range	Port Range (in case port is taken) [8000,9000]
 		--sslKey	Path to SSL Key
 		--sslCert	Path to SSL Certificate
+	-o,	--open	Open browser [OS default]
+
+---End of Help---
 ```
 
 ## Customizing (.lesrc config file)
