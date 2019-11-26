@@ -1,6 +1,6 @@
 {
   "name": "lesky",
-  "version": "0.0.12",
+  "version": "1.0.0",
   "description": "Lightweight Express-ish (Koa) Server - Type les not More!",
   "main": "server.js",
   "scripts": {
