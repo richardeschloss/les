@@ -45,6 +45,12 @@ function Server({
 
   let _server;
 
+  let _protoStr = 'http';
+
+  if (Object.keys(protos).includes(proto)) {
+    _protoStr = proto;
+  }
+
   return Object.freeze({
     build() {
       const serverOpts = {};
@@ -55,7 +61,7 @@ function Server({
           serverOpts.cert = (0, _fs.readFileSync)((0, _path.resolve)(sslCert));
           serverOpts.ca = [serverOpts.cert];
         } catch (err) {
-          console.log('[les:server] error reading ssl cert');
+          throw new Error('[les:server] error reading ssl cert');
         }
       }
 
@@ -65,12 +71,50 @@ function Server({
 
     listen({
       host = _host,
-      port = _port,
-      notify
+      port = _port
     }) {
-      const ctx = this;
+      return new Promise((resolve, reject) => {
+        function onError(err) {
+          _server.removeListener('error', onError).removeListener('listening', onSuccess);
 
-      function onError(err) {
+          reject({
+            err,
+            data: {
+              proto,
+              host,
+              port
+            }
+          });
+        }
+
+        function onSuccess() {
+          const assignedPort = _server.address().port;
+
+          console.log(`listening at: (proto = ${_protoStr}, host = ${host}, port = ${assignedPort})`);
+          resolve({
+            evt: 'serverListening',
+            data: {
+              proto: _protoStr,
+              host,
+              port: assignedPort,
+              server: _server
+            }
+          });
+        }
+
+        _server.listen(port, host).on('error', onError).on('listening', onSuccess);
+      });
+    },
+
+    start() {
+      this.build();
+      return this.listen({}).catch(({
+        err,
+        data
+      }) => {
+        const {
+          port
+        } = data;
         const errMap = {
           EADDRINUSE: async () => {
             let range;
@@ -85,61 +129,40 @@ function Server({
               range
             });
             console.info(`Port ${port} in use, using free port instead ${freePort}`);
-
-            if (notify) {
-              notify({
-                evt: 'EADDRINUSE',
-                data: {
-                  proto,
-                  host,
-                  port,
-                  assignedPort: freePort
-                }
-              });
-            }
-
-            _server.removeListener('error', onError).removeListener('listening', onSuccess);
-
-            ctx.listen({
+            return this.listen({
               port: freePort
             });
           }
         };
 
         if (errMap[err.code]) {
-          errMap[err.code]();
+          return errMap[err.code]();
         } else {
-          console.error(err);
+          throw err;
         }
-      }
-
-      function onSuccess() {
-        const assignedPort = _server.address().port;
-
-        console.log(`listening at: (proto = ${proto}, host = ${host}, port = ${assignedPort})`);
-
-        if (notify) {
-          notify({
-            evt: 'serverListening',
-            data: {
-              proto,
-              host,
-              port: assignedPort,
-              server: _server
-            }
-          });
-        }
-      }
-
-      _server.listen(port, host).on('error', onError).on('listening', onSuccess);
+      });
     },
 
-    start({
-      notify
-    }) {
-      this.build();
-      this.listen({
-        notify
+    stop() {
+      return new Promise(resolve => {
+        if (!_server) {
+          resolve();
+        }
+
+        const {
+          port
+        } = _server.address();
+
+        _server.close(() => {
+          resolve({
+            evt: 'serverStopped',
+            data: {
+              proto: _protoStr,
+              host,
+              port
+            }
+          });
+        });
       });
     }
 

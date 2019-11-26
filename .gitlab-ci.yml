@@ -17,8 +17,10 @@ cache:
   paths:
     - node_modules/
 
-test_server:
+test_les:
   script:
+    - apt-get update
+    - apt-get install -y net-tools xdg-utils
     - npm install
     - npm run test:cov
   coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
