@@ -1,6 +1,6 @@
 {
   "name": "lesky",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Lightweight Express-ish (Koa) Server - Type les not More!",
   "main": "server.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "kill:node": "pkill node"
   },
   "bin": {
-    "les": "./bin/run.js"
+    "les": "./bin/les.js"
   },
   "files": [
     "bin",
