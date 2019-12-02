@@ -1,4 +1,3 @@
-// import { serial as test } from 'ava'
 import test, { before } from 'ava'
 import { spawn, exec } from 'child_process'
 import { mkdirSync } from 'fs'
@@ -12,12 +11,12 @@ function listeningStr(cfg) {
   return `listening at: (proto = ${proto}, host = ${host}, port = ${port})`
 }
 
-function runUntil(regex, args = []) {
+function runUntil(regex, args = [], lesCmd = 'les.js') {
   console.log('testing with', args)
   console.log('waiting for', regex)
   return new Promise((resolve) => {
     const cmd = 'node_modules/.bin/babel-node'
-    const allArgs = ['les.js'].concat(args)
+    const allArgs = [lesCmd].concat(args)
     const child = spawn(cmd, allArgs)
     let resp = ''
     child.stdout.on('data', (d) => {
@@ -71,7 +70,6 @@ test('Server starts (http proto)', async (t) => {
 
 test('Server starts (port range provided)', async (t) => {
   const merged = mergeConfigs({ portRange: [8500, 9500] }, options)
-  console.log('merged', merged)
   const resp = await runUntil('All server configs started', [
     '--range',
     '8500-9500'
@@ -84,8 +82,9 @@ test('Server starts (port range provided)', async (t) => {
 
 test.only('Workspace init', async (t) => {
   t.timeout(2 * 60 * 1000)
-  mkdirSync('/tmp/les')
-  await runUntil(/Done initializing/, ['/tmp/les', '--init'])
-  exec('rm -rf /tmp/les')
+  const tmpDir = '/tmp/les'
+  mkdirSync(tmpDir)
+  await runUntil(/Done initializing/, [tmpDir, '--init'], './bin/les')
+  exec(`rm -rf ${tmpDir}`)
   t.pass()
 })
