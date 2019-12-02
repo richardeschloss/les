@@ -11,13 +11,11 @@ function listeningStr(cfg) {
   return `listening at: (proto = ${proto}, host = ${host}, port = ${port})`
 }
 
-function runUntil(regex, args = [], lesCmd = 'les.js') {
+function runUntil(regex, args = [], cmd = 'node_modules/.bin/babel-node') {
   console.log('testing with', args)
   console.log('waiting for', regex)
   return new Promise((resolve) => {
-    const cmd = 'node_modules/.bin/babel-node'
-    const allArgs = [lesCmd].concat(args)
-    const child = spawn(cmd, allArgs)
+    const child = spawn(cmd, args)
     let resp = ''
     child.stdout.on('data', (d) => {
       resp += d.toString()
@@ -37,7 +35,7 @@ before('Import CLI options', async (t) => {
 
 test.only('Help menu (-h)', async (t) => {
   const usage = buildCLIUsage('usage: les [path] [options]', options)
-  const resp = await runUntil(/---End of Help---\n\n/, ['-h'])
+  const resp = await runUntil(/---End of Help---\n\n/, ['les.js', '-h'])
   t.is(resp.trim(), usage.trim())
 })
 
@@ -84,7 +82,16 @@ test.only('Workspace init', async (t) => {
   t.timeout(2 * 60 * 1000)
   const tmpDir = '/tmp/les'
   mkdirSync(tmpDir)
-  await runUntil(/Done initializing/, [tmpDir, '--init'], './bin/les')
+  await runUntil(/Done initializing/, [tmpDir, '--init'], './bin/les.js')
+  exec(`rm -rf ${tmpDir}`)
+  t.pass()
+})
+
+test('Workspace init', async (t) => {
+  t.timeout(2 * 60 * 1000)
+  const tmpDir = '/tmp/les2'
+  mkdirSync(tmpDir)
+  await runUntil(/Done initializing/, ['les.js', tmpDir, '--init'])
   exec(`rm -rf ${tmpDir}`)
   t.pass()
 })
