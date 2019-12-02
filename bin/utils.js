@@ -180,7 +180,7 @@ async function importCLIOptions(options) {
   const localeDflt = 'en_US';
   let locale = process.env.LANG || localeDflt;
   locale = locale.split('.UTF-8')[0];
-  const localeJson = `./locales/${locale}.json`;
+  const localeJson = `${__dirname}/locales/${locale}.json`;
 
   if ((0, _fs.existsSync)(localeJson)) {
     const {
