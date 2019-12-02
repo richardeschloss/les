@@ -78,7 +78,7 @@ test('Server starts (port range provided)', async (t) => {
   })
 })
 
-test.only('Workspace init', async (t) => {
+test.only('Workspace init (from bin)', async (t) => {
   t.timeout(2 * 60 * 1000)
   const tmpDir = '/tmp/les'
   mkdirSync(tmpDir)
@@ -87,7 +87,7 @@ test.only('Workspace init', async (t) => {
   t.pass()
 })
 
-test('Workspace init', async (t) => {
+test.only('Workspace init (from src dir)', async (t) => {
   t.timeout(2 * 60 * 1000)
   const tmpDir = '/tmp/les2'
   mkdirSync(tmpDir)
