@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon --exec babel-node les.js",
-    "build": "babel utils.js server.js les.js -d bin",
+    "build": "babel utils.js server.js les.js -d bin && chmod u+x bin/les.js",
     "start": "babel-node les.js",
     "test:cov": "npm run test:unit:cov && npm run test:e2e:cov",
     "test:watch": "TEST=specs ava --watch",
