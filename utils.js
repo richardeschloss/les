@@ -199,7 +199,8 @@ function runCmdUntil({
     const child = spawn(cmd, args)
     let resp = ''
     child.stdout.on('data', (d) => {
-      resp += d.toString()
+      const str = d.toString()
+      resp += str
       if (resp.match(regex)) {
         exec(`pkill node -P ${child.pid}`, () => {
           child.kill()

@@ -222,7 +222,8 @@ function runCmdUntil({
     const child = (0, _child_process.spawn)(cmd, args);
     let resp = '';
     child.stdout.on('data', d => {
-      resp += d.toString();
+      const str = d.toString();
+      resp += str;
 
       if (resp.match(regex)) {
         (0, _child_process.exec)(`pkill node -P ${child.pid}`, () => {
