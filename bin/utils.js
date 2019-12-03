@@ -9,6 +9,7 @@ exports.findFreePort = findFreePort;
 exports.importCLIOptions = importCLIOptions;
 exports.loadServerConfigs = loadServerConfigs;
 exports.portTaken = portTaken;
+exports.runCmdUntil = runCmdUntil;
 exports.buildCLIUsage = void 0;
 
 var _fs = require("fs");
@@ -209,4 +210,26 @@ function loadServerConfigs() {
   }
 
   return localCfg;
+}
+
+function runCmdUntil({
+  cmd = 'node_modules/.bin/babel-node',
+  args = [],
+  regex
+}) {
+  console.log('runCmdUntil', cmd, args, regex);
+  return new Promise(resolve => {
+    const child = (0, _child_process.spawn)(cmd, args);
+    let resp = '';
+    child.stdout.on('data', d => {
+      resp += d.toString();
+
+      if (resp.match(regex)) {
+        (0, _child_process.exec)(`pkill node -P ${child.pid}`, () => {
+          child.kill();
+          resolve(resp);
+        });
+      }
+    });
+  });
 }

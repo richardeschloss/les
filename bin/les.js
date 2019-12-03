@@ -103,7 +103,10 @@ function CLI(cfg) {
     dest,
     initCfg
   }) {
-    const srcDir = __dirname.includes('bin') ? (0, _path.resolve)(__dirname, '..') : __dirname;
+    const srcDir = __dirname.includes('bin') ? (0, _path.resolve)(__dirname, '..') // bin/les.js needs to go up one (test coverage will always miss this)
+    : __dirname; // [src]/les.js uses __dirname
+
+    console.log('Copying files from:', srcDir);
     const srcPackage = await Promise.resolve().then(() => _interopRequireWildcard(require(`${(0, _path.resolve)(srcDir, 'package.json')}`)));
     const {
       files,

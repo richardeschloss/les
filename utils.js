@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'fs'
 import { resolve as pResolve } from 'path'
 import netstat from 'node-netstat'
-import { spawn } from 'child_process'
+import { exec, spawn } from 'child_process'
 
 function attachSSL(cfgs) {
   const sslPair = {}
@@ -189,6 +189,27 @@ function loadServerConfigs() {
   return localCfg
 }
 
+function runCmdUntil({
+  cmd = 'node_modules/.bin/babel-node',
+  args = [],
+  regex
+}) {
+  console.log('runCmdUntil', cmd, args, regex)
+  return new Promise((resolve) => {
+    const child = spawn(cmd, args)
+    let resp = ''
+    child.stdout.on('data', (d) => {
+      resp += d.toString()
+      if (resp.match(regex)) {
+        exec(`pkill node -P ${child.pid}`, () => {
+          child.kill()
+          resolve(resp)
+        })
+      }
+    })
+  })
+}
+
 export {
   attachSSL,
   buildCLIUsage,
@@ -196,5 +217,6 @@ export {
   findFreePort,
   importCLIOptions,
   loadServerConfigs,
-  portTaken
+  portTaken,
+  runCmdUntil
 }
