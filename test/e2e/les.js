@@ -19,11 +19,15 @@ test('Help menu (-h)', async (t) => {
 })
 
 test('Workspace init', async (t) => {
-  t.timeout(3 * 60 * 1000)
+  t.timeout(2 * 60 * 1000)
   const tmpDir = '/tmp/les'
-  mkdirSync(tmpDir)
+  try {
+    mkdirSync(tmpDir)
+  } catch (e) {
+    console.log('Error making', tmpDir)
+  }
   await runCmdUntil({
-    args: [tmpDir, '--init'],
+    args: ['les.js', tmpDir, '--init'],
     regex: /Done initializing/
   })
   exec(`rm -rf ${tmpDir}`)

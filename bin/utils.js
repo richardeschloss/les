@@ -215,7 +215,8 @@ function loadServerConfigs() {
 function runCmdUntil({
   cmd = 'node_modules/.bin/babel-node',
   args = [],
-  regex
+  regex,
+  debug = false
 }) {
   console.log('runCmdUntil', cmd, args, regex);
   return new Promise(resolve => {
@@ -224,6 +225,7 @@ function runCmdUntil({
     child.stdout.on('data', d => {
       const str = d.toString();
       resp += str;
+      if (debug) console.log(str);
 
       if (resp.match(regex)) {
         (0, _child_process.exec)(`pkill node -P ${child.pid}`, () => {
