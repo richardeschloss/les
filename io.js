@@ -1,5 +1,5 @@
 import http from 'http' // Prod should use https
-import { readdirSync } from 'fs'
+import { readdirSync, watch } from 'fs'
 import socketIO from 'socket.io'
 
 function IOServer({ host, port, server = http.createServer() }) {
@@ -47,9 +47,23 @@ function IOServer({ host, port, server = http.createServer() }) {
     return io
   }
 
+  function watchDir(dir = '.') {
+    console.log('watching', dir)
+    const io = socketIO(server)
+    io.on('connection', (socket) => {
+      const watcher = watch(dir, (evt, fname) => {
+        socket.emit('fileChanged')
+      })
+      socket.on('disconnect', () => {
+        watcher.close()
+      })
+    })
+  }
+
   return Object.freeze({
     registerIO,
-    start
+    start,
+    watchDir
   })
 }
 
