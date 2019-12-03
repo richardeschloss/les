@@ -213,7 +213,6 @@ if (require.main === module) {
   ;(async function() {
     await importCLIOptions(options)
     const cli = CLI(argv)
-    console.log('cli', options)
     cli.run(options)
   })()
 }

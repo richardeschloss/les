@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon --exec babel-node les.js",
-    "build": "babel utils.js server.js les.js -d bin && chmod u+x bin/les.js",
+    "build": "babel utils.js server.js io.js les.js -d bin && chmod u+x bin/les.js",
     "start": "babel-node les.js",
     "test:cov": "npm run test:unit:cov && npm run test:e2e:cov",
     "test:watch": "TEST=specs ava --watch",
@@ -57,7 +57,8 @@
     "koa": "^2.11.0",
     "koa-static": "^5.0.0",
     "minimist": "^1.2.0",
-    "node-netstat": "^1.8.0"
+    "node-netstat": "^1.8.0",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "ava": "^2.4.0",
@@ -67,7 +68,6 @@
     "eslint-plugin-prettier": "^3.1.1",
     "nodemon": "^1.19.4",
     "nyc": "^14.1.1",
-    "prettier": "^1.19.1",
-    "socket.io": "^2.3.0"
+    "prettier": "^1.19.1"
   }
 }
