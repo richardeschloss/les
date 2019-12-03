@@ -1,14 +1,15 @@
 {
   "name": "lesky",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight Express-ish (Koa) Server - Type les not More!",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon --exec babel-node les.js",
-    "build": "babel utils.js server.js les.js -d bin",
+    "build": "babel utils.js server.js les.js -d bin && chmod u+x bin/les.js",
     "start": "babel-node les.js",
     "test:cov": "npm run test:unit:cov && npm run test:e2e:cov",
     "test:watch": "TEST=specs ava --watch",
+    "test:e2e:watch": "ava --config e2e.config.js --colors --watch",
     "test:e2e:cov": "nyc --no-clean ava --config e2e.config.js --colors",
     "test:unit": "TEST=specs ava --config unit.config.js --colors",
     "test:unit:watch": "TEST=specs ava --config unit.config.js --colors --watch",

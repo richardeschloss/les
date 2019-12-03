@@ -1,5 +1,6 @@
 import { serial as test, before, after } from 'ava'
 import { mkdirSync, rmdirSync, unlinkSync } from 'fs'
+import { exec } from 'child_process'
 import {
   buildCLIUsage,
   generateSelfSignedCert,
@@ -174,6 +175,7 @@ test('Lesky init (repeated, verify no overwrite)', async (t) => {
   const cliCfg = { init: true, dest: '/tmp/lesky' }
   const cli = testCLI(cliCfg)
   const sts = await cli.run(options)
+  exec(`rm -rf ${cliCfg.dest}`)
   t.is(sts, 'done')
   t.pass()
 })

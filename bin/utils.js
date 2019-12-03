@@ -9,6 +9,7 @@ exports.findFreePort = findFreePort;
 exports.importCLIOptions = importCLIOptions;
 exports.loadServerConfigs = loadServerConfigs;
 exports.portTaken = portTaken;
+exports.runCmdUntil = runCmdUntil;
 exports.buildCLIUsage = void 0;
 
 var _fs = require("fs");
@@ -180,7 +181,7 @@ async function importCLIOptions(options) {
   const localeDflt = 'en_US';
   let locale = process.env.LANG || localeDflt;
   locale = locale.split('.UTF-8')[0];
-  const localeJson = `./locales/${locale}.json`;
+  const localeJson = `${__dirname}/locales/${locale}.json`;
 
   if ((0, _fs.existsSync)(localeJson)) {
     const {
@@ -209,4 +210,29 @@ function loadServerConfigs() {
   }
 
   return localCfg;
+}
+
+function runCmdUntil({
+  cmd = 'node_modules/.bin/babel-node',
+  args = [],
+  regex,
+  debug = false
+}) {
+  console.log('runCmdUntil', cmd, args, regex);
+  return new Promise(resolve => {
+    const child = (0, _child_process.spawn)(cmd, args);
+    let resp = '';
+    child.stdout.on('data', d => {
+      const str = d.toString();
+      resp += str;
+      if (debug) console.log(str);
+
+      if (resp.match(regex)) {
+        (0, _child_process.exec)(`pkill node -P ${child.pid}`, () => {
+          child.kill();
+          resolve(resp);
+        });
+      }
+    });
+  });
 }

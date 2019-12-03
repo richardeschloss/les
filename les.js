@@ -80,8 +80,10 @@ function CLI(cfg) {
 
   async function init({ dest, initCfg }) {
     const srcDir = __dirname.includes('bin')
-      ? pResolve(__dirname, '..')
-      : __dirname
+      ? pResolve(__dirname, '..') // bin/les.js needs to go up one (test coverage will always miss this)
+      : __dirname // [src]/les.js uses __dirname
+
+    console.log('Copying files from:', srcDir)
     const srcPackage = await import(pResolve(srcDir, 'package.json'))
     const { files, dependencies, devDependencies } = srcPackage
     const destPackageFile = pResolve(dest, 'package.json')

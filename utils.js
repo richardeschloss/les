@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'fs'
 import { resolve as pResolve } from 'path'
 import netstat from 'node-netstat'
-import { spawn } from 'child_process'
+import { exec, spawn } from 'child_process'
 
 function attachSSL(cfgs) {
   const sslPair = {}
@@ -158,7 +158,7 @@ async function importCLIOptions(options) {
   const localeDflt = 'en_US'
   let locale = process.env.LANG || localeDflt
   locale = locale.split('.UTF-8')[0]
-  const localeJson = `./locales/${locale}.json`
+  const localeJson = `${__dirname}/locales/${locale}.json`
   if (existsSync(localeJson)) {
     const { default: imported } = await import(localeJson)
     Object.assign(options, imported)
@@ -189,6 +189,30 @@ function loadServerConfigs() {
   return localCfg
 }
 
+function runCmdUntil({
+  cmd = 'node_modules/.bin/babel-node',
+  args = [],
+  regex,
+  debug = false
+}) {
+  console.log('runCmdUntil', cmd, args, regex)
+  return new Promise((resolve) => {
+    const child = spawn(cmd, args)
+    let resp = ''
+    child.stdout.on('data', (d) => {
+      const str = d.toString()
+      resp += str
+      if (debug) console.log(str)
+      if (resp.match(regex)) {
+        exec(`pkill node -P ${child.pid}`, () => {
+          child.kill()
+          resolve(resp)
+        })
+      }
+    })
+  })
+}
+
 export {
   attachSSL,
   buildCLIUsage,
@@ -196,5 +220,6 @@ export {
   findFreePort,
   importCLIOptions,
   loadServerConfigs,
-  portTaken
+  portTaken,
+  runCmdUntil
 }

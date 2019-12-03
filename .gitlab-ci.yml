@@ -24,3 +24,6 @@ test_les:
     - npm install
     - npm run test:cov
   coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
+  artifacts:
+    paths:
+      - coverage
