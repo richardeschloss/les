@@ -183,6 +183,7 @@ function CLI(cfg) {
 
           const ioServer = IOServer(data)
           ioServer.watchDir(pResolve(cwd, watchDir, '*'))
+          data.watchDir = watchDir
         }
         cfgsLoaded[idx] = data
         console.log('serving static dir', cliCfg.staticDir)
