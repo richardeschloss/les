@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Fino de Helpo",
+		"usage": "uzado",
+		"servingStaticDir": "servanta statika dir %1",
+		"serverCfgsStarted": "Ĉiuj servilo configs komencis",
+		"browserOpened": "browser malfermis",
+		"copyingFiles": "Kopiado de dosieroj de: %1 al: %2",
+		"copiedFiles": "Kopiita dosieroj",
+		"writingDeps": "skribo dependecoj al: %1",
+		"packageJsonExists": "%1 jam ekzistas...ne anstataŭigi",
+		"installingDeps": "Instalanta deps en %1",
+		"doneInit": "Farita initializing lesky app! Kelkaj notoj:",
+		"postInitNotes": "1. Vi povus deziri init .gitignore kaj git#? i tie # anta? ol da? ri (git init",
+		"writingConfig": "git aldoni .)\n2. Vi eble volas aldoni aŭtoro, projekto nomo, numero de versio por pako.json\n3. Eble vi volas malsamaj dependecoj. Uzi `npm prune` forigi neuzitaj deps (laŭvola)",
+		"configExists": "skribo config al nova .lesrc dosiero: %1",
+		"errIncorrectRangeFmt": ".lesrc jam ekzistas...ne anstataŭigi"
+	},
+	"options": {
+		"help": {
+			"alias": "h",
+			"desc": "Presi#? i tiu helpo menuo",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "mi",
+			"desc": "Init lesky en workspace specifita de vojo, defaŭltoj al cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"gastiganto": {
+			"alias": "a",
+			"desc": "Adreso al uzo",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"haveno": {
+			"alias": "p",
+			"desc": "Haveno por uzi",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokolo por uzi",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"gamo": {
+			"desc": "Port Gamo (en kazo haveno estas prenita)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Vojo al SSL Ŝlosilo",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Vojo al SSLA Atesto",
+			"en_US": "sslCert"
+		},
+		"malfermita": {
+			"alias": "o",
+			"desc": "Malfermi retumilo",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"rigardi": {
+			"alias": "w",
+			"desc": "Rigardi por dosiero ŝanĝoj en dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

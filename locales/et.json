@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Lõpuks Aidata",
+		"usage": "kasutamine",
+		"servingStaticDir": "teenindavad staatiline dir %1",
+		"serverCfgsStarted": "Kogu server configs alustanud",
+		"browserOpened": "brauseris avada",
+		"copyingFiles": "Kopeerimise faile: %1: %2",
+		"copiedFiles": "Kopeerida failid",
+		"writingDeps": "kirjalikult sõltuvusi: %1",
+		"packageJsonExists": "%1 on juba olemas...ei kirjuta",
+		"installingDeps": "Paigaldamine deps %1",
+		"doneInit": "Teha initializing lesky appi! Mõned märkused:",
+		"postInitNotes": "1. Võib-olla soovite init .gitignore ja git siin enne jätkamist (git init",
+		"writingConfig": "git add .)\n2. Võib-olla soovite lisada esitaja, projekti nimi, versiooni number ja pakendis.json\n3. Võiksite erinevaid sõltuvusi. Kasuta \"npm ploomi\", et eemaldada kasutamata deps (vabatahtlik)",
+		"configExists": "kirjalikult, config, et uus .lesrc file: %1",
+		"errIncorrectRangeFmt": ".lesrc juba olemas...ei kirjuta"
+	},
+	"options": {
+		"help": {
+			"alias": "h",
+			"desc": "Prindi see menüü spikker",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "mina",
+			"desc": "Init lesky aastal workspace' i poolt määratletud teed, vaikimisi cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Aadress kasutada",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port kasutada",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokolli kasutamine",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"range": {
+			"desc": "Port Range (juhul, kui sadam on võtnud)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Tee SSL Võti",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Tee SSL Sertifikaat",
+			"en_US": "sslCert"
+		},
+		"avatud": {
+			"alias": "o",
+			"desc": "Ava brauser",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"vaata": {
+			"alias": "w",
+			"desc": "Olge faili muutused dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

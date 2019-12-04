@@ -1,0 +1,75 @@
+{
+	"msgs": {
+		"endOfHelp": "Slutningen af Hjælp",
+		"usage": "brug",
+		"servingStaticDir": "der vises statisk dir %1",
+		"serverCfgsStarted": "Alle server configs i gang",
+		"browserOpened": "- browseren åbnes, og Kopiering af filer: %1: %2, Kopieres filer, skriver afhængigheder til: %1",
+		"copyingFiles": "%1 findes allerede...vil ikke overskrive",
+		"copiedFiles": "Installation deps i %1",
+		"writingDeps": "Gjort initialisering lesky app! Nogle bemærkninger:",
+		"packageJsonExists": "1. Du måske ønsker at init .gitignore og git her, før du fortsætter (git init",
+		"installingDeps": "git add .)\n2. Du ønsker måske at tilføje forfatter, projekt-navn, version nummer til pakken.json\n3. Du vil måske forskellige afhængigheder. Brug `npm beskære \" for at fjerne ubrugte deps (valgfrit)",
+		"doneInit": "skrive config til nye .lesrc fil: %1",
+		"postInitNotes": ".lesrc allerede eksisterer...vil ikke overskrive",
+		"writingConfig": "port range forkert formateret. Format som --range=start-slut"
+	},
+	"options": {
+		"hjælpe": {
+			"alias": "h",
+			"desc": "Udskriv denne hjælp menu",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "jeg",
+			"desc": "Init lesky i arbejdsrum, der er specificeret af stien, standard cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"vært": {
+			"alias": "en",
+			"desc": "Adresse, der skal bruges",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"havnen": {
+			"alias": "p",
+			"desc": "Port til at bruge",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokol for at bruge",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"range": {
+			"desc": "Port Range (i tilfælde af porten er taget)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Vejen til SSL Nøgle",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Vejen til SSL-Certifikat",
+			"en_US": "sslCert"
+		},
+		"åbne": {
+			"alias": "o",
+			"desc": "Åbn browseren",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"se": {
+			"alias": "w",
+			"desc": "Se til filen ændringer i dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

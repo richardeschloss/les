@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Akhir Membantu",
+		"usage": "penggunaan",
+		"servingStaticDir": "disediakan untuk statik dir %1, Semua pelayan konfigurasi mulai",
+		"serverCfgsStarted": "pelayar dibuka",
+		"browserOpened": "Menyalin fail-fail dari: %1: %2",
+		"copyingFiles": "Disalin fail",
+		"copiedFiles": "menulis kebergantungan: %1",
+		"writingDeps": "%1 sudah wujud...tidak akan menimpa",
+		"packageJsonExists": "Memasang deps dalam %1",
+		"installingDeps": "Dilakukan memulakan lesky aplikasi! Beberapa catatan:",
+		"doneInit": "1. Anda mungkin ingin init .gitignore dan git di sini sebelum meneruskan (git init",
+		"postInitNotes": "git tambah .)\n2. Kau mungkin ingin menambahkan penulis, projek nama, bilangan versi untuk pakej.barisan\n3. Anda mungkin ingin berbeza kebergantungan. Gunakan `memasang prune` untuk membuang yang tidak digunakan deps (pilihan)",
+		"writingConfig": "menulis konfigurasi untuk baru .lesrc file: %1",
+		"configExists": ".lesrc sudah wujud...tidak akan menimpa",
+		"errIncorrectRangeFmt": "pelabuhan lingkungan yang salah diformat. Format seperti --jarak=mula-akhir"
+	},
+	"options": {
+		"bantuan": {
+			"alias": "h",
+			"deskripsi": "Cetak ini menu bantuan",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"deskripsi": "Init lesky dalam ruang kerja yang ditetapkan oleh jalan, lalai untuk cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"tuan rumah": {
+			"alias": "a",
+			"deskripsi": "Alamat untuk menggunakan",
+			"dflt": "hos setempat",
+			"en_US": "host"
+		},
+		"pelabuhan": {
+			"alias": "p",
+			"deskripsi": "Pelabuhan untuk menggunakan",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"nabi": {
+			"deskripsi": "Protokol untuk menggunakan",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"range": {
+			"deskripsi": "Pelabuhan Lingkungan (dalam kes pelabuhan diambil)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"deskripsi": "Jalan untuk SSI Kunci",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"deskripsi": "Jalan untuk SSI Sijil",
+			"en_US": "sslCert"
+		},
+		"buka": {
+			"alias": "o",
+			"deskripsi": "pelayar Terbuka",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"menonton": {
+			"alias": "w",
+			"desk": "Perhatikan perubahan fail dalam dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

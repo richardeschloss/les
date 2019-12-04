@@ -1,0 +1,76 @@
+{
+	"msgs": {
+		"endOfHelp": "Beigās Palīdzēt",
+		"usage": "izmantošana",
+		"servingStaticDir": "apkalpo statisku dir %1",
+		"serverCfgsStarted": "Visi serveri configs sākās",
+		"browserOpened": "pārlūkprogrammā uzsākšanas",
+		"copyingFiles": "Kopējot failus no: %1: %2",
+		"copiedFiles": "Kopēt failus, rakstot atkarības, lai: %1",
+		"writingDeps": "%1 jau eksistē...nebūs pārrakstīt",
+		"packageJsonExists": "Uzstādot deps šajā %1",
+		"installingDeps": "Gatavs sākt lesky app! Dažas piezīmes:",
+		"doneInit": "1. Jūs varētu vēlēties, lai init .gitignore un git šeit pirms turpināt (git init",
+		"postInitNotes": "git add .)\n2. Jūs varētu vēlēties, lai pievienotu autors, projekta nosaukumu, versijas numuru, kas uz iepakojuma.json\n3. Jūs varētu vēlēties, dažādas atkarības. Izmantot \"npm plūme\", lai noņemtu neizmantotās deps (pēc izvēles);, rakstot config jaunu .lesrc failu: %1",
+		"writingConfig": ".lesrc jau pastāv...nebūs pārrakstīt",
+		"configExists": "ostas robežās nepareizi formatēts. Formātu, kā --diapazons=start-end"
+	},
+	"options": {
+		"palīdzētu": {
+			"alias": "h",
+			"desc": "Izdrukāt šo izvēlnē palīdzība",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "es",
+			"desc": "Init lesky jo workspace norādījis ceļu, noklusējumus uz hns",
+			"dflt": "[hns]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Adrese izmantot",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"osta": {
+			"alias": "p",
+			"desc": "Ostu izmantošanu",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokolu izmantošanu",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"diapazons": {
+			"desc": "Ostas robežās (gadījumā, ja osta ir pieņemts)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Ceļš uz SSL Atslēga",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Ceļš uz SSL Sertifikātu",
+			"en_US": "sslCert"
+		},
+		"atvērt": {
+			"alias": "o",
+			"desc": "Atvērt pārlūka",
+			"dflt": "OS noklusējuma",
+			"en_US": "open"
+		},
+		"skatīties": {
+			"alias": "w",
+			"desc": "Skatīties uz failu izmaiņas dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Крајот на Помош",
+		"usage": "користење",
+		"servingStaticDir": "служат статични dir %1",
+		"serverCfgsStarted": "Сите серверот configs почеток",
+		"browserOpened": "пребарувачот се отвори",
+		"copyingFiles": "Копирање на датотеки од: %1 до: %2",
+		"copiedFiles": "да се Копираат датотеките",
+		"writingDeps": "пишување на зависности до: %1",
+		"packageJsonExists": "%1 веќе постои...ќе не избрише",
+		"installingDeps": "Инсталирање deps во %1",
+		"doneInit": "Направено иницирај lesky стан! Некои белешки:",
+		"postInitNotes": "1. Можеби ќе сакате да init .gitignore и git тука пред да продолжите (git init",
+		"writingConfig": "git add .)\n2. Вие може да сакате да го додадете автор на проект име и презиме, бројот на верзија на пакетот.json\n3. Можеби ќе сакате различни зависности. Употреба \"нпм чистење\" да се отстрани неискористени deps (незадолжително)",
+		"configExists": "пишување config да се нови .lesrc file: %1",
+		"errIncorrectRangeFmt": ".lesrc веќе постои...ќе не избрише"
+	},
+	"options": {
+		"помош": {
+			"alias": "h",
+			"desc": "Печати ја оваа мени за помош",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "јас",
+			"desc": "Init lesky во workspace наведено од страна на патот, defaults да cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"домаќин": {
+			"alias": "а",
+			"desc": "Адреса да се користи",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"порта": {
+			"alias": "п",
+			"desc": "Port да се користи",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"прото": {
+			"desc": "Протокол за користење",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"спектар": {
+			"desc": "Портот од Опсегот на портот (во случај порта е преземено)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Патот кон SSL Копчето",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Патот на SSL Сертификат",
+			"en_US": "sslCert"
+		},
+		"отворени": {
+			"alias": "о",
+			"desc": "го Отворите пребарувачот",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"види": {
+			"alias": "w",
+			"desc": "Види за датотека промени во насоката [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

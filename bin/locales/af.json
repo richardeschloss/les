@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Einde van Hulp",
+		"usage": "gebruik",
+		"servingStaticDir": "die bediening van statiese dir %1",
+		"serverCfgsStarted": "Al die bediener configs begin",
+		"browserOpened": "die leser oopgemaak",
+		"copyingFiles": "die Kopiëring van lêers van: %1 tot: %2",
+		"copiedFiles": "Kopieer lêers",
+		"writingDeps": "die skryf van afhanklikhede te: %1",
+		"packageJsonExists": "%1 bestaan reeds...sal nie vervang",
+		"installingDeps": "die Installering van deps in %1",
+		"doneInit": "Gedoen initializing lesky app! 'n paar notas:",
+		"postInitNotes": "1. Jy mag dalk wil om te init .gitignore en git hier voor die voortsetting van (git init",
+		"writingConfig": "git voeg .)\n2. Jy mag dalk wil om by te voeg skrywer, projek naam, weergawe nommer te verpak.json\n3. Jy wil dalk'n ander afhanklikhede. Gebruik \"npm snoei\" om te verwyder ongebruikte deps (opsioneel)",
+		"configExists": "die skryf van config te nuwe .lesrc lêer: %1",
+		"errIncorrectRangeFmt": ".lesrc reeds bestaan...sal nie vervang"
+	},
+	"options": {
+		"help": {
+			"alias": "h",
+			"desc": "Druk dit help menu",
+			"en_US": "help"
+		},
+		"<url>": {
+			"alias": "ek",
+			"desc": "Init lesky in die werkplek wat deur die pad, standaard te cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "'n",
+			"desc": "Adres om te gebruik",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Hawe te gebruik",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokol te gebruik",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"verskeidenheid": {
+			"desc": "Port Reeks (in die geval hawe geneem word)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Pad na SSL Sleutel",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Pad na SSL Sertifikaat",
+			"en_US": "sslCert"
+		},
+		"oop": {
+			"alias": "o",
+			"desc": "maak Oop die leser",
+			"dflt": "OS standaard",
+			"en_US": "open"
+		},
+		"kyk": {
+			"alias": "w",
+			"desc": "Kyk vir die lêer veranderinge in dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

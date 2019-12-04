@@ -1,0 +1,76 @@
+{
+	"msgs": {
+		"endOfHelp": "Ende der Hilfe",
+		"usage": "Verwendung",
+		"servingStaticDir": "Auslieferung statischer dir %1",
+		"serverCfgsStarted": "Alle server-configs gestartet, browser geöffnet, das Kopieren von Dateien von: %1: %2",
+		"browserOpened": "Kopiert Dateien",
+		"copyingFiles": "schreiben von Abhängigkeiten: %1",
+		"copiedFiles": "%1 ist bereits vorhanden...wird nicht überschrieben",
+		"writingDeps": "die Installation deps in %1",
+		"packageJsonExists": "Done initializing lesky app! Einige Anmerkungen:",
+		"installingDeps": "1. Möchten Sie vielleicht init .gitignore und git hier, bevor Sie fortfahren (git init",
+		"doneInit": "git add .)\n2. Möglicherweise möchten Sie Autor, Projektname, Versionsnummer für das Paket an.json\n3. Möchten Sie vielleicht verschiedene Abhängigkeiten. Verwenden Sie `npm prune` zum entfernen von unbenutzten deps (optional)",
+		"postInitNotes": "schreiben der config auf \"neu\".lesrc Datei: %1",
+		"writingConfig": ".lesrc bereits vorhanden...nicht überschreiben",
+		"configExists": "- port-Bereich fehlerhaft formatiert. Format --range=start-end"
+	},
+	"options": {
+		"help": {
+			"alias": "h",
+			"desc": "Drucken Sie diese Hilfe-Menü",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky im workspace angegebenen Pfad, standardmäßig cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Adresse",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokoll",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"range": {
+			"desc": "Port-Bereich (im Fall port getroffen wird)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Pfad zu den SSL-Schlüssel",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Pfad zum SSL-Zertifikat",
+			"en_US": "sslCert"
+		},
+		"open": {
+			"alias": "o",
+			"desc": "browser Öffnen",
+			"dflt": "Betriebssystem",
+			"en_US": "open"
+		},
+		"anschauen": {
+			"alias": "w",
+			"desc": "Sehen Sie für die Datei-änderungen, die in dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

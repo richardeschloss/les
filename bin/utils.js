@@ -10,6 +10,8 @@ exports.importCLIOptions = importCLIOptions;
 exports.loadServerConfigs = loadServerConfigs;
 exports.portTaken = portTaken;
 exports.runCmdUntil = runCmdUntil;
+exports.translateLocale = translateLocale;
+exports.translateLocales = translateLocales;
 exports.buildCLIUsage = void 0;
 
 var _fs = require("fs");
@@ -19,6 +21,12 @@ var _path = require("path");
 var _nodeNetstat = _interopRequireDefault(require("node-netstat"));
 
 var _child_process = require("child_process");
+
+var _https = require("https");
+
+var _language = require("les-utils/dist/language");
+
+var _promises = require("les-utils/dist/promises");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53,7 +61,7 @@ function attachSSL(cfgs) {
   });
 }
 
-const buildCLIUsage = (cmdFmt, options) => {
+const buildCLIUsage = (cmdFmt, options, msgs) => {
   const usage = [cmdFmt, '', 'options:'];
   Object.entries(options).forEach(([option, {
     alias = '',
@@ -76,7 +84,7 @@ const buildCLIUsage = (cmdFmt, options) => {
     const optStr = ['', alias, `--${option}`, desc];
     usage.push(optStr.join('\t'));
   });
-  return usage.join('\n') + '\n\n---End of Help---\n\n';
+  return usage.join('\n') + `\n\n---${msgs.endOfHelp}---\n\n`;
 };
 
 exports.buildCLIUsage = buildCLIUsage;
@@ -177,20 +185,66 @@ async function portTaken({
   return usedPorts.includes(port);
 }
 
-async function importCLIOptions(options) {
-  const localeDflt = 'en_US';
+function downloadLocale(locale, dest) {
+  const url = `https://raw.githubusercontent.com/richardeschloss/les/feat/i18n/locales/${locale}.json`;
+  return new Promise((resolve, reject) => {
+    (0, _https.get)(url, res => {
+      console.log('res.statusCode', res.statusCode);
+
+      if (res.statusCode === 200) {
+        const outStream = (0, _fs.createWriteStream)(dest);
+        res.pipe(outStream).on('close', () => {
+          resolve();
+        });
+      } else {
+        reject(new Error('file not found'));
+      }
+    });
+  });
+}
+
+async function importCLIOptions(options, msgs) {
+  const localeDflt = 'en';
   let locale = process.env.LANG || localeDflt;
-  locale = locale.split('.UTF-8')[0];
+  locale = locale.split('.UTF-8')[0].split('_')[0];
   const localeJson = `${__dirname}/locales/${locale}.json`;
 
   if ((0, _fs.existsSync)(localeJson)) {
     const {
       default: imported
     } = await Promise.resolve().then(() => _interopRequireWildcard(require(`${localeJson}`)));
-    Object.assign(options, imported);
+    const {
+      msgs: importedMsgs,
+      options: importedOptions
+    } = imported;
+    Object.assign(options, importedOptions);
+    Object.assign(msgs, importedMsgs);
   } else {
-    console.info(`Options for locale ${locale} does not exist, defaulting to '${localeDflt}'`);
-    Object.assign(options, (await Promise.resolve().then(() => _interopRequireWildcard(require(`./locales/${localeDflt}.json`)))));
+    console.info(`Options for locale ${locale} does not exist, will attempt to download`);
+
+    try {
+      await downloadLocale(locale, localeJson);
+      const {
+        default: imported
+      } = await Promise.resolve().then(() => _interopRequireWildcard(require(`${localeJson}`)));
+      const {
+        msgs: importedMsgs,
+        options: importedOptions
+      } = imported;
+      Object.assign(options, importedOptions);
+      Object.assign(msgs, importedMsgs);
+    } catch (err) {
+      console.error(`Error downloading locale ${locale} defaulting to '${localeDflt}'`);
+      const {
+        default: imported
+      } = await Promise.resolve().then(() => _interopRequireWildcard(require(`./locales/${localeDflt}.json`)));
+      const {
+        msgs: importedMsgs,
+        options: importedOptions
+      } = imported;
+      Object.assign(options, importedOptions);
+      Object.assign(msgs, importedMsgs);
+    }
   }
 }
 
@@ -234,5 +288,69 @@ function runCmdUntil({
         });
       }
     });
+  });
+}
+
+async function translateLocale(lang = 'es') {
+  console.log('translateLocale', lang);
+  const localeDflt = 'en_US';
+  const localeJson = `${__dirname}/locales/${localeDflt}.json`;
+  const {
+    default: imported
+  } = await Promise.resolve().then(() => _interopRequireWildcard(require(`${localeJson}`)));
+  const {
+    msgs,
+    options
+  } = imported;
+  const msgsIn = Object.values(msgs).join('; ');
+  const optsIn = JSON.stringify(options);
+  const optsInKeys = Object.keys(options);
+  const {
+    text
+  } = await (0, _language.translateText)({
+    text: msgsIn + '|||' + optsIn,
+    lang
+  }).catch(err => {
+    console.error(err);
+  });
+  const [msgsResp, optsResp] = text[0].split('|||');
+  let optsOut = {},
+      msgsOut = {};
+
+  try {
+    optsOut = JSON.parse(optsResp);
+    Object.keys(optsOut).forEach((key, idx) => {
+      optsOut[key].en_US = optsInKeys[idx];
+    });
+    const translatedMsgs = msgsResp.split(/;\s+/);
+    msgsOut = Object.keys(msgs).reduce((result, key, idx) => {
+      result[key] = translatedMsgs[idx];
+      return result;
+    }, {});
+    const localeOut = `${__dirname}/locales/${lang}.json`;
+    const localeJsonOut = {
+      msgs: msgsOut,
+      options: optsOut
+    };
+    console.log(`saving locale ${lang} to ${localeOut}`);
+    (0, _fs.writeFileSync)(localeOut, JSON.stringify(localeJsonOut, null, '\t'));
+  } catch (e) {
+    console.error(`Error parsing options for ${lang}`);
+  }
+
+  return {
+    optsOut,
+    msgsOut
+  };
+}
+
+async function translateLocales() {
+  const {
+    langs
+  } = await (0, _language.getSupportedLangs)({});
+  const allLangs = Object.keys(langs);
+  return (0, _promises.promiseSeries)({
+    items: allLangs,
+    handleItem: translateLocale
   });
 }

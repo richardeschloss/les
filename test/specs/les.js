@@ -15,9 +15,10 @@ const sslOptions = {
 }
 
 const options = {}
+const msgs = {}
 
 async function testCfg(cliCfg) {
-  const cli = testCLI(cliCfg)
+  const cli = testCLI(cliCfg, msgs)
   const { data } = await cli.run(options)
   return { cfgsLoaded: data }
 }
@@ -62,13 +63,13 @@ after('Remove self-signed cert', () => {
 })
 
 before('Import CLI options', async () => {
-  await importCLIOptions(options)
+  await importCLIOptions(options, msgs)
 })
 
 test('Help menu (--help)', (t) => {
   const cliCfg = { help: true }
-  const usage = buildCLIUsage('usage: les [path] [options]', options)
-  const cli = testCLI(cliCfg)
+  const usage = buildCLIUsage('usage: les [path] [options]', options, msgs)
+  const cli = testCLI(cliCfg, msgs)
   const resp = cli.run(options)
   t.is(resp, usage)
 })
@@ -171,9 +172,17 @@ test('Watch dir ', async (t) => {
   })
 })
 
+test('Watch dir (specify path)', async (t) => {
+  const cliCfg = { watch: 'somedir' }
+  const { cfgsLoaded } = await testCfg(cliCfg)
+  cfgsLoaded.forEach(({ watchDir }) => {
+    t.is(watchDir, 'somedir')
+  })
+})
+
 test('Lesky init (no config provided)', async (t) => {
   const cliCfg = { init: true, dest: '/tmp/lesky' }
-  const cli = testCLI(cliCfg)
+  const cli = testCLI(cliCfg, msgs)
   const sts = await cli.run(options)
   t.is(sts, 'done')
   t.pass()
@@ -181,9 +190,26 @@ test('Lesky init (no config provided)', async (t) => {
 
 test('Lesky init (repeated, verify no overwrite)', async (t) => {
   const cliCfg = { init: true, dest: '/tmp/lesky' }
-  const cli = testCLI(cliCfg)
+  const cli = testCLI(cliCfg, msgs)
   const sts = await cli.run(options)
   exec(`rm -rf ${cliCfg.dest}`)
   t.is(sts, 'done')
   t.pass()
+})
+
+test('Spanish options', async (t) => {
+  const options2 = {}
+  const msgs2 = {}
+  process.env.LANG = 'es'
+  await importCLIOptions(options2, msgs2)
+  const cliCfg = { ayuda: true }
+  const usage = buildCLIUsage(
+    `${msgs2.usage}: les [path] [options]`,
+    options2,
+    msgs2
+  )
+  const cli = testCLI(cliCfg, msgs2)
+  const resp = await cli.run(options2)
+  t.is(resp, usage)
+  process.env.LANG = 'en_US.UTF-8'
 })
