@@ -2,6 +2,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2019-12-03
+
+- Added "watch" feature. Will detect changes on the watched dir and emit "fileChanged" evt.
+
 ## [1.0.1] - 2019-12-02
 
 ### Changed
