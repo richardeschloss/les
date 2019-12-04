@@ -37,5 +37,9 @@
     "alias": "o",
     "desc": "Open browser",
     "dflt": "OS default"
+  },
+  "watch": {
+    "alias": "w",
+    "desc": "Watch for file changes in dir [staticDir]" 
   }
 }

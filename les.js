@@ -10,6 +10,7 @@ import serve from 'koa-static'
 import { existsSync, writeFileSync } from 'fs'
 import { resolve as pResolve } from 'path'
 import { app, Server } from '@/server'
+import { IOServer } from '@/io'
 import {
   attachSSL,
   buildCLIUsage,
@@ -174,6 +175,15 @@ function CLI(cfg) {
       function onSuccess({ data, idx }) {
         if (cliCfg.open) {
           data.browser = open(data)
+        }
+
+        if (cliCfg.watch) {
+          const watchDir =
+            typeof cliCfg.watch === 'string' ? cliCfg.watch : cliCfg.staticDir
+
+          const ioServer = IOServer(data)
+          ioServer.watchDir(pResolve(cwd, watchDir, '*'))
+          data.watchDir = watchDir
         }
         cfgsLoaded[idx] = data
         console.log('serving static dir', cliCfg.staticDir)
