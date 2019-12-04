@@ -23,6 +23,8 @@ var _path = require("path");
 
 var _server = require("./server");
 
+var _io = require("./io");
+
 var _utils = require("./utils");
 
 var _child_process = require("child_process");
@@ -216,6 +218,12 @@ function CLI(cfg) {
       }) {
         if (cliCfg.open) {
           data.browser = open(data);
+        }
+
+        if (cliCfg.watch) {
+          const watchDir = typeof cliCfg.watch === 'string' ? cliCfg.watch : cliCfg.staticDir;
+          const ioServer = (0, _io.IOServer)(data);
+          ioServer.watchDir((0, _path.resolve)(cwd, watchDir, '*'));
         }
 
         cfgsLoaded[idx] = data;

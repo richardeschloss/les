@@ -163,6 +163,14 @@ test('Open browser', async (t) => {
   })
 })
 
+test('Watch dir ', async (t) => {
+  const cliCfg = { watch: true }
+  const { cfgsLoaded } = await testCfg(cliCfg)
+  cfgsLoaded.forEach(({ watchDir }) => {
+    t.is(watchDir, 'public')
+  })
+})
+
 test('Lesky init (no config provided)', async (t) => {
   const cliCfg = { init: true, dest: '/tmp/lesky' }
   const cli = testCLI(cliCfg)
