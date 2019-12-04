@@ -182,7 +182,7 @@ function CLI(cfg) {
             typeof cliCfg.watch === 'string' ? cliCfg.watch : cliCfg.staticDir
 
           const ioServer = IOServer(data)
-          ioServer.watchDir(pResolve(cwd, watchDir))
+          ioServer.watchDir(pResolve(cwd, watchDir, '*'))
         }
         cfgsLoaded[idx] = data
         console.log('serving static dir', cliCfg.staticDir)

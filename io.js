@@ -1,5 +1,6 @@
 import http from 'http' // Prod should use https
 import { readdirSync, watch } from 'fs'
+import { sync as globSync } from 'glob'
 import socketIO from 'socket.io'
 
 function IOServer({ host, port, server = http.createServer() }) {
@@ -48,14 +49,20 @@ function IOServer({ host, port, server = http.createServer() }) {
   }
 
   function watchDir(dir = '.') {
-    console.log('watching', dir)
     const io = socketIO(server)
+    const dirs = globSync(dir)
+    const watchers = []
     io.on('connection', (socket) => {
-      const watcher = watch(dir, (evt, fname) => {
-        socket.emit('fileChanged')
+      dirs.forEach((watchDir) => {
+        watchers.push(
+          watch(watchDir, (evt, fname) => {
+            console.log(`${fname}: ${evt}`)
+            socket.emit('fileChanged', { evt, fname })
+          })
+        )
       })
       socket.on('disconnect', () => {
-        watcher.close()
+        watchers.forEach((w) => w.close())
       })
     })
   }

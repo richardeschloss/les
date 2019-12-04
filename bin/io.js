@@ -9,6 +9,8 @@ var _http = _interopRequireDefault(require("http"));
 
 var _fs = require("fs");
 
+var _glob = require("glob");
+
 var _socket = _interopRequireDefault(require("socket.io"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -70,12 +72,24 @@ function IOServer({
   function watchDir(dir = '.') {
     console.log('watching', dir);
     const io = (0, _socket.default)(server);
+    const dirs = (0, _glob.sync)(dir);
+    console.log(dirs);
+    const watchers = [];
     io.on('connection', socket => {
-      const watcher = (0, _fs.watch)(dir, (evt, fname) => {
-        socket.emit('fileChanged');
-      });
+      dirs.forEach(watchDir => {
+        watchers.push((0, _fs.watch)(watchDir, (evt, fname) => {
+          console.log('evt, fname', evt, fname);
+          socket.emit('fileChanged', {
+            evt,
+            fname
+          });
+        }));
+      }); // const watcher = watch(dir, { recursive: true }, (evt, fname) => {
+      //   socket.emit('fileChanged')
+      // })
+
       socket.on('disconnect', () => {
-        watcher.close();
+        watchers.forEach(w => w.close()); // watcher.close()
       });
     });
   }

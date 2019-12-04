@@ -15,7 +15,8 @@
     "test:unit:watch": "TEST=specs ava --config unit.config.js --colors --watch",
     "test:unit:cov": "TEST=specs nyc ava --config unit.config.js --colors",
     "test:cov:watch": "TEST=specs nyc ava --watch",
-    "kill:node": "pkill node"
+    "kill:node": "pkill node",
+    "deploy:local": "cp -r bin/* ~/.npm-global/lib/node_modules/lesky/bin"
   },
   "bin": {
     "les": "./bin/les.js"
@@ -54,6 +55,7 @@
     "@babel/preset-env": "^7.6.3",
     "babel-plugin-module-resolver": "^3.2.0",
     "gently-copy": "^3.2.0",
+    "glob": "^7.1.6",
     "koa": "^2.11.0",
     "koa-static": "^5.0.0",
     "minimist": "^1.2.0",
