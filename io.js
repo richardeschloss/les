@@ -56,7 +56,6 @@ function IOServer({ host, port, server = http.createServer() }) {
       dirs.forEach((watchDir) => {
         watchers.push(
           watch(watchDir, (evt, fname) => {
-            console.log(`${fname}: ${evt}`)
             socket.emit('fileChanged', { evt, fname })
           })
         )

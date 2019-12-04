@@ -224,6 +224,7 @@ function CLI(cfg) {
           const watchDir = typeof cliCfg.watch === 'string' ? cliCfg.watch : cliCfg.staticDir;
           const ioServer = (0, _io.IOServer)(data);
           ioServer.watchDir((0, _path.resolve)(cwd, watchDir, '*'));
+          data.watchDir = watchDir;
         }
 
         cfgsLoaded[idx] = data;

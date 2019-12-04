@@ -1,6 +1,6 @@
 {
   "name": "lesky",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lightweight Express-ish (Koa) Server - Type les not More!",
   "main": "server.js",
   "scripts": {
@@ -16,7 +16,9 @@
     "test:unit:cov": "TEST=specs nyc ava --config unit.config.js --colors",
     "test:cov:watch": "TEST=specs nyc ava --watch",
     "kill:node": "pkill node",
-    "deploy:local": "cp -r bin/* ~/.npm-global/lib/node_modules/lesky/bin"
+    "deploy:local": "cp -r bin/* ~/.npm-global/lib/node_modules/lesky/bin",
+    "deploy:public": "npm run build && npm publish",
+    "git:push": "git push origin HEAD"
   },
   "bin": {
     "les": "./bin/les.js"

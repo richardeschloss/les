@@ -70,26 +70,21 @@ function IOServer({
   }
 
   function watchDir(dir = '.') {
-    console.log('watching', dir);
     const io = (0, _socket.default)(server);
     const dirs = (0, _glob.sync)(dir);
-    console.log(dirs);
     const watchers = [];
     io.on('connection', socket => {
       dirs.forEach(watchDir => {
         watchers.push((0, _fs.watch)(watchDir, (evt, fname) => {
-          console.log('evt, fname', evt, fname);
+          console.log(`${fname}: ${evt}`);
           socket.emit('fileChanged', {
             evt,
             fname
           });
         }));
-      }); // const watcher = watch(dir, { recursive: true }, (evt, fname) => {
-      //   socket.emit('fileChanged')
-      // })
-
+      });
       socket.on('disconnect', () => {
-        watchers.forEach(w => w.close()); // watcher.close()
+        watchers.forEach(w => w.close());
       });
     });
   }
