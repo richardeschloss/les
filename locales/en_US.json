@@ -21,7 +21,7 @@
   "proto": {
     "desc": "Protocol to use",
     "dflt": "http",
-    "limitTo": "{ http, https, http2, http2s }"
+    "limitTo": "{ http, https, http2 }"
   },
   "range": {
     "desc": "Port Range (in case port is taken)",

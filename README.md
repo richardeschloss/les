@@ -53,13 +53,15 @@ options:
 	-i,	--init	Init lesky in workspace specified by path, defaults to cwd [[cwd]]
 	-a,	--host	Address to use [localhost]
 	-p,	--port	Port to use [8080]
-		--proto	Protocol to use [http] ({ http, https, http2, http2s })
+		--proto	Protocol to use [http] ({ http, https, http2 })
 		--range	Port Range (in case port is taken) [8000,9000]
 		--sslKey	Path to SSL Key
 		--sslCert	Path to SSL Certificate
 	-o,	--open	Open browser [OS default]
+	-w,	--watch	Watch for file changes in dir [staticDir]
 
 ---End of Help---
+
 ```
 
 ## Customizing (.lesrc config file)

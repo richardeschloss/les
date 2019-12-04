@@ -76,7 +76,6 @@ function IOServer({
     io.on('connection', socket => {
       dirs.forEach(watchDir => {
         watchers.push((0, _fs.watch)(watchDir, (evt, fname) => {
-          console.log(`${fname}: ${evt}`);
           socket.emit('fileChanged', {
             evt,
             fname
