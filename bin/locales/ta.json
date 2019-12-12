@@ -14,7 +14,7 @@
 		"postInitNotes": "1. You might want to init .gitignore மற்றும் git இங்கே தொடர்ந்து முன் (git init",
 		"writingConfig": "git தகவல் சேர்க்க .)\n2. நீங்கள் சேர்க்க வேண்டும் ஆசிரியர், திட்டத்தின் பெயர், பதிப்பு எண், தொகுப்பு.json\n3. நீங்கள் விரும்பும் வெவ்வேறு சார்புகள். பயன்படுத்த `npm கிளை நறுக்கி திருத்தம் செய்` நீக்க பயன்படுத்தப்படாத deps (விருப்ப)",
 		"configExists": "எழுத்து config புதிய .lesrc கோப்பு: %1",
-		"errIncorrectRangeFmt": ".lesrc ஏற்கனவே உள்ளது...மேலெழுதும் மாட்டேன்"
+		"errIncorrectRangeFmt": ".lesrc ஏற்கனவே உள்ளது...மாட்டேன் மேலெழுதும்"
 	},
 	"options": {
 		"உதவி": {

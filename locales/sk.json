@@ -30,7 +30,7 @@
 		},
 		"host": {
 			"alias": "a",
-			"desc": "Adresu na použitie",
+			"desc": "Adresa na použitie",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
@@ -59,7 +59,7 @@
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Cesta k SSL Certifikát",
+			"desc": "Cesta k SSL Certifikátu",
 			"en_US": "sslCert"
 		},
 		"otvoriť": {

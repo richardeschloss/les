@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"dolor": {
-			"desc": "Portus Range (in casu portum sumitur)",
+			"desc": "Portum Range (in casu portum sumitur)",
 			"dflt": [
 				8000,
 				9000
@@ -55,7 +55,7 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Viam LOREM Amet",
+			"desc": "Viam LOREM Key",
 			"en_US": "sslKey"
 		},
 		"sslCert": {

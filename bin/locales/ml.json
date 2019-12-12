@@ -19,7 +19,7 @@
 	"options": {
 		"help": {
 			"alias": "h",
-			"desc": "Print this help menu",
+			"desc": "Print this help മെനു",
 			"en_US": "help"
 		},
 		"init": {

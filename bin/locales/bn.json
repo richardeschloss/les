@@ -14,7 +14,7 @@
 		"postInitNotes": "1. আপনি করতে চান হতে পারে init .gitignore এবং git আগে এখানে অব্যাহত (git init",
 		"writingConfig": "git যোগ করুন .)\n2. You might want to add লেখক, প্রকল্পের নাম, সংস্করণ সংখ্যা প্যাকেজ.json\n3. আপনি চান হতে পারে ভিন্ন-ইন সংক্রান্ত নির্ভরতা. ব্যবহার `npm আলুবোখারা` সরান অব্যবহৃত deps (ঐচ্ছিক)",
 		"configExists": "লেখা কনফিগ করার জন্য নতুন .lesrc file: %1",
-		"errIncorrectRangeFmt": ".lesrc ইতিমধ্যে বিদ্যমান...হবে না, মুছে ফেলা"
+		"errIncorrectRangeFmt": ".lesrc ইতিমধ্যে বিদ্যমান...না হবে, মুছে যাবে"
 	},
 	"options": {
 		"সাহায্য": {

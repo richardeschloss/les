@@ -1,64 +1,77 @@
 {
-  "msgs": {
-    "endOfHelp": "End of Help",
-    "usage": "usage",
-    "servingStaticDir": "serving static dir %1",
-    "serverCfgsStarted": "All server configs started",
-    "browserOpened": "browser opened",
-    "copyingFiles": "Copying files from: %1 to: %2",
-    "copiedFiles": "Copied files",
-    "writingDeps": "writing dependencies to: %1",
-    "packageJsonExists": "%1 already exists...will not overwrite",
-    "installingDeps": "Installing deps in %1",
-    "doneInit": "Done initializing lesky app! Some notes:",
-    "postInitNotes": "1. You might want to init .gitignore and git here before continuing (git init; git add .)\n2. You might want to add author, project name, version number to package.json\n3. You might want different dependencies. Use `npm prune` to remove unused deps (optional)",
-    "writingConfig": "writing config to new .lesrc file: %1",
-    "configExists": ".lesrc already exists...will not overwrite",
-    "errIncorrectRangeFmt": "port range incorrectly formatted. Format as --range=start-end"
-  },
-  "options": {
-    "help": {
-      "alias": "h",
-      "desc": "Print this help menu"
-    },
-    "init": {
-      "alias": "i",
-      "desc": "Init lesky in workspace specified by path, defaults to cwd",
-      "dflt": "[cwd]"
-    },
-    "host": {
-      "alias": "a",
-      "desc": "Address to use",
-      "dflt": "localhost"
-    },
-    "port": {
-      "alias": "p",
-      "desc": "Port to use",
-      "dflt": 8080
-    },
-    "proto": {
-      "desc": "Protocol to use",
-      "dflt": "http",
-      "limitTo": "{ http, https, http2 }"
-    },
-    "range": {
-      "desc": "Port Range (in case port is taken)",
-      "dflt": [8000, 9000]
-    },
-    "sslKey": {
-      "desc": "Path to SSL Key"
-    },
-    "sslCert": {
-      "desc": "Path to SSL Certificate"
-    },
-    "open": {
-      "alias": "o",
-      "desc": "Open browser",
-      "dflt": "OS default"
-    },
-    "watch": {
-      "alias": "w",
-      "desc": "Watch for file changes in dir [staticDir]" 
-    }
-  }
+	"msgs": {
+		"endOfHelp": "End of Help",
+		"usage": "usage",
+		"servingStaticDir": "serving static dir %1",
+		"serverCfgsStarted": "All server configs started",
+		"browserOpened": "browser opened",
+		"copyingFiles": "Copying files from: %1 to: %2",
+		"copiedFiles": "Copied files",
+		"writingDeps": "writing dependencies to: %1",
+		"packageJsonExists": "%1 already exists...will not overwrite",
+		"installingDeps": "Installing deps in %1",
+		"doneInit": "Done initializing lesky app! Some notes:",
+		"postInitNotes": "1. You might want to init .gitignore and git here before continuing (git init",
+		"writingConfig": "git add .)\n2. You might want to add author, project name, version number to package.json\n3. You might want different dependencies. Use `npm prune` to remove unused deps (optional)",
+		"configExists": "writing config to new .lesrc file: %1",
+		"errIncorrectRangeFmt": ".lesrc already exists...will not overwrite"
+	},
+	"options": {
+		"help": {
+			"alias": "h",
+			"desc": "Print this help menu",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky in workspace specified by path, defaults to cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Address to use",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port to use",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protocol to use",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"range": {
+			"desc": "Port Range (in case port is taken)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Path to SSL Key",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Path to SSL Certificate",
+			"en_US": "sslCert"
+		},
+		"open": {
+			"alias": "o",
+			"desc": "Open browser",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"watch": {
+			"alias": "w",
+			"desc": "Watch for file changes in dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
 }

@@ -13,8 +13,7 @@
 		"doneInit": "1. Ju mund të dëshironi të init .gitignore dhe git këtu, para se të vazhdoni (git init",
 		"postInitNotes": "git të shtuar .)\n2. Ju mund të dëshironi të shtoni autori, emri i projektit, numri version për paketë.json\n3. Ju mund të dëshironi të ndryshme në varësi. Përdorni `mpn trap \" për të hequr të papërdorura deps (fakultative)",
 		"writingConfig": "shkrim config të reja .lesrc file: %1",
-		"configExists": ".lesrc tashmë ekziston...nuk do të prishësh",
-		"errIncorrectRangeFmt": "port varg gabimisht formatuar. Format --varg=fillim-fund"
+		"configExists": ".lesrc tashmë ekziston...nuk do të prishësh"
 	},
 	"options": {
 		"ndihmë": {

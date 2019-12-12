@@ -13,8 +13,7 @@
 		"doneInit": "1. Anda mungkin ingin init .gitignore dan git di sini sebelum meneruskan (git init",
 		"postInitNotes": "git tambah .)\n2. Kau mungkin ingin menambahkan penulis, projek nama, bilangan versi untuk pakej.barisan\n3. Anda mungkin ingin berbeza kebergantungan. Gunakan `memasang prune` untuk membuang yang tidak digunakan deps (pilihan)",
 		"writingConfig": "menulis konfigurasi untuk baru .lesrc file: %1",
-		"configExists": ".lesrc sudah wujud...tidak akan menimpa",
-		"errIncorrectRangeFmt": "pelabuhan lingkungan yang salah diformat. Format seperti --jarak=mula-akhir"
+		"configExists": ".lesrc sudah wujud...tidak akan menimpa"
 	},
 	"options": {
 		"bantuan": {
@@ -55,7 +54,7 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"deskripsi": "Jalan untuk SSI Kunci",
+			"deskripsi": "Jalan untuk SSI Utama",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
@@ -70,7 +69,7 @@
 		},
 		"menonton": {
 			"alias": "w",
-			"desk": "Perhatikan perubahan fail dalam dir [staticDir]",
+			"deskripsi": "Perhatikan perubahan fail dalam dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

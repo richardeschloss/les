@@ -30,7 +30,7 @@
 		},
 		"gazdă": {
 			"alias": "o",
-			"desc": "Adresa a utiliza",
+			"desc": "Adresa de utilizat",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
@@ -55,7 +55,7 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Calea spre SSL Cheie",
+			"desc": "Calea pentru a SSL-Cheie",
 			"en_US": "sslKey"
 		},
 		"sslCert": {

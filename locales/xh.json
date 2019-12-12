@@ -14,7 +14,7 @@
 		"postInitNotes": "1. Ungafuna init .gitignore kwaye git apha phambi siqhubeke (git init",
 		"writingConfig": "git yongeza .)\n2. Ungafuna ukudibanisa umbhali, projekthi igama, inguqulelo inani impahla.json\n3. Ungafuna ezahlukeneyo dependencies. Sebenzisa `npm prune` ukususa engasebenziswanga deps (eyodwa)",
 		"configExists": "yokubhala config entsha .lesrc ifayili: %1",
-		"errIncorrectRangeFmt": ".lesrc sele ikhona...ayisayi phezu kwawo"
+		"errIncorrectRangeFmt": ".lesrc sele ikhona...ayisayi ngaphezulu"
 	},
 	"options": {
 		"uncedo": {

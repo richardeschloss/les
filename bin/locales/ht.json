@@ -20,30 +20,35 @@
 		"ede": {
 			"alyas": "h",
 			"dekrwasan": "Ekri ak lèt detache sa a ede meni",
+			"fr": "èd",
 			"en_US": "help"
 		},
 		"init": {
 			"alyas": "m",
 			"dekrwasan": "Init lesky nan vorkspas a ki espesifye pa chemen, défaut yo cwd",
 			"dflt": "[cwd]",
+			"fr": "init",
 			"en_US": "init"
 		},
 		"lame a": {
 			"alyas": "yon",
 			"dekrwasan": "Adrès yo sèvi ak",
 			"dflt": "lokalost",
+			"fr": "lame a",
 			"en_US": "host"
 		},
 		"pò": {
 			"alyas": "p",
 			"dekrwasan": "Pò a yo sèvi ak",
 			"dflt": 8080,
+			"fr": "pò",
 			"en_US": "port"
 		},
 		"proto": {
 			"dekrwasan": "Pwotokòl yo sèvi ak",
 			"dflt": "<url>",
 			"limitTo": "{ http, t, http2 }",
+			"fr": "proto",
 			"en_US": "proto"
 		},
 		"ranje": {
@@ -52,25 +57,30 @@
 				8000,
 				9000
 			],
+			"fr": "ranje",
 			"en_US": "range"
 		},
 		"sslKey": {
-			"dekrwasan": "Chemen ki mennen nan SSL Kle",
+			"dekrwasan": "Chemen ki mennen nan SSL Kle a",
+			"fr": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"dekrwasan": "Chemen pou Sètifika SSL",
+			"dekrwasan": "Chemen ki mennen nan SSL Sètifika",
+			"fr": "sslCert",
 			"en_US": "sslCert"
 		},
 		"louvri": {
 			"alyas": "o",
 			"dekrwasan": "Louvri navigatè",
 			"dflt": "OS default",
+			"fr": "louvri",
 			"en_US": "open"
 		},
 		"watch": {
 			"alyas": "w",
 			"dekrwasan": "Gade pou dosye a chanjman ki fèt nan dir [staticDir]",
+			"fr": "gade",
 			"en_US": "watch"
 		}
 	}

@@ -13,37 +13,41 @@
 		"doneInit": "1. Du ønsker kanskje å init .gitignore og git her før du fortsetter (git init",
 		"postInitNotes": "git add .)\n2. Du ønsker kanskje å legge til forfatteren, prosjekt navn, versjonsnummer for å pakke.json\n3. Du kan ha forskjellige avhengigheter. Bruk \"npm sviske\" for å fjerne ubrukte deps (valgfritt)",
 		"writingConfig": "skriver config til nye .lesrc fil: %1",
-		"configExists": ".lesrc allerede eksisterer...vil ikke overskrive",
-		"errIncorrectRangeFmt": "port range feil formatert. Format som --range=start-slutt"
+		"configExists": ".lesrc allerede eksisterer...vil ikke overskrive"
 	},
 	"options": {
 		"hjelp": {
 			"alias": "h",
 			"desc": "skriv Ut denne hjelp-menyen",
+			"no_no": "hjelpe",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "jeg",
 			"desc": "Init lesky i arbeidsområdet som er angitt av banen, standard cd",
 			"dflt": "[cd]",
+			"no_no": "init",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "en",
 			"desc": "Adresse",
 			"dflt": "localhost",
+			"no_no": "host",
 			"en_US": "host"
 		},
 		"port": {
 			"alias": "p",
 			"desc": "Porten til bruk",
 			"dflt": 8080,
+			"no_no": "port",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "Protokoll",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
+			"no_no": "proto",
 			"en_US": "proto"
 		},
 		"range": {
@@ -52,25 +56,30 @@
 				8000,
 				9000
 			],
+			"no_no": "range",
 			"en_US": "range"
 		},
 		"sslKey": {
 			"desc": "Veien til SSL-Tasten",
+			"no_no": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
 			"desc": "Veien til SSL-Sertifikat",
+			"no_no": "sslCert",
 			"en_US": "sslCert"
 		},
 		"åpne": {
 			"alias": "o",
 			"desc": "Åpne nettleseren",
 			"dflt": "OS standard",
+			"no_no": "åpne",
 			"en_US": "open"
 		},
 		"se": {
 			"alias": "w",
 			"desc": "Se for fil-endringer i dir [staticDir]",
+			"no_no": "pass",
 			"en_US": "watch"
 		}
 	}

@@ -12,37 +12,41 @@
 		"installingDeps": "1. Wëllt Dir vläicht init .gitignore a git hei, ier Si weiderfueren (git init",
 		"doneInit": "git add .)\n2. Méiglecherweis wëllt Dir Auteur, Projetsnumm, Versionsnummer fir de Pak un.json\n3. Wëllt Dir vläicht verschidde Abhängigkeiten. Benotzen D `npm prune` zum ewechhuelen vun unbenutzten deps (optional)",
 		"postInitNotes": "schreiwen der config op \"nei\".lesrc Datei: %1",
-		"writingConfig": ".lesrc schonn disponibel...net überschreiben",
-		"configExists": "- port-Beräich schlecht formatiert. Format --range=start-end"
+		"writingConfig": ".lesrc schonn disponibel...net überschreiben"
 	},
 	"options": {
 		"help": {
 			"alias": "h",
 			"desc": "Drécke Si dës Hëllef-Menü",
+			"de_de": "Hëllef",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
 			"desc": "Init lesky am workspace notéiert Wee, standardméisseg cwd",
 			"dflt": "[cwd]",
+			"de_de": "init",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
 			"desc": "Adresse",
 			"dflt": "localhost",
+			"de_de": "host",
 			"en_US": "host"
 		},
 		"port": {
 			"alias": "p",
 			"desc": "Port",
 			"dflt": 8080,
+			"de_de": "port",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "Protokoll",
 			"dflt": "http",
 			"limitTo": "{ client, https, http2 }",
+			"de_de": "laténgescht",
 			"en_US": "proto"
 		},
 		"range": {
@@ -51,25 +55,30 @@
 				8000,
 				9000
 			],
+			"de_de": "range",
 			"en_US": "range"
 		},
 		"sslKey": {
 			"desc": "Wee zu den SSL-Schlëssel",
+			"de_de": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
 			"desc": "Wee zum SSL-Zertifikat",
+			"de_de": "sslCert",
 			"en_US": "sslCert"
 		},
 		"open": {
 			"alias": "o",
 			"desc": "html Opmaachen",
 			"dflt": "Tools",
+			"de_de": "open",
 			"en_US": "open"
 		},
 		"schreiwen": {
 			"alias": "w",
 			"desc": "Gesinn Si fir d' Datei-ännerungen, déi an dir [staticDir]",
+			"de_de": "Auer",
 			"en_US": "watch"
 		}
 	}

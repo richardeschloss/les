@@ -13,64 +13,73 @@
 		"doneInit": "1. Podeu init .gitignore i git aquí abans de continuar (git init",
 		"postInitNotes": "git add .)\n2. Podeu afegir autor, nom del projecte, el número de versió del paquet.json\n3. Us recomanem diferents dependències. Utilitzar `npm pruna \" per eliminar-unused deps (opcional)",
 		"writingConfig": "escriptura de configuració de nous .lesrc fitxer: %1",
-		"configExists": ".lesrc ja existeix...no sobreescriure",
-		"errIncorrectRangeFmt": "port gamma correctament formatat. Format --rang=inici-final"
+		"configExists": ".lesrc ja existeix...no sobreescriure"
 	},
 	"options": {
 		"ajuda": {
 			"àlies": "h",
 			"desc": "Imprimeix aquest menú ajuda",
+			"ca_es": "ajuda",
 			"en_US": "help"
 		},
 		"init": {
 			"àlies": "i",
 			"desc": "Init lesky en l'espai de treball especificat pel camí, per defecte a cwd",
 			"dflt": "[cwd]",
+			"ca_es": "init",
 			"en_US": "init"
 		},
 		"host": {
 			"àlies": "un",
 			"desc": "Adreça a utilitzar",
 			"dflt": "localhost",
+			"ca_es": "host",
 			"en_US": "host"
 		},
 		"port": {
 			"àlies": "p",
 			"desc": "el Port a utilitzar",
 			"dflt": 8080,
+			"ca_es": "port",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "Protocol d'utilització de",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
+			"ca_es": "proto",
 			"en_US": "proto"
 		},
 		"rang": {
-			"desc": "Port de Rang (en el cas de port és pres)",
+			"desc": "Port Gamma (en el cas de port és pres)",
 			"dflt": [
 				8000,
 				9000
 			],
+			"ca_es": "gamma",
 			"en_US": "range"
 		},
 		"sslKey": {
 			"desc": "Camí SSL Clau",
+			"ca_es": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "la Ruta de Certificat SSL",
+			"desc": "La ruta de Certificat SSL",
+			"ca_es": "sslCert",
 			"en_US": "sslCert"
 		},
 		"obert": {
 			"àlies": "o",
 			"desc": "Obre el navegador",
-			"dflt": "OS default",
+			"dflt": "OS per defecte",
+			"ca_es": "obert",
 			"en_US": "open"
 		},
 		"veure": {
 			"àlies": "w",
 			"desc": "Veure per el fitxer de canvis en dir [staticDir]",
+			"ca_es": "veure",
 			"en_US": "watch"
 		}
 	}

@@ -12,37 +12,41 @@
 		"installingDeps": "1. Möchten Sie vielleicht init .gitignore und git hier, bevor Sie fortfahren (git init",
 		"doneInit": "git add .)\n2. Möglicherweise möchten Sie Autor, Projektname, Versionsnummer für das Paket an.json\n3. Möchten Sie vielleicht verschiedene Abhängigkeiten. Verwenden Sie `npm prune` zum entfernen von unbenutzten deps (optional)",
 		"postInitNotes": "schreiben der config auf \"neu\".lesrc Datei: %1",
-		"writingConfig": ".lesrc bereits vorhanden...nicht überschreiben",
-		"configExists": "- port-Bereich fehlerhaft formatiert. Format --range=start-end"
+		"writingConfig": ".lesrc bereits vorhanden...nicht überschreiben"
 	},
 	"options": {
 		"help": {
 			"alias": "h",
 			"desc": "Drucken Sie diese Hilfe-Menü",
+			"de_de": "Hilfe",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
 			"desc": "Init lesky im workspace angegebenen Pfad, standardmäßig cwd",
 			"dflt": "[cwd]",
+			"de_de": "init",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
 			"desc": "Adresse",
 			"dflt": "localhost",
+			"de_de": "host",
 			"en_US": "host"
 		},
 		"port": {
 			"alias": "p",
 			"desc": "Port",
 			"dflt": 8080,
+			"de_de": "port",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "Protokoll",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
+			"de_de": "proto",
 			"en_US": "proto"
 		},
 		"range": {
@@ -51,25 +55,30 @@
 				8000,
 				9000
 			],
+			"de_de": "range",
 			"en_US": "range"
 		},
 		"sslKey": {
 			"desc": "Pfad zu den SSL-Schlüssel",
+			"de_de": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
 			"desc": "Pfad zum SSL-Zertifikat",
+			"de_de": "sslCert",
 			"en_US": "sslCert"
 		},
 		"open": {
 			"alias": "o",
 			"desc": "browser Öffnen",
 			"dflt": "Betriebssystem",
+			"de_de": "open",
 			"en_US": "open"
 		},
 		"anschauen": {
 			"alias": "w",
 			"desc": "Sehen Sie für die Datei-änderungen, die in dir [staticDir]",
+			"de_de": "Uhr",
 			"en_US": "watch"
 		}
 	}

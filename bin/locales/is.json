@@ -13,8 +13,7 @@
 		"doneInit": "1. Þú vilt kannski að íþað .gitignore og marsha, taktu hér áður áfram (gaukur íþað",
 		"postInitNotes": "gaukur bæta .)\n2. Þú vilt kannski að bæta höfundur, verkefnið nafn, útgáfa númer til að pakka.json\n3. Þú vilt kannski öðruvísi yfirráðasvæðum. Nota `npm snyrta` til að fjarlægja ónotuð deps (sleppa)",
 		"writingConfig": "skrifa stillingar að nýju .lesrc skrá: %1",
-		"configExists": ".lesrc þegar til...mun ekki skrifa",
-		"errIncorrectRangeFmt": "höfn svið rangt kort. Sniði og --svið=byrja-enda"
+		"configExists": ".lesrc þegar til...mun ekki skrifa"
 	},
 	"options": {
 		"hjálp": {
@@ -59,7 +58,7 @@
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"ö": "Leiðin til SSL Vottorð",
+			"ö": "Leið til að SSL Vottorð",
 			"en_US": "sslCert"
 		},
 		"opin": {

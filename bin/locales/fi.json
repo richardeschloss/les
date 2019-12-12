@@ -19,18 +19,18 @@
 	"options": {
 		"help": {
 			"alias": "s",
-			"desc": "Tulosta tämä ohje-valikosta",
+			"desc": "Tulosta tämä ohje-valikko",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
 			"desc": "Init lesky työtilan määritelty polku, oletuksena cwd",
-			"dflt": "[cwd]",
+			"dflt": "[cwd -]",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
-			"desc": "Osoitteen",
+			"desc": "Osoite käyttää",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
@@ -59,13 +59,13 @@
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Polku SSL-Sertifikaatti",
+			"desc": "Polku SSL-Sertifikaatin",
 			"en_US": "sslCert"
 		},
 		"open": {
 			"alias": "o",
 			"desc": "Avaa selain",
-			"dflt": "OS oletus",
+			"dflt": "KÄYTTÖJÄRJESTELMÄ default",
 			"en_US": "open"
 		},
 		"watch": {

@@ -20,30 +20,35 @@
 		"ayuda": {
 			"alias": "h",
 			"desc": "Imprime este menú de ayuda",
+			"es_es": "ayuda",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
 			"desc": "Init lesky en el espacio de trabajo especificado por la ruta por defecto cwd",
 			"dflt": "[cwd]",
+			"es_es": "init",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
 			"desc": "Dirección",
 			"dflt": "localhost",
+			"es_es": "host",
 			"en_US": "host"
 		},
 		"puerto": {
 			"alias": "p",
 			"desc": "Puerto a utilizar",
 			"dflt": 8080,
+			"es_es": "puerto",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "Protocolo para el uso",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
+			"es_es": "proto",
 			"en_US": "proto"
 		},
 		"intervalo": {
@@ -52,25 +57,30 @@
 				8000,
 				9000
 			],
+			"es_es": "rango",
 			"en_US": "range"
 		},
 		"sslKey": {
 			"desc": "Ruta de acceso de la Clave SSL",
+			"es_es": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
 			"desc": "Ruta de acceso de Certificado SSL",
+			"es_es": "sslCert",
 			"en_US": "sslCert"
 		},
 		"abierto": {
 			"alias": "o",
 			"desc": "Abrir el navegador",
 			"dflt": "OS default",
+			"es_es": "abierto",
 			"en_US": "open"
 		},
 		"reloj": {
 			"alias": "w",
 			"desc": "Ver para los cambios de los archivos en el directorio [staticDir]",
+			"es_es": "ver",
 			"en_US": "watch"
 		}
 	}

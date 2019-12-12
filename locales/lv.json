@@ -12,37 +12,41 @@
 		"installingDeps": "Gatavs sākt lesky app! Dažas piezīmes:",
 		"doneInit": "1. Jūs varētu vēlēties, lai init .gitignore un git šeit pirms turpināt (git init",
 		"postInitNotes": "git add .)\n2. Jūs varētu vēlēties, lai pievienotu autors, projekta nosaukumu, versijas numuru, kas uz iepakojuma.json\n3. Jūs varētu vēlēties, dažādas atkarības. Izmantot \"npm plūme\", lai noņemtu neizmantotās deps (pēc izvēles);, rakstot config jaunu .lesrc failu: %1",
-		"writingConfig": ".lesrc jau pastāv...nebūs pārrakstīt",
-		"configExists": "ostas robežās nepareizi formatēts. Formātu, kā --diapazons=start-end"
+		"writingConfig": ".lesrc jau pastāv...nebūs pārrakstīt"
 	},
 	"options": {
 		"palīdzētu": {
 			"alias": "h",
 			"desc": "Izdrukāt šo izvēlnē palīdzība",
+			"lv_lv": "palīdzēt",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "es",
 			"desc": "Init lesky jo workspace norādījis ceļu, noklusējumus uz hns",
 			"dflt": "[hns]",
+			"lv_lv": "init",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
 			"desc": "Adrese izmantot",
 			"dflt": "localhost",
+			"lv_lv": "uzņēmēja",
 			"en_US": "host"
 		},
 		"osta": {
 			"alias": "p",
 			"desc": "Ostu izmantošanu",
 			"dflt": 8080,
+			"lv_lv": "osta",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "Protokolu izmantošanu",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
+			"lv_lv": "proto",
 			"en_US": "proto"
 		},
 		"diapazons": {
@@ -51,25 +55,30 @@
 				8000,
 				9000
 			],
+			"lv_lv": "diapazons",
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Ceļš uz SSL Atslēga",
+			"desc": "Ceļš uz SSL Atslēgu",
+			"lv_lv": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
 			"desc": "Ceļš uz SSL Sertifikātu",
+			"lv_lv": "sslCert",
 			"en_US": "sslCert"
 		},
 		"atvērt": {
 			"alias": "o",
 			"desc": "Atvērt pārlūka",
-			"dflt": "OS noklusējuma",
+			"dflt": "OS default",
+			"lv_lv": "atvērt",
 			"en_US": "open"
 		},
 		"skatīties": {
 			"alias": "w",
 			"desc": "Skatīties uz failu izmaiņas dir [staticDir]",
+			"lv_lv": "skatīties",
 			"en_US": "watch"
 		}
 	}

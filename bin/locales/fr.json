@@ -20,18 +20,21 @@
 		"aide": {
 			"alias": "h",
 			"desc": "Imprimer le menu d'aide",
+			"fr_fr": "aide",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
 			"desc": "Init lesky dans l'espace de travail spécifié par le chemin d'accès, par défaut, à la mdc",
 			"dflt": "[mdc]",
+			"fr_fr": "init",
 			"en_US": "init"
 		},
 		"hôte": {
 			"alias": "un",
 			"desc": "Adresse",
 			"dflt": "localhost",
+			"fr_fr": "hôte",
 			"en_US": "host"
 		},
 		"port": {
@@ -44,10 +47,11 @@
 			"desc": "le Protocole à utiliser",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
+			"fr_fr": "proto",
 			"en_US": "proto"
 		},
 		"plage": {
-			"desc": "Port Range (dans le cas où le port est pris)",
+			"desc": "Plage de ports (dans le cas où le port est pris)",
 			"dflt": [
 				8000,
 				9000
@@ -56,21 +60,25 @@
 		},
 		"sslKey": {
 			"desc": "le Chemin vers la Clé SSL",
+			"fr_fr": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "le Chemin d'accès au Certificat SSL",
+			"desc": "Chemin d'accès au Certificat SSL",
+			"fr_fr": "sslCert",
 			"en_US": "sslCert"
 		},
 		"ouvrir": {
 			"alias": "o",
 			"desc": "Ouvrez le navigateur",
 			"dflt": "OS par défaut",
+			"fr_fr": "ouvert",
 			"en_US": "open"
 		},
 		"regarder": {
 			"alias": "w",
 			"desc": "attention, les modifications du fichier dir [staticDir]",
+			"fr_fr": "montre",
 			"en_US": "watch"
 		}
 	}

@@ -20,30 +20,35 @@
 		"pomoč": {
 			"alias": "h",
 			"desc": "Natisni ta meni pomoč",
+			"sl": "na pomoč",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "sem",
 			"desc": "Init lesky v workspace določi pot, privzete, da pathdepthrevisionerrorcwd",
 			"dflt": "[pathdepthrevisionerrorcwd]",
+			"sl": "init",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
 			"desc": "Naslov za uporabo",
 			"dflt": "localhost",
+			"sl": "host",
 			"en_US": "host"
 		},
 		"vrata": {
 			"alias": "p",
 			"desc": "Pristanišče za uporabo",
 			"dflt": 8080,
+			"sl": "pristanišče",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "Protokol za uporabo",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
+			"sl": "proto",
 			"en_US": "proto"
 		},
 		"razpon": {
@@ -52,25 +57,30 @@
 				8000,
 				9000
 			],
+			"sl": "obseg",
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Pot do SSL Tipko",
+			"desc": "Pot do SSL Ključ",
+			"sl": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
 			"desc": "Pot do SSL Certifikat",
+			"sl": "sslCert",
 			"en_US": "sslCert"
 		},
 		"open": {
 			"alias": "o",
 			"desc": "Odprite brskalnik",
 			"dflt": "OS privzeto",
+			"sl": "odpri",
 			"en_US": "open"
 		},
 		"gledati": {
 			"alias": "w",
 			"desc": "Pazi za datoteko sprememb v dir [staticDir]",
+			"sl": "pazi",
 			"en_US": "watch"
 		}
 	}

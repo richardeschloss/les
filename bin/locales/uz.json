@@ -14,7 +14,7 @@
 		"postInitNotes": "1. Init qilish mumkin .bu yerda davom oldin gitignore va git (git init",
 		"writingConfig": "git qo'shing .)\n2. To'plam uchun muallif, loyiha nomi, versiyasi raqam kiritish mumkin.json\n3. Turli dependencies mumkin. Foydalanish `` foydalanilmagan deps olib tashlash uchun npm azizillo (ixtiyoriy)",
 		"configExists": "yangi yozuv config .lesrc fayl: %1",
-		"errIncorrectRangeFmt": ".lesrc allaqachon mavjud...overwrite bo'lmaydi"
+		"errIncorrectRangeFmt": ".lesrc allaqachon mavjud...bo'lmaydi overwrite"
 	},
 	"options": {
 		"yordam": {
@@ -55,7 +55,7 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Yo'l uchun SSL Asosiy",
+			"desc": "Yo'l uchun SSL Kaliti",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
@@ -70,7 +70,7 @@
 		},
 		"tomosha": {
 			"aliaslari": "w",
-			"desc": "dir [staticDir] ichida fayl o'zgarishlar uchun Watch",
+			"desc": "Tomosha qilish uchun fayl o'zgarishlar dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

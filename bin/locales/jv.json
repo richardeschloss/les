@@ -65,7 +65,7 @@
 		"mbukak": {
 			"alias": "o",
 			"desc": "Mbukak browser",
-			"dflt": "OS default",
+			"dflt": "OS standar",
 			"en_US": "open"
 		},
 		"watch": {

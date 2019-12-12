@@ -13,37 +13,41 @@
 		"doneInit": "1. Si potrebbe desiderare di init .gitignore e git qui prima di continuare (git init",
 		"postInitNotes": "git add .)\n2. Si potrebbe desiderare di aggiungere autore, nome del progetto, il numero di versione del pacchetto.json\n3. Si potrebbe desiderare di diverse dipendenze. Utilizzare `npm prune \" per rimuovere inutilizzati deps (opzionale)",
 		"writingConfig": "scrittura di config di nuovo .lesrc file: %1",
-		"configExists": ".lesrc esiste già...non sovrascrivere",
-		"errIncorrectRangeFmt": "intervallo di porte formattato in modo non corretto. Formato --gamma=inizio-fine"
+		"configExists": ".lesrc esiste già...non sovrascrivere"
 	},
 	"options": {
 		"aiuto": {
 			"alias": "h",
 			"desc": "Stampa questo menu di aiuto",
+			"it_it": "aiuto",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
 			"desc": "Init lesky in area di lavoro specificato dal percorso, il default cwd",
 			"dflt": "[cwd]",
+			"it_it": "init",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
 			"desc": "Indirizzo",
 			"dflt": "localhost",
+			"it_it": "host",
 			"en_US": "host"
 		},
 		"porta": {
 			"alias": "la p",
 			"desc": "Porta",
 			"dflt": 8080,
+			"it_it": "la porta",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "Protocollo per l'uso",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
+			"it_it": "proto",
 			"en_US": "proto"
 		},
 		"gamma": {
@@ -52,25 +56,30 @@
 				8000,
 				9000
 			],
+			"it_it": "gamma",
 			"en_US": "range"
 		},
 		"sslKey": {
 			"desc": "Percorso di chiavi SSL",
+			"it_it": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Percorso del Certificato SSL",
+			"desc": "Percorso Certificato SSL",
+			"it_it": "sslCert",
 			"en_US": "sslCert"
 		},
 		"open": {
 			"alias": "o",
 			"desc": "Aprire un browser",
 			"dflt": "sistema operativo predefinito",
+			"it_it": "aprire",
 			"en_US": "open"
 		},
 		"guardare": {
 			"alias": "w",
 			"desc": "Guarda le modifiche apportate ai file nella dir [staticDir]",
+			"it_it": "watch",
 			"en_US": "watch"
 		}
 	}

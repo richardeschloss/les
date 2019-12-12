@@ -11,37 +11,41 @@
 		"packageJsonExists": "1. Du måske ønsker at init .gitignore og git her, før du fortsætter (git init",
 		"installingDeps": "git add .)\n2. Du ønsker måske at tilføje forfatter, projekt-navn, version nummer til pakken.json\n3. Du vil måske forskellige afhængigheder. Brug `npm beskære \" for at fjerne ubrugte deps (valgfrit)",
 		"doneInit": "skrive config til nye .lesrc fil: %1",
-		"postInitNotes": ".lesrc allerede eksisterer...vil ikke overskrive",
-		"writingConfig": "port range forkert formateret. Format som --range=start-slut"
+		"postInitNotes": ".lesrc allerede eksisterer...vil ikke overskrive"
 	},
 	"options": {
 		"hjælpe": {
 			"alias": "h",
 			"desc": "Udskriv denne hjælp menu",
+			"da_dk": "hjælpe",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "jeg",
 			"desc": "Init lesky i arbejdsrum, der er specificeret af stien, standard cwd",
 			"dflt": "[cwd]",
+			"da_dk": "init",
 			"en_US": "init"
 		},
 		"vært": {
 			"alias": "en",
-			"desc": "Adresse, der skal bruges",
+			"desc": " - Adresse til brug",
 			"dflt": "localhost",
+			"da_dk": "host",
 			"en_US": "host"
 		},
 		"havnen": {
 			"alias": "p",
 			"desc": "Port til at bruge",
 			"dflt": 8080,
+			"da_dk": "port",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "Protokol for at bruge",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
+			"da_dk": "proto",
 			"en_US": "proto"
 		},
 		"range": {
@@ -50,25 +54,30 @@
 				8000,
 				9000
 			],
+			"da_dk": "vifte",
 			"en_US": "range"
 		},
 		"sslKey": {
 			"desc": "Vejen til SSL Nøgle",
+			"da_dk": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
 			"desc": "Vejen til SSL-Certifikat",
+			"da_dk": "sslCert",
 			"en_US": "sslCert"
 		},
 		"åbne": {
 			"alias": "o",
 			"desc": "Åbn browseren",
 			"dflt": "OS default",
+			"da_dk": "åbne",
 			"en_US": "open"
 		},
 		"se": {
 			"alias": "w",
 			"desc": "Se til filen ændringer i dir [staticDir]",
+			"da_dk": "se",
 			"en_US": "watch"
 		}
 	}

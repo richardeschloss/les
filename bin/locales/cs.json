@@ -13,13 +13,12 @@
 		"doneInit": "1. Možná budete chtít init .gitignore a git tady před pokračováním (git init",
 		"postInitNotes": "git add .)\n2. Možná budete chtít přidat autora, název projektu, číslo verze balíčku.json\n3. Možná budete chtít, různých závislostí. Použijte `npm prořezávat a odstraňte nepoužívané deps (volitelné)",
 		"writingConfig": "psaní config na nový .lesrc souboru: %1",
-		"configExists": ".lesrc již existuje...nepřepíše",
-		"errIncorrectRangeFmt": "rozsah portů nesprávně formátován. Format jako --range=start-konec"
+		"configExists": ".lesrc již existuje, přepíše"
 	},
 	"options": {
 		"pomoci": {
 			"alias": "h",
-			"desc": "Vytisknout tuto nabídku nápověda",
+			"desc": "Vytisknout pomocí menu",
 			"en_US": "help"
 		},
 		"init": {
@@ -38,6 +37,7 @@
 			"alias": "p",
 			"desc": "Port",
 			"dflt": 8080,
+			"cs_cz": "port",
 			"en_US": "port"
 		},
 		"proto": {
@@ -47,11 +47,12 @@
 			"en_US": "proto"
 		},
 		"range": {
-			"desc": "Rozsah portů (v případě, že port je přijata)",
+			"desc": "Rozsah Portů (v případě, že port je přijata)",
 			"dflt": [
 				8000,
 				9000
 			],
+			"cs_cz": "rozsah",
 			"en_US": "range"
 		},
 		"sslKey": {
@@ -59,7 +60,7 @@
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Cesta k SSL Certifikátu",
+			"desc": "Cesta k Certifikátu SSL",
 			"en_US": "sslCert"
 		},
 		"otevřít": {

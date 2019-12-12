@@ -13,8 +13,7 @@
 		"doneInit": "1. Anda mungkin ingin init .gitignore dan git berikut ini sebelum melanjutkan (git init",
 		"postInitNotes": "git add .)\n2. Anda mungkin ingin menambahkan penulis, nama proyek, nomor versi paket.json\n3. Anda mungkin ingin berbeda dependensi. Gunakan `npm memangkas` untuk menghapus yang tidak terpakai deps (opsional)",
 		"writingConfig": "menulis konfigurasi baru .lesrc file: %1",
-		"configExists": ".lesrc sudah ada...tidak akan menimpa",
-		"errIncorrectRangeFmt": "jangkauan port yang telah diformat dengan benar. Format sebagai-kisaran=start-end"
+		"configExists": ".lesrc sudah ada...tidak akan menimpa"
 	},
 	"options": {
 		"membantu": {
@@ -47,7 +46,7 @@
 			"en_US": "proto"
 		},
 		"range": {
-			"desc": "Berbagai pelabuhan (dalam hal ini port diambil)",
+			"desc": "Port Rentang (dalam hal ini port diambil)",
 			"dflt": [
 				8000,
 				9000
@@ -55,7 +54,7 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Jalan untuk SSL Kunci",
+			"desc": "Jalan untuk SSL Key",
 			"en_US": "sslKey"
 		},
 		"sslCert": {

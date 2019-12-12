@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"amrywiaeth": {
-			"desc": "Port Amrywiaeth (yn achos porthladd yn cael ei gymryd)",
+			"desc": "Porthladd yn Ystod (yn achos porthladd yn cael ei gymryd)",
 			"dflt": [
 				8000,
 				9000
