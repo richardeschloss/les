@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Oxirida Yordam berish",
+		"usage": "foydalanish",
+		"servingStaticDir": "xizmat statik dir %1",
+		"serverCfgsStarted": "Barcha server configs boshladi",
+		"browserOpened": "brauzer ochdi",
+		"copyingFiles": "Nusxa ko'chirish fayllar dan: %1: %2",
+		"copiedFiles": "Ko'chirilmaydi fayllar",
+		"writingDeps": "yozma dependencies uchun: %1",
+		"packageJsonExists": "%1 allaqachon mavjud...bo'lmaydi overwrite",
+		"installingDeps": "O'rnatish deps ichida %1",
+		"doneInit": "Amalga initializing lesky app! Ba'zi eslatmalar:",
+		"postInitNotes": "1. Init qilish mumkin .bu yerda davom oldin gitignore va git (git init",
+		"writingConfig": "git qo'shing .)\n2. To'plam uchun muallif, loyiha nomi, versiyasi raqam kiritish mumkin.json\n3. Turli dependencies mumkin. Foydalanish `` foydalanilmagan deps olib tashlash uchun npm azizillo (ixtiyoriy)",
+		"configExists": "yangi yozuv config .lesrc fayl: %1",
+		"errIncorrectRangeFmt": ".lesrc allaqachon mavjud...overwrite bo'lmaydi"
+	},
+	"options": {
+		"yordam": {
+			"aliaslari": "h",
+			"desc": "Bosma uchun bu yordam menyu",
+			"en_US": "help"
+		},
+		"init": {
+			"aliaslari": "men",
+			"desc": "Init lesky yilda ish maydoni belgilangan tomonidan yo'lini, standartni uchun cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"uy egasi": {
+			"aliaslari": "a",
+			"desc": "Manzil foydalanish",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"aliaslari": "p",
+			"desc": "Port foydalanish",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokol foydalanish",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"qator": {
+			"desc": "Port Qator (holda port olinadi)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Yo'l uchun SSL Asosiy",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Yo'l uchun SSL Sertifikat",
+			"en_US": "sslCert"
+		},
+		"ochiq": {
+			"aliaslari": "ey",
+			"desc": "Ochiq brauzer",
+			"dflt": "OS standart",
+			"en_US": "open"
+		},
+		"tomosha": {
+			"aliaslari": "w",
+			"desc": "dir [staticDir] ichida fayl o'zgarishlar uchun Watch",
+			"en_US": "watch"
+		}
+	}
+}

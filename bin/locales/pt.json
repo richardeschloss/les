@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Final de Ajuda",
+		"usage": "uso",
+		"servingStaticDir": "servir estático dir %1",
+		"serverCfgsStarted": "servidor de Todas as configs iniciado",
+		"browserOpened": "navegador aberto",
+		"copyingFiles": "Copiar ficheiros a partir de: %1: %2",
+		"copiedFiles": "copiar arquivos",
+		"writingDeps": "elaboração de dependências para: %1",
+		"packageJsonExists": "%1 já existe...não vai substituir",
+		"installingDeps": "Instalar deps no %1",
+		"doneInit": "Done inicializar lesky app! Algumas notas:",
+		"postInitNotes": "1. Você pode querer init .gitignore e git aqui antes de continuar (git init",
+		"writingConfig": "git add .)\n2. Você pode querer adicionar autor, nome do projeto, o número da versão do pacote.json\n3. Você pode querer dependências diferentes. Use `npm podar` para remover não utilizados deps (opcional)",
+		"configExists": "escrita de configuração para o novo .lesrc arquivo: %1",
+		"errIncorrectRangeFmt": ".lesrc já existe...não vai substituir"
+	},
+	"options": {
+		"ajuda": {
+			"alias": "h",
+			"desc": "Imprimir esse menu de ajuda",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "eu",
+			"desc": "Init lesky no espaço de trabalho especificado pelo caminho, padrões para cwd",
+			"dflt": "[doença]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "uma",
+			"desc": "Endereço",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"porta": {
+			"alias": "p",
+			"desc": "a Porta para usar",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protocolo de usar",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"intervalo": {
+			"desc": "Intervalo de porta (no caso a porta é tomada)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Caminho para a Chave SSL",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Caminho para o Certificado SSL",
+			"en_US": "sslCert"
+		},
+		"abrir": {
+			"alias": "o",
+			"desc": "Open browser",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"assistir": {
+			"alias": "w",
+			"desc": "Relógio para alterações de ficheiros no directório [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

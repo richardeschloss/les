@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Enda Hjálpa",
+		"usage": "notkun",
+		"servingStaticDir": "þjóna truflanir dir %1, Allt miðlara configs byrjaði",
+		"serverCfgsStarted": "vafra opnaði",
+		"browserOpened": "Afrita skrá frá: %1 til: %2",
+		"copyingFiles": "Afrita skrá",
+		"copiedFiles": "skrifa yfirráðasvæðum til: %1",
+		"writingDeps": "%1 þegar til...mun ekki skrifa",
+		"packageJsonExists": "Setja deps í %1",
+		"installingDeps": "Gert frumstilli lesky app! Nokkrar athugasemdir:",
+		"doneInit": "1. Þú vilt kannski að íþað .gitignore og marsha, taktu hér áður áfram (gaukur íþað",
+		"postInitNotes": "gaukur bæta .)\n2. Þú vilt kannski að bæta höfundur, verkefnið nafn, útgáfa númer til að pakka.json\n3. Þú vilt kannski öðruvísi yfirráðasvæðum. Nota `npm snyrta` til að fjarlægja ónotuð deps (sleppa)",
+		"writingConfig": "skrifa stillingar að nýju .lesrc skrá: %1",
+		"configExists": ".lesrc þegar til...mun ekki skrifa",
+		"errIncorrectRangeFmt": "höfn svið rangt kort. Sniði og --svið=byrja-enda"
+	},
+	"options": {
+		"hjálp": {
+			"öðru nafni": "h",
+			"ö": "Prenta þetta hjálpa matseðill",
+			"en_US": "help"
+		},
+		"íþað": {
+			"öðru nafni": "ég",
+			"ö": "Íþað lesky í vinnusvæði tilgreinir leið, vanskil að cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"gestgjafi": {
+			"öðru nafni": "a",
+			"ö": "Heimilisfang að nota",
+			"dflt": "þessari vél",
+			"en_US": "host"
+		},
+		"höfn": {
+			"öðru nafni": "p",
+			"ö": "Höfn að nota",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"frum": {
+			"ö": "Siðareglur að nota",
+			"dflt": "sýsla",
+			"limitTo": "{ að sýsla, https, http2 }",
+			"en_US": "proto"
+		},
+		"svið": {
+			"ö": "Höfn Svið (ef tengið er tekið)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"ö": "Leiðin til SSL Lykill",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"ö": "Leiðin til SSL Vottorð",
+			"en_US": "sslCert"
+		},
+		"opin": {
+			"öðru nafni": "ó",
+			"ö": "Opna vafra",
+			"dflt": "OS sjálfgefið",
+			"en_US": "open"
+		},
+		"horfa": {
+			"öðru nafni": "m",
+			"ö": "Horfa á skrá breytingar í dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

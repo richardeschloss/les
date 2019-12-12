@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Konec Pomoč",
+		"usage": "uporaba",
+		"servingStaticDir": "strežbe statičnih dir %1",
+		"serverCfgsStarted": "Vse strežnik configs začel",
+		"browserOpened": "brskalnik odprt",
+		"copyingFiles": "Kopiranje datotek iz: %1: %2",
+		"copiedFiles": "Kopiranih datotek",
+		"writingDeps": "pisanje odvisnosti za: %1",
+		"packageJsonExists": "%1 že obstaja...ne bo prepiši",
+		"installingDeps": "Namestitev deps v %1",
+		"doneInit": "Done inicializacija lesky app! Nekatere opombe:",
+		"postInitNotes": "1. Morda boste želeli, da init .gitignore in git tukaj pred nadaljevanjem (git init",
+		"writingConfig": "git dodaj .)\n2. Morda boste želeli dodati avtorja, ime projekta, številko različice paketa.json\n3. Morda boste želeli, različnih odvisnosti. Uporaba \"nvc slivov\", da odstrani neuporabljene deps (neobvezno)",
+		"configExists": "pisanje config na novo .lesrc file: %1",
+		"errIncorrectRangeFmt": ".lesrc že obstaja...ne bo prepiši"
+	},
+	"options": {
+		"pomoč": {
+			"alias": "h",
+			"desc": "Natisni ta meni pomoč",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "sem",
+			"desc": "Init lesky v workspace določi pot, privzete, da pathdepthrevisionerrorcwd",
+			"dflt": "[pathdepthrevisionerrorcwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Naslov za uporabo",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"vrata": {
+			"alias": "p",
+			"desc": "Pristanišče za uporabo",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokol za uporabo",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"razpon": {
+			"desc": "Vrata Obseg (v primeru vrat je vzeto)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Pot do SSL Tipko",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Pot do SSL Certifikat",
+			"en_US": "sslCert"
+		},
+		"open": {
+			"alias": "o",
+			"desc": "Odprite brskalnik",
+			"dflt": "OS privzeto",
+			"en_US": "open"
+		},
+		"gledati": {
+			"alias": "w",
+			"desc": "Pazi za datoteko sprememb v dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

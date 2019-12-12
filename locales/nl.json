@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Einde van de Hulp",
+		"usage": "- gebruik",
+		"servingStaticDir": "het serveren van statische dir %1",
+		"serverCfgsStarted": "Alle server configs de slag",
+		"browserOpened": "- browser geopend",
+		"copyingFiles": "het Kopiëren van bestanden van: %1: %2",
+		"copiedFiles": "Gekopieerde bestanden",
+		"writingDeps": "het schrijven van afhankelijkheden tot: %1",
+		"packageJsonExists": "%1 bestaat al...zullen niet overschrijven",
+		"installingDeps": "het Installeren van deps in %1",
+		"doneInit": "Done initialiseren lesky app! Enkele opmerkingen:",
+		"postInitNotes": "1. Wilt u misschien een functie init .gitignore en git hier voordat u verdergaat (git init",
+		"writingConfig": "git add .)\n2. U zou willen toevoegen auteur, de naam van het project, versie nummer pakket.json\n3. Wilt u misschien verschillende afhankelijkheden. Gebruik `npm snoeien` om te verwijderen van ongebruikte deps (optioneel)",
+		"configExists": "het schrijven config voor nieuwe .lesrc bestand: %1",
+		"errIncorrectRangeFmt": ".lesrc bestaat al...zullen niet overschrijven"
+	},
+	"options": {
+		"help": {
+			"alias": "h",
+			"desc": "Print dit help-menu",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "ik",
+			"desc": "Init lesky in de werkruimte gespecificeerd door het pad, keert terug naar de cwd",
+			"dflt": "[cd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Adres",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"de haven": {
+			"alias": "p",
+			"desc": "Poort",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protocol",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"bereik": {
+			"desc": "Port Range (in het geval de haven is genomen)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Pad naar SSL-Toets",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Pad naar het SSL-Certificaat",
+			"en_US": "sslCert"
+		},
+		"open": {
+			"alias": "e",
+			"desc": "het Openen van een browser",
+			"dflt": "OS standaard",
+			"en_US": "open"
+		},
+		"watch": {
+			"alias": "w",
+			"desc": "Kijken voor wijzigingen in dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

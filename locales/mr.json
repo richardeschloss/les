@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "शेवटी मदत",
+		"usage": "वापर",
+		"servingStaticDir": "सेवा स्थिर dir %1",
+		"serverCfgsStarted": "सर्व सर्व्हर configs सुरु",
+		"browserOpened": "ब्राउझर उघडले",
+		"copyingFiles": "Copying files from: %1 to: %2",
+		"copiedFiles": "कॉपी केले फायली",
+		"writingDeps": "लेखन अवलंबन करणे: %1",
+		"packageJsonExists": "%1 आधिपासूनच अस्तित्वात आहे...नाही खोडून",
+		"installingDeps": "प्रतिष्ठापीत deps मध्ये %1",
+		"doneInit": "सुरू केले lesky app! काही नोट्स:",
+		"postInitNotes": "1. You might want to init .gitignore आणि git येथे सुरू करण्यापूर्वी (git init",
+		"writingConfig": "git जोडा .)\n2. You might want to add लेखक, प्रकल्प नाव, आवृत्ती नंबर संकुल.json\n3. You might want विविध अवलंबन. Use `एनपीएम मनुका` काढू न वापरलेले deps (पर्यायी)",
+		"configExists": "लेखन config नवीन .lesrc फाइल: %1",
+		"errIncorrectRangeFmt": ".lesrc आधीच अस्तित्वात आहे...नाही खोडून"
+	},
+	"options": {
+		"मदत": {
+			"उर्फ": "h",
+			"desc": "Print this help menu",
+			"en_US": "help"
+		},
+		"आरंभ": {
+			"उर्फ": "मी",
+			"desc": "Init lesky मध्ये कार्यक्षेत्र निश्चित करून मार्ग, पूर्वनिर्धारित cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"यजमान": {
+			"उर्फ": "एक",
+			"desc": "पत्ता वापरू",
+			"dflt": "तपासू",
+			"en_US": "host"
+		},
+		"पोर्ट": {
+			"उर्फ": "p",
+			"desc": "पोर्ट वापर",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "प्रोटोकॉल वापर",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"श्रेणी": {
+			"desc": "पोर्ट श्रेणी (जर पोर्ट घेतले आहे)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "मार्ग SSL कि",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "मार्ग SSL प्रमाणपत्र",
+			"en_US": "sslCert"
+		},
+		"उघडा": {
+			"उर्फ": "o",
+			"desc": "ब्राउझर उघडा",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"पहा": {
+			"उर्फ": "w",
+			"desc": "पहा फाइल मध्ये बदल dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

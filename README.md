@@ -37,6 +37,10 @@ Then, from any folder launching a static server is simply:
 
 > les
 
+Want to start it with even less pain (i.e., less "ouch"?)
+
+> les -ow
+
 If there is a default "public" folder in your current working directory, that will be served. The default server can be accessed at: http://localhost:8080
 
 ## Customizing (CLI)

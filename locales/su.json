@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Ahir Bantuan",
+		"usage": "usage",
+		"servingStaticDir": "porsi statik dir %1",
+		"serverCfgsStarted": "Sadaya server configs dimimitian",
+		"browserOpened": "browser dibuka",
+		"copyingFiles": "Niron payil from: %ka 1: %2",
+		"copiedFiles": "Disalin payil",
+		"writingDeps": "tulisan kabebasan ka: %1",
+		"packageJsonExists": "%1 geus aya...moal nimpa",
+		"installingDeps": "Masang deps di %1",
+		"doneInit": "Dipigawé initializing lesky app! Sababaraha catetan:",
+		"postInitNotes": "1. Anjeun bisa jadi hoyong init .gitignore jeung sewang dieu saméméh neraskeun (sewang init",
+		"writingConfig": "sewang tambah .)\n2. Anjeun bisa jadi hoyong tambah pangarang, ngaran proyék, jumlah vérsi paket.json\n3. Anjeun bisa jadi hoyong beda kabebasan. Make `npm prune` pikeun nyabut henteu kapake deps (pilihan)",
+		"configExists": "tulisan config anyar .lesrc file: %1",
+		"errIncorrectRangeFmt": ".lesrc geus aya...moal nimpa"
+	},
+	"options": {
+		"pitulung": {
+			"alias": "h",
+			"desc": "Yuyun ieu mantuan menu",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "kuring",
+			"desc": "Init lesky di workspace dieusian ku jalur, ingkar ka cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Nepikeun ka make",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port pikeun pamakéan",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokol pikeun pamakéan",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"range": {
+			"desc": "Port Range (dina kasus port dicokot)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Jalur ka SSL Konci",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Jalur pikeun Sertipikat SSL",
+			"en_US": "sslCert"
+		},
+		"open": {
+			"alias": "o",
+			"desc": "Muka browser",
+			"dflt": "OS standar",
+			"en_US": "open"
+		},
+		"watch": {
+			"alias": "w",
+			"desc": "Lalajo pikeun file parobahan dina dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

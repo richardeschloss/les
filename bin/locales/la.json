@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Finem Auxilium",
+		"usage": "usu",
+		"servingStaticDir": "servientes static dir %1",
+		"serverCfgsStarted": "Omnes server configs coepi",
+		"browserOpened": "pasco aperuit",
+		"copyingFiles": "Scribendum a lima: %1: %2",
+		"copiedFiles": "Transtulerunt files",
+		"writingDeps": "scriptum clientelis ad: %1",
+		"packageJsonExists": "%1 iam est...non rescribere",
+		"installingDeps": "Installing deps in %1",
+		"doneInit": "Fieri initializing lesky app! Quidam notes:",
+		"postInitNotes": "1. Vos vires volo ut init .gitignore et git hic jugis (git init",
+		"writingConfig": "git add .)\n2. Vos vires volo ut addit auctor, project name, poema poematis numerus ad ipsum.json\n3. Vos vires volo diversis clientelis. Uti `npm putabis` removere assuetum deps (ad libitum)",
+		"configExists": "scriptum config ad novum .lesrc file: %1",
+		"errIncorrectRangeFmt": ".lesrc iam est...non rescribere"
+	},
+	"options": {
+		"auxilium": {
+			"alias": "h",
+			"desc": "Print hoc auxilium menu",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "ego",
+			"desc": "Init lesky in workspace specificatur per viam, defaltis cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"exercitus": {
+			"alias": "a",
+			"desc": "Oratio ad usum",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"portus": {
+			"alias": "p",
+			"desc": "Portus, uti",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protocollo uti",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"dolor": {
+			"desc": "Portus Range (in casu portum sumitur)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Viam LOREM Amet",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Viam LOREM Certificatorium",
+			"en_US": "sslCert"
+		},
+		"open": {
+			"alias": "o",
+			"desc": "Aperi pasco",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"vigilate": {
+			"alias": "w",
+			"desc": "Vigilate, quia file mutationes in dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

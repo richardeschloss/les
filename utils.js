@@ -1,7 +1,10 @@
-import { existsSync, readFileSync } from 'fs'
+import { existsSync, readFileSync, createWriteStream, writeFileSync } from 'fs'
 import { resolve as pResolve } from 'path'
 import netstat from 'node-netstat'
 import { exec, spawn } from 'child_process'
+import { get as hGet } from 'https'
+import { getSupportedLangs, translateText } from 'les-utils/dist/language'
+import { promiseSeries } from 'les-utils/dist/promises'
 
 function attachSSL(cfgs) {
   const sslPair = {}
@@ -20,7 +23,7 @@ function attachSSL(cfgs) {
   })
 }
 
-const buildCLIUsage = (cmdFmt, options) => {
+const buildCLIUsage = (cmdFmt, options, msgs) => {
   const usage = [cmdFmt, '', 'options:']
   Object.entries(options).forEach(
     ([option, { alias = '', desc = '', dflt, limitTo }]) => {
@@ -40,7 +43,7 @@ const buildCLIUsage = (cmdFmt, options) => {
       usage.push(optStr.join('\t'))
     }
   )
-  return usage.join('\n') + '\n\n---End of Help---\n\n'
+  return usage.join('\n') + `\n\n---${msgs.endOfHelp}---\n\n`
 }
 
 function generateSelfSignedCert(options) {
@@ -154,19 +157,52 @@ async function portTaken({ port }) {
   return usedPorts.includes(port)
 }
 
-async function importCLIOptions(options) {
-  const localeDflt = 'en_US'
+function downloadLocale(locale, dest) {
+  const url = `https://raw.githubusercontent.com/richardeschloss/les/feat/i18n/locales/${locale}.json`
+  return new Promise((resolve, reject) => {
+    hGet(url, (res) => {
+      console.log('res.statusCode', res.statusCode)
+      if (res.statusCode === 200) {
+        const outStream = createWriteStream(dest)
+        res.pipe(outStream).on('close', () => {
+          resolve()
+        })
+      } else {
+        reject(new Error('file not found'))
+      }
+    })
+  })
+}
+
+async function importCLIOptions(options, msgs) {
+  const localeDflt = 'en'
   let locale = process.env.LANG || localeDflt
-  locale = locale.split('.UTF-8')[0]
+  locale = locale.split('.UTF-8')[0].split('_')[0]
   const localeJson = `${__dirname}/locales/${locale}.json`
   if (existsSync(localeJson)) {
     const { default: imported } = await import(localeJson)
-    Object.assign(options, imported)
+    const { msgs: importedMsgs, options: importedOptions } = imported
+    Object.assign(options, importedOptions)
+    Object.assign(msgs, importedMsgs)
   } else {
     console.info(
-      `Options for locale ${locale} does not exist, defaulting to '${localeDflt}'`
+      `Options for locale ${locale} does not exist, will attempt to download`
     )
-    Object.assign(options, await import(`./locales/${localeDflt}.json`))
+    try {
+      await downloadLocale(locale, localeJson)
+      const { default: imported } = await import(localeJson)
+      const { msgs: importedMsgs, options: importedOptions } = imported
+      Object.assign(options, importedOptions)
+      Object.assign(msgs, importedMsgs)
+    } catch (err) {
+      console.error(
+        `Error downloading locale ${locale} defaulting to '${localeDflt}'`
+      )
+      const { default: imported } = await import(`./locales/${localeDflt}.json`)
+      const { msgs: importedMsgs, options: importedOptions } = imported
+      Object.assign(options, importedOptions)
+      Object.assign(msgs, importedMsgs)
+    }
   }
 }
 
@@ -213,6 +249,59 @@ function runCmdUntil({
   })
 }
 
+async function translateLocale(lang = 'es') {
+  console.log('translateLocale', lang)
+  const localeDflt = 'en_US'
+  const localeJson = `${__dirname}/locales/${localeDflt}.json`
+  const { default: imported } = await import(localeJson)
+  const { msgs, options } = imported
+
+  const msgsIn = Object.values(msgs).join('; ')
+  const optsIn = JSON.stringify(options)
+  const optsInKeys = Object.keys(options)
+
+  const { text } = await translateText({
+    text: msgsIn + '|||' + optsIn,
+    lang
+  }).catch((err) => {
+    console.error(err)
+  })
+
+  const [msgsResp, optsResp] = text[0].split('|||')
+  let optsOut = {},
+    msgsOut = {}
+  try {
+    optsOut = JSON.parse(optsResp)
+    Object.keys(optsOut).forEach((key, idx) => {
+      optsOut[key].en_US = optsInKeys[idx]
+    })
+
+    const translatedMsgs = msgsResp.split(/;\s+/)
+    msgsOut = Object.keys(msgs).reduce((result, key, idx) => {
+      result[key] = translatedMsgs[idx]
+      return result
+    }, {})
+
+    const localeOut = `${__dirname}/locales/${lang}.json`
+    const localeJsonOut = { msgs: msgsOut, options: optsOut }
+    console.log(`saving locale ${lang} to ${localeOut}`)
+    writeFileSync(localeOut, JSON.stringify(localeJsonOut, null, '\t'))
+  } catch (e) {
+    console.error(`Error parsing options for ${lang}`)
+  }
+
+  return { optsOut, msgsOut }
+}
+
+async function translateLocales() {
+  const { langs } = await getSupportedLangs({})
+  const allLangs = Object.keys(langs)
+  return promiseSeries({
+    items: allLangs,
+    handleItem: translateLocale
+  })
+}
+
 export {
   attachSSL,
   buildCLIUsage,
@@ -221,5 +310,7 @@ export {
   importCLIOptions,
   loadServerConfigs,
   portTaken,
-  runCmdUntil
+  runCmdUntil,
+  translateLocale,
+  translateLocales
 }

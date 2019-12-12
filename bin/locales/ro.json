@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Sfârșitul de Ajutor",
+		"usage": "utilizare",
+		"servingStaticDir": "servire static dir %1",
+		"serverCfgsStarted": "Toate server configs început",
+		"browserOpened": "browser-ul deschis",
+		"copyingFiles": "Copierea fișierelor de: %1: %2",
+		"copiedFiles": "fișierele Copiate",
+		"writingDeps": "scris de dependențe pentru a: %1",
+		"packageJsonExists": "%1 există deja...nu va suprascrie",
+		"installingDeps": "Instalarea deps în %1",
+		"doneInit": "Făcut inițializarea lasky app! Unele note:",
+		"postInitNotes": "1. Poate vrei să init .gitignore și git aici înainte de a continua (git init",
+		"writingConfig": "git add .)\n2. S-ar putea să doriți să adăugați autor, numele proiectului, numărul de versiune a pachetului.json\n3. Poate vrei diferite dependențe. Folosesc npm prune` pentru a elimina neutilizate deps (opțional)",
+		"configExists": "scris config pentru noi .lesrc fișier: %1",
+		"errIncorrectRangeFmt": ".lesrc există deja...nu va suprascrie"
+	},
+	"options": {
+		"ajutor": {
+			"alias": "sec",
+			"desc": "Print acest meniu de ajutor",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "eu",
+			"desc": "Init lasky în spațiul de lucru specificat prin cale, implicit cwd",
+			"dflt": "[bcc]",
+			"en_US": "init"
+		},
+		"gazdă": {
+			"alias": "o",
+			"desc": "Adresa a utiliza",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port de a utiliza",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protocolul",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"gama": {
+			"desc": "Port Range (în cazul în care portul este luată)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Calea spre SSL Cheie",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Calea spre Certificat SSL",
+			"en_US": "sslCert"
+		},
+		"deschis": {
+			"alias": "o",
+			"desc": "Deschideți browser-ul",
+			"dflt": "sistemul de OPERARE default",
+			"en_US": "open"
+		},
+		"ceas": {
+			"alias": "w",
+			"desc": "Uita-te pentru fișiere schimbări în dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Lopussa Auttaa",
+		"usage": "käyttö",
+		"servingStaticDir": "palvelevat staattinen dir %1",
+		"serverCfgsStarted": "Kaikki palvelimen configs alkoi",
+		"browserOpened": "selaimen avata",
+		"copyingFiles": "Kopiointi tiedostoja: %1: %2",
+		"copiedFiles": "Kopioida tiedostoja",
+		"writingDeps": "kirjoittaa riippuvuudet: %1",
+		"packageJsonExists": "%1 on jo olemassa...ei korvaa",
+		"installingDeps": "Asentaminen deps %1",
+		"doneInit": "Tehnyt alustetaan lesky app! Joitakin huomautuksia:",
+		"postInitNotes": "1. Haluat ehkä init .gitignore ja git tänne, ennen kuin jatkat (git init",
+		"writingConfig": "git add .)\n2. Haluat ehkä lisätä tekijä, projektin nimi, version numero paketti.json\n3. Voisit eri riippuvuuksia. Käytä npm karsia` poistaa käyttämättömät deps (valinnainen)",
+		"configExists": "kirjallisesti config uusi .lesrc tiedosto: %1",
+		"errIncorrectRangeFmt": ".lesrc on jo olemassa...ei korvaa"
+	},
+	"options": {
+		"help": {
+			"alias": "s",
+			"desc": "Tulosta tämä ohje-valikosta",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky työtilan määritelty polku, oletuksena cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Osoitteen",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port käytössä",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokolla käyttää",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"range": {
+			"desc": "Port Range (jos portti on otettu)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Polku SSL-Avain",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Polku SSL-Sertifikaatti",
+			"en_US": "sslCert"
+		},
+		"open": {
+			"alias": "o",
+			"desc": "Avaa selain",
+			"dflt": "OS oletus",
+			"en_US": "open"
+		},
+		"watch": {
+			"alias": "w",
+			"desc": "Tarkkaile tiedoston muutokset dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

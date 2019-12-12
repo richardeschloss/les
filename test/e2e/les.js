@@ -4,13 +4,14 @@ import { mkdirSync } from 'fs'
 import { buildCLIUsage, importCLIOptions, runCmdUntil } from '@/utils'
 
 const options = {}
+const msgs = {}
 
 before('Import CLI options', async () => {
-  await importCLIOptions(options)
+  await importCLIOptions(options, msgs)
 })
 
 test('Help menu (-h)', async (t) => {
-  const usage = buildCLIUsage('usage: les [path] [options]', options)
+  const usage = buildCLIUsage('usage: les [path] [options]', options, msgs)
   const resp = await runCmdUntil({
     args: ['les.js', '-h'],
     regex: /---End of Help---\n\n/

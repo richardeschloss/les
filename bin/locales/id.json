@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Akhir Membantu",
+		"usage": "penggunaan",
+		"servingStaticDir": "melayani statis dir %1",
+		"serverCfgsStarted": "Semua konfigurasi server yang dimulai",
+		"browserOpened": "browser dibuka",
+		"copyingFiles": "Menyalin file dari: %1: %2",
+		"copiedFiles": "Menyalin file, menulis dependensi untuk: %1",
+		"writingDeps": "%1 sudah ada...tidak akan menimpa",
+		"packageJsonExists": "Menginstal deps dalam %1",
+		"installingDeps": "Dilakukan inisialisasi lesky app! Beberapa catatan:",
+		"doneInit": "1. Anda mungkin ingin init .gitignore dan git berikut ini sebelum melanjutkan (git init",
+		"postInitNotes": "git add .)\n2. Anda mungkin ingin menambahkan penulis, nama proyek, nomor versi paket.json\n3. Anda mungkin ingin berbeda dependensi. Gunakan `npm memangkas` untuk menghapus yang tidak terpakai deps (opsional)",
+		"writingConfig": "menulis konfigurasi baru .lesrc file: %1",
+		"configExists": ".lesrc sudah ada...tidak akan menimpa",
+		"errIncorrectRangeFmt": "jangkauan port yang telah diformat dengan benar. Format sebagai-kisaran=start-end"
+	},
+	"options": {
+		"membantu": {
+			"alias": "h",
+			"desc": "Cetak ini membantu menu",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "saya",
+			"desc": "Init lesky di ruang kerja ditentukan oleh path default untuk cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Alamat untuk menggunakan",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port untuk menggunakan",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokol untuk menggunakan",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"range": {
+			"desc": "Berbagai pelabuhan (dalam hal ini port diambil)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Jalan untuk SSL Kunci",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Jalan untuk Sertifikat SSL",
+			"en_US": "sslCert"
+		},
+		"open": {
+			"alias": "o",
+			"desc": "Buka browser",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"menonton": {
+			"alias": "w",
+			"desc": "Perhatikan perubahan file dalam dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

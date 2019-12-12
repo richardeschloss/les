@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Fine di Aiutare",
+		"usage": "uso",
+		"servingStaticDir": "statico dir %1",
+		"serverCfgsStarted": "Tutte le configurazioni server avviato, il browser aperto",
+		"browserOpened": "la Copia di file da: %1: %2",
+		"copyingFiles": "copia dei file",
+		"copiedFiles": "la scrittura di dipendenze: %1",
+		"writingDeps": "%1 esiste già...non sovrascrivere",
+		"packageJsonExists": "Installazione di deps in %1",
+		"installingDeps": "Fatto l'inizializzazione lesky app! Alcune note:",
+		"doneInit": "1. Si potrebbe desiderare di init .gitignore e git qui prima di continuare (git init",
+		"postInitNotes": "git add .)\n2. Si potrebbe desiderare di aggiungere autore, nome del progetto, il numero di versione del pacchetto.json\n3. Si potrebbe desiderare di diverse dipendenze. Utilizzare `npm prune \" per rimuovere inutilizzati deps (opzionale)",
+		"writingConfig": "scrittura di config di nuovo .lesrc file: %1",
+		"configExists": ".lesrc esiste già...non sovrascrivere",
+		"errIncorrectRangeFmt": "intervallo di porte formattato in modo non corretto. Formato --gamma=inizio-fine"
+	},
+	"options": {
+		"aiuto": {
+			"alias": "h",
+			"desc": "Stampa questo menu di aiuto",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky in area di lavoro specificato dal percorso, il default cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Indirizzo",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"porta": {
+			"alias": "la p",
+			"desc": "Porta",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protocollo per l'uso",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"gamma": {
+			"desc": "Port Range (nel caso la porta è preso)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Percorso di chiavi SSL",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Percorso del Certificato SSL",
+			"en_US": "sslCert"
+		},
+		"open": {
+			"alias": "o",
+			"desc": "Aprire un browser",
+			"dflt": "sistema operativo predefinito",
+			"en_US": "open"
+		},
+		"guardare": {
+			"alias": "w",
+			"desc": "Guarda le modifiche apportate ai file nella dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Katapusan ng Tulong",
+		"usage": "paggamit",
+		"servingStaticDir": "paghahatid ng mga static na mga dir %1",
+		"serverCfgsStarted": "Lahat ng mga server configs nagsimula",
+		"browserOpened": "browser binuksan",
+		"copyingFiles": "Pagkopya ng mga file mula sa: %sa 1: %2",
+		"copiedFiles": "Kinopya file",
+		"writingDeps": "pagsusulat ng mga dependency sa: %1",
+		"packageJsonExists": "%1 ay mayroon na...ay hindi patungan",
+		"installingDeps": "pag-Install ng deps sa %1",
+		"doneInit": "Tapos sinisimulan lesky app! Ang ilang mga tala:",
+		"postInitNotes": "1. Baka gusto mong init .gitignore at git dito bago magpatuloy (git init",
+		"writingConfig": "git add .)\n2. Baka gusto mong magdagdag ng mga may-akda, pangalan ng proyekto, ang numero ng bersyon sa package.json\n3. Baka gusto iba ' t ibang mga dependency. Gamitin ang `npm putulan` upang alisin ang mga hindi nagamit na mga deps (opsyonal)",
+		"configExists": "pagsusulat ng config sa mga bagong .lesrc file: %1",
+		"errIncorrectRangeFmt": ".lesrc na umiiral...hindi patungan"
+	},
+	"options": {
+		"help": {
+			"alias": "h",
+			"desc": "i-Print ang tulong na menu",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "ko",
+			"desc": "Init lesky sa workspace na tinukoy sa pamamagitan ng mga landas, ang mga default upang cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Address na gagamitin",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port upang gamitin ang",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protocol upang gamitin ang",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"hanay": {
+			"desc": "Port Range na (na sa kaso port ay kinuha)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Path sa SSL Key",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Path sa SSL Certificate",
+			"en_US": "sslCert"
+		},
+		"buksan": {
+			"alias": "o",
+			"desc": "Buksan ang browser",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"panoorin": {
+			"alias": "w",
+			"desc": "Manood para sa mga pagbabago sa file sa dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}
