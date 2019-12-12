@@ -293,7 +293,7 @@ function runCmdUntil({
 
 async function translateLocale(lang = 'es') {
   console.log('translateLocale', lang);
-  const localeDflt = 'en_US';
+  const localeDflt = 'en';
   const localeJson = `${__dirname}/locales/${localeDflt}.json`;
   const {
     default: imported
