@@ -258,7 +258,7 @@ async function translateLocale(lang = 'es') {
 
   const msgsIn = Object.values(msgs).join('; ')
   const optsIn = JSON.stringify(options)
-  const optsInKeys = Object.keys(options)
+  const optsInEntries = Object.entries(options)
 
   const { text } = await translateText({
     text: msgsIn + '|||' + optsIn,
@@ -273,7 +273,10 @@ async function translateLocale(lang = 'es') {
   try {
     optsOut = JSON.parse(optsResp)
     Object.keys(optsOut).forEach((key, idx) => {
-      optsOut[key].en_US = optsInKeys[idx]
+      optsOut[key].en_US = optsInEntries[idx][0]
+      if (!optsOut[key].alias && optsInEntries[idx][1].alias) {
+        optsOut[key].alias = optsInEntries[idx][1].alias
+      }
     })
 
     const translatedMsgs = msgsResp.split(/;\s+/)

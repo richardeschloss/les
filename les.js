@@ -32,16 +32,36 @@ function _mergeConfigs(cliCfg, options) {
     fndCfgIdx = 0
   }
 
+  const props = {
+    proto: 'proto',
+    host: 'host',
+    port: 'port'
+  }
+
+  if (process.env.LANG !== 'en') {
+    Object.entries(options).forEach(([option, { en_US }]) => {
+      if (props[en_US]) {
+        props[en_US] = option
+      }
+
+      merged.forEach((serverCfg) => {
+        if (serverCfg[option]) {
+          serverCfg[en_US] = serverCfg[option]
+        }
+      })
+    })
+  }
+
   Object.assign(merged[fndCfgIdx], cliCfg)
   merged.forEach((serverCfg, idx) => {
-    serverCfg.proto = serverCfg.proto || options.proto.dflt
-    serverCfg.host = serverCfg.host || options.host.dflt
+    serverCfg.proto = serverCfg.proto || options[props.proto].dflt
+    serverCfg.host = serverCfg.host || options[props.host].dflt
 
     if (!serverCfg.port) {
       if (serverCfg.portRange) {
         serverCfg.port = parseInt(serverCfg.portRange[0])
       } else {
-        serverCfg.port = merged[fndCfgIdx].port || options.port.dflt
+        serverCfg.port = merged[fndCfgIdx].port || options[props.port].dflt
         if (idx !== fndCfgIdx) {
           serverCfg.port += idx - fndCfgIdx
         }
