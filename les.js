@@ -38,7 +38,7 @@ function _mergeConfigs(cliCfg, options) {
     port: 'port'
   }
 
-  if (process.env.LANG !== 'en') {
+  if (!process.env.LANG.includes('en')) {
     Object.entries(options).forEach(([option, { en_US }]) => {
       if (props[en_US]) {
         props[en_US] = option
