@@ -14,7 +14,7 @@
 		"postInitNotes": "1. Vous pouvez souhaiter init .gitignore et git ici avant de continuer (git init ; git add.)\n2. Vous pouvez ajouter l'auteur, le nom du projet, le numéro de version à package.json.\n3. Vous pouvez vouloir des dépendances différentes. Utilisez ` npm prune ` pour supprimer les déps non utilisés (facultatif)",
 		"writingConfig": "écriture de la configuration dans le nouveau fichier .lesrc: %1",
 		"configExists": ".lesrc existe déjà ... ne sera pas remplacé",
-		"errIncorrectRangeFmt": "Plage de ports mal formatée. Format en tant que -- range = début-fin"
+		"errIncorrectRangeFmt": "Plage de ports mal formatée. Format en tant que --plage=début-fin"
 	},
 	"options": {
 		"aide": {

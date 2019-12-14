@@ -14,7 +14,7 @@
 		"postInitNotes": "1. devam etmeden önce .gitignore ve git buradan init etmek isteyebilirsiniz (git init; git add.)\n2. Ppaket.json 'a yazar, proje adı, sürüm numarası eklemek isteyebilirsiniz.\n3. Farklı bağımlılıklar isteyebilirsiniz. Kullanılmayan depleri kaldırmak için ` npm prune ` kullan (isteğe bağlı)",
 		"writingConfig": "yapılanış yeni .lesrc dosyasına yazılıyor: %1",
 		"configExists": ".lesrc zaten var ... üzerine yazılmaz",
-		"errIncorrectRangeFmt": "kapı aralığı yanlış biçimlenmiş. Biçme -- aralık = başlangıç-bitiş"
+		"errIncorrectRangeFmt": "kapı aralığı yanlış biçimlenmiş. Biçme --aralık=başlangıç-bitiş"
 	},
 	"options": {
 		"yardım": {

@@ -14,7 +14,7 @@
 		"postInitNotes": "1. Es posible que desee inicializar .gitignore y git aquí antes de continuar (git init; git add.)\n2. Es posible que desee añadir el autor, el nombre de proyecto, el número de versión a package.json\n3. Es posible que desee dependencias diferentes. Utilizar ` npm prune ' para eliminar deps no utilizadas (opcional)",
 		"writingConfig": "escribiendo la configuración en el nuevo archivo .lesrc: %1",
 		"configExists": ".lesrc ya existent...no se sobrescribirá",
-		"errIncorrectRangeFmt": "el rango de puertos tiene un formato incorrecto Formato como -- range = start-end"
+		"errIncorrectRangeFmt": "el rango de puertos tiene un formato incorrecto Formato como --rango=inicio-fin"
 	},
 	"options": {
 		"ayuda": {

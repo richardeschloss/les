@@ -14,7 +14,7 @@
 		"postInitNotes": "1. Sinun kannattaa ehkä laittaa. Gitignore ja git täällä ennen jatkamista (git init, git add.)\n2. Saatat haluta lisätä tekijän, projektin nimen, version numeron pakkaukseen.json\n3. Saatat haluta erilaisia riippuvuuksia. Käyttämättömien deps: n poistaminen käytöstä (valinnainen)",
 		"writingConfig": "Config-tiedoston kirjoitus uuteen .lesc-tiedostoon: %1",
 		"configExists": ".lesrc on jo olemassa ... ei korvaa",
-		"errIncorrectRangeFmt": "Portin alue on virheellinen. Muoto -- kantama = alku-loppu"
+		"errIncorrectRangeFmt": "Portin alue on virheellinen. Muoto --vaihteluväli= alku-loppu"
 	},
 	"options": {
 		"apua": {
@@ -46,7 +46,7 @@
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"alue": {
+		"vaihteluväli": {
 			"desc": "Satamaalue (jos portti on otettu)",
 			"dflt": [
 				8000,

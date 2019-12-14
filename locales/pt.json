@@ -14,7 +14,7 @@
 		"postInitNotes": "1. Você pode querer infeitar .gitignore e git aqui antes de continuar (git init; git add.)\n2. Você pode querer adicionar autor, nome do projeto, número da versão para package.json\n3. Você pode querer dependências diferentes. Use ` npm prune ` para remover deps não utilizados (opcional)",
 		"writingConfig": "escrevendo config para novo arquivo .lesrc: %1",
 		"configExists": ".lesrc já existe ... não irá sobrescrever",
-		"errIncorrectRangeFmt": "faixa de porta formatada incorretamente. Formato como -- range = start-end"
+		"errIncorrectRangeFmt": "faixa de porta formatada incorretamente. Formato como --intervalo=start-end"
 	},
 	"options": {
 		"ajuda": {

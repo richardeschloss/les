@@ -14,7 +14,7 @@
 		"postInitNotes": "1. Než budete pokračovat (příkaz git init; git add), můžete před pokračováním zadat příkaz init .gitignore a git.)\n2. Možná budete chtít přidat autora, název projektu, číslo verze do package.json\n3. Můžete chtít jiné závislosti. Use ` npm prune ` to remove unused deps (optional)",
 		"writingConfig": "Zápis konfigurace do nového souboru .lesc:% 1",
 		"configExists": "Položka .lesrc již existuje ... nebude přepsána.",
-		"errIncorrectRangeFmt": "rozsah portů je nesprávně naformátován. Formát jako -- range = start-end"
+		"errIncorrectRangeFmt": "rozsah portů je nesprávně naformátován. Formát jako --rozsah=start-end"
 	},
 	"options": {
 		"nápověda": {

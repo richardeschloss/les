@@ -14,7 +14,7 @@
 		"postInitNotes": "1. S-ar putea sa vrei sa-l indrept .gitignore si git aici inainte de a continua (git init; git add.)\n2. S-ar putea să doriţi să adăugaţi autor, nume proiect, număr versiune la package.json\n3. S-ar putea să doriţi dependenţe diferite. Utilizaţi \"npm prune\" pentru a înlătura deps-ul nefolosit (opţional)",
 		"writingConfig": "scriere configuraţie în noul fişier .lesrc: %1",
 		"configExists": ".lesrc deja exist...nu va suprascrie",
-		"errIncorrectRangeFmt": "interval port incorect formatat. Format ca -- interval = start-end"
+		"errIncorrectRangeFmt": "interval port incorect formatat. Format ca --interval=start-end"
 	},
 	"options": {
 		"ajutor": {

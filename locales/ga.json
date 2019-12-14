@@ -14,7 +14,7 @@
 		"postInitNotes": "1. D' fhéadfadh tú gur mhaith leat a chur isteach .gitignore agus git anseo roimh leanúint ar aghaidh (git sé; git leis.)\n2. D' fhéadfadh tú ag iarraidh údar a chur leis, ainm tionscadail, uimhir leagan a phacagúe.json\n3. D' fhéadfadh tú a bheith ag iarraidh spleáchas éagsúla. Úsáid ` npm \" prune ` a úsáid deps gan úsáid (roghnach)",
 		"writingConfig": "Cumraíocht nua .lesrc:% 1",
 		"configExists": ".lesrc cheana féin ann ... Ní bheidh forscríobh",
-		"errIncorrectRangeFmt": "@ info: info Formáid mar -- raon = tosaigh-deireadh"
+		"errIncorrectRangeFmt": "port raon mícheart formáidithe. Formáid mar --raon= tús-deireadh"
 	},
 	"options": {
 		"cabhair": {
@@ -22,7 +22,7 @@
 			"desc": "Priontáil an roghchlár cabhrach seo",
 			"en_US": "help"
 		},
-		"@ info:": {
+		"proto": {
 			"desc": "Prótacal le húsáid",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
@@ -62,7 +62,7 @@
 			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"% 1": {
+		"watch": {
 			"alias": "w",
 			"desc": "Féach ar athruithe comhaid i dir [staticDir]",
 			"en_US": "watch"

@@ -14,7 +14,7 @@
 		"postInitNotes": "1. Du kanske vill init .gitignore och git här innan du fortsätter (git init ; git add.)\n2. Du kanske vill lägga till författare, projektnamn, versionsnummer till package.json\n3. Du kanske vill ha olika beroenden. Använd \"npm prune\" för att ta bort oanvända deppar (valfritt)",
 		"writingConfig": "skriva config till ny .lesrc-fil:% 1",
 		"configExists": ".lesrc redan existerar ... kommer inte att skriva över",
-		"errIncorrectRangeFmt": "portintervall som är felaktigt formaterade. Format som -- range = start-slut"
+		"errIncorrectRangeFmt": "portintervall som är felaktigt formaterade. Format som --intervall=start-slut"
 	},
 	"options": {
 		"hjälp": {

@@ -14,7 +14,7 @@
 		"postInitNotes": "1. Bevor Sie fortfahren möchten, können Sie .gitignore und git hier fortsetzen (git init; git add.)\n2. Fügen Sie den Autor, den Projektnamen, die Versionsnummer zu package.json hinzu.\n3. Sie können unterschiedliche Abhängigkeiten haben. Verwenden Sie \"npm prune\", um nicht verwendete deps zu entfernen (optional)",
 		"writingConfig": "Schreiben der Konfiguration in neue .lesrc-Datei: %1",
 		"configExists": ".lesrc bereits existen...wird nicht überschrieben",
-		"errIncorrectRangeFmt": "Portbereich falsch formatiert. Format als -- range = start-end"
+		"errIncorrectRangeFmt": "Portbereich falsch formatiert. Format als --bereich=start-ende"
 	},
 	"options": {
 		"hilfe": {

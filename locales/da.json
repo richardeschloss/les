@@ -14,7 +14,7 @@
 		"postInitNotes": "1. Du skal muligvis inkl. init .gitignore og git her, før du fortsætter (git init ; git add.)\n2. Du vil muligvis tilføje forfatter, projektnavn, versionsnummer til package.json\n3. Du vil muligvis have forskellige afhængigheder. Brug ` npm-beskæring \" for at fjerne ubrugte deps (valgfrit)",
 		"writingConfig": "Skrive config til ny .lesrc-fil: %1",
 		"configExists": ".lesrc allerede eksists...vil ikke overskrive",
-		"errIncorrectRangeFmt": "Portinterval er forkert formateret. Formatér som -- interval = start-end"
+		"errIncorrectRangeFmt": "Portinterval er forkert formateret. Formatér som --interval=start-end"
 	},
 	"options": {
 		"hjælp": {

@@ -14,7 +14,7 @@
 		"postInitNotes": "1. Možno budete chcieť inicializovať .gitignore a git tu predtým, než budete pokračovať (git init; git add.)\n2. Možno budete chcieť pridať autora, názov projektu, číslo verzie do package.json\n3. Možno budete chcieť rôzne závislosti. Použite ` npm prune ` na odstránenie nepoužívaných deps (voliteľné)",
 		"writingConfig": "zápis konfigurácie do nového súboru .lesrc: %1",
 		"configExists": ".lesrc už existuje...nebude prepísaný",
-		"errIncorrectRangeFmt": "nesprávne naformátovaný rozsah portov. Formátovať ako -- range = start-end"
+		"errIncorrectRangeFmt": "nesprávne naformátovaný rozsah portov. Formátovať ako --rozsah=start-end"
 	},
 	"options": {
 		"pomoc": {

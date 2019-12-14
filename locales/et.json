@@ -14,7 +14,7 @@
 		"postInitNotes": "1. Sa võid tahta init. gitignore ja git siin enne jätkamist (git init; git lisada.)\n2. Sa võid tahta lisada autori, projekti nime, versiooni numbri package.json\n3. Sa võid tahta erinevaid sõltuvusi. Kasuta ' npm prune ` to eemalda kasutamata deps (valikuline)",
 		"writingConfig": "Seadistuse kirjutamine uuele .lesrc-failile:% 1",
 		"configExists": ".lesrc juba eksistentsi...ei kirjuta üle",
-		"errIncorrectRangeFmt": "sadama vahemik valesti vormindatud. Vorming -- vahemik = algus-lõpp"
+		"errIncorrectRangeFmt": "sadama vahemik valesti vormindatud. Vorming --vahemik=algus-lõpp"
 	},
 	"options": {
 		"abi": {

@@ -1,6 +1,6 @@
 {
 	"msgs": {
-		"endOfHelp": "dnE fo dnE",
+		"endOfHelp": "نهاية المساعدة",
 		"usage": "استخدام",
 		"servingStaticDir": "خدمة dir استاتيكي %1",
 		"serverCfgsStarted": "تم بدء كل مواصفات وحدة الخدمة",
@@ -14,7 +14,7 @@
 		"postInitNotes": "1. قد ترغب في init .gtignore و git هنا قبل الاستمرار (git init ; git add.)\n2. قد ترغب في اضافة مؤلف ، اسم مشروع ، رقم النسخة الى package.json\n3. قد تريد ارتباطات مختلفة. استخدم 'npm prune' لازالة devps غير المستخدمة (اختياري)",
 		"writingConfig": "كتابة التوصيف الى ملف .sledc جديد : %1",
 		"configExists": ".slerc موجودة بالفعل ... لن يتم احلالها",
-		"errIncorrectRangeFmt": "تم تنسيق مدى المنفذ بطريقة غير صحيحة. النسق tamroF-range = dne-dne"
+		"errIncorrectRangeFmt": "منفذ المدى خطأ. تنسيق ك-المدى = بداية-نهاية"
 	},
 	"options": {
 		"المساعدة": {

@@ -14,7 +14,7 @@
 		"postInitNotes": "1. 您可能希望在继续之前初始化 .gitignore 和 git (git init; git add .)\n2. 您可能希望将作者，项目名称，版本号添加到 package.json\n3. 您可能需要不同的依赖关系。 使用 \"npm prune\" 除去未使用的 deps (可选)",
 		"writingConfig": "正在将配置写入新的 .lesrc 文件: %1",
 		"configExists": "已存在 .lesrc ... 将不会覆盖",
-		"errIncorrectRangeFmt": "端口范围未正确格式化。 格式为 --range=start-end"
+		"errIncorrectRangeFmt": "端口范围未正确格式化。 格式为 --范围=start-end"
 	},
 	"options": {
 		"帮": {
