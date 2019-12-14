@@ -3,8 +3,7 @@ import { resolve as pResolve } from 'path'
 import netstat from 'node-netstat'
 import { exec, spawn } from 'child_process'
 import { get as hGet } from 'https'
-import { getSupportedLangs, translateText } from 'les-utils/dist/language'
-import { promiseSeries } from 'les-utils/dist/promises'
+import { translateMany } from 'les-utils/dist/language'
 
 function attachSSL(cfgs) {
   const sslPair = {}
@@ -279,7 +278,7 @@ async function translateLocale(lang = 'es') {
       }
     })
 
-    const translatedMsgs = msgsResp.split(/;\s+/)
+    const translatedMsgs = msgsResp.split(/;\s*/)
     msgsOut = Object.keys(msgs).reduce((result, key, idx) => {
       result[key] = translatedMsgs[idx]
       return result
@@ -297,12 +296,66 @@ async function translateLocale(lang = 'es') {
 }
 
 async function translateLocales() {
-  const { langs } = await getSupportedLangs({})
-  const allLangs = Object.keys(langs)
-  return promiseSeries({
-    items: allLangs,
-    handleItem: translateLocale
-  })
+  console.log('translateLocales...')
+  const localeDflt = 'en'
+  const localeJson = `${__dirname}/locales/${localeDflt}.json`
+  const { default: imported } = await import(localeJson)
+  const { msgs, options } = imported
+
+  const msgsInKeys = Object.keys(msgs)
+  const msgsInValues = Object.values(msgs)
+
+  const optsInKeys = Object.keys(options)
+  const optsInValues = Object.values(options)
+  const optsInDescs = optsInValues.map(({ desc }) => desc)
+
+  const textIn = msgsInValues.concat(optsInKeys, optsInDescs)
+  const translatedLangs = []
+  await translateMany({
+    texts: textIn,
+    langs: 'all',
+    notify({ lang, result }) {
+      translatedLangs.push(lang)
+      const msgsResp = result.slice(0, msgsInValues.length)
+      const optsOutKeys = result.slice(
+        msgsInValues.length,
+        msgsInValues.length + optsInKeys.length
+      )
+      const optsOutDescs = result.slice(msgsInValues.length + optsInKeys.length)
+      const msgsOut = msgsInKeys.reduce((result, key, idx) => {
+        result[key] = msgsResp[idx]
+        return result
+      }, {})
+
+      const optsOut = optsOutKeys.reduce((result, key, idx) => {
+        const en_US = optsInKeys[idx]
+        const valKeys = Object.keys(optsInValues[idx])
+        valKeys.push('en_US')
+        const keyOut = !key.includes('-') ? key.toLowerCase() : en_US
+        result[keyOut] = valKeys.reduce((valObj, valKey) => {
+          if (valKey === 'en_US') {
+            valObj[valKey] = en_US
+          } else if (valKey === 'desc') {
+            valObj[valKey] = optsOutDescs[idx]
+          } else {
+            valObj[valKey] = optsInValues[idx][valKey]
+          }
+          return valObj
+        }, {})
+        return result
+      }, {})
+
+      const localeOut = `${__dirname}/locales/${lang}.json`
+      const localeJsonOut = { msgs: msgsOut, options: optsOut }
+      console.log(`saving locale ${lang} to ${localeOut}`)
+      writeFileSync(localeOut, JSON.stringify(localeJsonOut, null, '\t'))
+
+      return { optsOut, msgsOut }
+    }
+  }).catch(console.error)
+
+  console.log('translated', translatedLangs)
+  return translatedLangs
 }
 
 export {

@@ -1,76 +1,76 @@
 {
 	"msgs": {
-		"endOfHelp": "Final de Ajuda",
+		"endOfHelp": "Fim da Ajuda",
 		"usage": "uso",
-		"servingStaticDir": "servir estático dir %1",
-		"serverCfgsStarted": "servidor de Todas as configs iniciado",
+		"servingStaticDir": "servindo dir estática %1",
+		"serverCfgsStarted": "Todas as configs do servidor começaram",
 		"browserOpened": "navegador aberto",
-		"copyingFiles": "Copiar ficheiros a partir de: %1: %2",
-		"copiedFiles": "copiar arquivos",
-		"writingDeps": "elaboração de dependências para: %1",
-		"packageJsonExists": "%1 já existe...não vai substituir",
-		"installingDeps": "Instalar deps no %1",
-		"doneInit": "Done inicializar lesky app! Algumas notas:",
-		"postInitNotes": "1. Você pode querer init .gitignore e git aqui antes de continuar (git init",
-		"writingConfig": "git add .)\n2. Você pode querer adicionar autor, nome do projeto, o número da versão do pacote.json\n3. Você pode querer dependências diferentes. Use `npm podar` para remover não utilizados deps (opcional)",
-		"configExists": "escrita de configuração para o novo .lesrc arquivo: %1",
-		"errIncorrectRangeFmt": ".lesrc já existe...não vai substituir"
+		"copyingFiles": "Copiando arquivos de: %1 para: %2",
+		"copiedFiles": "Arquivos copiados",
+		"writingDeps": "gravando dependências para: %1",
+		"packageJsonExists": "%1 já existe ... não vai sobrescrever",
+		"installingDeps": "Instalando deps em %1",
+		"doneInit": "Feito inicializando app lesky! Algumas notas:",
+		"postInitNotes": "1. Você pode querer infeitar .gitignore e git aqui antes de continuar (git init; git add.)\n2. Você pode querer adicionar autor, nome do projeto, número da versão para package.json\n3. Você pode querer dependências diferentes. Use ` npm prune ` para remover deps não utilizados (opcional)",
+		"writingConfig": "escrevendo config para novo arquivo .lesrc: %1",
+		"configExists": ".lesrc já existe ... não irá sobrescrever",
+		"errIncorrectRangeFmt": "faixa de porta formatada incorretamente. Formato como -- range = start-end"
 	},
 	"options": {
 		"ajuda": {
 			"alias": "h",
-			"desc": "Imprimir esse menu de ajuda",
+			"desc": "Imprimir este menu de ajuda",
 			"en_US": "help"
 		},
 		"init": {
-			"alias": "eu",
-			"desc": "Init lesky no espaço de trabalho especificado pelo caminho, padrões para cwd",
-			"dflt": "[doença]",
+			"alias": "i",
+			"desc": "Init lesky na área de trabalho especificado por path, padrões para cwd",
+			"dflt": "[cwd]",
 			"en_US": "init"
 		},
 		"host": {
-			"alias": "uma",
-			"desc": "Endereço",
+			"alias": "a",
+			"desc": "Endereço para uso",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
 		"porta": {
 			"alias": "p",
-			"desc": "a Porta para usar",
+			"desc": "Porta a utilizar",
 			"dflt": 8080,
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protocolo de usar",
+			"desc": "Protocolo de uso",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
 		"intervalo": {
-			"desc": "Intervalo de porta (no caso a porta é tomada)",
+			"desc": "Porta Range (em caso de porta é tomada)",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslKey": {
-			"desc": "Caminho para a Chave SSL",
+		"sslkey": {
+			"desc": "Caminho para Chave SSL",
 			"en_US": "sslKey"
 		},
-		"sslCert": {
-			"desc": "Caminho para o Certificado SSL",
+		"sslcert": {
+			"desc": "Caminho para Certificado SSL",
 			"en_US": "sslCert"
 		},
-		"abrir": {
+		"aberto": {
 			"alias": "o",
-			"desc": "Open browser",
+			"desc": "Navegador aberto",
 			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"assistir": {
+		"assista": {
 			"alias": "w",
-			"desc": "Relógio para alterações de ficheiros no directório [staticDir]",
+			"desc": "Assista a mudanças de arquivo em dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

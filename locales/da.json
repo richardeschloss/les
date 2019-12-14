@@ -1,83 +1,76 @@
 {
 	"msgs": {
-		"endOfHelp": "Slutningen af Hjælp",
+		"endOfHelp": "Slut på hjælp",
 		"usage": "brug",
-		"servingStaticDir": "der vises statisk dir %1",
-		"serverCfgsStarted": "Alle server configs i gang",
-		"browserOpened": "- browseren åbnes, og Kopiering af filer: %1: %2, Kopieres filer, skriver afhængigheder til: %1",
-		"copyingFiles": "%1 findes allerede...vil ikke overskrive",
-		"copiedFiles": "Installation deps i %1",
-		"writingDeps": "Gjort initialisering lesky app! Nogle bemærkninger:",
-		"packageJsonExists": "1. Du måske ønsker at init .gitignore og git her, før du fortsætter (git init",
-		"installingDeps": "git add .)\n2. Du ønsker måske at tilføje forfatter, projekt-navn, version nummer til pakken.json\n3. Du vil måske forskellige afhængigheder. Brug `npm beskære \" for at fjerne ubrugte deps (valgfrit)",
-		"doneInit": "skrive config til nye .lesrc fil: %1",
-		"postInitNotes": ".lesrc allerede eksisterer...vil ikke overskrive"
+		"servingStaticDir": "servicerer statisk dir %1 %1",
+		"serverCfgsStarted": "Alle serverkonfigner er startet",
+		"browserOpened": "browser åbnet",
+		"copyingFiles": "Kopierer filer fra: %1 til: %2",
+		"copiedFiles": "Kopierede filer",
+		"writingDeps": "Skrivning af afhængigheder til: %1",
+		"packageJsonExists": "%1 findes allerede ... vil ikke overskrive",
+		"installingDeps": "Installerer deps i %1",
+		"doneInit": "Færdig med at initialisere en app til venstre! Nogle noter:",
+		"postInitNotes": "1. Du skal muligvis inkl. init .gitignore og git her, før du fortsætter (git init ; git add.)\n2. Du vil muligvis tilføje forfatter, projektnavn, versionsnummer til package.json\n3. Du vil muligvis have forskellige afhængigheder. Brug ` npm-beskæring \" for at fjerne ubrugte deps (valgfrit)",
+		"writingConfig": "Skrive config til ny .lesrc-fil: %1",
+		"configExists": ".lesrc allerede eksists...vil ikke overskrive",
+		"errIncorrectRangeFmt": "Portinterval er forkert formateret. Formatér som -- interval = start-end"
 	},
 	"options": {
-		"hjælpe": {
+		"hjælp": {
 			"alias": "h",
-			"desc": "Udskriv denne hjælp menu",
-			"da_dk": "hjælpe",
+			"desc": "Udskriv denne hjælpemenu",
 			"en_US": "help"
 		},
 		"init": {
-			"alias": "jeg",
-			"desc": "Init lesky i arbejdsrum, der er specificeret af stien, standard cwd",
+			"alias": "i",
+			"desc": "Init lesky in arbejdsområde specified by path, defaults to cwd",
 			"dflt": "[cwd]",
-			"da_dk": "init",
 			"en_US": "init"
 		},
 		"vært": {
-			"alias": "en",
-			"desc": " - Adresse til brug",
+			"alias": "a",
+			"desc": "Adresse",
 			"dflt": "localhost",
-			"da_dk": "host",
 			"en_US": "host"
 		},
-		"havnen": {
+		"port": {
 			"alias": "p",
-			"desc": "Port til at bruge",
+			"desc": "Port, der skal bruges",
 			"dflt": 8080,
-			"da_dk": "port",
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protokol for at bruge",
+			"desc": "Protokol til brug",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
-			"da_dk": "proto",
 			"en_US": "proto"
 		},
-		"range": {
-			"desc": "Port Range (i tilfælde af porten er taget)",
+		"interval": {
+			"desc": "Portinterval (i sagsport er taget)",
 			"dflt": [
 				8000,
 				9000
 			],
-			"da_dk": "vifte",
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Vejen til SSL Nøgle",
-			"da_dk": "sslKey",
+			"desc": "Sti til SSL-nøgle",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Vejen til SSL-Certifikat",
-			"da_dk": "sslCert",
+			"desc": "Sti til SSL-certifikat",
 			"en_US": "sslCert"
 		},
-		"åbne": {
+		"åben": {
 			"alias": "o",
-			"desc": "Åbn browseren",
+			"desc": "Åbn browser",
 			"dflt": "OS default",
-			"da_dk": "åbne",
 			"en_US": "open"
 		},
 		"se": {
 			"alias": "w",
-			"desc": "Se til filen ændringer i dir [staticDir]",
-			"da_dk": "se",
+			"desc": "Se efter filændringer i dir [ staticDir ]",
 			"en_US": "watch"
 		}
 	}

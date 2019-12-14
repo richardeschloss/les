@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Pagalbos pabaiga",
+		"usage": "naudojimas",
+		"servingStaticDir": "naudojamas statinis dir% 1",
+		"serverCfgsStarted": "Visas serveris konfigūruosė",
+		"browserOpened": "Naršyklė atidaryta",
+		"copyingFiles": "Kopijuoti failus iš:% 1 į:% 2",
+		"copiedFiles": "Kopijuoti failus",
+		"writingDeps": "Rašymas priklausomybei:% 1",
+		"packageJsonExists": "% 1 jau exists ... nebus perrašyti",
+		"installingDeps": "Įdiegti deps į% 1",
+		"doneInit": "Padaryti inicijuojant lesky app! Kai kurios pastabos:",
+		"postInitNotes": "1. Jūs galite norite init .gitignae ir git čia prieš tęsiant (git init; git pridėti.)\n2. Galbūt norite pridėti autoriaus, projekto pavadinimas, versijos numeris packade.json\n3. Galbūt norite skirtingų priklausomybių. Naudoti \"npm prune\" pašalinti nenaudojamas deps (neprivaloma)",
+		"writingConfig": "rašymas į naują. lesrc failas:% 1 config",
+		"configExists": ".lesrc jau exists ... nebus perrašyti",
+		"errIncorrectRangeFmt": "Prievadų intervalas neteisingai suformatuotas. Formatas -- diapazonas = start-end"
+	},
+	"options": {
+		"pagalba": {
+			"alias": "h",
+			"desc": "Spausdinti šį meniu",
+			"en_US": "help"
+		},
+		"int": {
+			"alias": "i",
+			"desc": "Init lesky in workspace indecled by take, event to cw",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"šeimininkas": {
+			"alias": "a",
+			"desc": "Adresas, kuriuo naudojamasi",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"uostas": {
+			"alias": "p",
+			"desc": "Naudoti prievadą",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"propritas": {
+			"desc": "Naudojamas protokolas",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"intervalas": {
+			"desc": "Prievadų intervalas (jei taikomas uostas)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslkey": {
+			"desc": "Kelias į SSL raktą",
+			"en_US": "sslKey"
+		},
+		"sslcert": {
+			"desc": "Kelias į SSL sertifikatą",
+			"en_US": "sslCert"
+		},
+		"atverti": {
+			"alias": "o",
+			"desc": "Atverti naršyklę",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"žiūrėti": {
+			"alias": "w",
+			"desc": "Žiūrėti failų pokyčius dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

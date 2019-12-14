@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "סוף העזרה",
+		"usage": "שימוש",
+		"servingStaticDir": "משרת dir סטאטי %1",
+		"serverCfgsStarted": "כל אנשי הסוד של השרת התחילו",
+		"browserOpened": "הדפדפן נפתח",
+		"copyingFiles": "העתקת קבצים מתוך: %1 עד: %2",
+		"copiedFiles": "קבצים מועתקים",
+		"writingDeps": "כתיבת תלויות אל: %1",
+		"packageJsonExists": "%1 כבר קיים ... לא יחליף",
+		"installingDeps": "התקנת עצות ב - %1",
+		"doneInit": "סיום אתחול אפליקציית lesky! הערות מסוימות:",
+		"postInitNotes": "1. ייתכן שתרצו init .gitignore וgit כאן לפני שתמשיכו (git init; git להוספה.)\n2. ייתכן שתרצו להוסיף מחבר, שם פרויקט, מספר גרסה עבור package.json\n3. ייתכן שתרצו תלויות שונות. שימוש ב 'npm לגזום' כדי לסלק דפס שאינו בשימוש (אופציונלי)",
+		"writingConfig": "כתיבת תצורה לקובץ .lesrc חדש: \\\\n %1",
+		"configExists": ".lesrc כבר קיים ... לא יחליף",
+		"errIncorrectRangeFmt": "טווח היציאות במבנה שגוי. עיצוב בתור -- טווח = התחלה-סיום"
+	},
+	"options": {
+		"עזרה": {
+			"alias": "h",
+			"desc": "הדפסת תפריט עזרה זה.",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky במרחב העבודה שצוין לפי נתיב, ברירת מחדל ל-cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"מארח": {
+			"alias": "a",
+			"desc": "כתובת לשימוש",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"נמל": {
+			"alias": "p",
+			"desc": "יציאה לשימוש",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"פרוטו": {
+			"desc": "פרוטוקול לשימוש",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"טווח": {
+			"desc": "טווח יציאה (יציאת מקרה מתבצעת)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "נתיב אל מפתח SSL",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "נתיב אל אישור SSL",
+			"en_US": "sslCert"
+		},
+		"פתוח": {
+			"alias": "o",
+			"desc": "פתיחת הדפדפן",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"שעון": {
+			"alias": "w",
+			"desc": "מעקב אחר שינויים בקובץ ב-dir [נתון סטטיסטי]",
+			"en_US": "watch"
+		}
+	}
+}

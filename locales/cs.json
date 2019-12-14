@@ -1,77 +1,76 @@
 {
 	"msgs": {
-		"endOfHelp": "Konec Pomoci",
-		"usage": "využití",
-		"servingStaticDir": "slouží statické dir %1",
-		"serverCfgsStarted": "Všechny serveru configs začal",
-		"browserOpened": "prohlížeč otevřel, Kopírování souborů z: %1: %2",
-		"copyingFiles": "Kopírovat soubory",
-		"copiedFiles": "psaní závislosti: %1",
-		"writingDeps": "%1 již existuje...nepřepíše",
-		"packageJsonExists": "Instalace deps v %1",
-		"installingDeps": "Provést inicializaci lesky app! Některé poznámky:",
-		"doneInit": "1. Možná budete chtít init .gitignore a git tady před pokračováním (git init",
-		"postInitNotes": "git add .)\n2. Možná budete chtít přidat autora, název projektu, číslo verze balíčku.json\n3. Možná budete chtít, různých závislostí. Použijte `npm prořezávat a odstraňte nepoužívané deps (volitelné)",
-		"writingConfig": "psaní config na nový .lesrc souboru: %1",
-		"configExists": ".lesrc již existuje, přepíše"
+		"endOfHelp": "Konec nápovědy",
+		"usage": "usage,",
+		"servingStaticDir": "obsluha statického adresáře% 1",
+		"serverCfgsStarted": "Všechny konfigurace serveru byly spuštěny",
+		"browserOpened": "otevřený prohlížeč",
+		"copyingFiles": "Kopírování souborů z:% 1 do:% 2",
+		"copiedFiles": "Zkopírované soubory",
+		"writingDeps": "probíhá zápis závislostí na:% 1",
+		"packageJsonExists": "% 1 již existuje...nebude přepsán",
+		"installingDeps": "Instalace deps v% 1",
+		"doneInit": "Dokončena inicializace aplikace lesky! Některé poznámky:",
+		"postInitNotes": "1. Než budete pokračovat (příkaz git init; git add), můžete před pokračováním zadat příkaz init .gitignore a git.)\n2. Možná budete chtít přidat autora, název projektu, číslo verze do package.json\n3. Můžete chtít jiné závislosti. Use ` npm prune ` to remove unused deps (optional)",
+		"writingConfig": "Zápis konfigurace do nového souboru .lesc:% 1",
+		"configExists": "Položka .lesrc již existuje ... nebude přepsána.",
+		"errIncorrectRangeFmt": "rozsah portů je nesprávně naformátován. Formát jako -- range = start-end"
 	},
 	"options": {
-		"pomoci": {
+		"nápověda": {
 			"alias": "h",
-			"desc": "Vytisknout pomocí menu",
+			"desc": "Vytisknout tuto nabídku nápovědy",
 			"en_US": "help"
 		},
-		"init": {
-			"alias": "",
-			"desc": "Init lesky v prostoru určeném cestu, výchozí cwd",
+		"inicializace": {
+			"alias": "i",
+			"desc": "Init nájemce v pracovním prostoru určeném cestou, výchozí hodnota je cwd",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"host": {
-			"alias": "",
+		"host (hostitel)": {
+			"alias": "a",
 			"desc": "Adresa k použití",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
-		"port": {
+		"port (port)": {
 			"alias": "p",
-			"desc": "Port",
+			"desc": "Port k použití",
 			"dflt": 8080,
-			"cs_cz": "port",
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protokol",
+			"desc": "Protokol k použití",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"range": {
-			"desc": "Rozsah Portů (v případě, že port je přijata)",
+		"rozsah": {
+			"desc": "Rozsah portů (v případě přijetí portu)",
 			"dflt": [
 				8000,
 				9000
 			],
-			"cs_cz": "rozsah",
 			"en_US": "range"
 		},
-		"sslKey": {
-			"desc": "Cesta k SSL Klíč",
+		"sslkey": {
+			"desc": "Cesta ke klíči zabezpečení SSL",
 			"en_US": "sslKey"
 		},
-		"sslCert": {
-			"desc": "Cesta k Certifikátu SSL",
+		"sslcert": {
+			"desc": "Cesta k certifikátu SSL",
 			"en_US": "sslCert"
 		},
 		"otevřít": {
 			"alias": "o",
 			"desc": "Otevřít prohlížeč",
-			"dflt": "OS jako výchozí",
+			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"dívat se": {
+		"hodinky": {
 			"alias": "w",
-			"desc": "Sledovat změny souborů v dir [staticDir]",
+			"desc": "Sledovat změny souboru v adresáři [ staticDir]",
 			"en_US": "watch"
 		}
 	}

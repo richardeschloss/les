@@ -2,83 +2,75 @@
 	"msgs": {
 		"endOfHelp": "Ende der Hilfe",
 		"usage": "Verwendung",
-		"servingStaticDir": "Auslieferung statischer dir %1",
-		"serverCfgsStarted": "Alle server-configs gestartet, browser geöffnet, das Kopieren von Dateien von: %1: %2",
-		"browserOpened": "Kopiert Dateien",
-		"copyingFiles": "schreiben von Abhängigkeiten: %1",
-		"copiedFiles": "%1 ist bereits vorhanden...wird nicht überschrieben",
-		"writingDeps": "die Installation deps in %1",
-		"packageJsonExists": "Done initializing lesky app! Einige Anmerkungen:",
-		"installingDeps": "1. Möchten Sie vielleicht init .gitignore und git hier, bevor Sie fortfahren (git init",
-		"doneInit": "git add .)\n2. Möglicherweise möchten Sie Autor, Projektname, Versionsnummer für das Paket an.json\n3. Möchten Sie vielleicht verschiedene Abhängigkeiten. Verwenden Sie `npm prune` zum entfernen von unbenutzten deps (optional)",
-		"postInitNotes": "schreiben der config auf \"neu\".lesrc Datei: %1",
-		"writingConfig": ".lesrc bereits vorhanden...nicht überschreiben"
+		"servingStaticDir": "Servieren des statischen Verzeichnisses %1",
+		"serverCfgsStarted": "Alle Server-Konfigurationen gestartet",
+		"browserOpened": "Browser geöffnet",
+		"copyingFiles": "Dateien werden kopiert von: %1 in: %2",
+		"copiedFiles": "Kopierte Dateien",
+		"writingDeps": "Abhängigkeiten schreiben an: %1",
+		"packageJsonExists": "%1 ist bereits vorhanden ... wird nicht überschrieben",
+		"installingDeps": "Deps in %1 installieren",
+		"doneInit": "Die Initialisierung der lesky-App erfolgt! Einige Anmerkungen:",
+		"postInitNotes": "1. Bevor Sie fortfahren möchten, können Sie .gitignore und git hier fortsetzen (git init; git add.)\n2. Fügen Sie den Autor, den Projektnamen, die Versionsnummer zu package.json hinzu.\n3. Sie können unterschiedliche Abhängigkeiten haben. Verwenden Sie \"npm prune\", um nicht verwendete deps zu entfernen (optional)",
+		"writingConfig": "Schreiben der Konfiguration in neue .lesrc-Datei: %1",
+		"configExists": ".lesrc bereits existen...wird nicht überschrieben",
+		"errIncorrectRangeFmt": "Portbereich falsch formatiert. Format als -- range = start-end"
 	},
 	"options": {
-		"help": {
+		"hilfe": {
 			"alias": "h",
-			"desc": "Drucken Sie diese Hilfe-Menü",
-			"de_de": "Hilfe",
+			"desc": "Dieses Hilfemenü drucken",
 			"en_US": "help"
 		},
-		"init": {
+		"initialisierung": {
 			"alias": "i",
-			"desc": "Init lesky im workspace angegebenen Pfad, standardmäßig cwd",
+			"desc": "Init lesky im Arbeitsbereich, der durch Pfad angegeben wird, wird standardmäßig auf 'cwd' gesetzt",
 			"dflt": "[cwd]",
-			"de_de": "init",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
-			"desc": "Adresse",
+			"desc": "Zu verwendende Adresse",
 			"dflt": "localhost",
-			"de_de": "host",
 			"en_US": "host"
 		},
 		"port": {
 			"alias": "p",
-			"desc": "Port",
+			"desc": "Zu benutzende Port",
 			"dflt": 8080,
-			"de_de": "port",
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protokoll",
+			"desc": "Zu verwendende Protokoll",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
-			"de_de": "proto",
 			"en_US": "proto"
 		},
-		"range": {
-			"desc": "Port-Bereich (im Fall port getroffen wird)",
+		"bereich": {
+			"desc": "Portbereich (im Fall, dass Port verwendet wird)",
 			"dflt": [
 				8000,
 				9000
 			],
-			"de_de": "range",
 			"en_US": "range"
 		},
-		"sslKey": {
-			"desc": "Pfad zu den SSL-Schlüssel",
-			"de_de": "sslKey",
+		"sslkey": {
+			"desc": "Pfad zum SSL-Schlüssel",
 			"en_US": "sslKey"
 		},
-		"sslCert": {
+		"sslcert": {
 			"desc": "Pfad zum SSL-Zertifikat",
-			"de_de": "sslCert",
 			"en_US": "sslCert"
 		},
-		"open": {
+		"öffnen": {
 			"alias": "o",
-			"desc": "browser Öffnen",
-			"dflt": "Betriebssystem",
-			"de_de": "open",
+			"desc": "Browser öffnen",
+			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"anschauen": {
+		"uhr": {
 			"alias": "w",
-			"desc": "Sehen Sie für die Datei-änderungen, die in dir [staticDir]",
-			"de_de": "Uhr",
+			"desc": "Achten Sie auf Dateiänderungen in dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

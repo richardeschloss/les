@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Súgó vége",
+		"usage": "Használat",
+		"servingStaticDir": "Statikus könyvtár kiszolgálása %1",
+		"serverCfgsStarted": "Minden kiszolgáló configs elindult",
+		"browserOpened": "Böngésző megnyitva",
+		"copyingFiles": "Fájlok másolása: %1 és %2 között",
+		"copiedFiles": "Másolt fájlok",
+		"writingDeps": "Függőségek írása: %1",
+		"packageJsonExists": "%1 már létezik ... nem fog felülírni",
+		"installingDeps": "A (z) %1 telepítése",
+		"doneInit": "A leszbi app inicializálása! Néhány megjegyzés:",
+		"postInitNotes": "1. Előfordulhat, hogy a folytatás előtt (git init; git hozzáadás).\n2. Lehet, hogy szerző, projektnév, verziószám a package.json számára.\n3. Lehet, hogy eltérő függőségeket szeretne. Használja a \"npm prune\" értéket a nem használt depók eltávolításához (elhagyható)",
+		"writingConfig": "Konfiguráció írása új .lesrc fájlba: %1",
+		"configExists": ".lesrc már exists...nem fogja felülírni",
+		"errIncorrectRangeFmt": "A porttartomány helytelenül formázott. Formátum: -- tartomány = start-end"
+	},
+	"options": {
+		"súgó": {
+			"alias": "h",
+			"desc": "A súgó menü nyomtatása",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "A (z) útvonal által megadott munkaterületen található init lesky, alapértelmezésben cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"hoszt": {
+			"alias": "a",
+			"desc": "Használandó cím",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Használandó port",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Használandó protokoll",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"tartomány": {
+			"desc": "Porttartomány (ha a port be van véve)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "SSL kulcs elérési útja",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "SSL tanúsítvány elérési útja",
+			"en_US": "sslCert"
+		},
+		"nyitott": {
+			"alias": "o",
+			"desc": "Böngésző megnyitása",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"óra": {
+			"alias": "w",
+			"desc": "Tekintse meg a (z) [staticDir] könyvtárban található fájlmódosításokat",
+			"en_US": "watch"
+		}
+	}
+}

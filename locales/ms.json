@@ -1,52 +1,53 @@
 {
 	"msgs": {
-		"endOfHelp": "Akhir Membantu",
+		"endOfHelp": "Penghujung Bantuan",
 		"usage": "penggunaan",
-		"servingStaticDir": "disediakan untuk statik dir %1, Semua pelayan konfigurasi mulai",
-		"serverCfgsStarted": "pelayar dibuka",
-		"browserOpened": "Menyalin fail-fail dari: %1: %2",
-		"copyingFiles": "Disalin fail",
-		"copiedFiles": "menulis kebergantungan: %1",
-		"writingDeps": "%1 sudah wujud...tidak akan menimpa",
-		"packageJsonExists": "Memasang deps dalam %1",
-		"installingDeps": "Dilakukan memulakan lesky aplikasi! Beberapa catatan:",
-		"doneInit": "1. Anda mungkin ingin init .gitignore dan git di sini sebelum meneruskan (git init",
-		"postInitNotes": "git tambah .)\n2. Kau mungkin ingin menambahkan penulis, projek nama, bilangan versi untuk pakej.barisan\n3. Anda mungkin ingin berbeza kebergantungan. Gunakan `memasang prune` untuk membuang yang tidak digunakan deps (pilihan)",
-		"writingConfig": "menulis konfigurasi untuk baru .lesrc file: %1",
-		"configExists": ".lesrc sudah wujud...tidak akan menimpa"
+		"servingStaticDir": "Melayani dir statik% 1",
+		"serverCfgsStarted": "Semua pelayan pelayan dimulakan",
+		"browserOpened": "pelayar dibuka",
+		"copyingFiles": "Menyalin fail dari:% 1 hingga:% 2",
+		"copiedFiles": "Salin fail",
+		"writingDeps": "Menulis dependensi ke:% 1",
+		"packageJsonExists": "% 1 sudah wujud ... tidak akan menulis ganti",
+		"installingDeps": "Memasang deps dalam% 1",
+		"doneInit": "Selesai mengawalkan aplikasi lesky! Beberapa nota:",
+		"postInitNotes": "1. Anda mungkin mahu awalkan .digit norgnore dan git di sini sebelum meneruskan (init git; nilai git.)\n2. Anda mungkin ingin menambah pengarang, nama projek, nombor versi ke pakej kakan.json\n3. Anda mungkin mahu dependensi yang berbeza. Guna ` npm prune ` untuk buang deps yang tidak digunakan (opsyenal)",
+		"writingConfig": "menulis konfig ke fail .lesrc baru:% 1",
+		"configExists": ".lesrc sudah wujud ... tidak akan menulis ganti",
+		"errIncorrectRangeFmt": "julat port tidak diformatkan dengan betul. Format sebagai -- range = start-end"
 	},
 	"options": {
 		"bantuan": {
 			"alias": "h",
-			"deskripsi": "Cetak ini menu bantuan",
+			"desc": "Cetak menu bantuan ini",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
-			"deskripsi": "Init lesky dalam ruang kerja yang ditetapkan oleh jalan, lalai untuk cwd",
+			"desc": "Lesky init dalam ruang kerja yang dinyatakan oleh laluan, lalai ke cwd",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"tuan rumah": {
+		"tuan_rumah": {
 			"alias": "a",
-			"deskripsi": "Alamat untuk menggunakan",
-			"dflt": "hos setempat",
+			"desc": "Alamat yang digunakan",
+			"dflt": "localhost",
 			"en_US": "host"
 		},
-		"pelabuhan": {
+		"port": {
 			"alias": "p",
-			"deskripsi": "Pelabuhan untuk menggunakan",
+			"desc": "Port untuk digunakan",
 			"dflt": 8080,
 			"en_US": "port"
 		},
-		"nabi": {
-			"deskripsi": "Protokol untuk menggunakan",
+		"untuk": {
+			"desc": "Protokol untuk digunakan",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"range": {
-			"deskripsi": "Pelabuhan Lingkungan (dalam kes pelabuhan diambil)",
+		"julat": {
+			"desc": "Julat port (dalam port kes diambil)",
 			"dflt": [
 				8000,
 				9000
@@ -54,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"deskripsi": "Jalan untuk SSI Utama",
+			"desc": "Laluan ke Kekunci SSL",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"deskripsi": "Jalan untuk SSI Sijil",
+			"desc": "Laluan ke Sijil SSL",
 			"en_US": "sslCert"
 		},
 		"buka": {
 			"alias": "o",
-			"deskripsi": "pelayar Terbuka",
+			"desc": "Buka pelayar",
 			"dflt": "OS default",
 			"en_US": "open"
 		},
 		"menonton": {
 			"alias": "w",
-			"deskripsi": "Perhatikan perubahan fail dalam dir [staticDir]",
+			"desc": "Perhatikan perubahan fail dalam dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

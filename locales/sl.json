@@ -1,86 +1,76 @@
 {
 	"msgs": {
-		"endOfHelp": "Konec Pomoč",
+		"endOfHelp": "Konec pomoči",
 		"usage": "uporaba",
-		"servingStaticDir": "strežbe statičnih dir %1",
-		"serverCfgsStarted": "Vse strežnik configs začel",
-		"browserOpened": "brskalnik odprt",
-		"copyingFiles": "Kopiranje datotek iz: %1: %2",
-		"copiedFiles": "Kopiranih datotek",
-		"writingDeps": "pisanje odvisnosti za: %1",
-		"packageJsonExists": "%1 že obstaja...ne bo prepiši",
-		"installingDeps": "Namestitev deps v %1",
-		"doneInit": "Done inicializacija lesky app! Nekatere opombe:",
-		"postInitNotes": "1. Morda boste želeli, da init .gitignore in git tukaj pred nadaljevanjem (git init",
-		"writingConfig": "git dodaj .)\n2. Morda boste želeli dodati avtorja, ime projekta, številko različice paketa.json\n3. Morda boste želeli, različnih odvisnosti. Uporaba \"nvc slivov\", da odstrani neuporabljene deps (neobvezno)",
-		"configExists": "pisanje config na novo .lesrc file: %1",
-		"errIncorrectRangeFmt": ".lesrc že obstaja...ne bo prepiši"
+		"servingStaticDir": "streženje statičnega imenika% 1",
+		"serverCfgsStarted": "Zagnani so bili vsi zaupi strežnikov",
+		"browserOpened": "odprt brskalnik",
+		"copyingFiles": "Kopiranje datotek iz: %1 v: %2",
+		"copiedFiles": "Prekopirane datoteke",
+		"writingDeps": "pisanje odvisnosti v:% 1",
+		"packageJsonExists": "% 1 že obstaja...ne bo prepisolo",
+		"installingDeps": "Nameščanje deps v% 1",
+		"doneInit": "Inicializacija aplikacije lesky je bila inicializirana! Nekaj opomb:",
+		"postInitNotes": "1. Morda boste pred nadaljevanjem (git init ; git add) morda želeli init .gitignore in git.)\n2. Morda boste želeli dodati avtorja, ime projekta, številko različice v package.json\n3. Morda boste želeli različne odvisnosti. Za odstranitev neuporabljenih odlompov uporabite \"npm prune\" (izbirno).",
+		"writingConfig": "pisanje konfiguracije v novo datoteko .lesrc: %1",
+		"configExists": ".lesrc že obstoječi ... ne bo prepisati",
+		"errIncorrectRangeFmt": "obseg vrat je nepravilno formatiran. Oblika zapisa kot -- range = start-end"
 	},
 	"options": {
 		"pomoč": {
 			"alias": "h",
-			"desc": "Natisni ta meni pomoč",
-			"sl": "na pomoč",
+			"desc": "Natisni ta meni pomoči",
 			"en_US": "help"
 		},
 		"init": {
-			"alias": "sem",
-			"desc": "Init lesky v workspace določi pot, privzete, da pathdepthrevisionerrorcwd",
-			"dflt": "[pathdepthrevisionerrorcwd]",
-			"sl": "init",
+			"alias": "i",
+			"desc": "Init lesky v delovnem prostoru, ki ga podaja pot, privzeta vrednost je cwd",
+			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"host": {
+		"gostitelj": {
 			"alias": "a",
 			"desc": "Naslov za uporabo",
 			"dflt": "localhost",
-			"sl": "host",
 			"en_US": "host"
 		},
 		"vrata": {
 			"alias": "p",
-			"desc": "Pristanišče za uporabo",
+			"desc": "Vrata za uporabo",
 			"dflt": 8080,
-			"sl": "pristanišče",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "Protokol za uporabo",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
-			"sl": "proto",
 			"en_US": "proto"
 		},
-		"razpon": {
-			"desc": "Vrata Obseg (v primeru vrat je vzeto)",
+		"obseg": {
+			"desc": "Območje vrat (v primeru, da so vrata sprejeta)",
 			"dflt": [
 				8000,
 				9000
 			],
-			"sl": "obseg",
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Pot do SSL Ključ",
-			"sl": "sslKey",
+			"desc": "Pot do ključa SSL",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Pot do SSL Certifikat",
-			"sl": "sslCert",
+			"desc": "Pot do potrdila SSL",
 			"en_US": "sslCert"
 		},
-		"open": {
+		"odpri": {
 			"alias": "o",
-			"desc": "Odprite brskalnik",
-			"dflt": "OS privzeto",
-			"sl": "odpri",
+			"desc": "Odpri brskalnik",
+			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"gledati": {
+		"ura": {
 			"alias": "w",
-			"desc": "Pazi za datoteko sprememb v dir [staticDir]",
-			"sl": "pazi",
+			"desc": "Oglejte si spremembe datoteke v imeniku [staticDir]",
 			"en_US": "watch"
 		}
 	}

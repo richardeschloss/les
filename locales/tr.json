@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Yardımın Sonu",
+		"usage": "kullanım",
+		"servingStaticDir": "hizmet veren durağan dzn %1",
+		"serverCfgsStarted": "Tüm sunucu yapılanışları başlatıldı",
+		"browserOpened": "tarayıcı açıldı",
+		"copyingFiles": "Dosyaların kopyalanması: %1-: %2",
+		"copiedFiles": "Kopyalanan dosyalar",
+		"writingDeps": "bağımlılıkların yazılması: %1",
+		"packageJsonExists": "%1 zaten var ... üzerine yazılmaz",
+		"installingDeps": "%1 içinde deps kuruluyor",
+		"doneInit": "Lesky uygulaması kullanıma hazırlanıyor! Bazı notlar:",
+		"postInitNotes": "1. devam etmeden önce .gitignore ve git buradan init etmek isteyebilirsiniz (git init; git add.)\n2. Ppaket.json 'a yazar, proje adı, sürüm numarası eklemek isteyebilirsiniz.\n3. Farklı bağımlılıklar isteyebilirsiniz. Kullanılmayan depleri kaldırmak için ` npm prune ` kullan (isteğe bağlı)",
+		"writingConfig": "yapılanış yeni .lesrc dosyasına yazılıyor: %1",
+		"configExists": ".lesrc zaten var ... üzerine yazılmaz",
+		"errIncorrectRangeFmt": "kapı aralığı yanlış biçimlenmiş. Biçme -- aralık = başlangıç-bitiş"
+	},
+	"options": {
+		"yardım": {
+			"alias": "h",
+			"desc": "Bu yardım menüsünü yazdır",
+			"en_US": "help"
+		},
+		"kullanımaHazırlama": {
+			"alias": "i",
+			"desc": "Yol tarafından belirtilen çalışma alanında lesky başlatma, varsayılan olarak cwd olarak",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"anasistem": {
+			"alias": "a",
+			"desc": "Kullanılacak adres",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"kapı": {
+			"alias": "p",
+			"desc": "Kullanılacak kapı",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Kullanılacak protokol",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"aralık": {
+			"desc": "Kapı Aralığı (kapı aralığı alınır)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "SSL Anahtarının Yolu",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "SSL Sertifikasının Yolu",
+			"en_US": "sslCert"
+		},
+		"aç": {
+			"alias": "o",
+			"desc": "Tarayıcıyı aç",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"izle": {
+			"alias": "w",
+			"desc": "Dizindeki dosya değişikliklerine dikkat et [ staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

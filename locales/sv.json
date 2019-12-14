@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Hjälp-Slut",
+		"usage": "användning",
+		"servingStaticDir": "serverar statisk katalog% 1",
+		"serverCfgsStarted": "Alla serverkonfigurningar har startat",
+		"browserOpened": "öppnad webbläsare",
+		"copyingFiles": "Kopierar filer från:% 1 till:% 2",
+		"copiedFiles": "Kopierade filer",
+		"writingDeps": "Skriver beroenden till:% 1",
+		"packageJsonExists": "%1 finns redan ... kommer inte att skrivas över",
+		"installingDeps": "Installerar deppar i% 1",
+		"doneInit": "Startar initiering av Lesky-appen! Några kommentarer:",
+		"postInitNotes": "1. Du kanske vill init .gitignore och git här innan du fortsätter (git init ; git add.)\n2. Du kanske vill lägga till författare, projektnamn, versionsnummer till package.json\n3. Du kanske vill ha olika beroenden. Använd \"npm prune\" för att ta bort oanvända deppar (valfritt)",
+		"writingConfig": "skriva config till ny .lesrc-fil:% 1",
+		"configExists": ".lesrc redan existerar ... kommer inte att skriva över",
+		"errIncorrectRangeFmt": "portintervall som är felaktigt formaterade. Format som -- range = start-slut"
+	},
+	"options": {
+		"hjälp": {
+			"alias": "h",
+			"desc": "Skriv ut den här hjälpmenyn",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky i arbetsyta som anges i sökvägen, standardvärden för cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"värd": {
+			"alias": "a",
+			"desc": "Adress att använda",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port att använda",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokoll att använda",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"intervall": {
+			"desc": "Portintervall (i ärendeport är upptagen)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslkey": {
+			"desc": "Sökväg till SSL-nyckel",
+			"en_US": "sslKey"
+		},
+		"sslcert": {
+			"desc": "Sökväg till SSL-certifikat",
+			"en_US": "sslCert"
+		},
+		"öppna": {
+			"alias": "o",
+			"desc": "Öppna webbläsare",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"klocka": {
+			"alias": "w",
+			"desc": "Titta efter filändringar i dir [ staticDir ]",
+			"en_US": "watch"
+		}
+	}
+}

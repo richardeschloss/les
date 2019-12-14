@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "說明結束",
+		"usage": "用法",
+		"servingStaticDir": "正在提供靜態目錄 %1",
+		"serverCfgsStarted": "已啟動所有伺服器配置",
+		"browserOpened": "已開啟瀏覽器",
+		"copyingFiles": "正在將檔案從%1 複製到： %2",
+		"copiedFiles": "已複製檔案",
+		"writingDeps": "將相依關係寫入： %1",
+		"packageJsonExists": "%1 已存在 ... 將不會改寫",
+		"installingDeps": "在 %1 中安裝 deps",
+		"doneInit": "已完成起始設定 lesky 應用程式！ 部分注意事項：",
+		"postInitNotes": "1. 在繼續之前，您可能要起始設定 .gitignore 及 git （git init； git add .）\n2. 您可能想要新增作者、專案名稱、版本號碼至 package.json\n3. 您可能想要不同的相依關係。 Use `npm prune` to remove 未用的 deps （選用）",
+		"writingConfig": "正在將配置寫入新的 .lesrc 檔案： %1",
+		"configExists": ".lesrc alreads exists...will not overwrite",
+		"errIncorrectRangeFmt": "埠範圍格式不正確。 格式為 --range=start-end"
+	},
+	"options": {
+		"幫忙": {
+			"alias": "h",
+			"desc": "列印此說明功能表",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "依路徑指定的工作區中的起始設定（ Init lesky ），預設為 cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"主機": {
+			"alias": "a",
+			"desc": "要使用的位址",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"港口": {
+			"alias": "p",
+			"desc": "要使用的埠",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"普羅託": {
+			"desc": "要使用的通訊協定",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"範圍": {
+			"desc": "埠範圍（在案例埠中）",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "SSL 金鑰的路徑",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "SSL 憑證的路徑",
+			"en_US": "sslCert"
+		},
+		"開": {
+			"alias": "o",
+			"desc": "開啟瀏覽器",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"觀看": {
+			"alias": "w",
+			"desc": "Watch for file changes in dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

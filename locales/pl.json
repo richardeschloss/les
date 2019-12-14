@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Koniec pomocy",
+		"usage": "użycie",
+		"servingStaticDir": "obsługuj statyczny katalog% 1",
+		"serverCfgsStarted": "Wszystkie konfiguracje serwera zostały uruchomione",
+		"browserOpened": "otwarto przeglądarkę",
+		"copyingFiles": "Kopiowanie plików z:% 1 do:% 2",
+		"copiedFiles": "Skopiowane pliki",
+		"writingDeps": "zapisywanie zależności do: %1",
+		"packageJsonExists": "% 1 już istnieje...nie nadpisze",
+		"installingDeps": "Instalowanie deps w% 1",
+		"doneInit": "Zakończono inicjowanie aplikacji lesky! Niektóre uwagi:",
+		"postInitNotes": "1. Przed kontynuacją (git init; git add) może zaistnieć potrzeba init .gitignore i git tutaj.\n2. Można dodać autora, nazwę projektu, numer wersji do pakietu package.json\n3. Może zaistnieć potrzeba różnych zależności. Użyj opcji ` npm prune `, aby usunąć nieużywane deps (opcjonalne)",
+		"writingConfig": "zapisywanie konfiguracji do nowego pliku .lesrc:% 1",
+		"configExists": ".lesrc już istnieje...nie nadpisze",
+		"errIncorrectRangeFmt": "zakres portów jest niepoprawnie sformatowany. Format as -- range = start-end"
+	},
+	"options": {
+		"pomoc": {
+			"alias": "h",
+			"desc": "Drukowanie tego menu pomocy",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Inicjuj lesky w obszarze roboczym określonym przez ścieżkę, domyślnie jest to cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host (host)": {
+			"alias": "a",
+			"desc": "Adres do użycia",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port do użycia",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokół do użycia",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"zakres": {
+			"desc": "Zakres portów (w przypadku gdy port jest przyjmowany)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslkey": {
+			"desc": "Ścieżka do klucza SSL",
+			"en_US": "sslKey"
+		},
+		"sslcert": {
+			"desc": "Ścieżka do certyfikatu SSL",
+			"en_US": "sslCert"
+		},
+		"otwarte": {
+			"alias": "o",
+			"desc": "Otwórz przeglądarkę",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"zegarek": {
+			"alias": "w",
+			"desc": "Obserwuj zmiany pliku w katalogu [ katalog_statyczni]",
+			"en_US": "watch"
+		}
+	}
+}

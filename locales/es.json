@@ -1,86 +1,76 @@
 {
 	"msgs": {
-		"endOfHelp": "Fin de Ayudar",
+		"endOfHelp": "Fin de la ayuda",
 		"usage": "uso",
-		"servingStaticDir": "la porción estática dir %1",
-		"serverCfgsStarted": "Todas servidor configuraciones comenzó",
+		"servingStaticDir": "sirviendo dir estático %1",
+		"serverCfgsStarted": "Se han iniciado todas las configuraciones del servidor",
 		"browserOpened": "navegador abierto",
-		"copyingFiles": "Copia de archivos desde: %1: %2",
-		"copiedFiles": "Copiado de archivos",
-		"writingDeps": "la escritura de las dependencias a: %1",
-		"packageJsonExists": "%1 ya existe...no sobrescribir",
-		"installingDeps": "la Instalación de deps en %1",
-		"doneInit": "Realiza la inicialización de lesky de la aplicación! Algunas notas:",
-		"postInitNotes": "1. Usted podría querer a init .gitignore y git aquí antes de continuar (git init",
-		"writingConfig": "git add .)\n2. Es posible que desee agregar autor, nombre del proyecto, número de versión del paquete.json\n3. Se pueden usar diferentes dependencias. El uso de `mecanismo nacional de prevención de ciruela` quitar sin utilizar deps (opcional)",
-		"configExists": "la escritura de configuración de nuevo .lesrc de archivo: %1",
-		"errIncorrectRangeFmt": ".lesrc ya existe...no sobrescribir"
+		"copyingFiles": "Copiando archivos de: %1 en: %2",
+		"copiedFiles": "Archivos copiados",
+		"writingDeps": "escribir dependencias en: %1",
+		"packageJsonExists": "%1 ya existe ... no se sobrescribirán",
+		"installingDeps": "Instalando deps en %1",
+		"doneInit": "Se ha terminado de inicializar la aplicación de lesky. Algunas notas:",
+		"postInitNotes": "1. Es posible que desee inicializar .gitignore y git aquí antes de continuar (git init; git add.)\n2. Es posible que desee añadir el autor, el nombre de proyecto, el número de versión a package.json\n3. Es posible que desee dependencias diferentes. Utilizar ` npm prune ' para eliminar deps no utilizadas (opcional)",
+		"writingConfig": "escribiendo la configuración en el nuevo archivo .lesrc: %1",
+		"configExists": ".lesrc ya existent...no se sobrescribirá",
+		"errIncorrectRangeFmt": "el rango de puertos tiene un formato incorrecto Formato como -- range = start-end"
 	},
 	"options": {
 		"ayuda": {
 			"alias": "h",
-			"desc": "Imprime este menú de ayuda",
-			"es_es": "ayuda",
+			"desc": "Imprimir este menú de ayuda",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
-			"desc": "Init lesky en el espacio de trabajo especificado por la ruta por defecto cwd",
+			"desc": "Init lesky en el espacio de trabajo especificado por la vía de acceso, toma el valor por omisión",
 			"dflt": "[cwd]",
-			"es_es": "init",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
-			"desc": "Dirección",
+			"desc": "Dirección a utilizar",
 			"dflt": "localhost",
-			"es_es": "host",
 			"en_US": "host"
 		},
 		"puerto": {
 			"alias": "p",
 			"desc": "Puerto a utilizar",
 			"dflt": 8080,
-			"es_es": "puerto",
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protocolo para el uso",
+			"desc": "Protocolo a utilizar",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
-			"es_es": "proto",
 			"en_US": "proto"
 		},
-		"intervalo": {
-			"desc": "Puerto serie (en caso de que el puerto se toma)",
+		"rango": {
+			"desc": "Rango de puertos (en caso de que se tome el puerto)",
 			"dflt": [
 				8000,
 				9000
 			],
-			"es_es": "rango",
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Ruta de acceso de la Clave SSL",
-			"es_es": "sslKey",
+			"desc": "Vía de acceso a clave SSL",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Ruta de acceso de Certificado SSL",
-			"es_es": "sslCert",
+			"desc": "Vía de acceso al certificado SSL",
 			"en_US": "sslCert"
 		},
-		"abierto": {
+		"abrir": {
 			"alias": "o",
-			"desc": "Abrir el navegador",
+			"desc": "Abrir navegador",
 			"dflt": "OS default",
-			"es_es": "abierto",
 			"en_US": "open"
 		},
 		"reloj": {
 			"alias": "w",
-			"desc": "Ver para los cambios de los archivos en el directorio [staticDir]",
-			"es_es": "ver",
+			"desc": "Ver los cambios de archivo en dir [ staticDir]",
 			"en_US": "watch"
 		}
 	}

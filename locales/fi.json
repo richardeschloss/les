@@ -1,76 +1,76 @@
 {
 	"msgs": {
-		"endOfHelp": "Lopussa Auttaa",
-		"usage": "käyttö",
-		"servingStaticDir": "palvelevat staattinen dir %1",
-		"serverCfgsStarted": "Kaikki palvelimen configs alkoi",
-		"browserOpened": "selaimen avata",
-		"copyingFiles": "Kopiointi tiedostoja: %1: %2",
-		"copiedFiles": "Kopioida tiedostoja",
-		"writingDeps": "kirjoittaa riippuvuudet: %1",
-		"packageJsonExists": "%1 on jo olemassa...ei korvaa",
-		"installingDeps": "Asentaminen deps %1",
-		"doneInit": "Tehnyt alustetaan lesky app! Joitakin huomautuksia:",
-		"postInitNotes": "1. Haluat ehkä init .gitignore ja git tänne, ennen kuin jatkat (git init",
-		"writingConfig": "git add .)\n2. Haluat ehkä lisätä tekijä, projektin nimi, version numero paketti.json\n3. Voisit eri riippuvuuksia. Käytä npm karsia` poistaa käyttämättömät deps (valinnainen)",
-		"configExists": "kirjallisesti config uusi .lesrc tiedosto: %1",
-		"errIncorrectRangeFmt": ".lesrc on jo olemassa...ei korvaa"
+		"endOfHelp": "Avun loppu",
+		"usage": "Käyttö",
+		"servingStaticDir": "Staattisen dir = %1",
+		"serverCfgsStarted": "Kaikki palvelimen kokoonpanotiedostot on aloitettu",
+		"browserOpened": "Selain avattu",
+		"copyingFiles": "Tiedostojen kopiointi: %1 to: %2",
+		"copiedFiles": "Kopioitu tiedosto",
+		"writingDeps": "Riippuvuuksien kirjoittaminen kohteeseen: %1",
+		"packageJsonExists": "%1 on jo olemassa.",
+		"installingDeps": "Kohteen %1 asennus on onnistunut",
+		"doneInit": "Alustussovelluksen alustus on valmis! Muutama huomautus:",
+		"postInitNotes": "1. Sinun kannattaa ehkä laittaa. Gitignore ja git täällä ennen jatkamista (git init, git add.)\n2. Saatat haluta lisätä tekijän, projektin nimen, version numeron pakkaukseen.json\n3. Saatat haluta erilaisia riippuvuuksia. Käyttämättömien deps: n poistaminen käytöstä (valinnainen)",
+		"writingConfig": "Config-tiedoston kirjoitus uuteen .lesc-tiedostoon: %1",
+		"configExists": ".lesrc on jo olemassa ... ei korvaa",
+		"errIncorrectRangeFmt": "Portin alue on virheellinen. Muoto -- kantama = alku-loppu"
 	},
 	"options": {
-		"help": {
-			"alias": "s",
-			"desc": "Tulosta tämä ohje-valikko",
+		"apua": {
+			"alias": "h",
+			"desc": "Tulosta tämä ohje",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
-			"desc": "Init lesky työtilan määritelty polku, oletuksena cwd",
-			"dflt": "[cwd -]",
+			"desc": "Jos työtila on määritetty polulla, oletusarvo on cwd",
+			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"host": {
+		"isäntä": {
 			"alias": "a",
 			"desc": "Osoite käyttää",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
-		"port": {
+		"satama": {
 			"alias": "p",
-			"desc": "Port käytössä",
+			"desc": "Portti käyttöön",
 			"dflt": 8080,
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protokolla käyttää",
+			"desc": "Pöytäkirjan käyttö",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"range": {
-			"desc": "Port Range (jos portti on otettu)",
+		"alue": {
+			"desc": "Satamaalue (jos portti on otettu)",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslKey": {
-			"desc": "Polku SSL-Avain",
+		"sslavain": {
+			"desc": "Reitti SSL-avaimeen",
 			"en_US": "sslKey"
 		},
-		"sslCert": {
-			"desc": "Polku SSL-Sertifikaatin",
+		"sslcert": {
+			"desc": "SSL-varmenteen polku",
 			"en_US": "sslCert"
 		},
-		"open": {
+		"avoin": {
 			"alias": "o",
 			"desc": "Avaa selain",
-			"dflt": "KÄYTTÖJÄRJESTELMÄ default",
+			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"watch": {
+		"katsella": {
 			"alias": "w",
-			"desc": "Tarkkaile tiedoston muutokset dir [staticDir]",
+			"desc": "Katso tiedoston muutoksia dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

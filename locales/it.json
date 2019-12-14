@@ -1,85 +1,76 @@
 {
 	"msgs": {
-		"endOfHelp": "Fine di Aiutare",
-		"usage": "uso",
-		"servingStaticDir": "statico dir %1",
-		"serverCfgsStarted": "Tutte le configurazioni server avviato, il browser aperto",
-		"browserOpened": "la Copia di file da: %1: %2",
-		"copyingFiles": "copia dei file",
-		"copiedFiles": "la scrittura di dipendenze: %1",
-		"writingDeps": "%1 esiste già...non sovrascrivere",
-		"packageJsonExists": "Installazione di deps in %1",
-		"installingDeps": "Fatto l'inizializzazione lesky app! Alcune note:",
-		"doneInit": "1. Si potrebbe desiderare di init .gitignore e git qui prima di continuare (git init",
-		"postInitNotes": "git add .)\n2. Si potrebbe desiderare di aggiungere autore, nome del progetto, il numero di versione del pacchetto.json\n3. Si potrebbe desiderare di diverse dipendenze. Utilizzare `npm prune \" per rimuovere inutilizzati deps (opzionale)",
-		"writingConfig": "scrittura di config di nuovo .lesrc file: %1",
-		"configExists": ".lesrc esiste già...non sovrascrivere"
+		"endOfHelp": "Fine della guida",
+		"usage": "utilizzo",
+		"servingStaticDir": "servire dir statica %1",
+		"serverCfgsStarted": "Tutti i server configs avviati",
+		"browserOpened": "browser aperto",
+		"copyingFiles": "Copia file da: %1 a: %2",
+		"copiedFiles": "File copiati",
+		"writingDeps": "scrittura dipendenze a: %1",
+		"packageJsonExists": "%1 già esistiti ... non sovrascriverà",
+		"installingDeps": "Installazione di deps in %1",
+		"doneInit": "Fatto inizializzare l'app lesky! Alcune note:",
+		"postInitNotes": "1. Si potrebbe desiderare init .gitignore e git qui prima di continuare (git init; git add.)\n2. Si potrebbe voler aggiungere l'autore, il nome del progetto, il numero di versione in package.json\n3. Si potrebbero desiderare dipendenze diverse. Usa ` npm prugne ` per rimuovere i deps inutilizzati (opzionali)",
+		"writingConfig": "scrittura di configurazione in nuovo file .lesrc: %1",
+		"configExists": ".lesrc già esists...non sovrascriverà",
+		"errIncorrectRangeFmt": "la gamma di porte formattata in modo non corretto. Formato come -- range = inizio - fine"
 	},
 	"options": {
 		"aiuto": {
 			"alias": "h",
 			"desc": "Stampa questo menu di aiuto",
-			"it_it": "aiuto",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
-			"desc": "Init lesky in area di lavoro specificato dal percorso, il default cwd",
+			"desc": "Init lesky nello spazio di lavoro specificato per percorso, default su cwd",
 			"dflt": "[cwd]",
-			"it_it": "init",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
-			"desc": "Indirizzo",
+			"desc": "Indirizzo da utilizzare",
 			"dflt": "localhost",
-			"it_it": "host",
 			"en_US": "host"
 		},
 		"porta": {
-			"alias": "la p",
-			"desc": "Porta",
+			"alias": "p",
+			"desc": "Porta da utilizzare",
 			"dflt": 8080,
-			"it_it": "la porta",
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protocollo per l'uso",
+			"desc": "Protocollo da utilizzare",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
-			"it_it": "proto",
 			"en_US": "proto"
 		},
-		"gamma": {
-			"desc": "Port Range (nel caso la porta è preso)",
+		"range": {
+			"desc": "Intervallo di porte (in caso è presa la porta)",
 			"dflt": [
 				8000,
 				9000
 			],
-			"it_it": "gamma",
 			"en_US": "range"
 		},
-		"sslKey": {
-			"desc": "Percorso di chiavi SSL",
-			"it_it": "sslKey",
+		"sslkey": {
+			"desc": "Percorso su chiave SSL",
 			"en_US": "sslKey"
 		},
-		"sslCert": {
-			"desc": "Percorso Certificato SSL",
-			"it_it": "sslCert",
+		"sslcert": {
+			"desc": "Percorso su Certificato SSL",
 			"en_US": "sslCert"
 		},
-		"open": {
+		"aperto": {
 			"alias": "o",
-			"desc": "Aprire un browser",
-			"dflt": "sistema operativo predefinito",
-			"it_it": "aprire",
+			"desc": "Browser aperto",
+			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"guardare": {
+		"orologio": {
 			"alias": "w",
-			"desc": "Guarda le modifiche apportate ai file nella dir [staticDir]",
-			"it_it": "watch",
+			"desc": "Watch per le modifiche dei file in dir [ staticDir]",
 			"en_US": "watch"
 		}
 	}
