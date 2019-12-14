@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 ya existe ... no se sobrescribirán",
 		"installingDeps": "Instalando deps en %1",
 		"doneInit": "Se ha terminado de inicializar la aplicación de lesky. Algunas notas:",
-		"postInitNotes": "1. Es posible que desee inicializar .gitignore y git aquí antes de continuar (git init; git add.)\n2. Es posible que desee añadir el autor, el nombre de proyecto, el número de versión a package.json\n3. Es posible que desee dependencias diferentes. Utilizar ` npm prune ' para eliminar deps no utilizadas (opcional)",
-		"writingConfig": "escribiendo la configuración en el nuevo archivo .lesrc: %1",
-		"configExists": ".lesrc ya existent...no se sobrescribirá",
-		"errIncorrectRangeFmt": "el rango de puertos tiene un formato incorrecto Formato como --rango=inicio-fin"
+		"postInitNotes": "1. Es posible que desee inicializar %1 aquí antes de continuar (%2)\n2. Es posible que desee añadir el autor, el nombre de proyecto, el número de versión a %3\n3. Es posible que desee dependencias diferentes. Utilice ` %4 ` para eliminar las deps no utilizadas (opcional)",
+		"writingConfig": "escribiendo la configuración en el nuevo archivo %1: %2",
+		"configExists": "%1 ya existe ... no se sobrescribirán",
+		"errIncorrectRangeFmt": "el rango de puertos tiene un formato incorrecto Formato como -- %1 = inicio-final"
 	},
 	"options": {
 		"ayuda": {
@@ -47,18 +47,18 @@
 			"en_US": "proto"
 		},
 		"rango": {
-			"desc": "Rango de puertos (en caso de que se tome el puerto)",
+			"desc": "Rango de puertos (en caso de que se tome el puerto). Formato como final de inicio",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslKey": {
+		"tecla sslkey": {
 			"desc": "Vía de acceso a clave SSL",
 			"en_US": "sslKey"
 		},
-		"sslCert": {
+		"sslcert": {
 			"desc": "Vía de acceso al certificado SSL",
 			"en_US": "sslCert"
 		},

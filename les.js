@@ -75,10 +75,14 @@ function CLI(cfg, msgs) {
   cfg['_'] = cfg['_'] || []
   function buildCliCfg(options) {
     const cliCfg = {}
+    let rangeKey = 'range'
     Object.entries(options).forEach(([option, { alias, en_US }]) => {
       const optionVal = cfg[option] || cfg[alias]
       if (optionVal) {
         if (en_US) {
+          if (en_US === 'range') {
+            rangeKey = option
+          }
           option = en_US
         }
         cliCfg[option] = optionVal
@@ -93,7 +97,12 @@ function CLI(cfg, msgs) {
           cliCfg.port = cliCfg.portRange[0]
         }
       } else {
-        throw new Error(msgs.errIncorrectRangeFmt)
+        throw new Error(
+          msgs.errIncorrectRangeFmt
+            .replace(/\s*%1/, rangeKey)
+            .replace(/\s*=\s*/, '=')
+            .replace(/\s+-\s+/, '-')
+        )
       }
     }
 
@@ -130,12 +139,14 @@ function CLI(cfg, msgs) {
 
     const destLesrcFile = pResolve(dest, '.lesrc')
     if (!existsSync(destLesrcFile)) {
-      console.log(msgs.writingConfig.replace('%1', destLesrcFile))
+      console.log(
+        msgs.writingConfig.replace('%1', '.lesrc').replace('%2', destLesrcFile)
+      )
       const lesCfg = [Object.assign({}, initCfg)]
       console.log('.lesrc:', lesCfg)
       writeFileSync(destLesrcFile, JSON.stringify(lesCfg, null, '  '))
     } else {
-      console.log(msgs.configExists)
+      console.log(msgs.configExists.replace('%1', '.lesrc'))
     }
     const skipFiles = ['bin', '.lesrc']
     const srcFiles = files
@@ -149,7 +160,13 @@ function CLI(cfg, msgs) {
     const { execSync } = await import('child_process')
     execSync('npm i', { stdio: [0, 1, 2] })
     console.log(msgs.doneInit)
-    console.log(msgs.postInitNotes)
+    console.log(
+      msgs.postInitNotes
+        .replace('%1', '.gitignore and git')
+        .replace('%2', 'git init; git add .')
+        .replace('%3', packageJson)
+        .replace('%4', 'npm prune')
+    )
     return 'done'
   }
 
