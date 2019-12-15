@@ -312,6 +312,7 @@ async function translateLocales() {
   const textIn = msgsInValues.concat(optsInKeys, optsInDescs)
   const translatedLangs = []
   await translateMany({
+    requestStyle: 'series',
     texts: textIn,
     langs: 'all',
     notify({ lang, result }) {
@@ -323,7 +324,7 @@ async function translateLocales() {
       )
       const optsOutDescs = result.slice(msgsInValues.length + optsInKeys.length)
       const msgsOut = msgsInKeys.reduce((result, key, idx) => {
-        result[key] = msgsResp[idx]
+        result[key] = msgsResp[idx].replace(/%\s*/g, '%')
         return result
       }, {})
 
