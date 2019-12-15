@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 existe déjà ... ne sera pas remplacé",
 		"installingDeps": "Installation des deps dans %1",
 		"doneInit": "Initialisation de l'application de la lésion terminée ! Quelques notes:",
-		"postInitNotes": "1. Vous pouvez souhaiter init .gitignore et git ici avant de continuer (git init ; git add.)\n2. Vous pouvez ajouter l'auteur, le nom du projet, le numéro de version à package.json.\n3. Vous pouvez vouloir des dépendances différentes. Utilisez ` npm prune ` pour supprimer les déps non utilisés (facultatif)",
-		"writingConfig": "écriture de la configuration dans le nouveau fichier .lesrc: %1",
-		"configExists": ".lesrc existe déjà ... ne sera pas remplacé",
-		"errIncorrectRangeFmt": "Plage de ports mal formatée. Format en tant que --plage=début-fin"
+		"postInitNotes": "1. Vous pouvez souhaiter init %1 ici avant de continuer (%2)\n2. Vous pouvez ajouter l'auteur, le nom du projet, le numéro de version à %3\n3. Vous pouvez vouloir des dépendances différentes. Utiliser ` %4 ` pour supprimer les deps non utilisés (facultatif)",
+		"writingConfig": "écriture de la configuration dans le nouveau fichier %1: %2",
+		"configExists": "%1 existe déjà ... ne sera pas remplacé",
+		"errIncorrectRangeFmt": "Plage de ports mal formatée. Format en tant que -- %1 = fin-début"
 	},
 	"options": {
 		"aide": {
@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"plage": {
-			"desc": "Plage de ports (au cas où le port est pris)",
+			"desc": "Plage de ports (au cas où le port est pris). Format comme début-fin",
 			"dflt": [
 				8000,
 				9000
@@ -68,7 +68,7 @@
 			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"regarder": {
+		"surveillance": {
 			"alias": "w",
 			"desc": "Surveillance des modifications de fichier dans le répertoire [ staticDir ]",
 			"en_US": "watch"

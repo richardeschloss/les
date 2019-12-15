@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 已存在 ... 将不会覆盖",
 		"installingDeps": "正在 %1 中安装 deps",
 		"doneInit": "已完成初始化 lesky 应用程序! 一些注释:",
-		"postInitNotes": "1. 您可能希望在继续之前初始化 .gitignore 和 git (git init; git add .)\n2. 您可能希望将作者，项目名称，版本号添加到 package.json\n3. 您可能需要不同的依赖关系。 使用 \"npm prune\" 除去未使用的 deps (可选)",
-		"writingConfig": "正在将配置写入新的 .lesrc 文件: %1",
-		"configExists": "已存在 .lesrc ... 将不会覆盖",
-		"errIncorrectRangeFmt": "端口范围未正确格式化。 格式为 --范围=start-end"
+		"postInitNotes": "1. 您可能要在此处初始化 %1 ，然后再继续 (%2)\n2. 您可能希望将作者，项目名称，版本号添加到 %3\n3. 您可能需要不同的依赖关系。 使用 \"%4\" 除去未使用的 deps (可选)",
+		"writingConfig": "正在将配置写入新的 %1 文件: %2",
+		"configExists": "%1 已存在 ... 将不会覆盖",
+		"errIncorrectRangeFmt": "端口范围未正确格式化。 格式为 --%1=开始 - 结束"
 	},
 	"options": {
 		"帮": {
@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"范围": {
-			"desc": "端口范围 ( 在使用端口时 )",
+			"desc": "端口范围 ( 在使用端口时 ) 。 格式化为开始 - 结束",
 			"dflt": [
 				8000,
 				9000

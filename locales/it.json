@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 già esistiti ... non sovrascriverà",
 		"installingDeps": "Installazione di deps in %1",
 		"doneInit": "Fatto inizializzare l'app lesky! Alcune note:",
-		"postInitNotes": "1. Si potrebbe desiderare init .gitignore e git qui prima di continuare (git init; git add.)\n2. Si potrebbe voler aggiungere l'autore, il nome del progetto, il numero di versione in package.json\n3. Si potrebbero desiderare dipendenze diverse. Usa ` npm prugne ` per rimuovere i deps inutilizzati (opzionali)",
-		"writingConfig": "scrittura di configurazione in nuovo file .lesrc: %1",
-		"configExists": ".lesrc già esists...non sovrascriverà",
-		"errIncorrectRangeFmt": "la gamma di porte formattata in modo non corretto. Formato come -- range = inizio - fine"
+		"postInitNotes": "1. Si potrebbe voler indire %1 qui prima di continuare (%2)\n2. Si potrebbe voler aggiungere l'autore, il nome del progetto, il numero di versione a %3\n3. Si potrebbero desiderare dipendenze diverse. Utilizzare ` %4 ` per rimuovere i deps inutilizzati (opzionali)",
+		"writingConfig": "scrittura di configurazione in nuovo file %1: %2",
+		"configExists": "%1 già esistiti ... non sovrascriverà",
+		"errIncorrectRangeFmt": "la gamma di porte formattata in modo non corretto. Formato come -- %1 = inizio - fine"
 	},
 	"options": {
 		"aiuto": {
@@ -47,18 +47,18 @@
 			"en_US": "proto"
 		},
 		"range": {
-			"desc": "Intervallo di porte (in caso è presa la porta)",
+			"desc": "Porta Range (in caso di porta di porta). Formato come inizio - fine",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslkey": {
+		"sslKey": {
 			"desc": "Percorso su chiave SSL",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Percorso su Certificato SSL",
 			"en_US": "sslCert"
 		},

@@ -11,10 +11,10 @@
 		"packageJsonExists": "% 1 jau exists ... nebus perrašyti",
 		"installingDeps": "Įdiegti deps į% 1",
 		"doneInit": "Padaryti inicijuojant lesky app! Kai kurios pastabos:",
-		"postInitNotes": "1. Jūs galite norite init .gitignae ir git čia prieš tęsiant (git init; git pridėti.)\n2. Galbūt norite pridėti autoriaus, projekto pavadinimas, versijos numeris packade.json\n3. Galbūt norite skirtingų priklausomybių. Naudoti \"npm prune\" pašalinti nenaudojamas deps (neprivaloma)",
-		"writingConfig": "rašymas į naują. lesrc failas:% 1 config",
-		"configExists": ".lesrc jau exists ... nebus perrašyti",
-		"errIncorrectRangeFmt": "Prievadų intervalas neteisingai suformatuotas. Formatas -- diapazonas = start-end"
+		"postInitNotes": "1. Prieš tęsiant (% 2), galite pageidauti insit% 1\n2. Galbūt norite pridėti autoriaus, projekto pavadinimą, versijos numerį iki% 3\n3. Galbūt norite skirtingų priklausomybių. Naudoti ¶ %4 ' pašalinti nenaudotus deps (pasirinktinai)",
+		"writingConfig": "% 1 failo įrašymas į naują% 1 failą:% 2",
+		"configExists": "% 1 jau exists ... nebus perrašyti",
+		"errIncorrectRangeFmt": "Prievadų intervalas neteisingai suformatuotas. Formatas, kaip --% 1 = start-end"
 	},
 	"options": {
 		"pagalba": {
@@ -47,18 +47,18 @@
 			"en_US": "proto"
 		},
 		"intervalas": {
-			"desc": "Prievadų intervalas (jei taikomas uostas)",
+			"desc": "Prievadų intervalas (jei taikomas uostas). Formatas nuo pradžios iki pabaigos",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslkey": {
+		"sslKey": {
 			"desc": "Kelias į SSL raktą",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Kelias į SSL sertifikatą",
 			"en_US": "sslCert"
 		},

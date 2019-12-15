@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 već postoji...neće pisati preko postojećeg",
 		"installingDeps": "Instaliram deps u% 1",
 		"doneInit": "Gotovo je inicijalizacija lesky aplikacije! Neke bilješke:",
-		"postInitNotes": "1. Možda ćete htjeti init .gitignore i doći ovdje prije nastavka (git init ; git dodajte.)\n2. Možda ćete htjeti dodati autora, ime projekta, broj verzije u package.json\n3. Možda ćete htjeti različite zavisnosti. Koristite 'npm prune' za uklanjanje nekorištenih depa (opcijski)",
-		"writingConfig": "pisanje config u novu .lesrc datoteku: %1",
-		"configExists": ".lesrc već postoji...neće pisati preko postojećeg",
-		"errIncorrectRangeFmt": "raspon portova neispravno formatiran. Format as -- range = start-end"
+		"postInitNotes": "1. Možda ćete htjeti staviti% 1 ovdje prije nastavka (% 2)\n2. Možda ćete htjeti dodati autora, ime projekta, broj verzije na %3\n3. Možda ćete htjeti različite zavisnosti. Koristite ` %4 ` za uklanjanje nekorištenih depa (opcijski)",
+		"writingConfig": "pisanje config na novu datoteku% 1:% 2",
+		"configExists": "%1 već postoji...neće pisati preko postojećeg",
+		"errIncorrectRangeFmt": "raspon portova neispravno formatiran. Format kao -- %1 = početak-kraj"
 	},
 	"options": {
 		"pomoć": {
@@ -47,18 +47,18 @@
 			"en_US": "proto"
 		},
 		"raspon": {
-			"desc": "Raspon portova (u portu predmeta se uzima)",
+			"desc": "Raspon portova (u portu predmeta se uzima). Format kao početak-kraj",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslkey": {
+		"sslKey": {
 			"desc": "Staza do SSL ključa",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Staza do SSL certifikata",
 			"en_US": "sslCert"
 		},

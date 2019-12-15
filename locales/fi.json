@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 on jo olemassa.",
 		"installingDeps": "Kohteen %1 asennus on onnistunut",
 		"doneInit": "Alustussovelluksen alustus on valmis! Muutama huomautus:",
-		"postInitNotes": "1. Sinun kannattaa ehkä laittaa. Gitignore ja git täällä ennen jatkamista (git init, git add.)\n2. Saatat haluta lisätä tekijän, projektin nimen, version numeron pakkaukseen.json\n3. Saatat haluta erilaisia riippuvuuksia. Käyttämättömien deps: n poistaminen käytöstä (valinnainen)",
-		"writingConfig": "Config-tiedoston kirjoitus uuteen .lesc-tiedostoon: %1",
-		"configExists": ".lesrc on jo olemassa ... ei korvaa",
-		"errIncorrectRangeFmt": "Portin alue on virheellinen. Muoto --vaihteluväli= alku-loppu"
+		"postInitNotes": "1. Jos haluat käyttää tätä arvoa %1, ennen jatkamista (%2)\n2. Voit haluta lisätä tekijän, projektin nimen, version numeron %3\n3. Saatat haluta erilaisia riippuvuuksia. Käytä \"%4\" käyttämättömien deppien poistoa (valinnainen)",
+		"writingConfig": "Kirjoittaa config uuteen %1 tiedostoon: %2",
+		"configExists": "%1 on jo olemassa.",
+		"errIncorrectRangeFmt": "Portin alue on virheellinen. Muotoilu = %1 = aloitus"
 	},
 	"options": {
 		"apua": {
@@ -46,19 +46,19 @@
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"vaihteluväli": {
-			"desc": "Satamaalue (jos portti on otettu)",
+		"alue": {
+			"desc": "Portin alue (jos portti on otettu). Muotoilu-lopete",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslavain": {
+		"sslKey": {
 			"desc": "Reitti SSL-avaimeen",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "SSL-varmenteen polku",
 			"en_US": "sslCert"
 		},

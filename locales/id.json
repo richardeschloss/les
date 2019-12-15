@@ -5,16 +5,16 @@
 		"servingStaticDir": "menyajikan dir statis %1",
 		"serverCfgsStarted": "Semua orang kepercayaan server mulai",
 		"browserOpened": "peramban dibuka",
-		"copyingFiles": "Menyalin berkas dari:% 1 ke:% 2",
+		"copyingFiles": "Menyalin berkas dari:%1 ke:%2",
 		"copiedFiles": "Berkas yang disalin",
-		"writingDeps": "menulis dependensi ke:% 1",
-		"packageJsonExists": "% 1 sudah eksisten...tidak akan menimpa",
-		"installingDeps": "Memasang deps di% 1",
+		"writingDeps": "menulis dependensi ke:%1",
+		"packageJsonExists": "%1 sudah eksisten...tidak akan menimpa",
+		"installingDeps": "Memasang deps di%1",
 		"doneInit": "Selesai menginisialisasi aplikasi lesky! Beberapa catatan:",
-		"postInitNotes": "1. Anda mungkin ingin init .gitignore dan git di sini sebelum melanjutkan (git init; git add.)\n2. Anda mungkin ingin menambahkan penulis, nama proyek, nomor versi untuk package.json\n3. Anda mungkin ingin dependensi yang berbeda. Gunakan ` npm prune ` untuk menghapus deps yang tidak digunakan (opsional)",
-		"writingConfig": "menulis konfigurasi ke berkas .lesrc baru:% 1",
-		"configExists": ".lesrc sudah exists...tidak akan overwrite",
-		"errIncorrectRangeFmt": "jangkauan port tidak benar diformat. Format sebagai -- range = start-end"
+		"postInitNotes": "1. Anda mungkin ingin init%1 di sini sebelum melanjutkan (%2)\n2. Anda mungkin ingin menambahkan penulis, nama proyek, nomor versi ke %3\n3. Anda mungkin ingin dependensi yang berbeda. Gunakan ` %4 ` untuk menghapus deps yang tidak digunakan (opsional)",
+		"writingConfig": "konfigurasi penulisan ke berkas%1 baru:%2",
+		"configExists": "%1 sudah eksisten...tidak akan menimpa",
+		"errIncorrectRangeFmt": "jangkauan port tidak benar diformat. Format sebagai --%1 = start-end"
 	},
 	"options": {
 		"bantuan": {
@@ -47,18 +47,18 @@
 			"en_US": "proto"
 		},
 		"jangkauan": {
-			"desc": "Jangkauan port (dalam kasus port diambil)",
+			"desc": "Jangkauan port (dalam kasus port diambil). Format sebagai start-end",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslkey": {
+		"sslKey": {
 			"desc": "Path ke Kunci SSL",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Path ke Sertifikat SSL",
 			"en_US": "sslCert"
 		},
@@ -68,7 +68,7 @@
 			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"menonton": {
+		"watch": {
 			"alias": "w",
 			"desc": "Perhatikan perubahan berkas di dir [staticDir]",
 			"en_US": "watch"

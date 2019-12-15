@@ -327,11 +327,18 @@ async function translateLocales() {
         return result
       }, {})
 
+      const badResp = new RegExp(/[!@#$%^&*(),.?":{}|<>'\-=\s]/)
+      const ignoreKeys = ['sslKey', 'sslCert']
       const optsOut = optsOutKeys.reduce((result, key, idx) => {
         const en_US = optsInKeys[idx]
         const valKeys = Object.keys(optsInValues[idx])
         valKeys.push('en_US')
-        const keyOut = !key.includes('-') ? key.toLowerCase() : en_US
+        let keyOut
+        if (!badResp.test(key) && !ignoreKeys.includes(en_US)) {
+          keyOut = key.toLowerCase()
+        } else {
+          keyOut = en_US
+        }
         result[keyOut] = valKeys.reduce((valObj, valKey) => {
           if (valKey === 'en_US') {
             valObj[valKey] = en_US

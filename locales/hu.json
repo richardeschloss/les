@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 már létezik ... nem fog felülírni",
 		"installingDeps": "A (z) %1 telepítése",
 		"doneInit": "A leszbi app inicializálása! Néhány megjegyzés:",
-		"postInitNotes": "1. Előfordulhat, hogy a folytatás előtt (git init; git hozzáadás).\n2. Lehet, hogy szerző, projektnév, verziószám a package.json számára.\n3. Lehet, hogy eltérő függőségeket szeretne. Használja a \"npm prune\" értéket a nem használt depók eltávolításához (elhagyható)",
-		"writingConfig": "Konfiguráció írása új .lesrc fájlba: %1",
-		"configExists": ".lesrc már exists...nem fogja felülírni",
-		"errIncorrectRangeFmt": "A porttartomány helytelenül formázott. Formátum: -- tartomány = start-end"
+		"postInitNotes": "1. Előfordulhat, hogy a folytatás előtt itt kívánja a (z) %1 elemet (%2)\n2. Író, projektnév, verziószám hozzáadása a következőhöz: %3\n3. Lehet, hogy eltérő függőségeket szeretne. A \"%4\" használata a nem használt depók eltávolításához (elhagyható)",
+		"writingConfig": "Konfiguráció írása új %1 fájlba: %2",
+		"configExists": "%1 már létezik ... nem fog felülírni",
+		"errIncorrectRangeFmt": "A porttartomány helytelenül formázott. Formátum: -- %1 = start-end"
 	},
 	"options": {
 		"súgó": {
@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"tartomány": {
-			"desc": "Porttartomány (ha a port be van véve)",
+			"desc": "Porttartomány (ha a port be van véve). Formátum kezdő végként",
 			"dflt": [
 				8000,
 				9000

@@ -11,10 +11,10 @@
 		"packageJsonExists": "% 1 on juba olemas ... ei kirjuta üle",
 		"installingDeps": "Silumine asukohas% 1",
 		"doneInit": "Tehtud initsialiseeriv lesbi app! Mõned märkused:",
-		"postInitNotes": "1. Sa võid tahta init. gitignore ja git siin enne jätkamist (git init; git lisada.)\n2. Sa võid tahta lisada autori, projekti nime, versiooni numbri package.json\n3. Sa võid tahta erinevaid sõltuvusi. Kasuta ' npm prune ` to eemalda kasutamata deps (valikuline)",
-		"writingConfig": "Seadistuse kirjutamine uuele .lesrc-failile:% 1",
-		"configExists": ".lesrc juba eksistentsi...ei kirjuta üle",
-		"errIncorrectRangeFmt": "sadama vahemik valesti vormindatud. Vorming --vahemik=algus-lõpp"
+		"postInitNotes": "1. Enne jätkamist (% 2)\n2. Sa võid lisada autori, projekti nime, versiooni numbri% 3\n3. Sa võid tahta erinevaid sõltuvusi. Kasuta '% 4 ` et eemaldada kasutamata kursid (pole kohustuslik)",
+		"writingConfig": "Seadistuse kirjutamine uuele% 1 failile:% 2",
+		"configExists": "% 1 on juba olemas ... ei kirjuta üle",
+		"errIncorrectRangeFmt": "sadama vahemik valesti vormindatud. Vorming nagu --% 1 = start-end"
 	},
 	"options": {
 		"abi": {
@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"vahemik": {
-			"desc": "Port Range (juhul, kui port on võetud)",
+			"desc": "Port Range (juhul, kui port on võetud). Vormindamine käivitamisena",
 			"dflt": [
 				8000,
 				9000

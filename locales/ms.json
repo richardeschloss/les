@@ -11,10 +11,10 @@
 		"packageJsonExists": "% 1 sudah wujud ... tidak akan menulis ganti",
 		"installingDeps": "Memasang deps dalam% 1",
 		"doneInit": "Selesai mengawalkan aplikasi lesky! Beberapa nota:",
-		"postInitNotes": "1. Anda mungkin mahu awalkan .digit norgnore dan git di sini sebelum meneruskan (init git; nilai git.)\n2. Anda mungkin ingin menambah pengarang, nama projek, nombor versi ke pakej kakan.json\n3. Anda mungkin mahu dependensi yang berbeza. Guna ` npm prune ` untuk buang deps yang tidak digunakan (opsyenal)",
-		"writingConfig": "menulis konfig ke fail .lesrc baru:% 1",
-		"configExists": ".lesrc sudah wujud ... tidak akan menulis ganti",
-		"errIncorrectRangeFmt": "julat port tidak diformatkan dengan betul. Format sebagai -- range = start-end"
+		"postInitNotes": "1. Anda mungkin ingin memulakan% 1 di sini sebelum meneruskan (% 2)\n2. Anda mungkin ingin menambah pengarang, nama projek, nombor versi ke% 3\n3. Anda mungkin mahu dependensi yang berbeza. Guna ` %4 ` untuk buang deps yang tidak digunakan (opsyenal)",
+		"writingConfig": "menulis konfig ke fail% 1 baru:% 2",
+		"configExists": "% 1 sudah wujud ... tidak akan menulis ganti",
+		"errIncorrectRangeFmt": "julat port tidak diformatkan dengan betul. Format sebagai --% 1 = start-end"
 	},
 	"options": {
 		"bantuan": {
@@ -28,7 +28,7 @@
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"tuan_rumah": {
+		"host": {
 			"alias": "a",
 			"desc": "Alamat yang digunakan",
 			"dflt": "localhost",
@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"julat": {
-			"desc": "Julat port (dalam port kes diambil)",
+			"desc": "Julat Port (dalam port kes diambil). Format sebagai permulaan-akhir",
 			"dflt": [
 				8000,
 				9000

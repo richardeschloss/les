@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 allerede eksistens...vil ikke overskrive",
 		"installingDeps": "Installere depper i %1",
 		"doneInit": "Ferdig med å initialisere lesky-app! Noen merknader:",
-		"postInitNotes": "1. Du ønsker kanskje å init .gitignore og git her før du fortsetter (git init ; git add.)\n2. Du ønsker kanskje å legge til forfatter, prosjektnavn, versjonsnummer til package.json\n3. Du vil kanskje ha forskjellige avhengigheter. Bruk ` npm prune ` å fjerne ubrukte depper (valgfritt)",
-		"writingConfig": "skrive konfig til ny .lesrc-fil: %1",
-		"configExists": ".lesrc allerede eksistens...vil ikke overskrive",
-		"errIncorrectRangeFmt": "portområde feilaktig formatert. Format som -- område = start-end"
+		"postInitNotes": "1. Du vil kanskje init %1 her før du fortsetter (%2)\n2. Du ønsker kanskje å legge til forfatter, prosjektnavn, versjonsnummer til %3\n3. Du vil kanskje ha forskjellige avhengigheter. Bruk ` %4 ` til å fjerne ubrukte deps (valgfritt)",
+		"writingConfig": "skrive konfig til ny %1 fil: %2",
+		"configExists": "%1 allerede eksistens...vil ikke overskrive",
+		"errIncorrectRangeFmt": "portområde feilaktig formatert. Format som -- %1 = Start-end"
 	},
 	"options": {
 		"hjelp": {
@@ -47,18 +47,18 @@
 			"en_US": "proto"
 		},
 		"område": {
-			"desc": "Havneområde (i sakshavn er tatt)",
+			"desc": "Havneområde (i saksport er tatt). Formater som start-end",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"ssløkkel": {
+		"sslKey": {
 			"desc": "Bane til SSL-nøkkel",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Bane til SSL-sertifikat",
 			"en_US": "sslCert"
 		},

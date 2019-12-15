@@ -11,10 +11,10 @@
 		"packageJsonExists": "% 1 již existuje...nebude přepsán",
 		"installingDeps": "Instalace deps v% 1",
 		"doneInit": "Dokončena inicializace aplikace lesky! Některé poznámky:",
-		"postInitNotes": "1. Než budete pokračovat (příkaz git init; git add), můžete před pokračováním zadat příkaz init .gitignore a git.)\n2. Možná budete chtít přidat autora, název projektu, číslo verze do package.json\n3. Můžete chtít jiné závislosti. Use ` npm prune ` to remove unused deps (optional)",
-		"writingConfig": "Zápis konfigurace do nového souboru .lesc:% 1",
-		"configExists": "Položka .lesrc již existuje ... nebude přepsána.",
-		"errIncorrectRangeFmt": "rozsah portů je nesprávně naformátován. Formát jako --rozsah=start-end"
+		"postInitNotes": "1. Než budete pokračovat (%2), můžete zde inicializovat %1.\n2. Možná budete chtít přidat autora, název projektu, číslo verze do %3\n3. Můžete chtít jiné závislosti. Použít '%4' pro odebrání nepoužívaných deps (volitelné)",
+		"writingConfig": "Zápis konfig do nového souboru% 1:% 2",
+		"configExists": "% 1 již existuje...nebude přepsán",
+		"errIncorrectRangeFmt": "rozsah portů je nesprávně naformátován. Formát jako -- %1 = začátek-konec"
 	},
 	"options": {
 		"nápověda": {
@@ -28,13 +28,13 @@
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"host (hostitel)": {
+		"host": {
 			"alias": "a",
 			"desc": "Adresa k použití",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
-		"port (port)": {
+		"port": {
 			"alias": "p",
 			"desc": "Port k použití",
 			"dflt": 8080,
@@ -47,18 +47,18 @@
 			"en_US": "proto"
 		},
 		"rozsah": {
-			"desc": "Rozsah portů (v případě přijetí portu)",
+			"desc": "Rozsah portů (v případě, že je port používán). Formát jako začátek-konec",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslkey": {
+		"sslKey": {
 			"desc": "Cesta ke klíči zabezpečení SSL",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Cesta k certifikátu SSL",
 			"en_US": "sslCert"
 		},

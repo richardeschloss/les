@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 já existe ... não vai sobrescrever",
 		"installingDeps": "Instalando deps em %1",
 		"doneInit": "Feito inicializando app lesky! Algumas notas:",
-		"postInitNotes": "1. Você pode querer infeitar .gitignore e git aqui antes de continuar (git init; git add.)\n2. Você pode querer adicionar autor, nome do projeto, número da versão para package.json\n3. Você pode querer dependências diferentes. Use ` npm prune ` para remover deps não utilizados (opcional)",
-		"writingConfig": "escrevendo config para novo arquivo .lesrc: %1",
-		"configExists": ".lesrc já existe ... não irá sobrescrever",
-		"errIncorrectRangeFmt": "faixa de porta formatada incorretamente. Formato como --intervalo=start-end"
+		"postInitNotes": "1. Você pode querer inê-lo %1 aqui antes de continuar (%2)\n2. Você pode querer adicionar autor, nome do projeto, número da versão a %3\n3. Você pode querer dependências diferentes. Use ` %4 ` para remover deps não utilizados (opcional)",
+		"writingConfig": "escrevendo config para novo arquivo %1: %2",
+		"configExists": "%1 já existe ... não vai sobrescrever",
+		"errIncorrectRangeFmt": "faixa de porta formatada incorretamente. Formato como -- %1 = start-end"
 	},
 	"options": {
 		"ajuda": {
@@ -47,18 +47,18 @@
 			"en_US": "proto"
 		},
 		"intervalo": {
-			"desc": "Porta Range (em caso de porta é tomada)",
+			"desc": "Port Range (em porta de caso é tomada). Formato como start-end",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslkey": {
+		"sslKey": {
 			"desc": "Caminho para Chave SSL",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Caminho para Certificado SSL",
 			"en_US": "sslCert"
 		},

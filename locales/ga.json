@@ -2,19 +2,19 @@
 	"msgs": {
 		"endOfHelp": "Deireadh na cabhrach",
 		"usage": "úsáid",
-		"servingStaticDir": "ag freastal ar% 1",
+		"servingStaticDir": "ag freastal ar%1",
 		"serverCfgsStarted": "Tús na cumraíochta freastalaí go léir",
 		"browserOpened": "brabhsálaí oscailte",
-		"copyingFiles": "Comhaid á gcóipeáil ó:% 1 go:% 2",
+		"copyingFiles": "Comhaid á gcóipeáil ó:%1 go:%2",
 		"copiedFiles": "Comhaid Chópiáilte",
-		"writingDeps": "Spleáchas ag brath go dtí:% 1",
+		"writingDeps": "Spleáchas ag brath go dtí:%1",
 		"packageJsonExists": "@ info: action",
-		"installingDeps": "Deps á shuiteáil i% 1",
+		"installingDeps": "Deps á shuiteáil i%1",
 		"doneInit": "Déanta app lesky á thúsú! Roinnt nótaí:",
-		"postInitNotes": "1. D' fhéadfadh tú gur mhaith leat a chur isteach .gitignore agus git anseo roimh leanúint ar aghaidh (git sé; git leis.)\n2. D' fhéadfadh tú ag iarraidh údar a chur leis, ainm tionscadail, uimhir leagan a phacagúe.json\n3. D' fhéadfadh tú a bheith ag iarraidh spleáchas éagsúla. Úsáid ` npm \" prune ` a úsáid deps gan úsáid (roghnach)",
-		"writingConfig": "Cumraíocht nua .lesrc:% 1",
-		"configExists": ".lesrc cheana féin ann ... Ní bheidh forscríobh",
-		"errIncorrectRangeFmt": "port raon mícheart formáidithe. Formáid mar --raon= tús-deireadh"
+		"postInitNotes": "1. D' fhéadfadh tú gur mhaith leat%1 a ionadh anseo roimh leanúint (%2)\n2. D' fhéadfadh tú ag iarraidh údar a chur leis, ainm tionscadail, uimhir leagan chuig% 3\n3. D' fhéadfadh tú a bheith ag iarraidh spleáchas éagsúla. Úsáid `% 4 ' chun deps gan úsáid a bhaint (roghnach)",
+		"writingConfig": "Cumraíocht nua%1 á chumrú:%2",
+		"configExists": "@ info: action",
+		"errIncorrectRangeFmt": "@ info: info Formáid mar --%1 = tosaigh-deireadh"
 	},
 	"options": {
 		"cabhair": {
@@ -22,11 +22,11 @@
 			"desc": "Priontáil an roghchlár cabhrach seo",
 			"en_US": "help"
 		},
-		"proto": {
-			"desc": "Prótacal le húsáid",
-			"dflt": "http",
-			"limitTo": "{ http, https, http2 }",
-			"en_US": "proto"
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky i spás oibre sonraithe ag conair, lochtanna le cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
 		},
 		"óstríomhaire": {
 			"alias": "a",
@@ -40,8 +40,14 @@
 			"dflt": 8080,
 			"en_US": "port"
 		},
+		"proto": {
+			"desc": "Prótacal le húsáid",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
 		"raon": {
-			"desc": "Raon an Phoirt (i gcás port a tógadh)",
+			"desc": "Raon an Phoirt (i gcás port a tógadh). Formáid mar a thosaíonn-deireadh",
 			"dflt": [
 				8000,
 				9000
@@ -52,7 +58,7 @@
 			"desc": "Conair go Eochair SSL",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Conair go Teastas SSL",
 			"en_US": "sslCert"
 		},

@@ -2,19 +2,19 @@
 	"msgs": {
 		"endOfHelp": "Konec pomoči",
 		"usage": "uporaba",
-		"servingStaticDir": "streženje statičnega imenika% 1",
+		"servingStaticDir": "streženje statičnega imenika%1",
 		"serverCfgsStarted": "Zagnani so bili vsi zaupi strežnikov",
 		"browserOpened": "odprt brskalnik",
 		"copyingFiles": "Kopiranje datotek iz: %1 v: %2",
 		"copiedFiles": "Prekopirane datoteke",
-		"writingDeps": "pisanje odvisnosti v:% 1",
-		"packageJsonExists": "% 1 že obstaja...ne bo prepisolo",
-		"installingDeps": "Nameščanje deps v% 1",
+		"writingDeps": "pisanje odvisnosti v:%1",
+		"packageJsonExists": "%1 že obstaja...ne bo prepisolo",
+		"installingDeps": "Nameščanje deps v%1",
 		"doneInit": "Inicializacija aplikacije lesky je bila inicializirana! Nekaj opomb:",
-		"postInitNotes": "1. Morda boste pred nadaljevanjem (git init ; git add) morda želeli init .gitignore in git.)\n2. Morda boste želeli dodati avtorja, ime projekta, številko različice v package.json\n3. Morda boste želeli različne odvisnosti. Za odstranitev neuporabljenih odlompov uporabite \"npm prune\" (izbirno).",
-		"writingConfig": "pisanje konfiguracije v novo datoteko .lesrc: %1",
-		"configExists": ".lesrc že obstoječi ... ne bo prepisati",
-		"errIncorrectRangeFmt": "obseg vrat je nepravilno formatiran. Oblika zapisa kot --obseg=start-end"
+		"postInitNotes": "1. Preden nadaljujete (%2), boste morda želeli v tem%1.\n2. Morda boste želeli dodati avtorja, ime projekta, številko različice v %3\n3. Morda boste želeli različne odvisnosti. Uporabite ` %4 ', da odstranite neuporabljene razhroščali (izbirno)",
+		"writingConfig": "pisanje konfiguracije v novo datoteko %1: %2",
+		"configExists": "%1 že obstaja...ne bo prepisolo",
+		"errIncorrectRangeFmt": "obseg vrat je nepravilno formatiran. Oblika kot --%1 = začetek-konec"
 	},
 	"options": {
 		"pomoč": {
@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"obseg": {
-			"desc": "Območje vrat (v primeru, da so vrata sprejeta)",
+			"desc": "Območje vrat (v primeru, če so vrata sprejeta). Oblika kot začetna-konec",
 			"dflt": [
 				8000,
 				9000

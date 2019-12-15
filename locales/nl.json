@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 bestaat al ... zal niet overschrijven",
 		"installingDeps": "Bezig met installeren van deps in %1",
 		"doneInit": "Klaar met initialiseren lesky app! Enkele opmerkingen:",
-		"postInitNotes": "1. Je zou hier misschien .gitignore en git willen initialiseren voordat je verdergaat (git init; git add.)\n2. Mogelijk wilt u auteur, projectnaam, versienummer toevoegen aan package.json\n3. Mogelijk wilt u verschillende afhankelijkheden. Gebruik 'npm prune' om ongebruikte deps te verwijderen (optioneel)",
-		"writingConfig": "schrijven config naar nieuw .lesrc bestand: %1",
-		"configExists": ".lesrc al bestaande ... zal niet overschrijven",
-		"errIncorrectRangeFmt": "Het poortbereik is onjuist ingedeeld. Indeling als -- range = begin-einde"
+		"postInitNotes": "1. U wilt hier %1 initialiseren voordat u verdergaat (%2)\n2. Mogelijk wilt u auteur, projectnaam, versienummer toevoegen aan %3\n3. Mogelijk wilt u verschillende afhankelijkheden. Gebruik ` %4 ' om ongebruikte deps te verwijderen (optioneel)",
+		"writingConfig": "schrijven config naar nieuw %1 bestand: %2",
+		"configExists": "%1 bestaat al ... zal niet overschrijven",
+		"errIncorrectRangeFmt": "Het poortbereik is onjuist ingedeeld. Formaat als -- %1 = begin-einde"
 	},
 	"options": {
 		"help": {
@@ -47,18 +47,18 @@
 			"en_US": "proto"
 		},
 		"bereik": {
-			"desc": "Poortbereik (in de zaakpoort)",
+			"desc": "Poortbereik (in de zaakpoort). Indeling als begin-einde",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslkey": {
+		"sslKey": {
 			"desc": "Pad naar SSL-sleutel",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Pad naar SSL-certificaat",
 			"en_US": "sslCert"
 		},

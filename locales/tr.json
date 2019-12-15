@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 zaten var ... üzerine yazılmaz",
 		"installingDeps": "%1 içinde deps kuruluyor",
 		"doneInit": "Lesky uygulaması kullanıma hazırlanıyor! Bazı notlar:",
-		"postInitNotes": "1. devam etmeden önce .gitignore ve git buradan init etmek isteyebilirsiniz (git init; git add.)\n2. Ppaket.json 'a yazar, proje adı, sürüm numarası eklemek isteyebilirsiniz.\n3. Farklı bağımlılıklar isteyebilirsiniz. Kullanılmayan depleri kaldırmak için ` npm prune ` kullan (isteğe bağlı)",
-		"writingConfig": "yapılanış yeni .lesrc dosyasına yazılıyor: %1",
-		"configExists": ".lesrc zaten var ... üzerine yazılmaz",
-		"errIncorrectRangeFmt": "kapı aralığı yanlış biçimlenmiş. Biçme --aralık=başlangıç-bitiş"
+		"postInitNotes": "1. Devam etmeden önce (%2) burada %1 kullanıma hazırlamayı isteyebilirsiniz.\n2. Yazar, proje adı, sürüm numarası %3 olarak eklemek isteyebilirsiniz.\n3. Farklı bağımlılıklar isteyebilirsiniz. Kullanılmayan depleri kaldırmak için ` %4 ` kullanın (isteğe bağlı)",
+		"writingConfig": "yapılandırmayı yeni %1 dosyasına yazma: %2",
+		"configExists": "%1 zaten var ... üzerine yazılmaz",
+		"errIncorrectRangeFmt": "kapı aralığı yanlış biçimlenmiş. -- %1 = başlangıç sonu olarak biçimle"
 	},
 	"options": {
 		"yardım": {
@@ -22,7 +22,7 @@
 			"desc": "Bu yardım menüsünü yazdır",
 			"en_US": "help"
 		},
-		"kullanımaHazırlama": {
+		"init": {
 			"alias": "i",
 			"desc": "Yol tarafından belirtilen çalışma alanında lesky başlatma, varsayılan olarak cwd olarak",
 			"dflt": "[cwd]",
@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"aralık": {
-			"desc": "Kapı Aralığı (kapı aralığı alınır)",
+			"desc": "Kapı Aralığı (kapı aralığı alınır). Başlangıç sonu olarak biçimle",
 			"dflt": [
 				8000,
 				9000

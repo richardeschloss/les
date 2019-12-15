@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 findes allerede ... vil ikke overskrive",
 		"installingDeps": "Installerer deps i %1",
 		"doneInit": "Færdig med at initialisere en app til venstre! Nogle noter:",
-		"postInitNotes": "1. Du skal muligvis inkl. init .gitignore og git her, før du fortsætter (git init ; git add.)\n2. Du vil muligvis tilføje forfatter, projektnavn, versionsnummer til package.json\n3. Du vil muligvis have forskellige afhængigheder. Brug ` npm-beskæring \" for at fjerne ubrugte deps (valgfrit)",
-		"writingConfig": "Skrive config til ny .lesrc-fil: %1",
-		"configExists": ".lesrc allerede eksists...vil ikke overskrive",
-		"errIncorrectRangeFmt": "Portinterval er forkert formateret. Formatér som --interval=start-end"
+		"postInitNotes": "1. Du vil muligvis inkl. %1 her, før du fortsætter (%2)\n2. Du vil muligvis tilføje forfatter, projektnavn, versionsnummer til %3\n3. Du vil muligvis have forskellige afhængigheder. Brug ` %4 ` til at fjerne ubrugte deps (valgfrit)",
+		"writingConfig": "Skrivning af config til ny %1 fil: %2",
+		"configExists": "%1 findes allerede ... vil ikke overskrive",
+		"errIncorrectRangeFmt": "Portinterval er forkert formateret. Format som -- %1 = start-end"
 	},
 	"options": {
 		"hjælp": {
@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"interval": {
-			"desc": "Portinterval (i sagsport er taget)",
+			"desc": "Portinterval (i sagsport er taget). Formatér som start-end",
 			"dflt": [
 				8000,
 				9000

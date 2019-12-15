@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 ist bereits vorhanden ... wird nicht überschrieben",
 		"installingDeps": "Deps in %1 installieren",
 		"doneInit": "Die Initialisierung der lesky-App erfolgt! Einige Anmerkungen:",
-		"postInitNotes": "1. Bevor Sie fortfahren möchten, können Sie .gitignore und git hier fortsetzen (git init; git add.)\n2. Fügen Sie den Autor, den Projektnamen, die Versionsnummer zu package.json hinzu.\n3. Sie können unterschiedliche Abhängigkeiten haben. Verwenden Sie \"npm prune\", um nicht verwendete deps zu entfernen (optional)",
-		"writingConfig": "Schreiben der Konfiguration in neue .lesrc-Datei: %1",
-		"configExists": ".lesrc bereits existen...wird nicht überschrieben",
-		"errIncorrectRangeFmt": "Portbereich falsch formatiert. Format als --bereich=start-ende"
+		"postInitNotes": "1. Wenn Sie %1 hier initialisieren möchten, bevor Sie fortfahren (%2)\n2. Sie können den Autor, den Projektnamen, die Versionsnummer bis %3 hinzufügen.\n3. Sie können unterschiedliche Abhängigkeiten haben. Verwenden Sie ' %4 `, um nicht verwendete Abdeps zu entfernen (optional)",
+		"writingConfig": "Konfiguration in neue %1-Datei schreiben: %2",
+		"configExists": "%1 ist bereits vorhanden ... wird nicht überschrieben",
+		"errIncorrectRangeFmt": "Portbereich falsch formatiert. Format als -- %1 = Start-Ende"
 	},
 	"options": {
 		"hilfe": {
@@ -47,18 +47,18 @@
 			"en_US": "proto"
 		},
 		"bereich": {
-			"desc": "Portbereich (im Fall, dass Port verwendet wird)",
+			"desc": "Portbereich (in der Groß-/Kleinschreibung wird ein Port verwendet). Format als Start-Ende",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslkey": {
+		"sslKey": {
 			"desc": "Pfad zum SSL-Schlüssel",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Pfad zum SSL-Zertifikat",
 			"en_US": "sslCert"
 		},

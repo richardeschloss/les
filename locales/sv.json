@@ -2,19 +2,19 @@
 	"msgs": {
 		"endOfHelp": "Hjälp-Slut",
 		"usage": "användning",
-		"servingStaticDir": "serverar statisk katalog% 1",
+		"servingStaticDir": "serverar statisk katalog%1",
 		"serverCfgsStarted": "Alla serverkonfigurningar har startat",
 		"browserOpened": "öppnad webbläsare",
-		"copyingFiles": "Kopierar filer från:% 1 till:% 2",
+		"copyingFiles": "Kopierar filer från:%1 till:%2",
 		"copiedFiles": "Kopierade filer",
-		"writingDeps": "Skriver beroenden till:% 1",
+		"writingDeps": "Skriver beroenden till:%1",
 		"packageJsonExists": "%1 finns redan ... kommer inte att skrivas över",
-		"installingDeps": "Installerar deppar i% 1",
+		"installingDeps": "Installerar deppar i%1",
 		"doneInit": "Startar initiering av Lesky-appen! Några kommentarer:",
-		"postInitNotes": "1. Du kanske vill init .gitignore och git här innan du fortsätter (git init ; git add.)\n2. Du kanske vill lägga till författare, projektnamn, versionsnummer till package.json\n3. Du kanske vill ha olika beroenden. Använd \"npm prune\" för att ta bort oanvända deppar (valfritt)",
-		"writingConfig": "skriva config till ny .lesrc-fil:% 1",
-		"configExists": ".lesrc redan existerar ... kommer inte att skriva över",
-		"errIncorrectRangeFmt": "portintervall som är felaktigt formaterade. Format som --intervall=start-slut"
+		"postInitNotes": "1. Du kanske vill ta bort%1 här innan du fortsätter (%2)\n2. Du kanske vill lägga till författare, projektnamn, versionsnummer till %3\n3. Du kanske vill ha olika beroenden. Använd \"%4\" för att ta bort oanvända deppar (valfritt)",
+		"writingConfig": "Skriver inställning till ny%1-fil:%2",
+		"configExists": "%1 finns redan ... kommer inte att skrivas över",
+		"errIncorrectRangeFmt": "portintervall som är felaktigt formaterade. Format som --%1 = start-slut"
 	},
 	"options": {
 		"hjälp": {
@@ -47,18 +47,18 @@
 			"en_US": "proto"
 		},
 		"intervall": {
-			"desc": "Portintervall (i ärendeport är upptagen)",
+			"desc": "Portintervall (i ärendeport är upptagen). Formatera som start-slut",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslkey": {
+		"sslKey": {
 			"desc": "Sökväg till SSL-nyckel",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Sökväg till SSL-certifikat",
 			"en_US": "sslCert"
 		},

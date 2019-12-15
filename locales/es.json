@@ -54,11 +54,11 @@
 			],
 			"en_US": "range"
 		},
-		"tecla sslkey": {
+		"sslKey": {
 			"desc": "Vía de acceso a clave SSL",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Vía de acceso al certificado SSL",
 			"en_US": "sslCert"
 		},

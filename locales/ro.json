@@ -11,10 +11,10 @@
 		"packageJsonExists": "%1 deja existent nu va suprascrie",
 		"installingDeps": "Instalare deps în %1",
 		"doneInit": "Făcut iniţializare app lesky! Unele note:",
-		"postInitNotes": "1. S-ar putea sa vrei sa-l indrept .gitignore si git aici inainte de a continua (git init; git add.)\n2. S-ar putea să doriţi să adăugaţi autor, nume proiect, număr versiune la package.json\n3. S-ar putea să doriţi dependenţe diferite. Utilizaţi \"npm prune\" pentru a înlătura deps-ul nefolosit (opţional)",
-		"writingConfig": "scriere configuraţie în noul fişier .lesrc: %1",
-		"configExists": ".lesrc deja exist...nu va suprascrie",
-		"errIncorrectRangeFmt": "interval port incorect formatat. Format ca --interval=start-end"
+		"postInitNotes": "1. S-ar putea să doriţi să-l inşi %1 aici înainte de a continua (%2)\n2. S-ar putea să doriţi să adăugaţi autor, nume proiect, număr versiune la %3\n3. S-ar putea să doriţi dependenţe diferite. Utilizaţi ` %4 ` pentru a înlătura deps-ul nefolosit (opţional)",
+		"writingConfig": "scriere configuraţie în noul fişier %1: %2",
+		"configExists": "%1 deja existent nu va suprascrie",
+		"errIncorrectRangeFmt": "interval port incorect formatat. Format ca -- %1 = pornire-oprire"
 	},
 	"options": {
 		"ajutor": {
@@ -47,18 +47,18 @@
 			"en_US": "proto"
 		},
 		"interval": {
-			"desc": "Interval port (în cazul în care portul este luat)",
+			"desc": "Interval port (în cazul în care portul este luat). Format ca pornire-oprire",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslkey": {
+		"sslKey": {
 			"desc": "Cale la cheie SSL",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Cale la certificat SSL",
 			"en_US": "sslCert"
 		},

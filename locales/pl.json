@@ -11,10 +11,10 @@
 		"packageJsonExists": "% 1 już istnieje...nie nadpisze",
 		"installingDeps": "Instalowanie deps w% 1",
 		"doneInit": "Zakończono inicjowanie aplikacji lesky! Niektóre uwagi:",
-		"postInitNotes": "1. Przed kontynuacją (git init; git add) może zaistnieć potrzeba init .gitignore i git tutaj.\n2. Można dodać autora, nazwę projektu, numer wersji do pakietu package.json\n3. Może zaistnieć potrzeba różnych zależności. Użyj opcji ` npm prune `, aby usunąć nieużywane deps (opcjonalne)",
-		"writingConfig": "zapisywanie konfiguracji do nowego pliku .lesrc:% 1",
-		"configExists": ".lesrc już istnieje...nie nadpisze",
-		"errIncorrectRangeFmt": "zakres portów jest niepoprawnie sformatowany. Format as -- range = start-end"
+		"postInitNotes": "1. Przed kontynuowaniem (%2) można zainicjować tutaj następującą inicjację:% 1\n2. Można dodać autora, nazwę projektu, numer wersji do %3\n3. Może zaistnieć potrzeba różnych zależności. Użyj ` %4 `, aby usunąć nieużywane deps (opcjonalne)",
+		"writingConfig": "zapisywanie konfiguracji do nowego pliku% 1:% 2",
+		"configExists": "% 1 już istnieje...nie nadpisze",
+		"errIncorrectRangeFmt": "zakres portów jest niepoprawnie sformatowany. Formatuj jako --% 1 = start-end"
 	},
 	"options": {
 		"pomoc": {
@@ -28,7 +28,7 @@
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"host (host)": {
+		"host": {
 			"alias": "a",
 			"desc": "Adres do użycia",
 			"dflt": "localhost",
@@ -47,18 +47,18 @@
 			"en_US": "proto"
 		},
 		"zakres": {
-			"desc": "Zakres portów (w przypadku gdy port jest przyjmowany)",
+			"desc": "Zakres portów (w przypadku, gdy port jest przyjmowany). Formatuj jako początek-koniec",
 			"dflt": [
 				8000,
 				9000
 			],
 			"en_US": "range"
 		},
-		"sslkey": {
+		"sslKey": {
 			"desc": "Ścieżka do klucza SSL",
 			"en_US": "sslKey"
 		},
-		"sslcert": {
+		"sslCert": {
 			"desc": "Ścieżka do certyfikatu SSL",
 			"en_US": "sslCert"
 		},
