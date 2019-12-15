@@ -2,19 +2,19 @@
 	"msgs": {
 		"endOfHelp": "Pagalbos pabaiga",
 		"usage": "naudojimas",
-		"servingStaticDir": "naudojamas statinis dir% 1",
+		"servingStaticDir": "naudojamas statinis dir%1",
 		"serverCfgsStarted": "Visas serveris konfigūruosė",
 		"browserOpened": "Naršyklė atidaryta",
-		"copyingFiles": "Kopijuoti failus iš:% 1 į:% 2",
+		"copyingFiles": "Kopijuoti failus iš:%1 į:%2",
 		"copiedFiles": "Kopijuoti failus",
-		"writingDeps": "Rašymas priklausomybei:% 1",
-		"packageJsonExists": "% 1 jau exists ... nebus perrašyti",
-		"installingDeps": "Įdiegti deps į% 1",
+		"writingDeps": "Rašymas priklausomybei:%1",
+		"packageJsonExists": "%1 jau exists ... nebus perrašyti",
+		"installingDeps": "Įdiegti deps į%1",
 		"doneInit": "Padaryti inicijuojant lesky app! Kai kurios pastabos:",
-		"postInitNotes": "1. Prieš tęsiant (% 2), galite pageidauti insit% 1\n2. Galbūt norite pridėti autoriaus, projekto pavadinimą, versijos numerį iki% 3\n3. Galbūt norite skirtingų priklausomybių. Naudoti ¶ %4 ' pašalinti nenaudotus deps (pasirinktinai)",
-		"writingConfig": "% 1 failo įrašymas į naują% 1 failą:% 2",
-		"configExists": "% 1 jau exists ... nebus perrašyti",
-		"errIncorrectRangeFmt": "Prievadų intervalas neteisingai suformatuotas. Formatas, kaip --% 1 = start-end"
+		"postInitNotes": "1. Prieš tęsiant (%2), galite pageidauti insit%1\n2. Galbūt norite pridėti autoriaus, projekto pavadinimą, versijos numerį iki%3\n3. Galbūt norite skirtingų priklausomybių. Naudoti ¶ %4 ' pašalinti nenaudotus deps (pasirinktinai)",
+		"writingConfig": "%1 failo įrašymas į naują%1 failą:%2",
+		"configExists": "%1 jau exists ... nebus perrašyti",
+		"errIncorrectRangeFmt": "Prievadų intervalas neteisingai suformatuotas. Formatas, kaip --%1 = start-end"
 	},
 	"options": {
 		"pagalba": {

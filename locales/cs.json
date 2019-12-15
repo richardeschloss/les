@@ -2,18 +2,18 @@
 	"msgs": {
 		"endOfHelp": "Konec nápovědy",
 		"usage": "usage,",
-		"servingStaticDir": "obsluha statického adresáře% 1",
+		"servingStaticDir": "obsluha statického adresáře%1",
 		"serverCfgsStarted": "Všechny konfigurace serveru byly spuštěny",
 		"browserOpened": "otevřený prohlížeč",
-		"copyingFiles": "Kopírování souborů z:% 1 do:% 2",
+		"copyingFiles": "Kopírování souborů z:%1 do:%2",
 		"copiedFiles": "Zkopírované soubory",
-		"writingDeps": "probíhá zápis závislostí na:% 1",
-		"packageJsonExists": "% 1 již existuje...nebude přepsán",
-		"installingDeps": "Instalace deps v% 1",
+		"writingDeps": "probíhá zápis závislostí na:%1",
+		"packageJsonExists": "%1 již existuje...nebude přepsán",
+		"installingDeps": "Instalace deps v%1",
 		"doneInit": "Dokončena inicializace aplikace lesky! Některé poznámky:",
 		"postInitNotes": "1. Než budete pokračovat (%2), můžete zde inicializovat %1.\n2. Možná budete chtít přidat autora, název projektu, číslo verze do %3\n3. Můžete chtít jiné závislosti. Použít '%4' pro odebrání nepoužívaných deps (volitelné)",
-		"writingConfig": "Zápis konfig do nového souboru% 1:% 2",
-		"configExists": "% 1 již existuje...nebude přepsán",
+		"writingConfig": "Zápis konfig do nového souboru%1:%2",
+		"configExists": "%1 již existuje...nebude přepsán",
 		"errIncorrectRangeFmt": "rozsah portů je nesprávně naformátován. Formát jako -- %1 = začátek-konec"
 	},
 	"options": {
@@ -46,7 +46,7 @@
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"rozsah": {
+		"range": {
 			"desc": "Rozsah portů (v případě, že je port používán). Formát jako začátek-konec",
 			"dflt": [
 				8000,

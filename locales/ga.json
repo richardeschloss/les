@@ -11,7 +11,7 @@
 		"packageJsonExists": "@ info: action",
 		"installingDeps": "Deps á shuiteáil i%1",
 		"doneInit": "Déanta app lesky á thúsú! Roinnt nótaí:",
-		"postInitNotes": "1. D' fhéadfadh tú gur mhaith leat%1 a ionadh anseo roimh leanúint (%2)\n2. D' fhéadfadh tú ag iarraidh údar a chur leis, ainm tionscadail, uimhir leagan chuig% 3\n3. D' fhéadfadh tú a bheith ag iarraidh spleáchas éagsúla. Úsáid `% 4 ' chun deps gan úsáid a bhaint (roghnach)",
+		"postInitNotes": "1. D' fhéadfadh tú gur mhaith leat%1 a ionadh anseo roimh leanúint (%2)\n2. D' fhéadfadh tú ag iarraidh údar a chur leis, ainm tionscadail, uimhir leagan chuig%3\n3. D' fhéadfadh tú a bheith ag iarraidh spleáchas éagsúla. Úsáid `%4 ' chun deps gan úsáid a bhaint (roghnach)",
 		"writingConfig": "Cumraíocht nua%1 á chumrú:%2",
 		"configExists": "@ info: action",
 		"errIncorrectRangeFmt": "@ info: info Formáid mar --%1 = tosaigh-deireadh"

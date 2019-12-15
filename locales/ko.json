@@ -46,7 +46,7 @@
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"범위를 내다": {
+		"range": {
 			"desc": "포트 범위 (포트가 사용되는 경우) 시작점으로서의 형식 지정-종료",
 			"dflt": [
 				8000,

@@ -2,19 +2,19 @@
 	"msgs": {
 		"endOfHelp": "Koniec pomocy",
 		"usage": "użycie",
-		"servingStaticDir": "obsługuj statyczny katalog% 1",
+		"servingStaticDir": "obsługuj statyczny katalog%1",
 		"serverCfgsStarted": "Wszystkie konfiguracje serwera zostały uruchomione",
 		"browserOpened": "otwarto przeglądarkę",
-		"copyingFiles": "Kopiowanie plików z:% 1 do:% 2",
+		"copyingFiles": "Kopiowanie plików z:%1 do:%2",
 		"copiedFiles": "Skopiowane pliki",
 		"writingDeps": "zapisywanie zależności do: %1",
-		"packageJsonExists": "% 1 już istnieje...nie nadpisze",
-		"installingDeps": "Instalowanie deps w% 1",
+		"packageJsonExists": "%1 już istnieje...nie nadpisze",
+		"installingDeps": "Instalowanie deps w%1",
 		"doneInit": "Zakończono inicjowanie aplikacji lesky! Niektóre uwagi:",
-		"postInitNotes": "1. Przed kontynuowaniem (%2) można zainicjować tutaj następującą inicjację:% 1\n2. Można dodać autora, nazwę projektu, numer wersji do %3\n3. Może zaistnieć potrzeba różnych zależności. Użyj ` %4 `, aby usunąć nieużywane deps (opcjonalne)",
-		"writingConfig": "zapisywanie konfiguracji do nowego pliku% 1:% 2",
-		"configExists": "% 1 już istnieje...nie nadpisze",
-		"errIncorrectRangeFmt": "zakres portów jest niepoprawnie sformatowany. Formatuj jako --% 1 = start-end"
+		"postInitNotes": "1. Przed kontynuowaniem (%2) można zainicjować tutaj następującą inicjację:%1\n2. Można dodać autora, nazwę projektu, numer wersji do %3\n3. Może zaistnieć potrzeba różnych zależności. Użyj ` %4 `, aby usunąć nieużywane deps (opcjonalne)",
+		"writingConfig": "zapisywanie konfiguracji do nowego pliku%1:%2",
+		"configExists": "%1 już istnieje...nie nadpisze",
+		"errIncorrectRangeFmt": "zakres portów jest niepoprawnie sformatowany. Formatuj jako --%1 = start-end"
 	},
 	"options": {
 		"pomoc": {
