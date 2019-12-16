@@ -1,53 +1,53 @@
 {
 	"msgs": {
-		"endOfHelp": "Yardımın Sonu",
-		"usage": "kullanım",
-		"servingStaticDir": "hizmet veren durağan dzn %1",
-		"serverCfgsStarted": "Tüm sunucu yapılanışları başlatıldı",
+		"endOfHelp": "Yardım sonu ",
+		"usage": "kullanımı",
+		"servingStaticDir": "1 porsiyon statik dir %",
+		"serverCfgsStarted": "Tüm sunucu yapılandırmaları başladı",
 		"browserOpened": "tarayıcı açıldı",
-		"copyingFiles": "Dosyaların kopyalanması: %1-: %2",
-		"copiedFiles": "Kopyalanan dosyalar",
-		"writingDeps": "bağımlılıkların yazılması: %1",
-		"packageJsonExists": "%1 zaten var ... üzerine yazılmaz",
-		"installingDeps": "%1 içinde deps kuruluyor",
-		"doneInit": "Lesky uygulaması kullanıma hazırlanıyor! Bazı notlar:",
-		"postInitNotes": "1. Devam etmeden önce (%2) burada %1 kullanıma hazırlamayı isteyebilirsiniz.\n2. Yazar, proje adı, sürüm numarası %3 olarak eklemek isteyebilirsiniz.\n3. Farklı bağımlılıklar isteyebilirsiniz. Kullanılmayan depleri kaldırmak için ` %4 ` kullanın (isteğe bağlı)",
-		"writingConfig": "yapılandırmayı yeni %1 dosyasına yazma: %2",
-		"configExists": "%1 zaten var ... üzerine yazılmaz",
-		"errIncorrectRangeFmt": "kapı aralığı yanlış biçimlenmiş. -- %1 = başlangıç sonu olarak biçimle"
+		"copyingFiles": "Dosya kopyalama %1: %2: ",
+		"copiedFiles": "Kopyalanan dosyaları",
+		"writingDeps": "bağımlılıkları yazma: %1",
+		"packageJsonExists": "%1 zaten üzerine yazmaz var.",
+		"installingDeps": "%1 derinlik yükleme ",
+		"doneInit": "Lesky uygulaması başlatılıyor bitti! Bazı notlar:",
+		"postInitNotes": "1. Burada devam eden 2 (%) 1 %init isteyebilirsiniz \n2. %3 yazar, proje adı, sürüm numarası eklemek isteyebilirsiniz \n3. Farklı bağımlılıkları isteyebilirsiniz. Kullanımı `%4` isteğe bağlı kullanılmayan derinlik kaldırmak için ()",
+		"writingConfig": "yeni %1 dosyasına config yazma: %2",
+		"configExists": "%1 zaten üzerine yazmaz var.",
+		"errIncorrectRangeFmt": "bağlantı hatalı biçimlendirilmiş bir dizi. Son biçimi --%1=başlangıç "
 	},
 	"options": {
 		"yardım": {
 			"alias": "h",
-			"desc": "Bu yardım menüsünü yazdır",
+			"desc": "Baskı bu Yardım menüsü",
 			"en_US": "help"
 		},
-		"init": {
+		"ınit": {
 			"alias": "i",
-			"desc": "Yol tarafından belirtilen çalışma alanında lesky başlatma, varsayılan olarak cwd olarak",
+			"desc": "Çalışma alanında İnit lesky yolu tarafından belirtilen, varsayılan cwd için ",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"anasistem": {
+		"ana": {
 			"alias": "a",
-			"desc": "Kullanılacak adres",
+			"desc": "Adres kullanmak ",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
-		"kapı": {
+		"port": {
 			"alias": "p",
-			"desc": "Kullanılacak kapı",
+			"desc": "Port kullanmak ",
 			"dflt": 8080,
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Kullanılacak protokol",
+			"desc": "Protokolü kullanmak için ",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
 		"aralık": {
-			"desc": "Kapı Aralığı (kapı aralığı alınır). Başlangıç sonu olarak biçimle",
+			"desc": "(Büyük liman alınır) bağlantı noktası Aralığı. Başlangıç olarak Format uç",
 			"dflt": [
 				8000,
 				9000
@@ -55,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "SSL Anahtarının Yolu",
+			"desc": "Yol Anahtar SSL ",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "SSL Sertifikasının Yolu",
+			"desc": "Yol Sertifika SSL ",
 			"en_US": "sslCert"
 		},
-		"aç": {
+		"açın": {
 			"alias": "o",
-			"desc": "Tarayıcıyı aç",
+			"desc": "Açık tarayıcı",
 			"dflt": "OS default",
 			"en_US": "open"
 		},
 		"izle": {
 			"alias": "w",
-			"desc": "Dizindeki dosya değişikliklerine dikkat et [ staticDir]",
+			"desc": "Dizin dosya değişikliklerini izlemek için [staticDir]",
 			"en_US": "watch"
 		}
 	}

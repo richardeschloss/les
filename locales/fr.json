@@ -1,34 +1,34 @@
 {
 	"msgs": {
-		"endOfHelp": "Fin de l'aide",
-		"usage": "Utilisation",
-		"servingStaticDir": "Service de répertoire statique %1",
-		"serverCfgsStarted": "Toutes les configurations de serveur démarrées",
-		"browserOpened": "Navigateur ouvert",
-		"copyingFiles": "Copie des fichiers de: %1 vers: %2",
-		"copiedFiles": "Fichiers copiés",
-		"writingDeps": "écriture de dépendances dans: %1",
-		"packageJsonExists": "%1 existe déjà ... ne sera pas remplacé",
-		"installingDeps": "Installation des deps dans %1",
-		"doneInit": "Initialisation de l'application de la lésion terminée ! Quelques notes:",
-		"postInitNotes": "1. Vous pouvez souhaiter init %1 ici avant de continuer (%2)\n2. Vous pouvez ajouter l'auteur, le nom du projet, le numéro de version à %3\n3. Vous pouvez vouloir des dépendances différentes. Utiliser ` %4 ` pour supprimer les deps non utilisés (facultatif)",
-		"writingConfig": "écriture de la configuration dans le nouveau fichier %1: %2",
-		"configExists": "%1 existe déjà ... ne sera pas remplacé",
-		"errIncorrectRangeFmt": "Plage de ports mal formatée. Format en tant que -- %1 = fin-début"
+		"endOfHelp": "Fin de l'Aide",
+		"usage": "l'utilisation de la",
+		"servingStaticDir": "servir statique dir %1",
+		"serverCfgsStarted": "Serveur tous les configs commencé",
+		"browserOpened": "navigateur ouvert",
+		"copyingFiles": "La copie de fichiers à partir de: %1: %2",
+		"copiedFiles": "Les fichiers copiés",
+		"writingDeps": "l'écriture de dépendances: %1",
+		"packageJsonExists": "%1 existe déjà...n'écrase pas",
+		"installingDeps": "L'installation de deps en %1",
+		"doneInit": "Fait l'initialisation de lesky app! Quelques remarques:",
+		"postInitNotes": "1. Vous pourriez init %1 ici avant de poursuivre (%2)\n2. Vous voudrez peut-être ajouter de l'auteur, nom du projet, le numéro de version %3\n3. Vous pourriez différentes dépendances. Utiliser `%4` à supprimer les deps (facultatif)",
+		"writingConfig": "l'écriture de la configuration de nouveaux %1 fichier: %2",
+		"configExists": "%1 existe déjà...n'écrase pas",
+		"errIncorrectRangeFmt": "plage de port incorrectement formaté. Format --%1=début - fin"
 	},
 	"options": {
-		"aide": {
+		"aider": {
 			"alias": "h",
-			"desc": "Imprimer ce menu d'aide",
+			"desc": "Imprimer cette menu aide",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
-			"desc": "Init lesky dans l'espace de travail spécifié par chemin, par défaut, cwd",
+			"desc": "Init lesky dans l'espace de travail spécifié par le chemin d'accès, par défaut, à la mdc",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"hôte": {
+		"accueil": {
 			"alias": "a",
 			"desc": "Adresse à utiliser",
 			"dflt": "localhost",
@@ -41,13 +41,13 @@
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protocole à utiliser",
+			"desc": "Le protocole à utiliser",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"plage": {
-			"desc": "Plage de ports (au cas où le port est pris). Format comme début-fin",
+		"gamme": {
+			"desc": "Plage de Port (dans le cas où le port est pris). Format de début et de fin",
 			"dflt": [
 				8000,
 				9000
@@ -55,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Chemin d'accès à la clé SSL",
+			"desc": "Chemin de la Clé SSL",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Chemin d'accès au certificat SSL",
+			"desc": "Chemin de Certificat SSL",
 			"en_US": "sslCert"
 		},
 		"ouvert": {
 			"alias": "o",
-			"desc": "Ouvrir le navigateur",
+			"desc": "Ouvrez le navigateur",
 			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"surveillance": {
+		"regarder": {
 			"alias": "w",
-			"desc": "Surveillance des modifications de fichier dans le répertoire [ staticDir ]",
+			"desc": "Surveillez les changements de fichier dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

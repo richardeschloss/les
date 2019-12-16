@@ -1,53 +1,53 @@
 {
 	"msgs": {
-		"endOfHelp": "Help-einde",
+		"endOfHelp": "Het einde van het Helpen",
 		"usage": "gebruik",
-		"servingStaticDir": "Statische dir %1 wordt gebruikt",
-		"serverCfgsStarted": "Alle serverconfiguraties zijn gestart",
+		"servingStaticDir": "het serveren van statische dir %1",
+		"serverCfgsStarted": "Alle server configs de slag",
 		"browserOpened": "browser geopend",
-		"copyingFiles": "Bestanden kopiëren van: %1 naar: %2",
-		"copiedFiles": "Gekopieerde bestanden",
-		"writingDeps": "dependency's schrijven naar: %1",
-		"packageJsonExists": "%1 bestaat al ... zal niet overschrijven",
-		"installingDeps": "Bezig met installeren van deps in %1",
-		"doneInit": "Klaar met initialiseren lesky app! Enkele opmerkingen:",
-		"postInitNotes": "1. U wilt hier %1 initialiseren voordat u verdergaat (%2)\n2. Mogelijk wilt u auteur, projectnaam, versienummer toevoegen aan %3\n3. Mogelijk wilt u verschillende afhankelijkheden. Gebruik ` %4 ' om ongebruikte deps te verwijderen (optioneel)",
-		"writingConfig": "schrijven config naar nieuw %1 bestand: %2",
-		"configExists": "%1 bestaat al ... zal niet overschrijven",
-		"errIncorrectRangeFmt": "Het poortbereik is onjuist ingedeeld. Formaat als -- %1 = begin-einde"
+		"copyingFiles": "Het kopiëren van bestanden van: %1: %2",
+		"copiedFiles": "De gekopieerde bestanden",
+		"writingDeps": "het schrijven van afhankelijkheden tot: %1",
+		"packageJsonExists": "%1 bestaat al...zullen niet overschrijven",
+		"installingDeps": "Het installeren van deps in %1",
+		"doneInit": "Gedaan initialiseren lesky app! Enkele opmerkingen:",
+		"postInitNotes": "1. U wilt misschien init %1 voordat u verdergaat (%2)\n2. U zou willen toevoegen auteur, de naam van het project, versie nummer %3\n3. Wilt u misschien verschillende afhankelijkheden. Gebruik `%4` om te verwijderen van ongebruikte deps (optioneel)",
+		"writingConfig": "het schrijven config nieuwe %1 bestand: %2",
+		"configExists": "%1 bestaat al...zullen niet overschrijven",
+		"errIncorrectRangeFmt": "port range onjuist. Formaat zoals --%1=start - einde"
 	},
 	"options": {
 		"help": {
 			"alias": "h",
-			"desc": "Dit Help-menu afdrukken",
+			"desc": "Print dit help-menu",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
-			"desc": "Init lesky in werkgebied opgegeven op pad, wordt standaard ingesteld op cwd",
+			"desc": "Init lesky in de werkruimte gespecificeerd door het pad, keert terug naar de cwd",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
-			"desc": "Te gebruiken adres",
+			"desc": "Het te gebruiken adres",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
 		"poort": {
 			"alias": "p",
-			"desc": "Te gebruiken poort",
+			"desc": "Poort",
 			"dflt": 8080,
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Te gebruiken protocol",
+			"desc": "Protocol te gebruiken",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
 		"bereik": {
-			"desc": "Poortbereik (in de zaakpoort). Indeling als begin-einde",
+			"desc": "Port Range (in het geval de haven is genomen). Indeling als start-einde",
 			"dflt": [
 				8000,
 				9000
@@ -55,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Pad naar SSL-sleutel",
+			"desc": "Pad naar SSL Sleutel",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Pad naar SSL-certificaat",
+			"desc": "Pad naar het SSL-Certificaat",
 			"en_US": "sslCert"
 		},
-		"openen": {
+		"open": {
 			"alias": "o",
-			"desc": "Browser openen",
+			"desc": "De browser openen",
 			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"horloge": {
+		"bekijk": {
 			"alias": "w",
-			"desc": "Kijk naar bestandswijzigingen in dir [ staticDir]",
+			"desc": "Kijk voor wijzigingen in dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

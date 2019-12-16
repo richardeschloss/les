@@ -1,53 +1,53 @@
 {
 	"msgs": {
-		"endOfHelp": "Súgó vége",
-		"usage": "Használat",
-		"servingStaticDir": "Statikus könyvtár kiszolgálása %1",
-		"serverCfgsStarted": "Minden kiszolgáló configs elindult",
-		"browserOpened": "Böngésző megnyitva",
-		"copyingFiles": "Fájlok másolása: %1 és %2 között",
-		"copiedFiles": "Másolt fájlok",
-		"writingDeps": "Függőségek írása: %1",
-		"packageJsonExists": "%1 már létezik ... nem fog felülírni",
-		"installingDeps": "A (z) %1 telepítése",
-		"doneInit": "A leszbi app inicializálása! Néhány megjegyzés:",
-		"postInitNotes": "1. Előfordulhat, hogy a folytatás előtt itt kívánja a (z) %1 elemet (%2)\n2. Író, projektnév, verziószám hozzáadása a következőhöz: %3\n3. Lehet, hogy eltérő függőségeket szeretne. A \"%4\" használata a nem használt depók eltávolításához (elhagyható)",
-		"writingConfig": "Konfiguráció írása új %1 fájlba: %2",
-		"configExists": "%1 már létezik ... nem fog felülírni",
-		"errIncorrectRangeFmt": "A porttartomány helytelenül formázott. Formátum: -- %1 = start-end"
+		"endOfHelp": "Vége Segítség",
+		"usage": "használat",
+		"servingStaticDir": "z statikus dir %1",
+		"serverCfgsStarted": "Minden szerver konfigurációk kezdődött",
+		"browserOpened": "böngésző nyitott",
+		"copyingFiles": "A fájlok másolása: %1: %2",
+		"copiedFiles": "Másolt fájlokat",
+		"writingDeps": "írás függőségek, hogy: %1",
+		"packageJsonExists": "%1 már létezik...nem felülírja,",
+		"installingDeps": "Telepítése deps a %1",
+		"doneInit": "Kész inicializálása lesky app! Néhány megjegyzés:",
+		"postInitNotes": "1. Érdemes init %1 itt a folytatás előtt (%2)\n2. Érdemes hozzátenni, szerző, projekt neve, verziószáma, hogy %3\n3. Érdemes a különböző függőségek. Használja a `%4`, hogy távolítsa el a nem használt deps (opcionális)",
+		"writingConfig": "írás config új %1 fájl: %2",
+		"configExists": "%1 már létezik...nem felülírja,",
+		"errIncorrectRangeFmt": "port range helytelenül formázott. Formátum --%1=start - end"
 	},
 	"options": {
 		"súgó": {
 			"alias": "h",
-			"desc": "A súgó menü nyomtatása",
+			"desc": "Nyomtassa ki ezt súgó menü",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
-			"desc": "A (z) útvonal által megadott munkaterületen található init lesky, alapértelmezésben cwd",
+			"desc": "Init lesky a munkaterület által meghatározott utat, alapértelmezett cwd",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"hoszt": {
+		"fogadó": {
 			"alias": "a",
-			"desc": "Használandó cím",
+			"desc": "Cím használata",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
 		"port": {
 			"alias": "p",
-			"desc": "Használandó port",
+			"desc": "Port használata",
 			"dflt": 8080,
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Használandó protokoll",
+			"desc": "Protokoll használata",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
 		"tartomány": {
-			"desc": "Porttartomány (ha a port be van véve). Formátum kezdő végként",
+			"desc": "Port Range (abban az esetben, port venni). A formátum, mint a start-end",
 			"dflt": [
 				8000,
 				9000
@@ -55,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "SSL kulcs elérési útja",
+			"desc": "Út SSL Kulcs",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "SSL tanúsítvány elérési útja",
+			"desc": "Út SSL Tanúsítvány",
 			"en_US": "sslCert"
 		},
-		"nyitott": {
+		"megnyitás": {
 			"alias": "o",
-			"desc": "Böngésző megnyitása",
+			"desc": "Nyitva böngésző",
 			"dflt": "OS default",
 			"en_US": "open"
 		},
 		"óra": {
 			"alias": "w",
-			"desc": "Tekintse meg a (z) [staticDir] könyvtárban található fájlmódosításokat",
+			"desc": "Vigyázz a fájl változások dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

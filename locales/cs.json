@@ -1,53 +1,53 @@
 {
 	"msgs": {
-		"endOfHelp": "Konec nápovědy",
-		"usage": "usage,",
-		"servingStaticDir": "obsluha statického adresáře%1",
-		"serverCfgsStarted": "Všechny konfigurace serveru byly spuštěny",
-		"browserOpened": "otevřený prohlížeč",
-		"copyingFiles": "Kopírování souborů z:%1 do:%2",
+		"endOfHelp": "Konec Pomoci",
+		"usage": "použití",
+		"servingStaticDir": "slouží statické dir %1",
+		"serverCfgsStarted": "Všechny serverové konfigurační soubory začala",
+		"browserOpened": "prohlížeč otevřel",
+		"copyingFiles": "Kopírování souborů z: %1: %2",
 		"copiedFiles": "Zkopírované soubory",
-		"writingDeps": "probíhá zápis závislostí na:%1",
-		"packageJsonExists": "%1 již existuje...nebude přepsán",
-		"installingDeps": "Instalace deps v%1",
-		"doneInit": "Dokončena inicializace aplikace lesky! Některé poznámky:",
-		"postInitNotes": "1. Než budete pokračovat (%2), můžete zde inicializovat %1.\n2. Možná budete chtít přidat autora, název projektu, číslo verze do %3\n3. Můžete chtít jiné závislosti. Použít '%4' pro odebrání nepoužívaných deps (volitelné)",
-		"writingConfig": "Zápis konfig do nového souboru%1:%2",
-		"configExists": "%1 již existuje...nebude přepsán",
-		"errIncorrectRangeFmt": "rozsah portů je nesprávně naformátován. Formát jako -- %1 = začátek-konec"
+		"writingDeps": "psaní závislosti: %1",
+		"packageJsonExists": "%1 již existuje...nepřepíše",
+		"installingDeps": "Instalace deps ve %1",
+		"doneInit": "Provádí inicializaci lesky app! Některé poznámky:",
+		"postInitNotes": "1. Možná budete chtít init %1 zde, než budete pokračovat (v%2)\n2. Možná budete chtít přidat autora, název projektu, číslo verze %3\n3. Možná budete chtít, různých závislostí. Použijte `%4` odstranit nepoužívané deps (volitelné)",
+		"writingConfig": "psaní config do new %1 soubor: %2",
+		"configExists": "%1 již existuje...nepřepíše",
+		"errIncorrectRangeFmt": "rozsah portů nesprávně formátován. Format jako --%1=start - end"
 	},
 	"options": {
-		"nápověda": {
+		"pomoc": {
 			"alias": "h",
-			"desc": "Vytisknout tuto nabídku nápovědy",
+			"desc": "Vytisknout pomocí menu",
 			"en_US": "help"
 		},
-		"inicializace": {
+		"init": {
 			"alias": "i",
-			"desc": "Init nájemce v pracovním prostoru určeném cestou, výchozí hodnota je cwd",
+			"desc": "Init lesky v prostoru určeném cestu, výchozí cwd",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
-			"desc": "Adresa k použití",
+			"desc": "Adresa pro použití",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
 		"port": {
 			"alias": "p",
-			"desc": "Port k použití",
+			"desc": "Port",
 			"dflt": 8080,
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protokol k použití",
+			"desc": "Protokol používat",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"range": {
-			"desc": "Rozsah portů (v případě, že je port používán). Formát jako začátek-konec",
+		"rozsah": {
+			"desc": "Rozsah portů (v případě, že port je přijata). Formát, jako je start-end",
 			"dflt": [
 				8000,
 				9000
@@ -55,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Cesta ke klíči zabezpečení SSL",
+			"desc": "Cesta k SSL Klíč",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Cesta k certifikátu SSL",
+			"desc": "Cesta k SSL Certifikátu",
 			"en_US": "sslCert"
 		},
 		"otevřít": {
 			"alias": "o",
-			"desc": "Otevřít prohlížeč",
+			"desc": "Otevřete prohlížeč",
 			"dflt": "OS default",
 			"en_US": "open"
 		},
 		"hodinky": {
 			"alias": "w",
-			"desc": "Sledovat změny souboru v adresáři [ staticDir]",
+			"desc": "Hodinky pro změny souborů v dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

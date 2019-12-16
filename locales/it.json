@@ -1,20 +1,20 @@
 {
 	"msgs": {
-		"endOfHelp": "Fine della guida",
+		"endOfHelp": "Fine di Aiutare",
 		"usage": "utilizzo",
-		"servingStaticDir": "servire dir statica %1",
-		"serverCfgsStarted": "Tutti i server configs avviati",
+		"servingStaticDir": "statico dir %1",
+		"serverCfgsStarted": "Tutti i server configs iniziato",
 		"browserOpened": "browser aperto",
-		"copyingFiles": "Copia file da: %1 a: %2",
-		"copiedFiles": "File copiati",
-		"writingDeps": "scrittura dipendenze a: %1",
-		"packageJsonExists": "%1 già esistiti ... non sovrascriverà",
-		"installingDeps": "Installazione di deps in %1",
-		"doneInit": "Fatto inizializzare l'app lesky! Alcune note:",
-		"postInitNotes": "1. Si potrebbe voler indire %1 qui prima di continuare (%2)\n2. Si potrebbe voler aggiungere l'autore, il nome del progetto, il numero di versione a %3\n3. Si potrebbero desiderare dipendenze diverse. Utilizzare ` %4 ` per rimuovere i deps inutilizzati (opzionali)",
-		"writingConfig": "scrittura di configurazione in nuovo file %1: %2",
-		"configExists": "%1 già esistiti ... non sovrascriverà",
-		"errIncorrectRangeFmt": "la gamma di porte formattata in modo non corretto. Formato come -- %1 = inizio - fine"
+		"copyingFiles": "La copia di file da: %1: %2",
+		"copiedFiles": "I file copiati",
+		"writingDeps": "la scrittura di dipendenze: %1",
+		"packageJsonExists": "%1 esiste già...non sovrascrivere",
+		"installingDeps": "L'installazione di deps in %1",
+		"doneInit": "Fatto l'inizializzazione lesky app! Alcune note:",
+		"postInitNotes": "1. Si potrebbe desiderare di init %1) prima di continuare (%2)\n2. Si potrebbe desiderare di aggiungere autore, nome del progetto, il numero di versione a %3,\n3. Si potrebbe desiderare di diverse dipendenze. Utilizzare \"%4 \" per rimuovere inutilizzati deps (opzionale)",
+		"writingConfig": "la scrittura di config di nuovo %1: %2",
+		"configExists": "%1 esiste già...non sovrascrivere",
+		"errIncorrectRangeFmt": "intervallo di porte formattato in modo non corretto. Formato --%1=inizio - fine"
 	},
 	"options": {
 		"aiuto": {
@@ -24,13 +24,13 @@
 		},
 		"init": {
 			"alias": "i",
-			"desc": "Init lesky nello spazio di lavoro specificato per percorso, default su cwd",
+			"desc": "Init lesky in area di lavoro specificato dal percorso, il default cwd",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
-			"desc": "Indirizzo da utilizzare",
+			"desc": "Indirizzo",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
@@ -41,13 +41,13 @@
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protocollo da utilizzare",
+			"desc": "Il protocollo da usare",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"range": {
-			"desc": "Porta Range (in caso di porta di porta). Formato come inizio - fine",
+		"gamma": {
+			"desc": "Intervallo di porte (in caso la porta è preso). Formato di inizio-fine",
 			"dflt": [
 				8000,
 				9000
@@ -55,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Percorso su chiave SSL",
+			"desc": "Percorso di chiavi SSL",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Percorso su Certificato SSL",
+			"desc": "Percorso Certificato SSL",
 			"en_US": "sslCert"
 		},
 		"aperto": {
 			"alias": "o",
-			"desc": "Browser aperto",
+			"desc": "Aprire il browser",
 			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"orologio": {
+		"guarda": {
 			"alias": "w",
-			"desc": "Watch per le modifiche dei file in dir [ staticDir]",
+			"desc": "Guarda le modifiche apportate ai file nella dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

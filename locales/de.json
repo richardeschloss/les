@@ -1,53 +1,53 @@
 {
 	"msgs": {
 		"endOfHelp": "Ende der Hilfe",
-		"usage": "Verwendung",
-		"servingStaticDir": "Servieren des statischen Verzeichnisses %1",
-		"serverCfgsStarted": "Alle Server-Konfigurationen gestartet",
-		"browserOpened": "Browser geöffnet",
-		"copyingFiles": "Dateien werden kopiert von: %1 in: %2",
-		"copiedFiles": "Kopierte Dateien",
-		"writingDeps": "Abhängigkeiten schreiben an: %1",
-		"packageJsonExists": "%1 ist bereits vorhanden ... wird nicht überschrieben",
-		"installingDeps": "Deps in %1 installieren",
-		"doneInit": "Die Initialisierung der lesky-App erfolgt! Einige Anmerkungen:",
-		"postInitNotes": "1. Wenn Sie %1 hier initialisieren möchten, bevor Sie fortfahren (%2)\n2. Sie können den Autor, den Projektnamen, die Versionsnummer bis %3 hinzufügen.\n3. Sie können unterschiedliche Abhängigkeiten haben. Verwenden Sie ' %4 `, um nicht verwendete Abdeps zu entfernen (optional)",
-		"writingConfig": "Konfiguration in neue %1-Datei schreiben: %2",
-		"configExists": "%1 ist bereits vorhanden ... wird nicht überschrieben",
-		"errIncorrectRangeFmt": "Portbereich falsch formatiert. Format als -- %1 = Start-Ende"
+		"usage": "Nutzung",
+		"servingStaticDir": "statischen dir %1",
+		"serverCfgsStarted": "Alle server-configs gestartet",
+		"browserOpened": "browser geöffnet",
+		"copyingFiles": "Kopieren von Dateien von: %1: %2",
+		"copiedFiles": "Kopiert Dateien",
+		"writingDeps": "schreiben Abhängigkeiten: %1",
+		"packageJsonExists": "%1 ist bereits vorhanden...wird nicht überschrieben",
+		"installingDeps": "Installation deps in %1",
+		"doneInit": "Erfolgt die Initialisierung lesky app! Einige Anmerkungen:",
+		"postInitNotes": "1. Möchten Sie vielleicht init %1 hier, bevor Sie fortfahren (%2)\n2. Möglicherweise möchten Sie Autor, Projektname, - version, - Nummer %3\n3. Möchten Sie vielleicht verschiedene Abhängigkeiten. Verwenden Sie `%4`, entfernen Sie nicht verwendete deps (optional)",
+		"writingConfig": "schreiben der config auf den neuen %1 Datei: %2",
+		"configExists": "%1 ist bereits vorhanden...wird nicht überschrieben",
+		"errIncorrectRangeFmt": "port-Bereich fehlerhaft formatiert. Format --%1=start - end"
 	},
 	"options": {
-		"hilfe": {
+		"helfen": {
 			"alias": "h",
-			"desc": "Dieses Hilfemenü drucken",
+			"desc": "Drucken Sie diese Hilfe-Menü",
 			"en_US": "help"
 		},
-		"initialisierung": {
+		"init": {
 			"alias": "i",
-			"desc": "Init lesky im Arbeitsbereich, der durch Pfad angegeben wird, wird standardmäßig auf 'cwd' gesetzt",
+			"desc": "Init lesky im workspace angegebenen Pfad, standardmäßig cwd",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
-			"desc": "Zu verwendende Adresse",
+			"desc": "Adresse",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
 		"port": {
 			"alias": "p",
-			"desc": "Zu benutzende Port",
+			"desc": "Port zu verwenden",
 			"dflt": 8080,
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Zu verwendende Protokoll",
+			"desc": "Protokoll zu verwenden",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"bereich": {
-			"desc": "Portbereich (in der Groß-/Kleinschreibung wird ein Port verwendet). Format als Start-Ende",
+		"angebot": {
+			"desc": "Port-Bereich (im Fall port genommen wird). Format start-Ende",
 			"dflt": [
 				8000,
 				9000
@@ -70,7 +70,7 @@
 		},
 		"uhr": {
 			"alias": "w",
-			"desc": "Achten Sie auf Dateiänderungen in dir [staticDir]",
+			"desc": "Uhr für die Datei-änderungen, die in dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

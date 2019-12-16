@@ -1,53 +1,53 @@
 {
 	"msgs": {
-		"endOfHelp": "Fin de la ayuda",
-		"usage": "uso",
-		"servingStaticDir": "sirviendo dir estático %1",
-		"serverCfgsStarted": "Se han iniciado todas las configuraciones del servidor",
+		"endOfHelp": "Fin de Ayudar a",
+		"usage": "el uso de",
+		"servingStaticDir": "la porción estática dir %1",
+		"serverCfgsStarted": "Todo servidor configuraciones comenzó",
 		"browserOpened": "navegador abierto",
-		"copyingFiles": "Copiando archivos de: %1 en: %2",
-		"copiedFiles": "Archivos copiados",
-		"writingDeps": "escribir dependencias en: %1",
-		"packageJsonExists": "%1 ya existe ... no se sobrescribirán",
-		"installingDeps": "Instalando deps en %1",
-		"doneInit": "Se ha terminado de inicializar la aplicación de lesky. Algunas notas:",
-		"postInitNotes": "1. Es posible que desee inicializar %1 aquí antes de continuar (%2)\n2. Es posible que desee añadir el autor, el nombre de proyecto, el número de versión a %3\n3. Es posible que desee dependencias diferentes. Utilice ` %4 ` para eliminar las deps no utilizadas (opcional)",
-		"writingConfig": "escribiendo la configuración en el nuevo archivo %1: %2",
-		"configExists": "%1 ya existe ... no se sobrescribirán",
-		"errIncorrectRangeFmt": "el rango de puertos tiene un formato incorrecto Formato como -- %1 = inicio-final"
+		"copyingFiles": "Copia de archivos desde: %1: %2",
+		"copiedFiles": "Los archivos copiados",
+		"writingDeps": "la escritura de las dependencias a: %1",
+		"packageJsonExists": "%1 ya existe...no sobrescribir",
+		"installingDeps": "La instalación de deps en %1",
+		"doneInit": "Realiza la inicialización de lesky de la aplicación! Algunas notas:",
+		"postInitNotes": "1. Usted podría querer init %1 aquí antes de continuar (%2)\n2. Es posible que desee agregar autor, nombre del proyecto, número de versión a %3\n3. Se pueden usar diferentes dependencias. El uso de `%4` quitar sin utilizar deps (opcional)",
+		"writingConfig": "escrito config para nuevos %1: %2",
+		"configExists": "%1 ya existe...no sobrescribir",
+		"errIncorrectRangeFmt": "el rango de puerto de formato incorrecto. Formato --%1=inicio - final"
 	},
 	"options": {
 		"ayuda": {
 			"alias": "h",
-			"desc": "Imprimir este menú de ayuda",
+			"desc": "Imprime este menú de ayuda",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
-			"desc": "Init lesky en el espacio de trabajo especificado por la vía de acceso, toma el valor por omisión",
+			"desc": "Init lesky en el espacio de trabajo especificado por la ruta por defecto cwd",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
-			"desc": "Dirección a utilizar",
+			"desc": "Dirección",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
 		"puerto": {
 			"alias": "p",
-			"desc": "Puerto a utilizar",
+			"desc": "El puerto a utilizar",
 			"dflt": 8080,
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protocolo a utilizar",
+			"desc": "Protocolo para el uso de",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"rango": {
-			"desc": "Rango de puertos (en caso de que se tome el puerto). Formato como final de inicio",
+		"range": {
+			"desc": "Rango de puertos (en caso de que el puerto se toma). Formato de inicio-final",
 			"dflt": [
 				8000,
 				9000
@@ -55,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Vía de acceso a clave SSL",
+			"desc": "Ruta de acceso de la Clave SSL",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Vía de acceso al certificado SSL",
+			"desc": "Ruta de acceso a los Certificados SSL",
 			"en_US": "sslCert"
 		},
-		"abrir": {
+		"abierto": {
 			"alias": "o",
-			"desc": "Abrir navegador",
+			"desc": "Abra el navegador.",
 			"dflt": "OS default",
 			"en_US": "open"
 		},
 		"reloj": {
 			"alias": "w",
-			"desc": "Ver los cambios de archivo en dir [ staticDir]",
+			"desc": "Reloj para los cambios de los archivos en el directorio [staticDir]",
 			"en_US": "watch"
 		}
 	}

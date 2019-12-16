@@ -1,42 +1,42 @@
 {
 	"msgs": {
-		"endOfHelp": "Hjälp-Slut",
+		"endOfHelp": "Slutet av Hjälp",
 		"usage": "användning",
-		"servingStaticDir": "serverar statisk katalog%1",
-		"serverCfgsStarted": "Alla serverkonfigurningar har startat",
-		"browserOpened": "öppnad webbläsare",
-		"copyingFiles": "Kopierar filer från:%1 till:%2",
+		"servingStaticDir": "statisk dir %1",
+		"serverCfgsStarted": "Alla server-configs igång",
+		"browserOpened": "webbläsaren öppnas",
+		"copyingFiles": "Kopiera filer från: %1 till %2",
 		"copiedFiles": "Kopierade filer",
-		"writingDeps": "Skriver beroenden till:%1",
-		"packageJsonExists": "%1 finns redan ... kommer inte att skrivas över",
-		"installingDeps": "Installerar deppar i%1",
-		"doneInit": "Startar initiering av Lesky-appen! Några kommentarer:",
-		"postInitNotes": "1. Du kanske vill ta bort%1 här innan du fortsätter (%2)\n2. Du kanske vill lägga till författare, projektnamn, versionsnummer till %3\n3. Du kanske vill ha olika beroenden. Använd \"%4\" för att ta bort oanvända deppar (valfritt)",
-		"writingConfig": "Skriver inställning till ny%1-fil:%2",
-		"configExists": "%1 finns redan ... kommer inte att skrivas över",
-		"errIncorrectRangeFmt": "portintervall som är felaktigt formaterade. Format som --%1 = start-slut"
+		"writingDeps": "skriva beroenden till: %1",
+		"packageJsonExists": "%1 finns redan...kommer inte över",
+		"installingDeps": "Installera deps i %1",
+		"doneInit": "Gjort initiering av lesky app! Några anteckningar:",
+		"postInitNotes": "1. Du kanske vill init %1 här innan du fortsätter (%2)\n2. Du kanske vill lägga till författare, projektets namn, versionsnummer %3\n3. Du kanske vill ha olika beroenden. Använda \"%4 \" för att ta bort oanvända deps (tillval)",
+		"writingConfig": "skriva config till ny %1 fil: %2",
+		"configExists": "%1 finns redan...kommer inte över",
+		"errIncorrectRangeFmt": "portintervall felaktigt formaterad. Format som --%1=start - slut"
 	},
 	"options": {
 		"hjälp": {
 			"alias": "h",
-			"desc": "Skriv ut den här hjälpmenyn",
+			"desc": "Skriv ut denna hjälp-menyn",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
-			"desc": "Init lesky i arbetsyta som anges i sökvägen, standardvärden för cwd",
+			"desc": "Init lesky i-arbetsyta som anges av vägen, är som standard cwd",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
 		"värd": {
 			"alias": "a",
-			"desc": "Adress att använda",
+			"desc": "Adress till användning",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
 		"port": {
 			"alias": "p",
-			"desc": "Port att använda",
+			"desc": "Port du vill använda",
 			"dflt": 8080,
 			"en_US": "port"
 		},
@@ -46,8 +46,8 @@
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"intervall": {
-			"desc": "Portintervall (i ärendeport är upptagen). Formatera som start-slut",
+		"sortiment": {
+			"desc": "Port Range (i fallet port är tagen). Format som start-slut",
 			"dflt": [
 				8000,
 				9000
@@ -55,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Sökväg till SSL-nyckel",
+			"desc": "Vägen till SSL-Nyckel",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Sökväg till SSL-certifikat",
+			"desc": "Vägen till SSL-Certifikat",
 			"en_US": "sslCert"
 		},
 		"öppna": {
 			"alias": "o",
-			"desc": "Öppna webbläsare",
+			"desc": "Öppna webbläsaren",
 			"dflt": "OS default",
 			"en_US": "open"
 		},
 		"klocka": {
 			"alias": "w",
-			"desc": "Titta efter filändringar i dir [ staticDir ]",
+			"desc": "Titta på filen förändringar i dir [staticDir]",
 			"en_US": "watch"
 		}
 	}
