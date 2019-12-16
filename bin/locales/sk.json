@@ -2,24 +2,24 @@
 	"msgs": {
 		"endOfHelp": "Koniec Pomoc",
 		"usage": "použitie",
-		"servingStaticDir": "slúžiace statické dir %1",
-		"serverCfgsStarted": "Všetky server menu konfigurácie začala",
-		"browserOpened": "prehliadača otvorené",
+		"servingStaticDir": "slúži statické dir %1",
+		"serverCfgsStarted": "Všetky server menu konfigurácie začal",
+		"browserOpened": "prehliadač otvorí",
 		"copyingFiles": "Kopírovanie súborov z: %1: %2",
 		"copiedFiles": "Skopírované súbory",
 		"writingDeps": "písanie závislosti na: %1",
 		"packageJsonExists": "%1 už existuje...nebude prepísať",
 		"installingDeps": "Inštalácia deps v %1",
-		"doneInit": "Urobil inicializácia lesky app! Niektoré poznámky:",
-		"postInitNotes": "1. Možno budete chcieť init .gitignore a git tu pred pokračovaním (git init",
-		"writingConfig": "git add .)\n2. Možno budete chcieť pridať autor, názov projektu, číslo verzie na obale.json\n3. Možno budete chcieť rôznych závislostí. Použitie \" npm prerezávať` odstránite nepoužívané deps (voliteľné)",
-		"configExists": "písanie config na nové .lesrc súbor: %1",
-		"errIncorrectRangeFmt": ".lesrc už existuje...nebude prepísať"
+		"doneInit": "Vykonáva inicializáciu lesky app! Pár poznámok:",
+		"postInitNotes": "1. Možno budete chcieť init %1 tu pred pokračovaním (%2)\n2. Možno budete chcieť pridať autor, názov projektu, číslo verzie na %3\n3. Možno budete chcieť rôznych závislostí. Použitie \"%4 \" odstrániť nepoužívané deps (voliteľné)",
+		"writingConfig": "písanie config novým %1 file: %2",
+		"configExists": "%1 už existuje...nebude prepísať",
+		"errIncorrectRangeFmt": "rozsah portov, nesprávne naformátovaná. Formát --%1=začiatok - koniec"
 	},
 	"options": {
-		"pomôcť": {
+		"pomoc": {
 			"alias": "h",
-			"desc": "Vytlačiť túto menu",
+			"desc": "Tlačiť túto ponuku pomocník",
 			"en_US": "help"
 		},
 		"init": {
@@ -28,15 +28,15 @@
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"host": {
+		"hosť": {
 			"alias": "a",
 			"desc": "Adresa na použitie",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
 		"port": {
-			"alias": "s",
-			"desc": "Port to use",
+			"alias": "p",
+			"desc": "Port použiť",
 			"dflt": 8080,
 			"en_US": "port"
 		},
@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"rozsah": {
-			"desc": "Port Range (v prípade, že port je prijaté)",
+			"desc": "Rozsah portov (v prípade, že port je prevzatý). Formát ako začiatok-koniec",
 			"dflt": [
 				8000,
 				9000
@@ -59,18 +59,18 @@
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Cesta k SSL Certifikátu",
+			"desc": "Cesta k Certifikátu SSL",
 			"en_US": "sslCert"
 		},
-		"otvoriť": {
-			"alias": "ó",
-			"desc": "Otvorenú",
+		"otvorené": {
+			"alias": "o",
+			"desc": "Otvorte prehliadač",
 			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"sledovať": {
+		"hodinky": {
 			"alias": "w",
-			"desc": "dávajte si Pozor na súbor zmien v dir [staticDir]",
+			"desc": "Pozor na súbor zmien v dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

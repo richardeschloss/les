@@ -1,84 +1,76 @@
 {
 	"msgs": {
-		"endOfHelp": "Beigās Palīdzēt",
+		"endOfHelp": "Beigās Palīdzība",
 		"usage": "izmantošana",
 		"servingStaticDir": "apkalpo statisku dir %1",
-		"serverCfgsStarted": "Visi serveri configs sākās",
-		"browserOpened": "pārlūkprogrammā uzsākšanas",
+		"serverCfgsStarted": "Viss serveri sāka configs",
+		"browserOpened": "pārlūka atvērts",
 		"copyingFiles": "Kopējot failus no: %1: %2",
-		"copiedFiles": "Kopēt failus, rakstot atkarības, lai: %1",
-		"writingDeps": "%1 jau eksistē...nebūs pārrakstīt",
-		"packageJsonExists": "Uzstādot deps šajā %1",
-		"installingDeps": "Gatavs sākt lesky app! Dažas piezīmes:",
-		"doneInit": "1. Jūs varētu vēlēties, lai init .gitignore un git šeit pirms turpināt (git init",
-		"postInitNotes": "git add .)\n2. Jūs varētu vēlēties, lai pievienotu autors, projekta nosaukumu, versijas numuru, kas uz iepakojuma.json\n3. Jūs varētu vēlēties, dažādas atkarības. Izmantot \"npm plūme\", lai noņemtu neizmantotās deps (pēc izvēles);, rakstot config jaunu .lesrc failu: %1",
-		"writingConfig": ".lesrc jau pastāv...nebūs pārrakstīt"
+		"copiedFiles": "Kopēt failus",
+		"writingDeps": "rakstīšanas atkarības, lai: %1",
+		"packageJsonExists": "%1 jau eksistē...nebūs pārrakstīt",
+		"installingDeps": "Uzstādot deps šajā %1",
+		"doneInit": "Gatavs sākt lesky app! Dažas piezīmes:",
+		"postInitNotes": "1. Jūs varētu vēlēties, lai init %1 šeit pirms turpināt (%2)\n2. Jūs varētu vēlēties, lai pievienotu autors, projekta nosaukumu, versijas numuru %3\n3. Jūs varētu vēlēties, dažādas atkarības. Izmantot \"%4\", lai noņemtu neizmantotās deps (nav obligāts)",
+		"writingConfig": "rakstīšanas config jaunu %1 failu: %2",
+		"configExists": "%1 jau eksistē...nebūs pārrakstīt",
+		"errIncorrectRangeFmt": "portu diapazona nepareizi formatēts. Formātu, kā --%1=start - gala"
 	},
 	"options": {
-		"palīdzētu": {
+		"palīdzēt": {
 			"alias": "h",
 			"desc": "Izdrukāt šo izvēlnē palīdzība",
-			"lv_lv": "palīdzēt",
 			"en_US": "help"
 		},
 		"init": {
-			"alias": "es",
+			"alias": "i",
 			"desc": "Init lesky jo workspace norādījis ceļu, noklusējumus uz hns",
-			"dflt": "[hns]",
-			"lv_lv": "init",
+			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"host": {
+		"uzņēmējas": {
 			"alias": "a",
 			"desc": "Adrese izmantot",
 			"dflt": "localhost",
-			"lv_lv": "uzņēmēja",
 			"en_US": "host"
 		},
-		"osta": {
+		"ostas": {
 			"alias": "p",
-			"desc": "Ostu izmantošanu",
+			"desc": "Ostas izmantošanu",
 			"dflt": 8080,
-			"lv_lv": "osta",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "Protokolu izmantošanu",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
-			"lv_lv": "proto",
 			"en_US": "proto"
 		},
 		"diapazons": {
-			"desc": "Ostas robežās (gadījumā, ja osta ir pieņemts)",
+			"desc": "Portu Diapazona (ja ostā ir veikti). Formātu, kā sākt-gala",
 			"dflt": [
 				8000,
 				9000
 			],
-			"lv_lv": "diapazons",
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Ceļš uz SSL Atslēgu",
-			"lv_lv": "sslKey",
+			"desc": "Ceļš uz SSL Atslēga",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
 			"desc": "Ceļš uz SSL Sertifikātu",
-			"lv_lv": "sslCert",
 			"en_US": "sslCert"
 		},
 		"atvērt": {
 			"alias": "o",
-			"desc": "Atvērt pārlūka",
+			"desc": "Atvērt pārlūku",
 			"dflt": "OS default",
-			"lv_lv": "atvērt",
 			"en_US": "open"
 		},
 		"skatīties": {
 			"alias": "w",
-			"desc": "Skatīties uz failu izmaiņas dir [staticDir]",
-			"lv_lv": "skatīties",
+			"desc": "Skatīties failu izmaiņas dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

@@ -3,81 +3,74 @@
 		"endOfHelp": "Slutningen af Hjælp",
 		"usage": "brug",
 		"servingStaticDir": "der vises statisk dir %1",
-		"serverCfgsStarted": "Alle server configs i gang",
-		"browserOpened": "- browseren åbnes, og Kopiering af filer: %1: %2, Kopieres filer, skriver afhængigheder til: %1",
-		"copyingFiles": "%1 findes allerede...vil ikke overskrive",
-		"copiedFiles": "Installation deps i %1",
-		"writingDeps": "Gjort initialisering lesky app! Nogle bemærkninger:",
-		"packageJsonExists": "1. Du måske ønsker at init .gitignore og git her, før du fortsætter (git init",
-		"installingDeps": "git add .)\n2. Du ønsker måske at tilføje forfatter, projekt-navn, version nummer til pakken.json\n3. Du vil måske forskellige afhængigheder. Brug `npm beskære \" for at fjerne ubrugte deps (valgfrit)",
-		"doneInit": "skrive config til nye .lesrc fil: %1",
-		"postInitNotes": ".lesrc allerede eksisterer...vil ikke overskrive"
+		"serverCfgsStarted": "Alle server-configs i gang",
+		"browserOpened": "browseren åbnes",
+		"copyingFiles": "Kopiering af filer: %1: %2",
+		"copiedFiles": "Kopierede filer",
+		"writingDeps": "at skrive afhængigheder til: %1",
+		"packageJsonExists": "%1 findes allerede...vil ikke overskrive",
+		"installingDeps": "Installation deps i %1",
+		"doneInit": "Gjort initialisering lesky app! Nogle bemærkninger:",
+		"postInitNotes": "1. Du måske ønsker at init %1 her, før du fortsætter (%2)\n2. Du ønsker måske at tilføje forfatter, projekt-navn, version nummer %3\n3. Du vil måske forskellige afhængigheder. Brug `%4` for at fjerne ubrugte deps (valgfrit)",
+		"writingConfig": "writing config til ny %1 fil: %2",
+		"configExists": "%1 findes allerede...vil ikke overskrive",
+		"errIncorrectRangeFmt": "portområde, forkert formateret. Format som --%1=start - slut"
 	},
 	"options": {
-		"hjælpe": {
+		"hjælp": {
 			"alias": "h",
 			"desc": "Udskriv denne hjælp menu",
-			"da_dk": "hjælpe",
 			"en_US": "help"
 		},
 		"init": {
-			"alias": "jeg",
+			"alias": "i",
 			"desc": "Init lesky i arbejdsrum, der er specificeret af stien, standard cwd",
 			"dflt": "[cwd]",
-			"da_dk": "init",
 			"en_US": "init"
 		},
 		"vært": {
-			"alias": "en",
-			"desc": " - Adresse til brug",
+			"alias": "a",
+			"desc": "Adresse du skal bruge",
 			"dflt": "localhost",
-			"da_dk": "host",
 			"en_US": "host"
 		},
-		"havnen": {
+		"port": {
 			"alias": "p",
-			"desc": "Port til at bruge",
+			"desc": "Port til brug",
 			"dflt": 8080,
-			"da_dk": "port",
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protokol for at bruge",
+			"desc": "Protokol til brug",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
-			"da_dk": "proto",
 			"en_US": "proto"
 		},
-		"range": {
-			"desc": "Port Range (i tilfælde af porten er taget)",
+		"række": {
+			"desc": "Port Range (i tilfælde af porten er taget). Format som start-slut",
 			"dflt": [
 				8000,
 				9000
 			],
-			"da_dk": "vifte",
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Vejen til SSL Nøgle",
-			"da_dk": "sslKey",
+			"desc": "Sti til SSL Nøgle",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Vejen til SSL-Certifikat",
-			"da_dk": "sslCert",
+			"desc": "Sti til SSL-Certifikat",
 			"en_US": "sslCert"
 		},
-		"åbne": {
+		"åben": {
 			"alias": "o",
 			"desc": "Åbn browseren",
 			"dflt": "OS default",
-			"da_dk": "åbne",
 			"en_US": "open"
 		},
 		"se": {
 			"alias": "w",
-			"desc": "Se til filen ændringer i dir [staticDir]",
-			"da_dk": "se",
+			"desc": "Se for filen ændringer i dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

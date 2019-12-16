@@ -1,52 +1,53 @@
 {
 	"msgs": {
 		"endOfHelp": "Në fund të Ndihmojë",
-		"usage": "përdorimin",
-		"servingStaticDir": "shërbyer statike dir %1",
-		"serverCfgsStarted": "të Gjitha server configs filluar",
-		"browserOpened": "shfletuesin e hapur",
-		"copyingFiles": "Kopjimit të skedarëve nga: %1 për: %2",
-		"copiedFiles": "fotografi Kopjuar, shkrimin varësi të: %1",
-		"writingDeps": "%1 tashmë ekziston...nuk do të prishësh",
-		"packageJsonExists": "Instalimi deps në %1",
-		"installingDeps": "Bëhet initializing lesky app! Disa shënime:",
-		"doneInit": "1. Ju mund të dëshironi të init .gitignore dhe git këtu, para se të vazhdoni (git init",
-		"postInitNotes": "git të shtuar .)\n2. Ju mund të dëshironi të shtoni autori, emri i projektit, numri version për paketë.json\n3. Ju mund të dëshironi të ndryshme në varësi. Përdorni `mpn trap \" për të hequr të papërdorura deps (fakultative)",
-		"writingConfig": "shkrim config të reja .lesrc file: %1",
-		"configExists": ".lesrc tashmë ekziston...nuk do të prishësh"
+		"usage": "përdorimi",
+		"servingStaticDir": "shërbejnë statike dir %1",
+		"serverCfgsStarted": "Të gjitha server configs filluar",
+		"browserOpened": "browser hap",
+		"copyingFiles": "Kopjimi i skedarëve nga: %1 për: %2",
+		"copiedFiles": "Fotografi kopjuar",
+		"writingDeps": "shkrim varësi të: %1",
+		"packageJsonExists": "%1 tashmë ekziston...nuk do të prishësh",
+		"installingDeps": "Instalimi deps në %1",
+		"doneInit": "Bëhet initializing lesky app! Disa shënime:",
+		"postInitNotes": "1. Ju mund të dëshironi të init %1 këtu, para se të vazhdoni (%2)\n2. Ju mund të dëshironi të shtoni autori, emri i projektit, numri version në %3\n3. Ju mund të dëshironi të ndryshme në varësi. Përdorni `%4` për të hequr të papërdorura deps (fakultativ)",
+		"writingConfig": "shkrim config të reja %1 file: %2",
+		"configExists": "%1 tashmë ekziston...nuk do të prishësh",
+		"errIncorrectRangeFmt": "port varg gabimisht formatuar. Format --%1=fillojë në fund të"
 	},
 	"options": {
 		"ndihmë": {
-			"pseudonim": "h",
-			"përshkrimi": "Shtyp këtë menu ndihmë",
+			"alias": "h",
+			"desc": "Shtyp këtë menu ndihmë",
 			"en_US": "help"
 		},
 		"init": {
-			"pseudonim": "unë",
-			"përshkrimi": "Init lesky në workspace të përcaktuara nga rruga, standarte të cwd",
+			"alias": "i",
+			"desc": "Init lesky në workspace të përcaktuara nga rruga, standarte të cwd",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"presë": {
-			"pseudonim": "një",
-			"përshkrimi": "Adresa për të përdorur",
+		"host": {
+			"alias": "a",
+			"desc": "Adresa për të përdorur",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
 		"port": {
-			"pseudonim": "p",
-			"përshkrimi": "të Portit për të përdorur",
+			"alias": "p",
+			"desc": "Portit për të përdorur",
 			"dflt": 8080,
 			"en_US": "port"
 		},
 		"proto": {
-			"përshkrimi": "Protokolli për të përdorur",
+			"desc": "Protokolli për të përdorur",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"spektër": {
-			"përshkrimi": "Port Varg (në rast se porti është marrë)",
+		"varg": {
+			"desc": "Port Varg (në rast se porti është marrë). Format si fillim-fund",
 			"dflt": [
 				8000,
 				9000
@@ -54,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"përshkrimi": "Rruga për SSL Kyçe",
+			"desc": "Rruga për SSL Kryesore",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"përshkrimi": "Rruga për SSL Certificate",
+			"desc": "Rruga për SSL Certificate",
 			"en_US": "sslCert"
 		},
-		"e hapur": {
-			"pseudonim": "o",
-			"përshkrimi": "të Hapur shfletuesin",
+		"open": {
+			"alias": "o",
+			"desc": "Hapur shfletuesin",
 			"dflt": "OS default",
 			"en_US": "open"
 		},
 		"watch": {
-			"pseudonim": "w",
-			"përshkrimi": "Rrini për fotografi ndryshimeve në dir [staticDir]",
+			"alias": "w",
+			"desc": "Watch për fotografi ndryshimeve në dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

@@ -2,84 +2,75 @@
 	"msgs": {
 		"endOfHelp": "Slutten av Hjelp",
 		"usage": "bruk",
-		"servingStaticDir": "som serverer statisk dir %1",
-		"serverCfgsStarted": "Alle server configs gang",
-		"browserOpened": "leseren åpnes",
-		"copyingFiles": "Kopiere filer fra: %1 til: %2",
-		"copiedFiles": "Kopierte filene, å skrive avhengigheter til: %1",
-		"writingDeps": "%1 finnes allerede...vil ikke overskrive",
-		"packageJsonExists": "Installere innskudd i %1",
-		"installingDeps": "Gjort initialiserer lesky app! Noen merknader:",
-		"doneInit": "1. Du ønsker kanskje å init .gitignore og git her før du fortsetter (git init",
-		"postInitNotes": "git add .)\n2. Du ønsker kanskje å legge til forfatteren, prosjekt navn, versjonsnummer for å pakke.json\n3. Du kan ha forskjellige avhengigheter. Bruk \"npm sviske\" for å fjerne ubrukte deps (valgfritt)",
-		"writingConfig": "skriver config til nye .lesrc fil: %1",
-		"configExists": ".lesrc allerede eksisterer...vil ikke overskrive"
+		"servingStaticDir": "serverer statisk dir %1",
+		"serverCfgsStarted": "Alle server-configs i gang",
+		"browserOpened": "nettleseren åpnes",
+		"copyingFiles": "Kopiering av filer fra: %1 til: %2",
+		"copiedFiles": "Kopierte filer",
+		"writingDeps": "skrive avhengigheter til: %1",
+		"packageJsonExists": "%1 finnes allerede...vil ikke overskrive",
+		"installingDeps": "Installere innskudd i %1",
+		"doneInit": "Gjort initialiserer lesky app! Noen merknader:",
+		"postInitNotes": "1. Du ønsker kanskje å init %1 her før du fortsetter (%2)\n2. Du ønsker kanskje å legge til forfatteren, prosjekt navn, versjonsnummer til %3\n3. Du kan ha forskjellige avhengigheter. Bruk \"%4 \" for å fjerne ubrukte deps (valgfritt)",
+		"writingConfig": "skrive config til nye %1-fil: %2",
+		"configExists": "%1 finnes allerede...vil ikke overskrive",
+		"errIncorrectRangeFmt": "port range feil formatert. Format som --%1=start - slutt"
 	},
 	"options": {
 		"hjelp": {
 			"alias": "h",
-			"desc": "skriv Ut denne hjelp-menyen",
-			"no_no": "hjelpe",
+			"desc": "Skriv ut denne hjelp-menyen",
 			"en_US": "help"
 		},
 		"init": {
-			"alias": "jeg",
+			"alias": "i",
 			"desc": "Init lesky i arbeidsområdet som er angitt av banen, standard cd",
-			"dflt": "[cd]",
-			"no_no": "init",
+			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"host": {
-			"alias": "en",
-			"desc": "Adresse",
+		"vert": {
+			"alias": "a",
+			"desc": "Adresse til bruk",
 			"dflt": "localhost",
-			"no_no": "host",
 			"en_US": "host"
 		},
 		"port": {
 			"alias": "p",
 			"desc": "Porten til bruk",
 			"dflt": 8080,
-			"no_no": "port",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "Protokoll",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
-			"no_no": "proto",
 			"en_US": "proto"
 		},
-		"range": {
-			"desc": "Port Range (i tilfelle port er tatt)",
+		"utvalg": {
+			"desc": "Port Range (i tilfelle port er tatt). Format som start-slutt",
 			"dflt": [
 				8000,
 				9000
 			],
-			"no_no": "range",
 			"en_US": "range"
 		},
 		"sslKey": {
 			"desc": "Veien til SSL-Tasten",
-			"no_no": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
 			"desc": "Veien til SSL-Sertifikat",
-			"no_no": "sslCert",
 			"en_US": "sslCert"
 		},
-		"åpne": {
+		"åpen": {
 			"alias": "o",
 			"desc": "Åpne nettleseren",
-			"dflt": "OS standard",
-			"no_no": "åpne",
+			"dflt": "OS default",
 			"en_US": "open"
 		},
 		"se": {
 			"alias": "w",
 			"desc": "Se for fil-endringer i dir [staticDir]",
-			"no_no": "pass",
 			"en_US": "watch"
 		}
 	}

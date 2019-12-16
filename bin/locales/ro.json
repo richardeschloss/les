@@ -1,53 +1,53 @@
 {
 	"msgs": {
-		"endOfHelp": "Sfârșitul de Ajutor",
+		"endOfHelp": "Oprire Ajutor",
 		"usage": "utilizare",
-		"servingStaticDir": "servire static dir %1",
-		"serverCfgsStarted": "Toate server configs început",
-		"browserOpened": "browser-ul deschis",
-		"copyingFiles": "Copierea fișierelor de: %1: %2",
-		"copiedFiles": "fișierele Copiate",
-		"writingDeps": "scris de dependențe pentru a: %1",
-		"packageJsonExists": "%1 există deja...nu va suprascrie",
-		"installingDeps": "Instalarea deps în %1",
-		"doneInit": "Făcut inițializarea lasky app! Unele note:",
-		"postInitNotes": "1. Poate vrei să init .gitignore și git aici înainte de a continua (git init",
-		"writingConfig": "git add .)\n2. S-ar putea să doriți să adăugați autor, numele proiectului, numărul de versiune a pachetului.json\n3. Poate vrei diferite dependențe. Folosesc npm prune` pentru a elimina neutilizate deps (opțional)",
-		"configExists": "scris config pentru noi .lesrc fișier: %1",
-		"errIncorrectRangeFmt": ".lesrc există deja...nu va suprascrie"
+		"servingStaticDir": "deserving static dir %1",
+		"serverCfgsStarted": "Toate configurările serverului au pornit",
+		"browserOpened": "browser deschis",
+		"copyingFiles": "Copierea fişierelor de la: %1 la: %2",
+		"copiedFiles": "Fişiere copiate",
+		"writingDeps": "scriere dependenţe la: %1",
+		"packageJsonExists": "%1 deja existent nu va suprascrie",
+		"installingDeps": "Instalare deps în %1",
+		"doneInit": "Făcut iniţializare app lesky! Unele note:",
+		"postInitNotes": "1. S-ar putea să doriţi să-l inşi %1 aici înainte de a continua (%2)\n2. S-ar putea să doriţi să adăugaţi autor, nume proiect, număr versiune la %3\n3. S-ar putea să doriţi dependenţe diferite. Utilizaţi ` %4 ` pentru a înlătura deps-ul nefolosit (opţional)",
+		"writingConfig": "scriere configuraţie în noul fişier %1: %2",
+		"configExists": "%1 deja existent nu va suprascrie",
+		"errIncorrectRangeFmt": "interval port incorect formatat. Format ca -- %1 = pornire-oprire"
 	},
 	"options": {
 		"ajutor": {
-			"alias": "sec",
-			"desc": "Print acest meniu de ajutor",
+			"alias": "h",
+			"desc": "Tipăriţi acest meniu de ajutor",
 			"en_US": "help"
 		},
 		"init": {
-			"alias": "eu",
-			"desc": "Init lasky în spațiul de lucru specificat prin cale, implicit cwd",
-			"dflt": "[bcc]",
+			"alias": "i",
+			"desc": "Init lesky în spaţiul de lucru specificat de cale, implicit cwd",
+			"dflt": "[cwd]",
 			"en_US": "init"
 		},
 		"gazdă": {
-			"alias": "o",
-			"desc": "Adresa de utilizat",
+			"alias": "a",
+			"desc": "Adresă de utilizat",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
 		"port": {
 			"alias": "p",
-			"desc": "Port de a utiliza",
+			"desc": "Port de utilizat",
 			"dflt": 8080,
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protocolul",
+			"desc": "Protocol de folosit",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"gama": {
-			"desc": "Port Range (în cazul în care portul este luată)",
+		"interval": {
+			"desc": "Interval port (în cazul în care portul este luat). Format ca pornire-oprire",
 			"dflt": [
 				8000,
 				9000
@@ -55,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Calea pentru a SSL-Cheie",
+			"desc": "Cale la cheie SSL",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Calea spre Certificat SSL",
+			"desc": "Cale la certificat SSL",
 			"en_US": "sslCert"
 		},
 		"deschis": {
 			"alias": "o",
-			"desc": "Deschideți browser-ul",
-			"dflt": "sistemul de OPERARE default",
+			"desc": "Deschidere browser",
+			"dflt": "OS default",
 			"en_US": "open"
 		},
 		"ceas": {
 			"alias": "w",
-			"desc": "Uita-te pentru fișiere schimbări în dir [staticDir]",
+			"desc": "Urmăriţi pentru modificările de fişier din dir [ staticDir]",
 			"en_US": "watch"
 		}
 	}

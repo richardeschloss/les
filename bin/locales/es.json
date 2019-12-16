@@ -1,86 +1,76 @@
 {
 	"msgs": {
-		"endOfHelp": "Fin de Ayudar",
-		"usage": "uso",
+		"endOfHelp": "Fin de Ayudar a",
+		"usage": "el uso de",
 		"servingStaticDir": "la porción estática dir %1",
-		"serverCfgsStarted": "Todas servidor configuraciones comenzó",
+		"serverCfgsStarted": "Todo servidor configuraciones comenzó",
 		"browserOpened": "navegador abierto",
 		"copyingFiles": "Copia de archivos desde: %1: %2",
-		"copiedFiles": "Copiado de archivos",
+		"copiedFiles": "Los archivos copiados",
 		"writingDeps": "la escritura de las dependencias a: %1",
 		"packageJsonExists": "%1 ya existe...no sobrescribir",
-		"installingDeps": "la Instalación de deps en %1",
+		"installingDeps": "La instalación de deps en %1",
 		"doneInit": "Realiza la inicialización de lesky de la aplicación! Algunas notas:",
-		"postInitNotes": "1. Usted podría querer a init .gitignore y git aquí antes de continuar (git init",
-		"writingConfig": "git add .)\n2. Es posible que desee agregar autor, nombre del proyecto, número de versión del paquete.json\n3. Se pueden usar diferentes dependencias. El uso de `mecanismo nacional de prevención de ciruela` quitar sin utilizar deps (opcional)",
-		"configExists": "la escritura de configuración de nuevo .lesrc de archivo: %1",
-		"errIncorrectRangeFmt": ".lesrc ya existe...no sobrescribir"
+		"postInitNotes": "1. Usted podría querer init %1 aquí antes de continuar (%2)\n2. Es posible que desee agregar autor, nombre del proyecto, número de versión a %3\n3. Se pueden usar diferentes dependencias. El uso de `%4` quitar sin utilizar deps (opcional)",
+		"writingConfig": "escrito config para nuevos %1: %2",
+		"configExists": "%1 ya existe...no sobrescribir",
+		"errIncorrectRangeFmt": "el rango de puerto de formato incorrecto. Formato --%1=inicio - final"
 	},
 	"options": {
 		"ayuda": {
 			"alias": "h",
 			"desc": "Imprime este menú de ayuda",
-			"es_es": "ayuda",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
 			"desc": "Init lesky en el espacio de trabajo especificado por la ruta por defecto cwd",
 			"dflt": "[cwd]",
-			"es_es": "init",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
 			"desc": "Dirección",
 			"dflt": "localhost",
-			"es_es": "host",
 			"en_US": "host"
 		},
 		"puerto": {
 			"alias": "p",
-			"desc": "Puerto a utilizar",
+			"desc": "El puerto a utilizar",
 			"dflt": 8080,
-			"es_es": "puerto",
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protocolo para el uso",
+			"desc": "Protocolo para el uso de",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
-			"es_es": "proto",
 			"en_US": "proto"
 		},
-		"intervalo": {
-			"desc": "Puerto serie (en caso de que el puerto se toma)",
+		"range": {
+			"desc": "Rango de puertos (en caso de que el puerto se toma). Formato de inicio-final",
 			"dflt": [
 				8000,
 				9000
 			],
-			"es_es": "rango",
 			"en_US": "range"
 		},
 		"sslKey": {
 			"desc": "Ruta de acceso de la Clave SSL",
-			"es_es": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Ruta de acceso de Certificado SSL",
-			"es_es": "sslCert",
+			"desc": "Ruta de acceso a los Certificados SSL",
 			"en_US": "sslCert"
 		},
 		"abierto": {
 			"alias": "o",
-			"desc": "Abrir el navegador",
+			"desc": "Abra el navegador.",
 			"dflt": "OS default",
-			"es_es": "abierto",
 			"en_US": "open"
 		},
 		"reloj": {
 			"alias": "w",
-			"desc": "Ver para los cambios de los archivos en el directorio [staticDir]",
-			"es_es": "ver",
+			"desc": "Reloj para los cambios de los archivos en el directorio [staticDir]",
 			"en_US": "watch"
 		}
 	}
