@@ -41,7 +41,7 @@ async function stopServers(cfgsLoaded) {
   })
 }
 
-function validateCfgs(cliCfg, cfgsLoaded, t) {
+function validateCfgs(cliCfg, cfgsLoaded, t, options) {
   const merged = mergeConfigs(cliCfg, options)
   const keys = ['proto', 'host', 'port']
   merged.forEach((cfg, idx) => {
@@ -80,14 +80,14 @@ test('Help menu (--help)', (t) => {
 test('Server starts (no CLI args, .lesrc)', async (t) => {
   const cliCfg = {}
   const { cfgsLoaded } = await testCfg(cliCfg, msgs)
-  validateCfgs(cliCfg, cfgsLoaded, t)
+  validateCfgs(cliCfg, cfgsLoaded, t, options)
   await stopServers(cfgsLoaded)
 })
 
 test('Server starts (simple CLI args provided)', async (t) => {
   const cliCfg = { port: 3001 }
   const { cfgsLoaded } = await testCfg(cliCfg, msgs)
-  validateCfgs(cliCfg, cfgsLoaded, t)
+  validateCfgs(cliCfg, cfgsLoaded, t, options)
   await stopServers(cfgsLoaded)
 })
 
@@ -95,7 +95,7 @@ test('Server starts (port range)', async (t) => {
   const cliCfg = { proto: 'http2', range: '3000-4000' }
   const { cfgsLoaded } = await testCfg(cliCfg, msgs)
   cliCfg.portRange = cliCfg.range.split('-').map((i) => parseInt(i))
-  validateCfgs(cliCfg, cfgsLoaded, t)
+  validateCfgs(cliCfg, cfgsLoaded, t, options)
   await stopServers(cfgsLoaded)
 })
 
@@ -103,11 +103,11 @@ test('Server starts at port (even if port range provided)', async (t) => {
   const cliCfg = { proto: 'http2', port: 8234, range: '3000-4000' }
   const { cfgsLoaded } = await testCfg(cliCfg, msgs)
   cliCfg.portRange = cliCfg.range.split('-').map((i) => parseInt(i))
-  validateCfgs(cliCfg, cfgsLoaded, t)
+  validateCfgs(cliCfg, cfgsLoaded, t, options)
   await stopServers(cfgsLoaded)
 })
 
-test.only('Server does not start (port range incorrect format)', async (t) => {
+test('Server does not start (port range incorrect format)', async (t) => {
   const cliCfg = { proto: 'http2', range: '3000x4000' }
   await testCfg(cliCfg, msgs).catch((err) => {
     t.is(
@@ -120,14 +120,14 @@ test.only('Server does not start (port range incorrect format)', async (t) => {
 test('Server starts (http proto)', async (t) => {
   const cliCfg = { proto: 'http' }
   const { cfgsLoaded } = await testCfg(cliCfg, msgs)
-  validateCfgs(cliCfg, cfgsLoaded, t)
+  validateCfgs(cliCfg, cfgsLoaded, t, options)
   await stopServers(cfgsLoaded)
 })
 
 test('Server starts (https proto)', async (t) => {
   const cliCfg = { proto: 'https' }
   const { cfgsLoaded } = await testCfg(cliCfg, msgs)
-  validateCfgs(cliCfg, cfgsLoaded, t)
+  validateCfgs(cliCfg, cfgsLoaded, t, options)
   await stopServers(cfgsLoaded)
 })
 
@@ -141,7 +141,7 @@ test('Server starts (sslKey not found)', async (t) => {
 test('Server starts (port in use)', async (t) => {
   const cliCfg = { port: 3000 }
   const { cfgsLoaded: cfgsLoaded1 } = await testCfg(cliCfg, msgs)
-  validateCfgs(cliCfg, cfgsLoaded1, t)
+  validateCfgs(cliCfg, cfgsLoaded1, t, options)
   const { cfgsLoaded: cfgsLoaded2 } = await testCfg(cliCfg, msgs)
   cfgsLoaded1.forEach((cfg, idx) => {
     t.not(cfg.port, cfgsLoaded2[idx].port)
@@ -156,7 +156,7 @@ test('Handle ENOTFOUND (host not found)', async (t) => {
   })
 })
 
-test.skip('Open browser', async (t) => {
+test('Open browser', async (t) => {
   const cliCfg = { open: true }
   const { cfgsLoaded } = await testCfg(cliCfg, msgs)
   cfgsLoaded.forEach(({ browser }) => {
@@ -183,7 +183,7 @@ test('Watch dir (specify path)', async (t) => {
   })
 })
 
-test.skip('Lesky init (no config provided)', async (t) => {
+test('Lesky init (no config provided)', async (t) => {
   const cliCfg = { init: true, dest: '/tmp/lesky' }
   const cli = testCLI(cliCfg, msgs)
   const sts = await cli.run(options)
@@ -191,7 +191,7 @@ test.skip('Lesky init (no config provided)', async (t) => {
   t.pass()
 })
 
-test.skip('Lesky init (repeated, verify no overwrite)', async (t) => {
+test('Lesky init (repeated, verify no overwrite)', async (t) => {
   const cliCfg = { init: true, dest: '/tmp/lesky' }
   const cli = testCLI(cliCfg, msgs)
   const sts = await cli.run(options)
@@ -200,7 +200,7 @@ test.skip('Lesky init (repeated, verify no overwrite)', async (t) => {
   t.pass()
 })
 
-test.skip('Spanish options', async (t) => {
+test('Spanish options', async (t) => {
   process.env.LANG = 'es'
   await importCLIOptions(options2, msgs2)
   const cliCfg = { ayuda: true }
@@ -215,11 +215,20 @@ test.skip('Spanish options', async (t) => {
   process.env.LANG = 'en_US.UTF-8'
 })
 
-test.skip('Spanish options (.lesrc)', async (t) => {
+test('Spanish options (.lesrc)', async (t) => {
   process.env.LANG = 'es'
+  await importCLIOptions(options2, msgs2)
   const cliCfg = {}
   const { cfgsLoaded } = await testCfg(cliCfg, msgs2)
-  validateCfgs(cliCfg, cfgsLoaded, t)
+  const merged = mergeConfigs(cliCfg, options2)
+  const keys = ['proto', 'host', 'port']
+  merged.forEach((cfg, idx) => {
+    keys.forEach((key) => {
+      if (!['port', 'puerto'].includes(key)) {
+        t.is(cfg[key], cfgsLoaded[idx][key])
+      }
+    })
+  })
   await stopServers(cfgsLoaded)
   process.env.LANG = 'en_US.UTF-8'
 })

@@ -40,10 +40,7 @@ function _mergeConfigs(cliCfg, options) {
 
   if (!process.env.LANG.includes('en')) {
     Object.entries(options).forEach(([option, { en_US }]) => {
-      if (props[en_US]) {
-        props[en_US] = option
-      }
-
+      props[en_US] = option
       merged.forEach((serverCfg) => {
         if (serverCfg[option]) {
           serverCfg[en_US] = serverCfg[option]
@@ -75,14 +72,11 @@ function CLI(cfg, msgs) {
   cfg['_'] = cfg['_'] || []
   function buildCliCfg(options) {
     const cliCfg = {}
-    let rangeKey = 'range'
+    const rangeKey = 'range'
     Object.entries(options).forEach(([option, { alias, en_US }]) => {
       const optionVal = cfg[option] || cfg[alias]
       if (optionVal) {
         if (en_US) {
-          if (en_US === 'range') {
-            rangeKey = option
-          }
           option = en_US
         }
         cliCfg[option] = optionVal
