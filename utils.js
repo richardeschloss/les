@@ -3,7 +3,7 @@ import { resolve as pResolve } from 'path'
 import netstat from 'node-netstat'
 import { exec, spawn } from 'child_process'
 import { get as hGet } from 'https'
-import { translateMany } from 'les-utils/dist/language'
+import { LangUtils } from 'les-utils'
 
 function attachSSL(cfgs) {
   const sslPair = {}
@@ -248,55 +248,9 @@ function runCmdUntil({
   })
 }
 
-async function translateLocale(lang = 'es') {
-  console.log('translateLocale', lang)
-  const localeDflt = 'en'
-  const localeJson = `${__dirname}/locales/${localeDflt}.json`
-  const { default: imported } = await import(localeJson)
-  const { msgs, options } = imported
-
-  const msgsIn = Object.values(msgs).join('; ')
-  const optsIn = JSON.stringify(options)
-  const optsInEntries = Object.entries(options)
-
-  const { text } = await translateText({
-    text: msgsIn + '|||' + optsIn,
-    lang
-  }).catch((err) => {
-    console.error(err)
-  })
-
-  const [msgsResp, optsResp] = text[0].split('|||')
-  let optsOut = {},
-    msgsOut = {}
-  try {
-    optsOut = JSON.parse(optsResp)
-    Object.keys(optsOut).forEach((key, idx) => {
-      optsOut[key].en_US = optsInEntries[idx][0]
-      if (!optsOut[key].alias && optsInEntries[idx][1].alias) {
-        optsOut[key].alias = optsInEntries[idx][1].alias
-      }
-    })
-
-    const translatedMsgs = msgsResp.split(/;\s*/)
-    msgsOut = Object.keys(msgs).reduce((result, key, idx) => {
-      result[key] = translatedMsgs[idx]
-      return result
-    }, {})
-
-    const localeOut = `${__dirname}/locales/${lang}.json`
-    const localeJsonOut = { msgs: msgsOut, options: optsOut }
-    console.log(`saving locale ${lang} to ${localeOut}`)
-    writeFileSync(localeOut, JSON.stringify(localeJsonOut, null, '\t'))
-  } catch (e) {
-    console.error(`Error parsing options for ${lang}`)
-  }
-
-  return { optsOut, msgsOut }
-}
-
-async function translateLocales() {
+async function translateLocales({ api = 'ibm' }) {
   console.log('translateLocales...')
+  const svc = LangUtils({ api })
   const localeDflt = 'en'
   const localeJson = `${__dirname}/locales/${localeDflt}.json`
   const { default: imported } = await import(localeJson)
@@ -311,56 +265,60 @@ async function translateLocales() {
 
   const textIn = msgsInValues.concat(optsInKeys, optsInDescs)
   const translatedLangs = []
-  await translateMany({
-    requestStyle: 'series',
-    texts: textIn,
-    langs: 'all',
-    notify({ lang, result }) {
-      translatedLangs.push(lang)
-      const msgsResp = result.slice(0, msgsInValues.length)
-      const optsOutKeys = result.slice(
-        msgsInValues.length,
-        msgsInValues.length + optsInKeys.length
-      )
-      const optsOutDescs = result.slice(msgsInValues.length + optsInKeys.length)
-      const msgsOut = msgsInKeys.reduce((result, key, idx) => {
-        result[key] = msgsResp[idx].replace(/%\s*/g, '%')
-        return result
-      }, {})
-
-      const badResp = new RegExp(/[!@#$%^&*(),.?":{}|<>'\-=\s]/)
-      const ignoreKeys = ['sslKey', 'sslCert']
-      const optsOut = optsOutKeys.reduce((result, key, idx) => {
-        const en_US = optsInKeys[idx]
-        const valKeys = Object.keys(optsInValues[idx])
-        valKeys.push('en_US')
-        let keyOut
-        if (!badResp.test(key) && !ignoreKeys.includes(en_US)) {
-          keyOut = key.toLowerCase()
-        } else {
-          keyOut = en_US
-        }
-        result[keyOut] = valKeys.reduce((valObj, valKey) => {
-          if (valKey === 'en_US') {
-            valObj[valKey] = en_US
-          } else if (valKey === 'desc') {
-            valObj[valKey] = optsOutDescs[idx]
-          } else {
-            valObj[valKey] = optsInValues[idx][valKey]
-          }
-          return valObj
+  await svc
+    .translateMany({
+      sequential: true,
+      texts: textIn,
+      langs: 'all',
+      notify({ lang, result }) {
+        translatedLangs.push(lang)
+        const msgsResp = result.slice(0, msgsInValues.length)
+        const optsOutKeys = result.slice(
+          msgsInValues.length,
+          msgsInValues.length + optsInKeys.length
+        )
+        const optsOutDescs = result.slice(
+          msgsInValues.length + optsInKeys.length
+        )
+        const msgsOut = msgsInKeys.reduce((result, key, idx) => {
+          result[key] = msgsResp[idx].replace(/%\s*/g, '%')
+          return result
         }, {})
-        return result
-      }, {})
 
-      const localeOut = `${__dirname}/locales/${lang}.json`
-      const localeJsonOut = { msgs: msgsOut, options: optsOut }
-      console.log(`saving locale ${lang} to ${localeOut}`)
-      writeFileSync(localeOut, JSON.stringify(localeJsonOut, null, '\t'))
+        const badResp = new RegExp(/[!@#$%^&*(),.?":{}|<>'\-=\s]/)
+        const ignoreKeys = ['sslKey', 'sslCert']
+        const optsOut = optsOutKeys.reduce((result, key, idx) => {
+          const en_US = optsInKeys[idx]
+          const valKeys = Object.keys(optsInValues[idx])
+          valKeys.push('en_US')
+          let keyOut
+          if (!badResp.test(key) && !ignoreKeys.includes(en_US)) {
+            keyOut = key.toLowerCase()
+          } else {
+            keyOut = en_US
+          }
+          result[keyOut] = valKeys.reduce((valObj, valKey) => {
+            if (valKey === 'en_US') {
+              valObj[valKey] = en_US
+            } else if (valKey === 'desc') {
+              valObj[valKey] = optsOutDescs[idx]
+            } else {
+              valObj[valKey] = optsInValues[idx][valKey]
+            }
+            return valObj
+          }, {})
+          return result
+        }, {})
 
-      return { optsOut, msgsOut }
-    }
-  }).catch(console.error)
+        const localeOut = `${__dirname}/locales/${lang}.json`
+        const localeJsonOut = { msgs: msgsOut, options: optsOut }
+        console.log(`saving locale ${lang} to ${localeOut}`)
+        writeFileSync(localeOut, JSON.stringify(localeJsonOut, null, '\t'))
+
+        return { optsOut, msgsOut }
+      }
+    })
+    .catch(console.error)
 
   console.log('translated', translatedLangs)
   return translatedLangs
@@ -375,6 +333,5 @@ export {
   loadServerConfigs,
   portTaken,
   runCmdUntil,
-  translateLocale,
   translateLocales
 }

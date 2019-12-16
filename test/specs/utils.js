@@ -3,6 +3,6 @@ import { translateLocales } from '@/utils'
 
 test('Translate locales', async (t) => {
   t.timeout(3 * 60 * 1000)
-  await translateLocales()
+  await translateLocales({ api: 'yandex' })
   t.pass()
 })
