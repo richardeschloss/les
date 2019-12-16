@@ -59,7 +59,7 @@
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "გზა SSL სერთიფიკატი",
+			"desc": "გზა SSL Certificate",
 			"en_US": "sslCert"
 		},
 		"ღია": {

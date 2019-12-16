@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"gamo": {
-			"desc": "Port Gamo (en kazo haveno estas prenita)",
+			"desc": "Haveno Gamo (en kazo haveno estas prenita)",
 			"dflt": [
 				8000,
 				9000

@@ -11,10 +11,10 @@
     "packageJsonExists": "%1 already exists...will not overwrite",
     "installingDeps": "Installing deps in %1",
     "doneInit": "Done initializing lesky app! Some notes:",
-    "postInitNotes": "1. You might want to init .gitignore and git here before continuing (git init; git add .)\n2. You might want to add author, project name, version number to package.json\n3. You might want different dependencies. Use `npm prune` to remove unused deps (optional)",
-    "writingConfig": "writing config to new .lesrc file: %1",
-    "configExists": ".lesrc already exists...will not overwrite",
-    "errIncorrectRangeFmt": "port range incorrectly formatted. Format as --range=start-end"
+    "postInitNotes": "1. You might want to init %1 here before continuing (%2)\n2. You might want to add author, project name, version number to %3\n3. You might want different dependencies. Use `%4` to remove unused deps (optional)",
+    "writingConfig": "writing config to new %1 file: %2",
+    "configExists": "%1 already exists...will not overwrite",
+    "errIncorrectRangeFmt": "port range incorrectly formatted. Format as --%1=start - end"
   },
   "options": {
     "help": {
@@ -42,7 +42,7 @@
       "limitTo": "{ http, https, http2 }"
     },
     "range": {
-      "desc": "Port Range (in case port is taken)",
+      "desc": "Port Range (in case port is taken). Format as start-end",
       "dflt": [8000, 9000]
     },
     "sslKey": {

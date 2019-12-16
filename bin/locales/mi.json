@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"whānuitanga": {
-			"desc": "Tauranga Whānuitanga (i roto i te take tauranga tangohia ana)",
+			"desc": "Port Range (i roto i te take tauranga tangohia ana)",
 			"dflt": [
 				8000,
 				9000
@@ -69,7 +69,7 @@
 			"en_US": "open"
 		},
 		"kia mataara": {
-			"ingoakē": "w",
+			"ingoakē": "i roto i te",
 			"desc": "kia Mataara mō te kōnae ngā huringa i roto i te whaiaronga [staticDir]",
 			"en_US": "watch"
 		}

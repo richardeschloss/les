@@ -1,53 +1,53 @@
 {
 	"msgs": {
-		"endOfHelp": "Akhir Membantu",
+		"endOfHelp": "Akhir dari Bantuan",
 		"usage": "penggunaan",
-		"servingStaticDir": "melayani statis dir %1",
-		"serverCfgsStarted": "Semua konfigurasi server yang dimulai",
-		"browserOpened": "browser dibuka",
-		"copyingFiles": "Menyalin file dari: %1: %2",
-		"copiedFiles": "Menyalin file, menulis dependensi untuk: %1",
-		"writingDeps": "%1 sudah ada...tidak akan menimpa",
-		"packageJsonExists": "Menginstal deps dalam %1",
-		"installingDeps": "Dilakukan inisialisasi lesky app! Beberapa catatan:",
-		"doneInit": "1. Anda mungkin ingin init .gitignore dan git berikut ini sebelum melanjutkan (git init",
-		"postInitNotes": "git add .)\n2. Anda mungkin ingin menambahkan penulis, nama proyek, nomor versi paket.json\n3. Anda mungkin ingin berbeda dependensi. Gunakan `npm memangkas` untuk menghapus yang tidak terpakai deps (opsional)",
-		"writingConfig": "menulis konfigurasi baru .lesrc file: %1",
-		"configExists": ".lesrc sudah ada...tidak akan menimpa",
-		"errIncorrectRangeFmt": "jangkauan port yang telah diformat dengan benar. Format sebagai-kisaran=start-end"
+		"servingStaticDir": "menyajikan dir statis %1",
+		"serverCfgsStarted": "Semua orang kepercayaan server mulai",
+		"browserOpened": "peramban dibuka",
+		"copyingFiles": "Menyalin berkas dari:%1 ke:%2",
+		"copiedFiles": "Berkas yang disalin",
+		"writingDeps": "menulis dependensi ke:%1",
+		"packageJsonExists": "%1 sudah eksisten...tidak akan menimpa",
+		"installingDeps": "Memasang deps di%1",
+		"doneInit": "Selesai menginisialisasi aplikasi lesky! Beberapa catatan:",
+		"postInitNotes": "1. Anda mungkin ingin init%1 di sini sebelum melanjutkan (%2)\n2. Anda mungkin ingin menambahkan penulis, nama proyek, nomor versi ke %3\n3. Anda mungkin ingin dependensi yang berbeda. Gunakan ` %4 ` untuk menghapus deps yang tidak digunakan (opsional)",
+		"writingConfig": "konfigurasi penulisan ke berkas%1 baru:%2",
+		"configExists": "%1 sudah eksisten...tidak akan menimpa",
+		"errIncorrectRangeFmt": "jangkauan port tidak benar diformat. Format sebagai --%1 = start-end"
 	},
 	"options": {
-		"membantu": {
+		"bantuan": {
 			"alias": "h",
-			"desc": "Cetak ini membantu menu",
+			"desc": "Cetak menu bantuan ini",
 			"en_US": "help"
 		},
 		"init": {
-			"alias": "saya",
-			"desc": "Init lesky di ruang kerja ditentukan oleh path default untuk cwd",
+			"alias": "i",
+			"desc": "Init lesky dalam ruang kerja dispesifikasikan oleh path, default ke cwd",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "a",
-			"desc": "Alamat untuk menggunakan",
+			"desc": "Alamat yang akan digunakan",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
 		"port": {
 			"alias": "p",
-			"desc": "Port untuk menggunakan",
+			"desc": "Port untuk digunakan",
 			"dflt": 8080,
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protokol untuk menggunakan",
+			"desc": "Protokol yang akan digunakan",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"range": {
-			"desc": "Berbagai pelabuhan (dalam hal ini port diambil)",
+		"jangkauan": {
+			"desc": "Jangkauan port (dalam kasus port diambil). Format sebagai start-end",
 			"dflt": [
 				8000,
 				9000
@@ -55,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Jalan untuk SSL Kunci",
+			"desc": "Path ke Kunci SSL",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Jalan untuk Sertifikat SSL",
+			"desc": "Path ke Sertifikat SSL",
 			"en_US": "sslCert"
 		},
-		"open": {
+		"buka": {
 			"alias": "o",
 			"desc": "Buka browser",
 			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"menonton": {
+		"watch": {
 			"alias": "w",
-			"desc": "Perhatikan perubahan file dalam dir [staticDir]",
+			"desc": "Perhatikan perubahan berkas di dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

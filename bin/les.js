@@ -50,16 +50,38 @@ function _mergeConfigs(cliCfg, options) {
     fndCfgIdx = 0;
   }
 
+  const props = {
+    proto: 'proto',
+    host: 'host',
+    port: 'port'
+  };
+
+  if (!process.env.LANG.includes('en')) {
+    Object.entries(options).forEach(([option, {
+      en_US
+    }]) => {
+      if (props[en_US]) {
+        props[en_US] = option;
+      }
+
+      merged.forEach(serverCfg => {
+        if (serverCfg[option]) {
+          serverCfg[en_US] = serverCfg[option];
+        }
+      });
+    });
+  }
+
   Object.assign(merged[fndCfgIdx], cliCfg);
   merged.forEach((serverCfg, idx) => {
-    serverCfg.proto = serverCfg.proto || options.proto.dflt;
-    serverCfg.host = serverCfg.host || options.host.dflt;
+    serverCfg.proto = serverCfg.proto || options[props.proto].dflt;
+    serverCfg.host = serverCfg.host || options[props.host].dflt;
 
     if (!serverCfg.port) {
       if (serverCfg.portRange) {
         serverCfg.port = parseInt(serverCfg.portRange[0]);
       } else {
-        serverCfg.port = merged[fndCfgIdx].port || options.port.dflt;
+        serverCfg.port = merged[fndCfgIdx].port || options[props.port].dflt;
 
         if (idx !== fndCfgIdx) {
           serverCfg.port += idx - fndCfgIdx;
@@ -75,6 +97,7 @@ function CLI(cfg, msgs) {
 
   function buildCliCfg(options) {
     const cliCfg = {};
+    let rangeKey = 'range';
     Object.entries(options).forEach(([option, {
       alias,
       en_US
@@ -83,6 +106,10 @@ function CLI(cfg, msgs) {
 
       if (optionVal) {
         if (en_US) {
+          if (en_US === 'range') {
+            rangeKey = option;
+          }
+
           option = en_US;
         }
 
@@ -99,7 +126,7 @@ function CLI(cfg, msgs) {
           cliCfg.port = cliCfg.portRange[0];
         }
       } else {
-        throw new Error(msgs.errIncorrectRangeFmt);
+        throw new Error(msgs.errIncorrectRangeFmt.replace(/\s*%1/, rangeKey).replace(/\s*=\s*/, '=').replace(/\s+-\s+/, '-'));
       }
     }
 
@@ -145,12 +172,12 @@ function CLI(cfg, msgs) {
     const destLesrcFile = (0, _path.resolve)(dest, '.lesrc');
 
     if (!(0, _fs.existsSync)(destLesrcFile)) {
-      console.log(msgs.writingConfig.replace('%1', destLesrcFile));
+      console.log(msgs.writingConfig.replace('%1', '.lesrc').replace('%2', destLesrcFile));
       const lesCfg = [Object.assign({}, initCfg)];
       console.log('.lesrc:', lesCfg);
       (0, _fs.writeFileSync)(destLesrcFile, JSON.stringify(lesCfg, null, '  '));
     } else {
-      console.log(msgs.configExists);
+      console.log(msgs.configExists.replace('%1', '.lesrc'));
     }
 
     const skipFiles = ['bin', '.lesrc'];
@@ -166,7 +193,7 @@ function CLI(cfg, msgs) {
       stdio: [0, 1, 2]
     });
     console.log(msgs.doneInit);
-    console.log(msgs.postInitNotes);
+    console.log(msgs.postInitNotes.replace('%1', '.gitignore and git').replace('%2', 'git init; git add .').replace('%3', packageJson).replace('%4', 'npm prune'));
     return 'done';
   }
 

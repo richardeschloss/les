@@ -1,36 +1,36 @@
 {
 	"msgs": {
 		"endOfHelp": "Konec Pomoci",
-		"usage": "využití",
+		"usage": "použití",
 		"servingStaticDir": "slouží statické dir %1",
-		"serverCfgsStarted": "Všechny serveru configs začal",
-		"browserOpened": "prohlížeč otevřel, Kopírování souborů z: %1: %2",
-		"copyingFiles": "Kopírovat soubory",
-		"copiedFiles": "psaní závislosti: %1",
-		"writingDeps": "%1 již existuje...nepřepíše",
-		"packageJsonExists": "Instalace deps v %1",
-		"installingDeps": "Provést inicializaci lesky app! Některé poznámky:",
-		"doneInit": "1. Možná budete chtít init .gitignore a git tady před pokračováním (git init",
-		"postInitNotes": "git add .)\n2. Možná budete chtít přidat autora, název projektu, číslo verze balíčku.json\n3. Možná budete chtít, různých závislostí. Použijte `npm prořezávat a odstraňte nepoužívané deps (volitelné)",
-		"writingConfig": "psaní config na nový .lesrc souboru: %1",
-		"configExists": ".lesrc již existuje...nepřepíše",
-		"errIncorrectRangeFmt": "rozsah portů nesprávně formátován. Format jako --range=start-konec"
+		"serverCfgsStarted": "Všechny serverové konfigurační soubory začala",
+		"browserOpened": "prohlížeč otevřel",
+		"copyingFiles": "Kopírování souborů z: %1: %2",
+		"copiedFiles": "Zkopírované soubory",
+		"writingDeps": "psaní závislosti: %1",
+		"packageJsonExists": "%1 již existuje...nepřepíše",
+		"installingDeps": "Instalace deps ve %1",
+		"doneInit": "Provádí inicializaci lesky app! Některé poznámky:",
+		"postInitNotes": "1. Možná budete chtít init %1 zde, než budete pokračovat (v%2)\n2. Možná budete chtít přidat autora, název projektu, číslo verze %3\n3. Možná budete chtít, různých závislostí. Použijte `%4` odstranit nepoužívané deps (volitelné)",
+		"writingConfig": "psaní config do new %1 soubor: %2",
+		"configExists": "%1 již existuje...nepřepíše",
+		"errIncorrectRangeFmt": "rozsah portů nesprávně formátován. Format jako --%1=start - end"
 	},
 	"options": {
-		"pomoci": {
+		"pomoc": {
 			"alias": "h",
-			"desc": "Vytisknout tuto nabídku nápověda",
+			"desc": "Vytisknout pomocí menu",
 			"en_US": "help"
 		},
 		"init": {
-			"alias": "",
+			"alias": "i",
 			"desc": "Init lesky v prostoru určeném cestu, výchozí cwd",
 			"dflt": "[cwd]",
 			"en_US": "init"
 		},
 		"host": {
-			"alias": "",
-			"desc": "Adresa k použití",
+			"alias": "a",
+			"desc": "Adresa pro použití",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
@@ -41,13 +41,13 @@
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protokol",
+			"desc": "Protokol používat",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"range": {
-			"desc": "Rozsah portů (v případě, že port je přijata)",
+		"rozsah": {
+			"desc": "Rozsah portů (v případě, že port je přijata). Formát, jako je start-end",
 			"dflt": [
 				8000,
 				9000
@@ -64,13 +64,13 @@
 		},
 		"otevřít": {
 			"alias": "o",
-			"desc": "Otevřít prohlížeč",
-			"dflt": "OS jako výchozí",
+			"desc": "Otevřete prohlížeč",
+			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"dívat se": {
+		"hodinky": {
 			"alias": "w",
-			"desc": "Sledovat změny souborů v dir [staticDir]",
+			"desc": "Hodinky pro změny souborů v dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

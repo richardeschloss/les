@@ -1,22 +1,23 @@
 {
 	"msgs": {
 		"endOfHelp": "Ende der Hilfe",
-		"usage": "Verwendung",
-		"servingStaticDir": "Auslieferung statischer dir %1",
-		"serverCfgsStarted": "Alle server-configs gestartet, browser geöffnet, das Kopieren von Dateien von: %1: %2",
-		"browserOpened": "Kopiert Dateien",
-		"copyingFiles": "schreiben von Abhängigkeiten: %1",
-		"copiedFiles": "%1 ist bereits vorhanden...wird nicht überschrieben",
-		"writingDeps": "die Installation deps in %1",
-		"packageJsonExists": "Done initializing lesky app! Einige Anmerkungen:",
-		"installingDeps": "1. Möchten Sie vielleicht init .gitignore und git hier, bevor Sie fortfahren (git init",
-		"doneInit": "git add .)\n2. Möglicherweise möchten Sie Autor, Projektname, Versionsnummer für das Paket an.json\n3. Möchten Sie vielleicht verschiedene Abhängigkeiten. Verwenden Sie `npm prune` zum entfernen von unbenutzten deps (optional)",
-		"postInitNotes": "schreiben der config auf \"neu\".lesrc Datei: %1",
-		"writingConfig": ".lesrc bereits vorhanden...nicht überschreiben",
-		"configExists": "- port-Bereich fehlerhaft formatiert. Format --range=start-end"
+		"usage": "Nutzung",
+		"servingStaticDir": "statischen dir %1",
+		"serverCfgsStarted": "Alle server-configs gestartet",
+		"browserOpened": "browser geöffnet",
+		"copyingFiles": "Kopieren von Dateien von: %1: %2",
+		"copiedFiles": "Kopiert Dateien",
+		"writingDeps": "schreiben Abhängigkeiten: %1",
+		"packageJsonExists": "%1 ist bereits vorhanden...wird nicht überschrieben",
+		"installingDeps": "Installation deps in %1",
+		"doneInit": "Erfolgt die Initialisierung lesky app! Einige Anmerkungen:",
+		"postInitNotes": "1. Möchten Sie vielleicht init %1 hier, bevor Sie fortfahren (%2)\n2. Möglicherweise möchten Sie Autor, Projektname, - version, - Nummer %3\n3. Möchten Sie vielleicht verschiedene Abhängigkeiten. Verwenden Sie `%4`, entfernen Sie nicht verwendete deps (optional)",
+		"writingConfig": "schreiben der config auf den neuen %1 Datei: %2",
+		"configExists": "%1 ist bereits vorhanden...wird nicht überschrieben",
+		"errIncorrectRangeFmt": "port-Bereich fehlerhaft formatiert. Format --%1=start - end"
 	},
 	"options": {
-		"help": {
+		"helfen": {
 			"alias": "h",
 			"desc": "Drucken Sie diese Hilfe-Menü",
 			"en_US": "help"
@@ -35,18 +36,18 @@
 		},
 		"port": {
 			"alias": "p",
-			"desc": "Port",
+			"desc": "Port zu verwenden",
 			"dflt": 8080,
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "Protokoll",
+			"desc": "Protokoll zu verwenden",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"range": {
-			"desc": "Port-Bereich (im Fall port getroffen wird)",
+		"angebot": {
+			"desc": "Port-Bereich (im Fall port genommen wird). Format start-Ende",
 			"dflt": [
 				8000,
 				9000
@@ -54,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Pfad zu den SSL-Schlüssel",
+			"desc": "Pfad zum SSL-Schlüssel",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
 			"desc": "Pfad zum SSL-Zertifikat",
 			"en_US": "sslCert"
 		},
-		"open": {
+		"öffnen": {
 			"alias": "o",
-			"desc": "browser Öffnen",
-			"dflt": "Betriebssystem",
+			"desc": "Browser öffnen",
+			"dflt": "OS default",
 			"en_US": "open"
 		},
-		"anschauen": {
+		"uhr": {
 			"alias": "w",
-			"desc": "Sehen Sie für die Datei-änderungen, die in dir [staticDir]",
+			"desc": "Uhr für die Datei-änderungen, die in dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

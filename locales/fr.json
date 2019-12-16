@@ -1,36 +1,36 @@
 {
 	"msgs": {
 		"endOfHelp": "Fin de l'Aide",
-		"usage": "l'utilisation",
+		"usage": "l'utilisation de la",
 		"servingStaticDir": "servir statique dir %1",
-		"serverCfgsStarted": "serveur Tous les configs commencé",
+		"serverCfgsStarted": "Serveur tous les configs commencé",
 		"browserOpened": "navigateur ouvert",
-		"copyingFiles": "la Copie de fichiers à partir de: %1: %2",
-		"copiedFiles": "fichiers Copiés",
+		"copyingFiles": "La copie de fichiers à partir de: %1: %2",
+		"copiedFiles": "Les fichiers copiés",
 		"writingDeps": "l'écriture de dépendances: %1",
-		"packageJsonExists": "%1 existe déjà...ne va pas écraser",
-		"installingDeps": "l'Installation de deps en %1",
+		"packageJsonExists": "%1 existe déjà...n'écrase pas",
+		"installingDeps": "L'installation de deps en %1",
 		"doneInit": "Fait l'initialisation de lesky app! Quelques remarques:",
-		"postInitNotes": "1. Vous pourriez init .gitignore et git ici avant de poursuivre (git init",
-		"writingConfig": "git add .)\n2. Vous voudrez peut-être ajouter de l'auteur, nom du projet, le numéro de version de paquet.json\n3. Vous pourriez différentes dépendances. L'utilisation de `npm prune \" pour supprimer les deps (facultatif)",
-		"configExists": "l'écriture de config à nouveau .lesrc fichier: %1",
-		"errIncorrectRangeFmt": ".lesrc existe déjà...ne va pas écraser"
+		"postInitNotes": "1. Vous pourriez init %1 ici avant de poursuivre (%2)\n2. Vous voudrez peut-être ajouter de l'auteur, nom du projet, le numéro de version %3\n3. Vous pourriez différentes dépendances. Utiliser `%4` à supprimer les deps (facultatif)",
+		"writingConfig": "l'écriture de la configuration de nouveaux %1 fichier: %2",
+		"configExists": "%1 existe déjà...n'écrase pas",
+		"errIncorrectRangeFmt": "plage de port incorrectement formaté. Format --%1=début - fin"
 	},
 	"options": {
-		"aide": {
+		"aider": {
 			"alias": "h",
-			"desc": "Imprimer le menu d'aide",
+			"desc": "Imprimer cette menu aide",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "i",
 			"desc": "Init lesky dans l'espace de travail spécifié par le chemin d'accès, par défaut, à la mdc",
-			"dflt": "[mdc]",
+			"dflt": "[cwd]",
 			"en_US": "init"
 		},
-		"hôte": {
-			"alias": "un",
-			"desc": "Adresse",
+		"accueil": {
+			"alias": "a",
+			"desc": "Adresse à utiliser",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
@@ -41,13 +41,13 @@
 			"en_US": "port"
 		},
 		"proto": {
-			"desc": "le Protocole à utiliser",
+			"desc": "Le protocole à utiliser",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
 			"en_US": "proto"
 		},
-		"plage": {
-			"desc": "Port Range (dans le cas où le port est pris)",
+		"gamme": {
+			"desc": "Plage de Port (dans le cas où le port est pris). Format de début et de fin",
 			"dflt": [
 				8000,
 				9000
@@ -55,22 +55,22 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "le Chemin vers la Clé SSL",
+			"desc": "Chemin de la Clé SSL",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "le Chemin d'accès au Certificat SSL",
+			"desc": "Chemin de Certificat SSL",
 			"en_US": "sslCert"
 		},
-		"ouvrir": {
+		"ouvert": {
 			"alias": "o",
 			"desc": "Ouvrez le navigateur",
-			"dflt": "OS par défaut",
+			"dflt": "OS default",
 			"en_US": "open"
 		},
 		"regarder": {
 			"alias": "w",
-			"desc": "attention, les modifications du fichier dir [staticDir]",
+			"desc": "Surveillez les changements de fichier dir [staticDir]",
 			"en_US": "watch"
 		}
 	}

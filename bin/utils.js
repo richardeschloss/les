@@ -10,7 +10,6 @@ exports.importCLIOptions = importCLIOptions;
 exports.loadServerConfigs = loadServerConfigs;
 exports.portTaken = portTaken;
 exports.runCmdUntil = runCmdUntil;
-exports.translateLocale = translateLocale;
 exports.translateLocales = translateLocales;
 exports.buildCLIUsage = void 0;
 
@@ -24,9 +23,7 @@ var _child_process = require("child_process");
 
 var _https = require("https");
 
-var _language = require("les-utils/dist/language");
-
-var _promises = require("les-utils/dist/promises");
+var _lesUtils = require("les-utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -291,9 +288,14 @@ function runCmdUntil({
   });
 }
 
-async function translateLocale(lang = 'es') {
-  console.log('translateLocale', lang);
-  const localeDflt = 'en_US';
+async function translateLocales({
+  api = 'ibm'
+}) {
+  console.log('translateLocales...');
+  const svc = (0, _lesUtils.LangUtils)({
+    api
+  });
+  const localeDflt = 'en';
   const localeJson = `${__dirname}/locales/${localeDflt}.json`;
   const {
     default: imported
@@ -302,55 +304,73 @@ async function translateLocale(lang = 'es') {
     msgs,
     options
   } = imported;
-  const msgsIn = Object.values(msgs).join('; ');
-  const optsIn = JSON.stringify(options);
+  const msgsInKeys = Object.keys(msgs);
+  const msgsInValues = Object.values(msgs);
   const optsInKeys = Object.keys(options);
-  const {
-    text
-  } = await (0, _language.translateText)({
-    text: msgsIn + '|||' + optsIn,
-    lang
-  }).catch(err => {
-    console.error(err);
-  });
-  const [msgsResp, optsResp] = text[0].split('|||');
-  let optsOut = {},
-      msgsOut = {};
+  const optsInValues = Object.values(options);
+  const optsInDescs = optsInValues.map(({
+    desc
+  }) => desc);
+  const textIn = msgsInValues.concat(optsInKeys, optsInDescs);
+  const translatedLangs = [];
+  await svc.translateMany({
+    sequential: true,
+    texts: textIn,
+    langs: 'all',
 
-  try {
-    optsOut = JSON.parse(optsResp);
-    Object.keys(optsOut).forEach((key, idx) => {
-      optsOut[key].en_US = optsInKeys[idx];
-    });
-    const translatedMsgs = msgsResp.split(/;\s+/);
-    msgsOut = Object.keys(msgs).reduce((result, key, idx) => {
-      result[key] = translatedMsgs[idx];
-      return result;
-    }, {});
-    const localeOut = `${__dirname}/locales/${lang}.json`;
-    const localeJsonOut = {
-      msgs: msgsOut,
-      options: optsOut
-    };
-    console.log(`saving locale ${lang} to ${localeOut}`);
-    (0, _fs.writeFileSync)(localeOut, JSON.stringify(localeJsonOut, null, '\t'));
-  } catch (e) {
-    console.error(`Error parsing options for ${lang}`);
-  }
+    notify({
+      lang,
+      result
+    }) {
+      translatedLangs.push(lang);
+      const msgsResp = result.slice(0, msgsInValues.length);
+      const optsOutKeys = result.slice(msgsInValues.length, msgsInValues.length + optsInKeys.length);
+      const optsOutDescs = result.slice(msgsInValues.length + optsInKeys.length);
+      const msgsOut = msgsInKeys.reduce((result, key, idx) => {
+        result[key] = msgsResp[idx].replace(/%\s*/g, '%');
+        return result;
+      }, {});
+      const badResp = new RegExp(/[!@#$%^&*(),.?":{}|<>'\-=\s]/);
+      const ignoreKeys = ['sslKey', 'sslCert'];
+      const optsOut = optsOutKeys.reduce((result, key, idx) => {
+        const en_US = optsInKeys[idx];
+        const valKeys = Object.keys(optsInValues[idx]);
+        valKeys.push('en_US');
+        let keyOut;
 
-  return {
-    optsOut,
-    msgsOut
-  };
-}
+        if (!badResp.test(key) && !ignoreKeys.includes(en_US)) {
+          keyOut = key.toLowerCase();
+        } else {
+          keyOut = en_US;
+        }
 
-async function translateLocales() {
-  const {
-    langs
-  } = await (0, _language.getSupportedLangs)({});
-  const allLangs = Object.keys(langs);
-  return (0, _promises.promiseSeries)({
-    items: allLangs,
-    handleItem: translateLocale
-  });
+        result[keyOut] = valKeys.reduce((valObj, valKey) => {
+          if (valKey === 'en_US') {
+            valObj[valKey] = en_US;
+          } else if (valKey === 'desc') {
+            valObj[valKey] = optsOutDescs[idx];
+          } else {
+            valObj[valKey] = optsInValues[idx][valKey];
+          }
+
+          return valObj;
+        }, {});
+        return result;
+      }, {});
+      const localeOut = `${__dirname}/locales/${lang}.json`;
+      const localeJsonOut = {
+        msgs: msgsOut,
+        options: optsOut
+      };
+      console.log(`saving locale ${lang} to ${localeOut}`);
+      (0, _fs.writeFileSync)(localeOut, JSON.stringify(localeJsonOut, null, '\t'));
+      return {
+        optsOut,
+        msgsOut
+      };
+    }
+
+  }).catch(console.error);
+  console.log('translated', translatedLangs);
+  return translatedLangs;
 }

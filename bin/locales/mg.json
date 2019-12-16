@@ -14,12 +14,12 @@
 		"postInitNotes": "1. Mety te-init .gitignore sy git eto alohan'ny mitohy (git init",
 		"writingConfig": "git add .)\n2. Mety te-hanampy mpanoratra, tetikasa anarany, amin'ny endriny maro ny fonosana.json\n3. Mety te-samy hafa fifampiankinana. Mampiasa `npm mamboatra` ny hanesorana tsy ampiasaina deps (tsy an-katerena)",
 		"configExists": "manoratra config vaovao .lesrc rakitra: %1",
-		"errIncorrectRangeFmt": ".lesrc efa misy...tsy tsindriana"
+		"errIncorrectRangeFmt": ".lesrc efa misy...tsy overwrite"
 	},
 	"options": {
 		"hanampy": {
 			"antsoina hoe": "h",
-			"desc": "Printy izany hanampy ny karazan-tsafidy",
+			"desc": "Printy izany hanampy ny sakafo",
 			"en_US": "help"
 		},
 		"mety atomboka": {

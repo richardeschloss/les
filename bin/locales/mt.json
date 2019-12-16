@@ -30,7 +30,7 @@
 		},
 		"ospitanti": {
 			"magħruf ukoll bħala": "a",
-			"deskrizzjoni tal -": "L-indirizz għall-użu",
+			"deskrizzjoni tal -": "l-Indirizz għall-użu",
 			"dflt": "localhost",
 			"en_US": "host"
 		},
@@ -47,7 +47,7 @@
 			"en_US": "proto"
 		},
 		"firxa": {
-			"deskrizzjoni tal -": "Il-Port il-Firxa (fil-każ tal-port hija meħuda)",
+			"deskrizzjoni tal -": "il-Port il-Firxa (fil-każ tal-port hija meħuda)",
 			"dflt": [
 				8000,
 				9000
@@ -59,7 +59,7 @@
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"deskrizzjoni tal -": "it-Triq għall-SSL taċ-Ċertifikat",
+			"deskrizzjoni tal -": "It-triq għall-SSL taċ-Ċertifikat",
 			"en_US": "sslCert"
 		},
 		"miftuħa": {

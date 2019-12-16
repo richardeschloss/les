@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Vége Segítség",
+		"usage": "használat",
+		"servingStaticDir": "z statikus dir %1",
+		"serverCfgsStarted": "Minden szerver konfigurációk kezdődött",
+		"browserOpened": "böngésző nyitott",
+		"copyingFiles": "A fájlok másolása: %1: %2",
+		"copiedFiles": "Másolt fájlokat",
+		"writingDeps": "írás függőségek, hogy: %1",
+		"packageJsonExists": "%1 már létezik...nem felülírja,",
+		"installingDeps": "Telepítése deps a %1",
+		"doneInit": "Kész inicializálása lesky app! Néhány megjegyzés:",
+		"postInitNotes": "1. Érdemes init %1 itt a folytatás előtt (%2)\n2. Érdemes hozzátenni, szerző, projekt neve, verziószáma, hogy %3\n3. Érdemes a különböző függőségek. Használja a `%4`, hogy távolítsa el a nem használt deps (opcionális)",
+		"writingConfig": "írás config új %1 fájl: %2",
+		"configExists": "%1 már létezik...nem felülírja,",
+		"errIncorrectRangeFmt": "port range helytelenül formázott. Formátum --%1=start - end"
+	},
+	"options": {
+		"súgó": {
+			"alias": "h",
+			"desc": "Nyomtassa ki ezt súgó menü",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky a munkaterület által meghatározott utat, alapértelmezett cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"fogadó": {
+			"alias": "a",
+			"desc": "Cím használata",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port használata",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokoll használata",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"tartomány": {
+			"desc": "Port Range (abban az esetben, port venni). A formátum, mint a start-end",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Út SSL Kulcs",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Út SSL Tanúsítvány",
+			"en_US": "sslCert"
+		},
+		"megnyitás": {
+			"alias": "o",
+			"desc": "Nyitva böngésző",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"óra": {
+			"alias": "w",
+			"desc": "Vigyázz a fájl változások dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

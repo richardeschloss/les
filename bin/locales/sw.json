@@ -19,7 +19,7 @@
 	"options": {
 		"msaada": {
 			"alias": "h",
-			"desc": "Magazeti hii msaada menu",
+			"desc": "Magazeti hii menu ya msaada",
 			"en_US": "help"
 		},
 		"init": {

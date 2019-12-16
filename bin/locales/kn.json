@@ -55,7 +55,7 @@
 			"en_US": "range"
 		},
 		"sslKey": {
-			"desc": "Path to SSL ಕೀ",
+			"desc": "Path to SSL ಕೀಲಿ",
 			"en_US": "sslKey"
 		},
 		"sslCert": {

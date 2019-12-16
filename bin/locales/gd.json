@@ -20,57 +20,67 @@
 		"help": {
 			"alias": "cmsu",
 			"desc": "Clò-bhuail seo a' cuideachadh a 'chlàr-taice",
+			"gd_gb": "cobhair",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "tha",
 			"desc": "Init lesky ann workspace a shònrachadh leis an t-slighe, seo na bun-roghainnean a cwd",
 			"dflt": "[cwd]",
+			"gd_gb": "init",
 			"en_US": "init"
 		},
 		"host": {
 			"alias": "tha",
-			"desc": "An seòladh a chleachdadh",
+			"desc": "an Seòladh a chleachdadh",
 			"dflt": "localhost",
+			"gd_gb": "host",
 			"en_US": "host"
 		},
 		"port": {
 			"alias": "p",
 			"desc": "am Port a chleachdadh",
 			"dflt": 8080,
+			"gd_gb": "port",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "am Pròtacal a chleachdadh",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
+			"gd_gb": "proto",
 			"en_US": "proto"
 		},
 		"range": {
-			"desc": "Port Raon (ann an cùis port a ghabhail)",
+			"desc": "am Port Raon (ann an cùis port a ghabhail)",
 			"dflt": [
 				8000,
 				9000
 			],
+			"gd_gb": "raon",
 			"en_US": "range"
 		},
 		"sslKey": {
 			"desc": "an t-Slighe a-SSL Iuchair",
+			"gd_gb": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "an t-Slighe a-SSL Certificate",
+			"desc": "An t-slighe a-SSL Certificate",
+			"gd_gb": "sslCert",
 			"en_US": "sslCert"
 		},
 		"fosgail": {
 			"alias": "o",
 			"desc": "Fosgail am brabhsair",
 			"dflt": "OS default",
+			"gd_gb": "fosgail",
 			"en_US": "open"
 		},
 		"watch": {
 			"alias": "w",
 			"desc": "Cum sùil air airson am faidhle na h-atharrachaidhean ann an dir [staticDir]",
+			"gd_gb": "cum sùil air",
 			"en_US": "watch"
 		}
 	}

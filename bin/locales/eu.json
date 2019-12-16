@@ -20,30 +20,35 @@
 		"laguntza": {
 			"alias": "h",
 			"desc": "Inprimatu laguntza hau menu",
+			"eu": "laguntza",
 			"en_US": "help"
 		},
 		"init": {
 			"alias": "dut",
 			"desc": "Init lesky batean laneko zehaztutako bidea, lehenespenez cwd",
 			"dflt": "[cwd]",
+			"eu": "init",
 			"en_US": "init"
 		},
 		"ostalari": {
 			"alias": "bat",
 			"desc": "Helbidea erabili",
 			"dflt": "localhost",
+			"eu": "ostalari",
 			"en_US": "host"
 		},
 		"portu": {
 			"alias": "p",
 			"desc": "Ataka erabili",
 			"dflt": 8080,
+			"eu": "portu",
 			"en_US": "port"
 		},
 		"proto": {
 			"desc": "Protokoloa erabili",
 			"dflt": "http",
 			"limitTo": "{ http, https, http2 }",
+			"eu": "proto",
 			"en_US": "proto"
 		},
 		"gama": {
@@ -52,25 +57,30 @@
 				8000,
 				9000
 			],
+			"eu": "gama",
 			"en_US": "range"
 		},
 		"sslKey": {
 			"desc": "Bide SSL Gakoa",
+			"eu": "sslKey",
 			"en_US": "sslKey"
 		},
 		"sslCert": {
-			"desc": "Bide SSL Ziurtagiria",
+			"desc": "Bidea SSL Ziurtagiria",
+			"eu": "sslCert",
 			"en_US": "sslCert"
 		},
 		"ireki": {
 			"alias": "o",
 			"desc": "nabigatzaile bat Ireki",
 			"dflt": "OS lehenetsia",
+			"eu": "ireki",
 			"en_US": "open"
 		},
 		"ikusi": {
 			"alias": "m",
 			"desc": "Ikusi fitxategia aldaketak dir [staticDir]",
+			"eu": "ikusi",
 			"en_US": "watch"
 		}
 	}
