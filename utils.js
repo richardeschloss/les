@@ -175,8 +175,8 @@ function downloadLocale(locale, dest) {
 
 async function importCLIOptions(options, msgs) {
   const localeDflt = 'en'
-  let locale = process.env.LANG || localeDflt
-  locale = locale.split('.UTF-8')[0].split('_')[0]
+  const { LANG = localeDflt } = process.env
+  const locale = LANG.split('.UTF-8')[0].split('_')[0]
   const localeJson = `${__dirname}/locales/${locale}.json`
   if (existsSync(localeJson)) {
     const { default: imported } = await import(localeJson)

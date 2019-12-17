@@ -22,6 +22,7 @@ import { spawn } from 'child_process'
 const argv = minimist(process.argv.slice(2))
 const cwd = process.cwd()
 const options = {}
+const { LANG = 'en' } = process.env
 
 function _mergeConfigs(cliCfg, options) {
   const merged = loadServerConfigs()
@@ -38,7 +39,7 @@ function _mergeConfigs(cliCfg, options) {
     port: 'port'
   }
 
-  if (!process.env.LANG.includes('en')) {
+  if (!LANG.includes('en')) {
     Object.entries(options).forEach(([option, { en_US }]) => {
       props[en_US] = option
       merged.forEach((serverCfg) => {
