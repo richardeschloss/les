@@ -38,6 +38,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 const argv = (0, _minimist.default)(process.argv.slice(2));
 const cwd = process.cwd();
 const options = {};
+const {
+  LANG = 'en'
+} = process.env;
 
 function _mergeConfigs(cliCfg, options) {
   const merged = (0, _utils.loadServerConfigs)();
@@ -56,14 +59,11 @@ function _mergeConfigs(cliCfg, options) {
     port: 'port'
   };
 
-  if (!process.env.LANG.includes('en')) {
+  if (!LANG.includes('en')) {
     Object.entries(options).forEach(([option, {
       en_US
     }]) => {
-      if (props[en_US]) {
-        props[en_US] = option;
-      }
-
+      props[en_US] = option;
       merged.forEach(serverCfg => {
         if (serverCfg[option]) {
           serverCfg[en_US] = serverCfg[option];
@@ -97,7 +97,7 @@ function CLI(cfg, msgs) {
 
   function buildCliCfg(options) {
     const cliCfg = {};
-    let rangeKey = 'range';
+    const rangeKey = 'range';
     Object.entries(options).forEach(([option, {
       alias,
       en_US
@@ -106,10 +106,6 @@ function CLI(cfg, msgs) {
 
       if (optionVal) {
         if (en_US) {
-          if (en_US === 'range') {
-            rangeKey = option;
-          }
-
           option = en_US;
         }
 
