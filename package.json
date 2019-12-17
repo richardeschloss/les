@@ -1,6 +1,6 @@
 {
   "name": "lesky",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Lightweight Express-ish (Koa) Server - Type les not More!",
   "main": "server.js",
   "scripts": {
@@ -26,7 +26,7 @@
   "files": [
     "bin",
     "channels",
-    "locales",
+    "locales/en.json",
     "public",
     "test",
     ".babelrc",
