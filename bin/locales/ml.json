@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "End of സഹായം",
+		"usage": "ഉപയോഗം",
+		"servingStaticDir": "serving static dir %1",
+		"serverCfgsStarted": "എല്ലാ സെർവർ configs തുടങ്ങി",
+		"browserOpened": "ബ്രൗസറിൽ തുറന്നു",
+		"copyingFiles": "പകര്ത്തുന്നു നിന്നും ഫയലുകള്: %1: %2",
+		"copiedFiles": "പകര്ത്തിയിരിക്കുന്നു ഫയലുകൾ",
+		"writingDeps": "എഴുത്തു ആശ്രിതത്വം to: %1",
+		"packageJsonExists": "%1 നിലവിലുണ്ട്...will not overwrite",
+		"installingDeps": "ഇൻസ്റ്റോൾ deps ലെ %1",
+		"doneInit": "Done ആരംഭിക്കുന്നു lesky app! ചില കുറിപ്പുകള്:",
+		"postInitNotes": "1. You might want to init .gitignore and ഗിറ്റ് ഇവിടെ before continuing (git init",
+		"writingConfig": "git add .)\n2. You might want to add പ്രഭാഷകന്, പദ്ധതിയുടെ പേര്, പതിപ്പ് നമ്പർ package.json\n3. You might want വ്യത്യസ്ത ആശ്രിതത്വങ്ങള്. Use `npm ചുരുക്കാൻ` നീക്കം ഉപയോഗശൂന്യവുമായ deps (ഓപ്ഷണൽ)",
+		"configExists": "എഴുത്തു config to new .lesrc file: %1",
+		"errIncorrectRangeFmt": ".lesrc നിലവിലുണ്ട്...will not overwrite"
+	},
+	"options": {
+		"help": {
+			"alias": "h",
+			"desc": "Print this help മെനു",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "ഞാൻ",
+			"desc": "Init lesky in പണിസ്ഥലം വ്യക്തമാക്കിയിട്ടുള്ള പാത, defaults to cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"ഹോസ്റ്റ്": {
+			"alias": "a",
+			"desc": "Address to use",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"പോര്ട്ട്": {
+			"alias": "p",
+			"desc": "Port to use",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"മഴുവോ": {
+			"desc": "Protocol to use",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"range": {
+			"desc": "Port Range (in case port is taken)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Path to SSL കീ",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Path to SSL Certificate",
+			"en_US": "sslCert"
+		},
+		"തുറക്കുക": {
+			"alias": "o",
+			"desc": "ഓപ്പൺ browser",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"watch": {
+			"alias": "w",
+			"desc": "കാണുക ഫയൽ മാറ്റങ്ങൾ dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

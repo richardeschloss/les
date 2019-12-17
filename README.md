@@ -37,7 +37,17 @@ Then, from any folder launching a static server is simply:
 
 > les
 
+Want to start it with even less pain (i.e., less "ouch"?)
+
+> les -ow
+
 If there is a default "public" folder in your current working directory, that will be served. The default server can be accessed at: http://localhost:8080
+
+Want to use lesky in YOUR native language? Now you can! (If the language set is in [locales](https://github.com/richardeschloss/les/tree/master/locales) folder, you can use it!). If your *system's language* includes the two-letter language code it will be used; most systems should have the env var "LANG" set. If LANG is not set, simply set it two the language you want to use:
+
+> LANG="es" les 
+
+This will respect options in Spanish and display console messages back in that language.
 
 ## Customizing (CLI)
 
@@ -64,6 +74,26 @@ options:
 
 ```
 
+> LANG="es" les --ayuda
+```
+el uso de: les [path] [options]
+
+options:
+	-h,	--ayuda	Imprime este menú de ayuda
+	-i,	--init	Init lesky en el espacio de trabajo especificado por la ruta por defecto cwd [[cwd]]
+	-a,	--host	Dirección [localhost]
+	-p,	--puerto	El puerto a utilizar [8080]
+		--proto	Protocolo para el uso de [http] ({ http, https, http2 })
+		--range	Rango de puertos (en caso de que el puerto se toma). Formato de inicio-final [8000,9000]
+		--sslKey	Ruta de acceso de la Clave SSL
+		--sslCert	Ruta de acceso a los Certificados SSL
+	-o,	--abierto	Abra el navegador. [OS default]
+	-w,	--reloj	Reloj para los cambios de los archivos en el directorio [staticDir]
+
+---Fin de Ayudar a---
+```
+
+
 ## Customizing (.lesrc config file)
 
 If a `.lesrc` config file is in the current working directory, it will be consumed. If CLI args are _also_ provided, those will override the entry in .lesrc that matches protocol used by the CLI. The config file is simply a JSON file, specifying an array of configurations to use. If a desired port is already taken, an attempt will be made to find a free port.
@@ -74,6 +104,7 @@ Example `.lesrc` file:
 [{
   "host": "localhost",
   "proto": "http2",
+	"port": 8000,
   "sslKey": ".ssl/server.key",
   "sslCert": ".ssl/server.crt"
 },{
@@ -81,6 +112,8 @@ Example `.lesrc` file:
   "portRange": [8000, 9000]
 }]
 ```
+
+If using a language different from English, you can *your* language for the options in the file. So "port" could be written as "puerto" if Spanish is being. English will always be the fallback.
 
 ## Initializing a workspace to be a lesky app
 
@@ -102,11 +135,6 @@ When initialization is done, the following should work:
 
 ## TODO Items and Notes
 
-- Improved i18n support. Currently the locales folder has a "en_US" locale, but I would like to support more languages, to make this tool easier for devs across the world to use. At the same time, I want to figure out how to do it and still keep things lightweight. Some thoughts:
+- I think some utils can still be transferred over to `les-utils`, where they'd be more reusable.
 
---> It would be nice if the commands could be entered in the user's preferred language 
-
---> It would be nice if the console log messages appeared in the user's preferred language.
-
-
-
+- The `les.js` file has the i18n support while the others don't. I may want to carry over the translations to the other files, but I would like to do so gracefully. If someone runs `les --init` in a new workspace, it would have to copy over the preferred language set (I'll revisit someday)

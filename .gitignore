@@ -1,5 +1,7 @@
 .ssl
 .sslx
 .nyc_output
+.yandex.json
+.env
 node_modules
 coverage

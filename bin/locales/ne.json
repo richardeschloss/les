@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "अन्त मदत गर्न",
+		"usage": "उपयोग",
+		"servingStaticDir": "सेवा स्थिर dir %1",
+		"serverCfgsStarted": "सबै सर्भर configs सुरु",
+		"browserOpened": "ब्राउजर खोल्न",
+		"copyingFiles": "Copying files from: %1: %2",
+		"copiedFiles": "फाइलहरू प्रतिलिपि लेखन",
+		"writingDeps": "निर्भरता गर्न: %1",
+		"packageJsonExists": "%1 पहिले नै अवस्थित छ...हुनेछ छैन अधिलेखन",
+		"installingDeps": "स्थापना निर्भरताहरू मा %1",
+		"doneInit": "गरेका थालनी lesky app! केही टिप्पणीहरू:",
+		"postInitNotes": "1. You might want to init .gitignore र git यहाँ जारी अघि (git init",
+		"writingConfig": "git थप्न .)\n2. You might want to add लेखक, परियोजना नाम, संस्करण नम्बर गर्न प्याकेज । json\n3. तपाईं चाहनुहुन्छ सक्छ विभिन्न निर्भरता । प्रयोग `एनपीएम हंगामा` हटाउन प्रयोग नगरिएको निर्भरताहरू (वैकल्पिक)",
+		"configExists": "लेखन config गर्न नयाँ छ । lesrc फाइल: %1",
+		"errIncorrectRangeFmt": ".lesrc पहिले नै अवस्थित छ...हुनेछ छैन अधिलेखन"
+	},
+	"options": {
+		"सहायता": {
+			"उपनाम": "h",
+			"वर्णन": "मुद्रण गर्नुहोस् यो मद्दत मेनुमा",
+			"en_US": "help"
+		},
+		"init": {
+			"उपनाम": "म",
+			"वर्णन": "Init lesky मा कार्यस्थान द्वारा निर्दिष्ट बाटो, पूर्वनिर्धारित cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"पाहुना": {
+			"उपनाम": "एक",
+			"वर्णन": "ठेगाना प्रयोग गर्न",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"पोर्ट": {
+			"उपनाम": "p",
+			"वर्णन": "पोर्ट प्रयोग गर्न",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"वर्णन": "प्रोटोकल प्रयोग गर्न",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"सीमा": {
+			"वर्णन": "पोर्ट सीमा (मामला मा पोर्ट लगिन्छ)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"वर्णन": "बाटो SSL कुञ्जी",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"वर्णन": "बाटो SSL प्रमाणपत्र",
+			"en_US": "sslCert"
+		},
+		"खुला": {
+			"उपनाम": "o",
+			"वर्णन": "खोल्न browser",
+			"dflt": "ओएस पूर्वनिर्धारित",
+			"en_US": "open"
+		},
+		"watch": {
+			"उपनाम": "w",
+			"वर्णन": "हेर्नको लागि फाइल मा परिवर्तन dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

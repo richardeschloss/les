@@ -22,6 +22,7 @@ import { spawn } from 'child_process'
 const argv = minimist(process.argv.slice(2))
 const cwd = process.cwd()
 const options = {}
+const { LANG = 'en' } = process.env
 
 function _mergeConfigs(cliCfg, options) {
   const merged = loadServerConfigs()
@@ -32,16 +33,33 @@ function _mergeConfigs(cliCfg, options) {
     fndCfgIdx = 0
   }
 
+  const props = {
+    proto: 'proto',
+    host: 'host',
+    port: 'port'
+  }
+
+  if (!LANG.includes('en')) {
+    Object.entries(options).forEach(([option, { en_US }]) => {
+      props[en_US] = option
+      merged.forEach((serverCfg) => {
+        if (serverCfg[option]) {
+          serverCfg[en_US] = serverCfg[option]
+        }
+      })
+    })
+  }
+
   Object.assign(merged[fndCfgIdx], cliCfg)
   merged.forEach((serverCfg, idx) => {
-    serverCfg.proto = serverCfg.proto || options.proto.dflt
-    serverCfg.host = serverCfg.host || options.host.dflt
+    serverCfg.proto = serverCfg.proto || options[props.proto].dflt
+    serverCfg.host = serverCfg.host || options[props.host].dflt
 
     if (!serverCfg.port) {
       if (serverCfg.portRange) {
         serverCfg.port = parseInt(serverCfg.portRange[0])
       } else {
-        serverCfg.port = merged[fndCfgIdx].port || options.port.dflt
+        serverCfg.port = merged[fndCfgIdx].port || options[props.port].dflt
         if (idx !== fndCfgIdx) {
           serverCfg.port += idx - fndCfgIdx
         }
@@ -51,13 +69,17 @@ function _mergeConfigs(cliCfg, options) {
   return merged
 }
 
-function CLI(cfg) {
+function CLI(cfg, msgs) {
   cfg['_'] = cfg['_'] || []
   function buildCliCfg(options) {
     const cliCfg = {}
-    Object.entries(options).forEach(([option, { alias }]) => {
+    const rangeKey = 'range'
+    Object.entries(options).forEach(([option, { alias, en_US }]) => {
       const optionVal = cfg[option] || cfg[alias]
       if (optionVal) {
+        if (en_US) {
+          option = en_US
+        }
         cliCfg[option] = optionVal
       }
     })
@@ -71,7 +93,10 @@ function CLI(cfg) {
         }
       } else {
         throw new Error(
-          'port range incorrectly formatted. Format as --range=start-end'
+          msgs.errIncorrectRangeFmt
+            .replace(/\s*%1/, rangeKey)
+            .replace(/\s*=\s*/, '=')
+            .replace(/\s+-\s+/, '-')
         )
       }
     }
@@ -84,15 +109,13 @@ function CLI(cfg) {
       ? pResolve(__dirname, '..') // bin/les.js needs to go up one (test coverage will always miss this)
       : __dirname // [src]/les.js uses __dirname
 
-    console.log('Copying files from:', srcDir)
-    const srcPackage = await import(pResolve(srcDir, 'package.json'))
+    console.log(msgs.copyingFiles.replace('%1', srcDir).replace('%2', dest))
+    const packageJson = 'package.json'
+    const srcPackage = await import(pResolve(srcDir, packageJson))
     const { files, dependencies, devDependencies } = srcPackage
-    const destPackageFile = pResolve(dest, 'package.json')
+    const destPackageFile = pResolve(dest, packageJson)
     if (!existsSync(destPackageFile)) {
-      console.log(
-        'writing dependencies to new package.json file:',
-        destPackageFile
-      )
+      console.log(msgs.writingDeps.replace('%1', destPackageFile))
       const scripts = {
         dev: 'nodemon --exec npm start',
         start: 'babel-node app.js',
@@ -106,38 +129,39 @@ function CLI(cfg) {
       )
       writeFileSync(destPackageFile, JSON.stringify(destPackage, null, '  '))
     } else {
-      console.log('package.json already exists...will not overwrite')
+      console.log(msgs.packageJsonExists.replace('%1', packageJson))
     }
 
     const destLesrcFile = pResolve(dest, '.lesrc')
     if (!existsSync(destLesrcFile)) {
-      console.log('writing config to new .lesrc file:', destLesrcFile)
+      console.log(
+        msgs.writingConfig.replace('%1', '.lesrc').replace('%2', destLesrcFile)
+      )
       const lesCfg = [Object.assign({}, initCfg)]
       console.log('.lesrc:', lesCfg)
       writeFileSync(destLesrcFile, JSON.stringify(lesCfg, null, '  '))
     } else {
-      console.log('.lesrc already exists...will not overwrite')
+      console.log(msgs.configExists.replace('%1', '.lesrc'))
     }
     const skipFiles = ['bin', '.lesrc']
     const srcFiles = files
       .filter((f) => !skipFiles.includes(f))
       .map((f) => pResolve(srcDir, f))
     gentlyCopy(srcFiles, dest)
-    console.log('copied files over')
+    console.log(msgs.copiedFiles)
 
-    console.log('Installing deps in', dest)
+    console.log(msgs.installingDeps.replace('%1', dest))
     process.chdir(dest)
     const { execSync } = await import('child_process')
     execSync('npm i', { stdio: [0, 1, 2] })
-    console.log('Done initializing lesky app! Some notes:')
-    const postInstallNotes = [
-      'You might want to init .gitignore and git here before continuing (git init; git add .)',
-      'You might want to add author, project name, version number to package.json',
-      'You might want different dependencies. Use `npm prune` to remove unused deps (optional)'
-    ]
-      .map((note, idx) => `${idx + 1}. ${note}`)
-      .join('\n')
-    console.log(postInstallNotes)
+    console.log(msgs.doneInit)
+    console.log(
+      msgs.postInitNotes
+        .replace('%1', '.gitignore and git')
+        .replace('%2', 'git init; git add .')
+        .replace('%3', packageJson)
+        .replace('%4', 'npm prune')
+    )
     return 'done'
   }
 
@@ -150,14 +174,19 @@ function CLI(cfg) {
     const [cmd, args] = cmdMap[platform] || ['xdg-open', []]
     args.push(`${proto == 'http2' ? 'https' : proto}://${host}:${port}`)
     const browser = spawn(cmd, args)
-    console.log('browser opened')
+    console.log(msgs.browserOpened)
     return browser
   }
 
   function run(options) {
     const cliCfg = buildCliCfg(options)
+
     if (cliCfg.help) {
-      const usage = buildCLIUsage('usage: les [path] [options]', options)
+      const usage = buildCLIUsage(
+        `${msgs.usage}: les [path] [options]`,
+        options,
+        msgs
+      )
       console.log(usage)
       return usage
     } else if (cliCfg.init) {
@@ -186,9 +215,9 @@ function CLI(cfg) {
           data.watchDir = watchDir
         }
         cfgsLoaded[idx] = data
-        console.log('serving static dir', cliCfg.staticDir)
+        console.log(msgs.servingStaticDir.replace('%1', cliCfg.staticDir))
         if (++doneCnt == mergedCfgs.length) {
-          console.log('All server configs started')
+          console.log(msgs.serverCfgsStarted)
           resolve({
             evt: 'cfgsLoaded',
             data: cfgsLoaded
@@ -212,8 +241,9 @@ function CLI(cfg) {
 
 if (require.main === module) {
   ;(async function() {
-    await importCLIOptions(options)
-    const cli = CLI(argv)
+    const msgs = {}
+    await importCLIOptions(options, msgs)
+    const cli = CLI(argv, msgs)
     cli.run(options)
   })()
 }

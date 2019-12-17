@@ -1,0 +1,87 @@
+{
+	"msgs": {
+		"endOfHelp": "Fen nan Ede",
+		"usage": "itilizasyon",
+		"servingStaticDir": "sèvi estatik dir %1",
+		"serverCfgsStarted": "Tout sèvè konfigurasyon te kòmanse",
+		"browserOpened": "navigatè a louvri",
+		"copyingFiles": "Kopye dosye a soti nan: %1: %2",
+		"copiedFiles": "Kopye dosye yo",
+		"writingDeps": "ekri dependencies nan: %1",
+		"packageJsonExists": "%1 deja egziste...pa pral recouvrir",
+		"installingDeps": "Enstale deps nan %1",
+		"doneInit": "Fè inisyalizin lesky app! Gen kèk nòt:",
+		"postInitNotes": "1. Ou ta ka vle init .gitignore ak git isit la anvan yo k ap kontinye (git init",
+		"writingConfig": "git ajoute .)\n2. Ou ta ka vle ajoute otè a, pwojè a non yo, vèsyon pipiti de youn pou pake.json\n3. Ou ta ka vle diferan depandans. Sèvi ak `npm taye` yo retire rès deps (si ou vle)",
+		"configExists": "ekri config yo nouvo .lesrc dosye: %1",
+		"errIncorrectRangeFmt": ".lesrc deja egziste...pa pral recouvrir"
+	},
+	"options": {
+		"ede": {
+			"alyas": "h",
+			"dekrwasan": "Ekri ak lèt detache sa a ede meni",
+			"fr": "èd",
+			"en_US": "help"
+		},
+		"init": {
+			"alyas": "m",
+			"dekrwasan": "Init lesky nan vorkspas a ki espesifye pa chemen, défaut yo cwd",
+			"dflt": "[cwd]",
+			"fr": "init",
+			"en_US": "init"
+		},
+		"lame a": {
+			"alyas": "yon",
+			"dekrwasan": "Adrès yo sèvi ak",
+			"dflt": "lokalost",
+			"fr": "lame a",
+			"en_US": "host"
+		},
+		"pò": {
+			"alyas": "p",
+			"dekrwasan": "Pò a yo sèvi ak",
+			"dflt": 8080,
+			"fr": "pò",
+			"en_US": "port"
+		},
+		"proto": {
+			"dekrwasan": "Pwotokòl yo sèvi ak",
+			"dflt": "<url>",
+			"limitTo": "{ http, t, http2 }",
+			"fr": "proto",
+			"en_US": "proto"
+		},
+		"ranje": {
+			"dekrwasan": "Pò a Seri (nan ka pò a se te pran)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"fr": "ranje",
+			"en_US": "range"
+		},
+		"sslKey": {
+			"dekrwasan": "Chemen ki mennen nan SSL Kle a",
+			"fr": "sslKey",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"dekrwasan": "Chemen ki mennen nan SSL Sètifika",
+			"fr": "sslCert",
+			"en_US": "sslCert"
+		},
+		"louvri": {
+			"alyas": "o",
+			"dekrwasan": "Louvri navigatè",
+			"dflt": "OS default",
+			"fr": "louvri",
+			"en_US": "open"
+		},
+		"watch": {
+			"alyas": "w",
+			"dekrwasan": "Gade pou dosye a chanjman ki fèt nan dir [staticDir]",
+			"fr": "gade",
+			"en_US": "watch"
+		}
+	}
+}

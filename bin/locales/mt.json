@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Tmiem ta'l-Għajnuna",
+		"usage": "l-użu",
+		"servingStaticDir": "li jservu statiku dir %1",
+		"serverCfgsStarted": "L-server configs beda",
+		"browserOpened": "browser miftuħa",
+		"copyingFiles": "l-Ikkupjar-fajls minn: %1: %2",
+		"copiedFiles": "Kkupjati fajls",
+		"writingDeps": "miktub d-dipendenzi tagħha biex: %1",
+		"packageJsonExists": "%1 diġà teżisti...mhux se jissostitwixxu",
+		"installingDeps": "l-Installazzjoni deps fil %1",
+		"doneInit": "Isir initializing lesky app! Xi noti:",
+		"postInitNotes": "1. Għandek mnejn trid budget .gitignore u żgħażagħ hawn qabel ikompli (żgħażagħ init",
+		"writingConfig": "żgħażagħ add .)\n2. Għandek mnejn trid iżżid-awtur, l-isem tal-proġett, il-verżjoni l-numru tal-pakkett.json\n3. Għandek mnejn trid differenti d-dipendenzi tagħha. L-użu `npm prune` tneħħi mhux użati deps (fakultattiva)",
+		"configExists": "miktub konfigurazzjoni li l-ġodda .lesrc-fajl: %1",
+		"errIncorrectRangeFmt": ".lesrc diġà teżisti...mhux se jissostitwixxu"
+	},
+	"options": {
+		"għajnuna": {
+			"magħruf ukoll bħala": "h",
+			"deskrizzjoni tal -": "Stampa dan l-għajnuna tal-menu",
+			"en_US": "help"
+		},
+		"budget": {
+			"magħruf ukoll bħala": "i",
+			"deskrizzjoni tal -": "Init lesky fil-xogħol speċifikat mill-triq, nuqqasijiet li cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"ospitanti": {
+			"magħruf ukoll bħala": "a",
+			"deskrizzjoni tal -": "l-Indirizz għall-użu",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"magħruf ukoll bħala": "p",
+			"deskrizzjoni tal -": "l-Port għall-użu",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"deskrizzjoni tal -": "il-Protokoll għall-użu",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"firxa": {
+			"deskrizzjoni tal -": "il-Port il-Firxa (fil-każ tal-port hija meħuda)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"deskrizzjoni tal -": "it-Triq għall-SSL Ewlenin",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"deskrizzjoni tal -": "It-triq għall-SSL taċ-Ċertifikat",
+			"en_US": "sslCert"
+		},
+		"miftuħa": {
+			"magħruf ukoll bħala": "o",
+			"deskrizzjoni tal -": "browser Miftuħa",
+			"dflt": "OS nuqqas",
+			"en_US": "open"
+		},
+		"oqgħod": {
+			"magħruf ukoll bħala": "w",
+			"deskrizzjoni tal -": "Oqgħod għall-fajl l-bidliet fil-dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

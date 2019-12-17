@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "ಕೊನೆಯಲ್ಲಿ ಸಹಾಯ",
+		"usage": "ಬಳಕೆ",
+		"servingStaticDir": "ಸೇವೆ ಸ್ಥಿರ dir %1",
+		"serverCfgsStarted": "ಎಲ್ಲಾ ಸರ್ವರ್ configs ಪ್ರಾರಂಭಿಸಿದರು",
+		"browserOpened": "ಬ್ರೌಸರ್ ತೆರೆಯಿತು",
+		"copyingFiles": "ನಕಲು ಕಡತಗಳನ್ನು: %1 to: %2",
+		"copiedFiles": "ನಕಲು ಕಡತಗಳನ್ನು",
+		"writingDeps": "ಬರವಣಿಗೆ ಅಧೀನ to: %1",
+		"packageJsonExists": "%1 ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ...ಬದಲಿಸಿ ಆಗುವುದಿಲ್ಲ",
+		"installingDeps": "ಅನುಸ್ಥಾಪಿಸುವಾಗ deps in %1",
+		"doneInit": "ಇದನ್ನು initializing lesky ಅಪ್ಲಿಕೇಶನ್! ಕೆಲವು ಟಿಪ್ಪಣಿಗಳು:",
+		"postInitNotes": "1. You might want to init .gitignore ಮತ್ತು git ಇಲ್ಲಿ ಮುಂದುವರೆಯುವ ಮೊದಲು (git init",
+		"writingConfig": "git ಸೇರಿಸಿ .)\n2. You might want to add ಲೇಖಕ, ಯೋಜನೆಯ ಹೆಸರು, ಆವೃತ್ತಿ ಸಂಖ್ಯೆ ಪ್ಯಾಕೇಜ್.json\n3. ಬಯಸಬಹುದು ವಿವಿಧ ಅಧೀನ. Use `npm ಕತ್ತರಿಸು` ತೆಗೆದು ಬಳಕೆಯಾಗದ deps (ಐಚ್ಛಿಕ)",
+		"configExists": "ಬರವಣಿಗೆ ಸಂರಚನಾ ಹೊಸ .lesrc file: %1",
+		"errIncorrectRangeFmt": ".lesrc ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ...ಬದಲಿಸಿ ಆಗುವುದಿಲ್ಲ"
+	},
+	"options": {
+		"ಸಹಾಯ": {
+			"ಅಲಿಯಾಸ್": "h",
+			"desc": "Print this ಸಹಾಯ ಮೆನು",
+			"en_US": "help"
+		},
+		"init": {
+			"ಅಲಿಯಾಸ್": "ನಾನು",
+			"desc": "Init lesky ಕಾರ್ಯಕ್ಷೇತ್ರದ ನಿರ್ದಿಷ್ಟ ಮಾರ್ಗವನ್ನು ಮೂಲಕ, ಡಿಫಾಲ್ಟ್ cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"ಹೋಸ್ಟ್": {
+			"ಅಲಿಯಾಸ್": "ಒಂದು",
+			"desc": "ವಿಳಾಸ ಬಳಸಲು",
+			"dflt": "ಅತಿಥೇಯ",
+			"en_US": "host"
+		},
+		"ಪೋರ್ಟ್": {
+			"ಅಲಿಯಾಸ್": "p",
+			"desc": "Port to use",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"ಮೂಲ": {
+			"desc": "Protocol to use",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"ಶ್ರೇಣಿಯ": {
+			"desc": "Port Range (ಸಂದರ್ಭದಲ್ಲಿ ಬಂದರು ತೆಗೆದುಕೊಳ್ಳಲಾಗಿದೆ)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Path to SSL ಕೀಲಿ",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Path to SSL ಪ್ರಮಾಣಪತ್ರ",
+			"en_US": "sslCert"
+		},
+		"ಮುಕ್ತ": {
+			"ಅಲಿಯಾಸ್": "ಓ",
+			"desc": "ತೆರೆಯಲು ಬ್ರೌಸರ್",
+			"dflt": "OS ಡೀಫಾಲ್ಟ್",
+			"en_US": "open"
+		},
+		"watch": {
+			"ಅಲಿಯಾಸ್": "w",
+			"desc": "ಉಚಿತ ಕಡತ ಬದಲಾವಣೆಗಳನ್ನು ಡಿರ್ [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

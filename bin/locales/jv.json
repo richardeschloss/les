@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Pungkasan Bantuan",
+		"usage": "panggunaan",
+		"servingStaticDir": "porsi statis dir %1",
+		"serverCfgsStarted": "Kabeh server configs diwiwiti",
+		"browserOpened": "browser dibukak",
+		"copyingFiles": "Nyalin file from: %1: %2",
+		"copiedFiles": "Disalin file",
+		"writingDeps": "nulis dependensi kanggo: %1",
+		"packageJsonExists": "%1 wis ana...ora bakal panganggoan",
+		"installingDeps": "Nginstall deps ing %1",
+		"doneInit": "Rampung ngawali lesky app! Sawetara cathetan:",
+		"postInitNotes": "1. Sampeyan bisa uga pengin init .gitignore lan tekan kene sadurunge terus (git init",
+		"writingConfig": "tekan nambah .)\n2. Sampeyan bisa uga arep kanggo nambah penulis, project jeneng, nomer versi kanggo paket.json\n3. Sampeyan bisa uga pengin beda dependensi. Nggunakake `npm prune` kanggo mbusak dienggo deps (opsional)",
+		"configExists": "nulis config anyar .lesrc file: %1",
+		"errIncorrectRangeFmt": ".lesrc wis ana...ora bakal panganggoan"
+	},
+	"options": {
+		"bantuan": {
+			"alias": "h",
+			"desc": "Print this help menu",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "aku",
+			"desc": "Init lesky ing lingkungan pakaryan kasebut dening path, awal kanggo cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"tuan rumah": {
+			"alias": "a",
+			"desc": "Alamat kanggo nggunakake",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "kaca",
+			"desc": "Port kanggo nggunakake",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokol kanggo nggunakake",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"range": {
+			"desc": "Port Range (ing kasus port dijupuk)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Path kanggo SSL Tombol",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Path kanggo SSL Certificate",
+			"en_US": "sslCert"
+		},
+		"mbukak": {
+			"alias": "o",
+			"desc": "Mbukak browser",
+			"dflt": "OS standar",
+			"en_US": "open"
+		},
+		"watch": {
+			"alias": "w",
+			"desc": "Watch kanggo owah-owahan file ing dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Koniec Pomoc",
+		"usage": "použitie",
+		"servingStaticDir": "slúži statické dir %1",
+		"serverCfgsStarted": "Všetky server menu konfigurácie začal",
+		"browserOpened": "prehliadač otvorí",
+		"copyingFiles": "Kopírovanie súborov z: %1: %2",
+		"copiedFiles": "Skopírované súbory",
+		"writingDeps": "písanie závislosti na: %1",
+		"packageJsonExists": "%1 už existuje...nebude prepísať",
+		"installingDeps": "Inštalácia deps v %1",
+		"doneInit": "Vykonáva inicializáciu lesky app! Pár poznámok:",
+		"postInitNotes": "1. Možno budete chcieť init %1 tu pred pokračovaním (%2)\n2. Možno budete chcieť pridať autor, názov projektu, číslo verzie na %3\n3. Možno budete chcieť rôznych závislostí. Použitie \"%4 \" odstrániť nepoužívané deps (voliteľné)",
+		"writingConfig": "písanie config novým %1 file: %2",
+		"configExists": "%1 už existuje...nebude prepísať",
+		"errIncorrectRangeFmt": "rozsah portov, nesprávne naformátovaná. Formát --%1=začiatok - koniec"
+	},
+	"options": {
+		"pomoc": {
+			"alias": "h",
+			"desc": "Tlačiť túto ponuku pomocník",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky v pracovnom priestore určenom cestu, predvolené cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"hosť": {
+			"alias": "a",
+			"desc": "Adresa na použitie",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port použiť",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokol na použitie",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"rozsah": {
+			"desc": "Rozsah portov (v prípade, že port je prevzatý). Formát ako začiatok-koniec",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Cesta k kľúčov SSL",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Cesta k Certifikátu SSL",
+			"en_US": "sslCert"
+		},
+		"otvorené": {
+			"alias": "o",
+			"desc": "Otvorte prehliadač",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"hodinky": {
+			"alias": "w",
+			"desc": "Pozor na súbor zmien v dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

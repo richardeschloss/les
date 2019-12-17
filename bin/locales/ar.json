@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "dnE fo dnE",
+		"usage": "استخدام",
+		"servingStaticDir": "خدمة dir استاتيكي %1",
+		"serverCfgsStarted": "تم بدء كل مواصفات وحدة الخدمة",
+		"browserOpened": "فتح برنامج الاستعراض",
+		"copyingFiles": "نسخ الملفات من : %1 الى : %2",
+		"copiedFiles": "الملفات التي تم نسخها",
+		"writingDeps": "كتابة الارتباطات الى : %1",
+		"packageJsonExists": "%1 موجود بالفعل ... لن يتم احلاله",
+		"installingDeps": "تركيب deps في %1",
+		"doneInit": "تم اعداد تطبيق ليزلي للبدء ! بعض الملاحظات :",
+		"postInitNotes": "1. قد ترغب في بدء %1 هنا قبل الاستمرار (%2)\n2. قد ترغب في اضافة مؤلف ، اسم مشروع ، رقم النسخة الى %3\n3. قد تريد ارتباطات مختلفة. استخدم '%4' لازالة devps غير المستخدمة (اختياري)",
+		"writingConfig": "كتابة التوصيف الى ملف %1 الجديد : %2",
+		"configExists": "%1 موجود بالفعل ... لن يتم احلاله",
+		"errIncorrectRangeFmt": "تم تنسيق مدى المنفذ بطريقة غير صحيحة. تنسيق على أنه -- %1 = بدء-انهاء"
+	},
+	"options": {
+		"المساعدة": {
+			"alias": "h",
+			"desc": "طباعة قائمة المساعدة هذه",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lecy في مساحة العمل المحددة بواسطة المسار ، المفترض الى cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "العنوان المطلوب استخدامه",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"منفذ": {
+			"alias": "p",
+			"desc": "المنفذ المراد استخدامه",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "البروتوكول المطلوب استخدامه",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"المدى": {
+			"desc": "مدى المنفذ (في حالة المنفذ). تنسيق كبداية-نهاية",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "المسار الى مفتاح SSL",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "مسار الى شهادة SSL",
+			"en_US": "sslCert"
+		},
+		"فتح": {
+			"alias": "o",
+			"desc": "فتح برنامج الاستعراض",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"مشاهدة": {
+			"alias": "w",
+			"desc": "مشاهدة لتغييرات الملف في dir [ staticDir ]",
+			"en_US": "watch"
+		}
+	}
+}

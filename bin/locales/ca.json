@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Fi d'Ajudar",
+		"usage": "ús",
+		"servingStaticDir": "servir estàtica dir %1",
+		"serverCfgsStarted": "Tots servidor de configuracions començar",
+		"browserOpened": "navegador obert",
+		"copyingFiles": "Copiar fitxers des de: %1: %2",
+		"copiedFiles": "Copiar els fitxers",
+		"writingDeps": "escrit dependències a: %1",
+		"packageJsonExists": "%1 ja existeix...no sobreescriure",
+		"installingDeps": "Instal·lació de deps en %1",
+		"doneInit": "Fer la inicialització de lesky app! Algunes notes:",
+		"postInitNotes": "1. Podeu init %1 aquí abans de continuar (%2)\n2. Podeu afegir autor, nom del projecte, el número de versió a %3\n3. Us recomanem diferents dependències. Utilitzar `%4` per a esborrar no utilitzada deps (opcional)",
+		"writingConfig": "escriptura de configuració a les noves %1 file: %2",
+		"configExists": "%1 ja existeix...no sobreescriure",
+		"errIncorrectRangeFmt": "port gamma correctament formatat. Format --%1=inici - final"
+	},
+	"options": {
+		"ajuda": {
+			"alias": "h",
+			"desc": "Imprimeix aquest menú d'ajuda",
+			"en_US": "help"
+		},
+		"inici": {
+			"alias": "i",
+			"desc": "Init lesky en l'espai de treball especificat pel camí, per defecte a cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Adreça d'ús",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port ús",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protocol d'ús",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"ventall": {
+			"desc": "Port de Rang (en el cas de port és pres). Format com a inici-final",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Camí SSL Clau",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Ruta de Certificat SSL",
+			"en_US": "sslCert"
+		},
+		"obert": {
+			"alias": "o",
+			"desc": "Obriu el navegador",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"veure": {
+			"alias": "w",
+			"desc": "Veure per el fitxer de canvis en dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

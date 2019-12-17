@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "I te mutunga o te Tauturu i te",
+		"usage": "te whakamahinga",
+		"servingStaticDir": "te taviniraa pateko whaiaronga %1",
+		"serverCfgsStarted": "Katoa tūmau configs tīmata",
+		"browserOpened": "pūtirotiro whakatuwheratia",
+		"copyingFiles": "Tārua i ngā kōnae i: %1 ki te: %2",
+		"copiedFiles": "te Tārua i ngā kōnae",
+		"writingDeps": "tuhituhi te pa ririki ki te: %1",
+		"packageJsonExists": "%1 kua vai...e kore e tuhirua",
+		"installingDeps": "te Tāuta deps i roto i te %1",
+		"doneInit": "Meatia initializing lesky app! I te tahi notes: te",
+		"postInitNotes": "1. Koe ai e hiahia ana koe ki te init .gitignore me te git i konei i mua i te haere tonu (git init",
+		"writingConfig": "git te tāpiri .)\n2. Koe ai e hiahia ana koe ki te tāpiri i te kaituhi, kaupapa, te ingoa, te tau putanga ki te mōkihi.json\n3. Hiahia ai e koe rerekē te pa ririki. Te whakamahi i te `npm tapatapahia` te ki te tango kāore deps (kōwhiringa)",
+		"configExists": "te tuhituhi ki whirihoranga hou .lesrc kōnae: %1",
+		"errIncorrectRangeFmt": ".lesrc kua vai...e kore e tuhirua"
+	},
+	"options": {
+		"help": {
+			"ingoakē": "h",
+			"desc": "Tāngia tēnei tauturu i te tahua",
+			"en_US": "help"
+		},
+		"init": {
+			"ingoakē": "e ahau",
+			"desc": "Init lesky i roto i te mokowāmahi tohua e ara, taunoa ki cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"ope": {
+			"ingoakē": "he",
+			"desc": "Whakatutuki i ki te whakamahi i",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"tauranga": {
+			"ingoakē": "p",
+			"desc": "Tauranga ki te whakamahi i",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "te Kawa ki te whakamahi i",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"whānuitanga": {
+			"desc": "Port Range (i roto i te take tauranga tangohia ana)",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Ara ki te SSL Matua",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Ara ki te Tiwhikete SSL",
+			"en_US": "sslCert"
+		},
+		"whakatuwhera": {
+			"ingoakē": "e te",
+			"desc": "Whakatuwhera i te pūtirotiro",
+			"dflt": "OS taunoa",
+			"en_US": "open"
+		},
+		"kia mataara": {
+			"ingoakē": "i roto i te",
+			"desc": "kia Mataara mō te kōnae ngā huringa i roto i te whaiaronga [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}
