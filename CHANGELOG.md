@@ -2,7 +2,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [1.0.5] - 2019-12-17
+## [1.0.6] - 2019-12-17
 - Added i18n support. So now, lesky can be used in 42 languages! Hello WORLD for real!
 
 ## [1.0.4] - 2019-12-03
