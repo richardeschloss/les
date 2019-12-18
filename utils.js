@@ -1,9 +1,8 @@
-import { existsSync, readFileSync, createWriteStream, writeFileSync } from 'fs'
+import { existsSync, readFileSync, writeFileSync } from 'fs'
 import { resolve as pResolve } from 'path'
 import netstat from 'node-netstat'
 import { exec, spawn } from 'child_process'
-import { get as hGet } from 'https'
-import { LangUtils } from 'les-utils'
+import { LangUtils, Rexter } from 'les-utils'
 
 function attachSSL(cfgs) {
   const sslPair = {}
@@ -156,23 +155,6 @@ async function portTaken({ port }) {
   return usedPorts.includes(port)
 }
 
-function downloadLocale(locale, dest) {
-  const url = `https://raw.githubusercontent.com/richardeschloss/les/feat/i18n/locales/${locale}.json`
-  return new Promise((resolve, reject) => {
-    hGet(url, (res) => {
-      console.log('res.statusCode', res.statusCode)
-      if (res.statusCode === 200) {
-        const outStream = createWriteStream(dest)
-        res.pipe(outStream).on('close', () => {
-          resolve()
-        })
-      } else {
-        reject(new Error('file not found'))
-      }
-    })
-  })
-}
-
 async function importCLIOptions(options, msgs) {
   const localeDflt = 'en'
   const { LANG = localeDflt } = process.env
@@ -188,7 +170,11 @@ async function importCLIOptions(options, msgs) {
       `Options for locale ${locale} does not exist, will attempt to download`
     )
     try {
-      await downloadLocale(locale, localeJson)
+      const rexter = Rexter({})
+      await rexter.getFile({
+        url: `https://raw.githubusercontent.com/richardeschloss/les/feat/i18n/locales/${locale}.json`,
+        dest: localeJson
+      })
       const { default: imported } = await import(localeJson)
       const { msgs: importedMsgs, options: importedOptions } = imported
       Object.assign(options, importedOptions)
