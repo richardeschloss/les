@@ -1,6 +1,5 @@
 import { existsSync, readFileSync, writeFileSync } from 'fs'
 import { resolve as pResolve } from 'path'
-import netstat from 'node-netstat'
 import { exec, spawn } from 'child_process'
 import { LangUtils, Rexter } from 'les-utils'
 
@@ -42,45 +41,6 @@ const buildCLIUsage = (cmdFmt, options, msgs) => {
     }
   )
   return usage.join('\n') + `\n\n---${msgs.endOfHelp}---\n\n`
-}
-
-async function findFreePort({ range = [8000, 9000] }) {
-  const usedPorts = (await netstatP({ filter: { protocol: 'tcp' } })).map(
-    ({ local }) => local.port
-  )
-
-  const [startPort, endPort] = range
-  let freePort
-  for (let port = startPort; port <= endPort; port++) {
-    if (!usedPorts.includes(port)) {
-      freePort = port
-      break
-    }
-  }
-  return freePort
-}
-
-const netstatP = (opts) =>
-  new Promise((resolve, reject) => {
-    const res = []
-    netstat(
-      {
-        ...opts,
-        done: (err) => {
-          if (err) return reject(err)
-          return resolve(res)
-        }
-      },
-      (data) => res.push(data)
-    )
-    return res
-  })
-
-async function portTaken({ port }) {
-  const usedPorts = (await netstatP({ filter: { protocol: 'tcp' } })).map(
-    ({ local }) => local.port
-  )
-  return usedPorts.includes(port)
 }
 
 async function importCLIOptions(options, msgs) {
@@ -241,10 +201,8 @@ async function translateLocales({ api = 'ibm' }) {
 export {
   attachSSL,
   buildCLIUsage,
-  findFreePort,
   importCLIOptions,
   loadServerConfigs,
-  portTaken,
   runCmdUntil,
   translateLocales
 }

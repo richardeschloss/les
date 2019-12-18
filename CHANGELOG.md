@@ -2,6 +2,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.0.7] - 2019-12-18
+- Moved some generic utilities to les-utils project. Easier to reuse.
+- Updated the les-utils version in package.json.
+- Updated tests
+
 ## [1.0.6] - 2019-12-17
 - Added i18n support. So now, lesky can be used in 42 languages! Hello WORLD for real!
 
