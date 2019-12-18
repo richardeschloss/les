@@ -1,7 +1,7 @@
 import test, { before, after } from 'ava'
 import { unlinkSync } from 'fs'
 import { Server } from '@/server'
-import { generateSelfSignedCert } from '@/utils'
+import { SecurityUtils } from 'les-utils'
 
 const sslOptions = {
   keyout: '/tmp/localhost.key',
@@ -23,7 +23,7 @@ function validateStart(t, sts) {
 }
 
 before('Generate Self-Signed Cert', async () => {
-  await generateSelfSignedCert(sslOptions)
+  await SecurityUtils.generateSelfSignedCert(sslOptions)
 })
 
 after('Remove self-signed cert', () => {

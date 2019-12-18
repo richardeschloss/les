@@ -1,12 +1,9 @@
 import { serial as test, before, after } from 'ava'
 import { mkdirSync, rmdirSync, unlinkSync } from 'fs'
 import { exec } from 'child_process'
-import {
-  buildCLIUsage,
-  generateSelfSignedCert,
-  importCLIOptions
-} from '@/utils'
+import { buildCLIUsage, importCLIOptions } from '@/utils'
 import { mergeConfigs, testCLI } from '@/les'
+import { SecurityUtils } from 'les-utils'
 
 const sslDir = './.ssl'
 const sslOptions = {
@@ -57,7 +54,7 @@ before('Generate Self-Signed Cert', async () => {
   } catch (e) {
     console.error('mkdir err', e)
   }
-  await generateSelfSignedCert(sslOptions)
+  await SecurityUtils.generateSelfSignedCert(sslOptions)
 })
 
 after('Remove self-signed cert', () => {
