@@ -4,7 +4,7 @@ import https from 'https'
 import http2 from 'http2'
 import Koa from 'koa'
 import { resolve as pResolve } from 'path'
-import { findFreePort } from '@/utils'
+import { NetUtils } from 'les-utils'
 
 const app = new Koa()
 
@@ -94,7 +94,7 @@ function Server({
             } else {
               range = portRange
             }
-            const freePort = await findFreePort({ range })
+            const freePort = await NetUtils.findFreePort({ range })
             console.info(
               `Port ${port} in use, using free port instead ${freePort}`
             )

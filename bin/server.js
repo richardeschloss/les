@@ -18,7 +18,7 @@ var _koa = _interopRequireDefault(require("koa"));
 
 var _path = require("path");
 
-var _utils = require("./utils");
+var _lesUtils = require("les-utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -125,7 +125,7 @@ function Server({
               range = portRange;
             }
 
-            const freePort = await (0, _utils.findFreePort)({
+            const freePort = await _lesUtils.NetUtils.findFreePort({
               range
             });
             console.info(`Port ${port} in use, using free port instead ${freePort}`);

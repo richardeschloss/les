@@ -4,11 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.attachSSL = attachSSL;
-exports.generateSelfSignedCert = generateSelfSignedCert;
-exports.findFreePort = findFreePort;
 exports.importCLIOptions = importCLIOptions;
 exports.loadServerConfigs = loadServerConfigs;
-exports.portTaken = portTaken;
 exports.runCmdUntil = runCmdUntil;
 exports.translateLocales = translateLocales;
 exports.buildCLIUsage = void 0;
@@ -17,15 +14,9 @@ var _fs = require("fs");
 
 var _path = require("path");
 
-var _nodeNetstat = _interopRequireDefault(require("node-netstat"));
-
 var _child_process = require("child_process");
 
-var _https = require("https");
-
 var _lesUtils = require("les-utils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -86,120 +77,6 @@ const buildCLIUsage = (cmdFmt, options, msgs) => {
 
 exports.buildCLIUsage = buildCLIUsage;
 
-function generateSelfSignedCert(options) {
-  /*
-  Basing off openssl's template /etc/ssl/openssl.cnf (copied to ./.ssl)
-  The following was added to the end of that (i.e., myExt)
-    [ myExt ]
-    basicConstraints = critical,CA:true
-    subjectKeyIdentifier = hash
-    authorityKeyIdentifier = keyid:always,issuer
-    subjectAltName = @alt_names
-     [alt_names]
-    DNS.1 = localhost
-    DNS.2 = les
-  */
-  const {
-    keyout = 'localhost.key',
-    out = 'localhost.crt',
-    domain = 'localhost',
-    emailAddress = '',
-    organization = '',
-    organizationalUnit = '',
-    countryCode = '',
-    state = '',
-    city = '',
-    days = 365
-  } = options;
-  const cmd = 'openssl';
-  const args = ['req', '-newkey', 'rsa:2048', '-x509', '-nodes', '-keyout', keyout, '-new', '-out', out, '-subj', [`/CN=(${domain})`, `/emailAddress=${emailAddress}`, `/O=${organization}`, `/OU=${organizationalUnit}`, `/C=${countryCode}`, `/ST=${state}`, `/L=${city}`].join(''), '-sha256', '-days', days];
-
-  if (options.extSection) {
-    // Example: options.extSection = 'myExt'
-    args.push('-extensions', options.extSection);
-  }
-
-  if (options.configFile) {
-    // Example: options.configFile = './.ssl/openssl.cnf'
-    args.push('-config', options.configFile);
-  }
-
-  return new Promise(resolve => {
-    (0, _child_process.spawn)(cmd, args).on('close', () => {
-      console.log('created', {
-        keyout,
-        out
-      });
-      resolve();
-    });
-  });
-}
-
-async function findFreePort({
-  range = [8000, 9000]
-}) {
-  const usedPorts = (await netstatP({
-    filter: {
-      protocol: 'tcp'
-    }
-  })).map(({
-    local
-  }) => local.port);
-  const [startPort, endPort] = range;
-  let freePort;
-
-  for (let port = startPort; port <= endPort; port++) {
-    if (!usedPorts.includes(port)) {
-      freePort = port;
-      break;
-    }
-  }
-
-  return freePort;
-}
-
-const netstatP = opts => new Promise((resolve, reject) => {
-  const res = [];
-  (0, _nodeNetstat.default)({ ...opts,
-    done: err => {
-      if (err) return reject(err);
-      return resolve(res);
-    }
-  }, data => res.push(data));
-  return res;
-});
-
-async function portTaken({
-  port
-}) {
-  const usedPorts = (await netstatP({
-    filter: {
-      protocol: 'tcp'
-    }
-  })).map(({
-    local
-  }) => local.port);
-  return usedPorts.includes(port);
-}
-
-function downloadLocale(locale, dest) {
-  const url = `https://raw.githubusercontent.com/richardeschloss/les/feat/i18n/locales/${locale}.json`;
-  return new Promise((resolve, reject) => {
-    (0, _https.get)(url, res => {
-      console.log('res.statusCode', res.statusCode);
-
-      if (res.statusCode === 200) {
-        const outStream = (0, _fs.createWriteStream)(dest);
-        res.pipe(outStream).on('close', () => {
-          resolve();
-        });
-      } else {
-        reject(new Error('file not found'));
-      }
-    });
-  });
-}
-
 async function importCLIOptions(options, msgs) {
   const localeDflt = 'en';
   const {
@@ -222,7 +99,11 @@ async function importCLIOptions(options, msgs) {
     console.info(`Options for locale ${locale} does not exist, will attempt to download`);
 
     try {
-      await downloadLocale(locale, localeJson);
+      const rexter = (0, _lesUtils.Rexter)({});
+      await rexter.getFile({
+        url: `https://raw.githubusercontent.com/richardeschloss/les/feat/i18n/locales/${locale}.json`,
+        dest: localeJson
+      });
       const {
         default: imported
       } = await Promise.resolve().then(() => _interopRequireWildcard(require(`${localeJson}`)));
