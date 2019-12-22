@@ -2,6 +2,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.0.8] - 2019-12-22
+- Minor fix to io module, which is copied to the new workspace after `les --init`
+
 ## [1.0.7] - 2019-12-18
 - Moved some generic utilities to les-utils project. Easier to reuse.
 - Updated the les-utils version in package.json.
