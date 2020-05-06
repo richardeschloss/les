@@ -2,6 +2,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.0.9] - 2020-05-06
+- Updated deps and utils
+
 ## [1.0.8] - 2019-12-22
 - Minor fix to io module, which is copied to the new workspace after `les --init`
 
