@@ -59,7 +59,7 @@ async function importCLIOptions(options, msgs) {
     )
     try {
       const rexter = Rexter({})
-      await rexter.getFile({
+      await rexter.get({
         url: `https://raw.githubusercontent.com/richardeschloss/les/feat/i18n/locales/${locale}.json`,
         dest: localeJson
       })
