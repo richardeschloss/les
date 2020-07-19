@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Lõpuks Aidata",
+		"usage": "kasutamine",
+		"servingStaticDir": "teenindavad staatiline dir %1",
+		"serverCfgsStarted": "Kõik server configs algas",
+		"browserOpened": "brauseri avatud",
+		"copyingFiles": "Kopeerimise faile: %1: %2",
+		"copiedFiles": "Kopeeritud failid",
+		"writingDeps": "kirjutamine sõltuvusi: %1",
+		"packageJsonExists": "%1 on juba olemas...ei kirjuta",
+		"installingDeps": "Paigaldus deps %1",
+		"doneInit": "Teha initializing lesky appi! Mõned märkused:",
+		"postInitNotes": "1. Võib-olla soovite init %1 siin enne jätkamist (%2)\n2. Võib-olla soovite lisada esitaja, projekti nimi, versiooni number %3\n3. Võiksite erinevaid sõltuvusi. Kasutage `%4` eemaldada kasutamata deps (valikuline)",
+		"writingConfig": "kirjutamine config, et uus %1 file: %2",
+		"configExists": "%1 on juba olemas...ei kirjuta",
+		"errIncorrectRangeFmt": "port range valesti vormindatud. Vormi --%1=start - lõpuks"
+	},
+	"options": {
+		"aidata": {
+			"alias": "h",
+			"desc": "Prindi see menüü spikker",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky aastal workspace ' i poolt määratletud teed, vaikimisi cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"vastuvõtva": {
+			"alias": "a",
+			"desc": "Aadress kasutada",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"sadam": {
+			"alias": "p",
+			"desc": "Port kasutada",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokolli kasutamine",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"valik": {
+			"desc": "Port Range (juhul, kui sadamas on võetud). Vormi algus-lõpp",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Tee SSL Võti",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Tee SSL Sertifikaat",
+			"en_US": "sslCert"
+		},
+		"avatud": {
+			"alias": "o",
+			"desc": "Ava brauser",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"vaata": {
+			"alias": "w",
+			"desc": "Vaata faili muutused dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

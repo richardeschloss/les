@@ -1,4 +1,4 @@
-import test, { before } from 'ava'
+import { serial as test, before } from 'ava'
 import { exec } from 'child_process'
 import { mkdirSync } from 'fs'
 import { buildCLIUsage, importCLIOptions, runCmdUntil } from '@/utils'

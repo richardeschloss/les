@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Penghujung Bantuan",
+		"usage": "penggunaan",
+		"servingStaticDir": "Melayani dir statik%1",
+		"serverCfgsStarted": "Semua pelayan pelayan dimulakan",
+		"browserOpened": "pelayar dibuka",
+		"copyingFiles": "Menyalin fail dari:%1 hingga:%2",
+		"copiedFiles": "Salin fail",
+		"writingDeps": "Menulis dependensi ke:%1",
+		"packageJsonExists": "%1 sudah wujud ... tidak akan menulis ganti",
+		"installingDeps": "Memasang deps dalam%1",
+		"doneInit": "Selesai mengawalkan aplikasi lesky! Beberapa nota:",
+		"postInitNotes": "1. Anda mungkin ingin memulakan%1 di sini sebelum meneruskan (%2)\n2. Anda mungkin ingin menambah pengarang, nama projek, nombor versi ke%3\n3. Anda mungkin mahu dependensi yang berbeza. Guna ` %4 ` untuk buang deps yang tidak digunakan (opsyenal)",
+		"writingConfig": "menulis konfig ke fail%1 baru:%2",
+		"configExists": "%1 sudah wujud ... tidak akan menulis ganti",
+		"errIncorrectRangeFmt": "julat port tidak diformatkan dengan betul. Format sebagai --%1 = start-end"
+	},
+	"options": {
+		"bantuan": {
+			"alias": "h",
+			"desc": "Cetak menu bantuan ini",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Lesky init dalam ruang kerja yang dinyatakan oleh laluan, lalai ke cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"hos": {
+			"alias": "a",
+			"desc": "Alamat yang digunakan",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port untuk digunakan",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"untuk": {
+			"desc": "Protokol untuk digunakan",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"julat": {
+			"desc": "Julat Port (dalam port kes diambil). Format sebagai permulaan-akhir",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Laluan ke Kekunci SSL",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Laluan ke Sijil SSL",
+			"en_US": "sslCert"
+		},
+		"buka": {
+			"alias": "o",
+			"desc": "Buka pelayar",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"menonton": {
+			"alias": "w",
+			"desc": "Perhatikan perubahan fail dalam dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

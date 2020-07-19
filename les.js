@@ -22,9 +22,10 @@ import { spawn } from 'child_process'
 const argv = minimist(process.argv.slice(2))
 const cwd = process.cwd()
 const options = {}
-const { LANG = 'en' } = process.env
+let LANG = 'en'
 
 function _mergeConfigs(cliCfg, options) {
+  LANG = process.env.LANG
   const merged = loadServerConfigs()
   attachSSL(merged)
 
@@ -70,6 +71,7 @@ function _mergeConfigs(cliCfg, options) {
 }
 
 function CLI(cfg, msgs) {
+  LANG = process.env.LANG
   cfg['_'] = cfg['_'] || []
   function buildCliCfg(options) {
     const cliCfg = {}

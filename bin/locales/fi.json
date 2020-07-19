@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Lopussa Auttaa",
+		"usage": "käyttö",
+		"servingStaticDir": "palvelee staattinen dir %1",
+		"serverCfgsStarted": "Kaikki palvelimen configs alkoi",
+		"browserOpened": "selaimen avata",
+		"copyingFiles": "Kopiointi tiedostoja: %1: %2",
+		"copiedFiles": "Kopioidut tiedostot",
+		"writingDeps": "kirjoittaminen riippuvuudet: %1",
+		"packageJsonExists": "%1 on jo olemassa...ei korvaa",
+		"installingDeps": "Asentaminen deps %1",
+		"doneInit": "Tehtävä alustetaan lesky app! Jotkut toteaa:",
+		"postInitNotes": "1. Haluat ehkä init %1, ennen kuin jatkat (%2)\n2. Haluat ehkä lisätä tekijä, projektin nimi, version numero %3\n3. Voisit eri riippuvuuksia. Käytä `%4` poistaa käyttämättömät deps (valinnainen)",
+		"writingConfig": "kirjallisesti config-uusi %1 file: %2",
+		"configExists": "%1 on jo olemassa...ei korvaa",
+		"errIncorrectRangeFmt": "satama-alue väärin muotoiltu. Muodossa --%1=start - end"
+	},
+	"options": {
+		"auttaa": {
+			"alias": "h",
+			"desc": "Tulosta tämä ohje-valikosta",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky työtilan määritelty polku, oletuksena cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"isäntä": {
+			"alias": "a",
+			"desc": "Osoite käyttää",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"satama": {
+			"alias": "p",
+			"desc": "Satama käyttää",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokolla käyttää",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"alue": {
+			"desc": "Satama-Alue (jos portti on otettu). Muodossa start-end",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Polku SSL-Avain",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Polku SSL-Sertifikaatin",
+			"en_US": "sslCert"
+		},
+		"avoin": {
+			"alias": "o",
+			"desc": "Avaa selain",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"katsella": {
+			"alias": "w",
+			"desc": "Katsella tiedoston muutokset dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}
