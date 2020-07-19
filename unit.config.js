@@ -1,7 +1,11 @@
-import baseConfig from './ava.config.js'
-
 export default {
-  ...baseConfig,
+  require: ['@babel/register'],
   serial: true,
-  files: ['test/specs/les.js', 'test/specs/server.js']
+  ignoredByWatcher: ['.ssl', 'locales'],
+  files: [
+    'test/specs/les.js',
+    'test/specs/server.js'
+  ],
+  tap: false,
+  verbose: true
 }

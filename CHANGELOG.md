@@ -2,6 +2,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.0.10] - 2020-05-06
+- Security audit (updated lodash, and other deps, as well as utils)
+
 ## [1.0.9] - 2020-05-06
 - Updated deps and utils
 
@@ -45,4 +48,4 @@ All notable changes to this project will be documented in this file.
 
 ## See Also:
 
-[Releases](https://github.com/richardeschloss/les/releases) 
+[Releases](https://github.com/richardeschloss/les/releases)

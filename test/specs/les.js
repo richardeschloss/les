@@ -165,7 +165,7 @@ test('Open browser', async (t) => {
 })
 
 test('Watch dir ', async (t) => {
-  const cliCfg = { watch: true }
+  const cliCfg = { watch: true, port: 1112 }
   const { cfgsLoaded } = await testCfg(cliCfg, msgs)
   cfgsLoaded.forEach(({ watchDir }) => {
     t.is(watchDir, 'public')
@@ -173,7 +173,7 @@ test('Watch dir ', async (t) => {
 })
 
 test('Watch dir (specify path)', async (t) => {
-  const cliCfg = { watch: 'somedir' }
+  const cliCfg = { watch: 'somedir', port: 2111 }
   const { cfgsLoaded } = await testCfg(cliCfg, msgs)
   cfgsLoaded.forEach(({ watchDir }) => {
     t.is(watchDir, 'somedir')
@@ -200,7 +200,7 @@ test('Lesky init (repeated, verify no overwrite)', async (t) => {
 test('Spanish options', async (t) => {
   process.env.LANG = 'es'
   await importCLIOptions(options2, msgs2)
-  const cliCfg = { ayuda: true }
+  const cliCfg = { ayuda: true, port: 10000 }
   const usage = buildCLIUsage(
     `${msgs2.usage}: les [path] [options]`,
     options2,
@@ -215,7 +215,7 @@ test('Spanish options', async (t) => {
 test('Spanish options (.lesrc)', async (t) => {
   process.env.LANG = 'es'
   await importCLIOptions(options2, msgs2)
-  const cliCfg = {}
+  const cliCfg = { port: 10001 }
   const { cfgsLoaded } = await testCfg(cliCfg, msgs2)
   const merged = mergeConfigs(cliCfg, options2)
   const keys = ['proto', 'host', 'port']

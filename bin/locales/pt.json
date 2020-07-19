@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Final de Ajuda",
+		"usage": "utilização",
+		"servingStaticDir": "servindo estático dir %1",
+		"serverCfgsStarted": "O servidor de todas as configs começou",
+		"browserOpened": "navegador aberto",
+		"copyingFiles": "Copiar ficheiros a partir de: %1: %2",
+		"copiedFiles": "Arquivos copiados",
+		"writingDeps": "escrito dependências: %1",
+		"packageJsonExists": "%1 já existe...não vai substituir",
+		"installingDeps": "A instalação de deps no %1",
+		"doneInit": "Feito inicializar lesky app! Algumas notas:",
+		"postInitNotes": "1. Você pode querer init %1 aqui antes de continuar (%2)\n2. Você pode querer adicionar autor, nome do projeto, número de versão %3\n3. Você pode querer dependências diferentes. Usar `%4` para remover não utilizados deps (opcional)",
+		"writingConfig": "escrito config para nova %1 ficheiro: %2",
+		"configExists": "%1 já existe...não vai substituir",
+		"errIncorrectRangeFmt": "intervalo de porta formatado incorretamente. Formato --%1=início - fim"
+	},
+	"options": {
+		"ajuda": {
+			"alias": "h",
+			"desc": "Imprimir este menu ajuda",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky no espaço de trabalho especificado pelo caminho, padrões para cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "O endereço para usar",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"porta": {
+			"alias": "p",
+			"desc": "Porta para usar",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protocolo para uso",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"gama": {
+			"desc": "Intervalo de porta (no caso a porta é retirado). Formato de início-fim,",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Caminho para a Chave SSL",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Caminho para o Certificado SSL",
+			"en_US": "sslCert"
+		},
+		"aberto": {
+			"alias": "o",
+			"desc": "Abrir o navegador",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"assistir": {
+			"alias": "w",
+			"desc": "Relógio para alterações de ficheiros no directório [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}
