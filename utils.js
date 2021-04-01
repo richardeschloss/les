@@ -1,8 +1,12 @@
-import { existsSync, readFileSync, writeFileSync } from 'fs'
-import { resolve as pResolve } from 'path'
+import { existsSync, readFileSync, writeFileSync, unlinkSync } from 'fs'
+import { resolve as pResolve, dirname } from 'path'
 import { exec, spawn } from 'child_process'
-import { LangUtils, Rexter } from 'les-utils'
+import { Rexter } from 'les-utils'
+// LangUtils needed
 
+const __dirname = pResolve(dirname(''))
+
+/** @type {import('./utils').attachSSL} */
 function attachSSL(cfgs) {
   const sslPair = {}
   const sslFound = cfgs.find(({ sslKey, sslCert }) => sslKey && sslCert)
@@ -20,6 +24,7 @@ function attachSSL(cfgs) {
   })
 }
 
+/** @type {import('./utils').buildCLIUsage} */
 const buildCLIUsage = (cmdFmt, options, msgs) => {
   const usage = [cmdFmt, '', 'options:']
   Object.entries(options).forEach(
@@ -43,13 +48,16 @@ const buildCLIUsage = (cmdFmt, options, msgs) => {
   return usage.join('\n') + `\n\n---${msgs.endOfHelp}---\n\n`
 }
 
+/** @type {import('./utils').importCLIOptions} */
 async function importCLIOptions(options, msgs) {
   const localeDflt = 'en'
   const { LANG = localeDflt } = process.env
   const locale = LANG.split('.UTF-8')[0].split('_')[0]
   const localeJson = `${__dirname}/locales/${locale}.json`
   if (existsSync(localeJson)) {
-    const { default: imported } = await import(localeJson)
+    console.log('exists?', localeJson)
+    const json = readFileSync(localeJson).toString()
+    const imported = JSON.parse(json)
     const { msgs: importedMsgs, options: importedOptions } = imported
     Object.assign(options, importedOptions)
     Object.assign(msgs, importedMsgs)
@@ -59,19 +67,29 @@ async function importCLIOptions(options, msgs) {
     )
     try {
       const rexter = Rexter({})
-      await rexter.get({
-        url: `https://raw.githubusercontent.com/richardeschloss/les/feat/i18n/locales/${locale}.json`,
-        dest: localeJson
-      })
-      const { default: imported } = await import(localeJson)
+      await rexter.get(
+        `https://raw.githubusercontent.com/richardeschloss/les/feat/i18n/locales/${locale}.json`,
+        {
+          dest: localeJson,
+          transform: 'json'
+        }
+      )
+      const json = readFileSync(`./locales/${locale}.json`).toString()
+      const imported = JSON.parse(json)
       const { msgs: importedMsgs, options: importedOptions } = imported
       Object.assign(options, importedOptions)
       Object.assign(msgs, importedMsgs)
     } catch (err) {
+      try {
+        unlinkSync(localeJson)
+      } catch (err) {
+        /* Handle */
+      }
       console.error(
         `Error downloading locale ${locale} defaulting to '${localeDflt}'`
       )
-      const { default: imported } = await import(`./locales/${localeDflt}.json`)
+      const json = readFileSync(`./locales/${localeDflt}.json`).toString()
+      const imported = JSON.parse(json)
       const { msgs: importedMsgs, options: importedOptions } = imported
       Object.assign(options, importedOptions)
       Object.assign(msgs, importedMsgs)
