@@ -1,7 +1,9 @@
-import test, { before, after } from 'ava'
+import test from 'ava'
 import { unlinkSync } from 'fs'
-import { Server } from '@/server'
 import { SecurityUtils } from 'les-utils'
+import { Server } from '#@/server.js'
+
+const { before, after } = test
 
 const sslOptions = {
   keyout: '/tmp/localhost.key',
