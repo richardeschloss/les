@@ -14,6 +14,7 @@ const protos = {
   http2
 }
 
+/** @type {import('./server').Server} */
 function Server({
   host = 'localhost',
   port = 8080,
@@ -48,6 +49,7 @@ function Server({
     },
     listen({ host = _host, port = _port }) {
       return new Promise((resolve, reject) => {
+        /** @param {any} err */
         function onError(err) {
           _server
             .removeListener('error', onError)
@@ -82,7 +84,7 @@ function Server({
           .on('listening', onSuccess)
       })
     },
-    start() {
+    async start() {
       this.build()
       return this.listen({}).catch(({ err, data }) => {
         const { port } = data
@@ -108,7 +110,6 @@ function Server({
         }
       })
     },
-
     stop() {
       return new Promise((resolve) => {
         if (!_server) {

@@ -1,7 +1,7 @@
 import test from 'ava'
 import { unlinkSync } from 'fs'
 import { SecurityUtils } from 'les-utils'
-import { Server } from '#@/server.js'
+import { Server } from '../server.js'
 
 const { before, after } = test
 
@@ -10,12 +10,19 @@ const sslOptions = {
   out: '/tmp/localhost.crt'
 }
 
+/** @param {import('../server').serverCfg} cfg */
 async function testCfg(cfg) {
   const s = Server(cfg)
+  
   const sts = await s.start()
   return { s, sts }
 }
 
+/** 
+ * @param {import('ava').ExecutionContext} t
+ * @param {{evt: any, data: any}} sts
+ * @returns {import('../server').serverCfg} serverCfg
+ */
 function validateStart(t, sts) {
   const { evt, data } = sts
   const { server, ...serverCfg } = data
