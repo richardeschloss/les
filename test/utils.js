@@ -40,7 +40,7 @@ test('buildCLIUsage', (t) => {
   t.is(usage, exp)
 })
 
-test.only('importCLIOptions', async (t) => {
+test('importCLIOptions', async (t) => {
   const options = {}, msgs = {}
   Utils.importCLIOptions(options, msgs)
   t.is(options.help.desc, 'Print this help menu')
@@ -62,6 +62,12 @@ test.only('importCLIOptions', async (t) => {
   await Utils.importCLIOptions(options3, msgs3)
   t.truthy(options3.ayuda)
   t.is(msgs3.usage, 'el uso de')
+})
+
+test.only('loadServerConfigs', (t) => {
+  const cfgs = Utils.loadServerConfigs()
+  t.true(Array.isArray(cfgs))
+  t.true(cfgs.length > 0)
 })
 
 // test('Translate locales', async (t) => {

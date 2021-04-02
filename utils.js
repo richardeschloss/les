@@ -54,9 +54,9 @@ async function importCLIOptions(options, msgs) {
   const { LANG = localeDflt } = process.env
   const locale = LANG.split('.UTF-8')[0].split('_')[0]
   const localeJson = `${__dirname}/locales/${locale}.json`
+  
   if (existsSync(localeJson)) {
-    console.log('exists?', localeJson)
-    const json = readFileSync(localeJson).toString()
+    const json = readFileSync(localeJson, { encoding: 'utf-8'})
     const imported = JSON.parse(json)
     const { msgs: importedMsgs, options: importedOptions } = imported
     Object.assign(options, importedOptions)
@@ -74,7 +74,7 @@ async function importCLIOptions(options, msgs) {
           transform: 'json'
         }
       )
-      const json = readFileSync(`./locales/${locale}.json`).toString()
+      const json = readFileSync(`./locales/${locale}.json`, { encoding: 'utf-8'})
       const imported = JSON.parse(json)
       const { msgs: importedMsgs, options: importedOptions } = imported
       Object.assign(options, importedOptions)
@@ -88,7 +88,7 @@ async function importCLIOptions(options, msgs) {
       console.error(
         `Error downloading locale ${locale} defaulting to '${localeDflt}'`
       )
-      const json = readFileSync(`./locales/${localeDflt}.json`).toString()
+      const json = readFileSync(`./locales/${localeDflt}.json`, { encoding: 'utf-8'})
       const imported = JSON.parse(json)
       const { msgs: importedMsgs, options: importedOptions } = imported
       Object.assign(options, importedOptions)
@@ -97,13 +97,14 @@ async function importCLIOptions(options, msgs) {
   }
 }
 
+/** @type {import('./utils').loadServerConfigs} */
 function loadServerConfigs() {
   const cwd = process.cwd()
   const config = pResolve(cwd, '.lesrc')
-  let localCfg = [{}]
+  let cfgs = [{}]
   if (existsSync(config)) {
     try {
-      localCfg = JSON.parse(readFileSync(config))
+      cfgs = JSON.parse(readFileSync(config, { encoding: 'utf-8' }))
     } catch (err) {
       console.log(
         'Error parsing .lesrc JSON. Is it formatted as JSON correctly?',
@@ -113,7 +114,7 @@ function loadServerConfigs() {
   } else {
     console.info('.lesrc does not exist. Using CLI only')
   }
-  return localCfg
+  return cfgs
 }
 
 function runCmdUntil({

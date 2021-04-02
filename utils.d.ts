@@ -28,3 +28,10 @@ export type buildCLIUsage = typeof buildCLIUsage;
  */
 export function importCLIOptions(options: any, msgs: any): Promise<void>;
 export type importCLIOptions = typeof importCLIOptions;
+
+/**
+ * Loads the server configs from the .lesrc file
+ */
+export function loadServerConfigs(): Array<lesCfg>;
+export type loadServerConfigs = typeof loadServerConfigs;
+
