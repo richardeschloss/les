@@ -92,7 +92,7 @@ function Svc() {
       console.log('translating for langs', _to)
       const reqMethod = concurrent ? 'each' : 'series'
       
-      const resp = await PromiseUtils[reqMethod]({
+      return PromiseUtils[reqMethod]({
         items: _to,
         handleItem(toStr) {
           return ibmRexter.post(
@@ -115,7 +115,23 @@ function Svc() {
           )
         }
       })
-      return resp
+
+      // Alternative: (w/o concurrent option):
+      /*
+      return ibmRexter.batch({
+        auth: `apikey:${WATSON_API_KEY}`,
+        paths: `${WATSON_ENDPOINT}/v3/translate?version=2018-05-01`,
+        postData: {
+          text,
+          model_id: ':from-:to'
+        },
+        transform(resp) {
+          const { translations } = JSON.parse(resp.toString())
+          return translations.map(({ translation }) => translation)
+        },
+        tokens: _to.map((toStr) => ({ from, to: toStr }))
+      })
+      */
     }
   }
 

@@ -12,9 +12,7 @@ function LangUtils(api = 'IBM') {
     throw new Error(`svc ${api} not implemented`)
   }
 
-  const out = rexters[api]()
-  /* Custom extensions could go here */
-  return out
+  return rexters[api]()
 }
 
 export default LangUtils
