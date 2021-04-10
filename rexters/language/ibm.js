@@ -95,43 +95,9 @@ function Svc() {
       return PromiseUtils[reqMethod]({
         items: _to,
         handleItem(toStr) {
-          return ibmRexter.post(
-            `${WATSON_ENDPOINT}/v3/translate?version=2018-05-01`, 
-            {
-              auth: `apikey:${WATSON_API_KEY}`,
-              postData: {
-                text,
-                model_id: `${from}-${toStr}`
-              },
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              /** @param {Buffer} resp */
-              transform(resp) {
-                const { translations } = JSON.parse(resp.toString())
-                return translations.map(({ translation }) => translation)
-              }
-            }
-          )
+          return svc.translate({ text, to: toStr })
         }
       })
-
-      // Alternative: (w/o concurrent option):
-      /*
-      return ibmRexter.batch({
-        auth: `apikey:${WATSON_API_KEY}`,
-        paths: `${WATSON_ENDPOINT}/v3/translate?version=2018-05-01`,
-        postData: {
-          text,
-          model_id: ':from-:to'
-        },
-        transform(resp) {
-          const { translations } = JSON.parse(resp.toString())
-          return translations.map(({ translation }) => translation)
-        },
-        tokens: _to.map((toStr) => ({ from, to: toStr }))
-      })
-      */
     }
   }
 

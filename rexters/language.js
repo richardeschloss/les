@@ -1,9 +1,9 @@
 import IBM from './language/ibm.js'
-// import Yandex from './language/yandex.js'
+import Yandex from './language/yandex.js'
 
 const rexters = {
-  IBM
-  // Yandex
+  IBM,
+  Yandex
 }
 
 /** @type {import('./language').LangUtils } */
