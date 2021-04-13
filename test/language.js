@@ -13,8 +13,8 @@ test('Unsupported api', (t) => {
 })
 
 const apis = [
-  // 'IBM' 
-  'Yandex'
+  'IBM'
+  // 'Yandex' // They deprecated the free API :(
 ]
 
 apis.forEach((api) => {
@@ -22,10 +22,12 @@ apis.forEach((api) => {
     const svc = Svc(api)
     const resp = await svc.identifiableLanguages()
     t.true(Array.isArray(resp))
-    t.truthy(resp[0].language, resp[0].name)
+    if (resp.length > 0) { 
+      t.truthy(resp[0].language, resp[0].name)
+    }
   })
 
-  test.only('supportedLangs', async (t) => {
+  test('supportedLangs', async (t) => {
     const svc = Svc(api)
     const resp = await svc.supportedLangs()
     console.log(resp)
@@ -38,6 +40,7 @@ apis.forEach((api) => {
       text: 'hello',
       to: 'es'
     })
+    console.log('resp', resp)
     t.is(resp[0], 'hola')
   })
 
