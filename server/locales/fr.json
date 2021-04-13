@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Fin de l'aide",
+		"usage": "Utilisation",
+		"servingStaticDir": "Service de répertoire statique %1",
+		"serverCfgsStarted": "Toutes les configurations de serveur démarrées",
+		"browserOpened": "Navigateur ouvert",
+		"copyingFiles": "Copie des fichiers de: %1 vers: %2",
+		"copiedFiles": "Fichiers copiés",
+		"writingDeps": "écriture de dépendances dans: %1",
+		"packageJsonExists": "%1 existe déjà ... ne sera pas remplacé",
+		"installingDeps": "Installation des deps dans %1",
+		"doneInit": "Initialisation de l'application de la lésion terminée ! Quelques notes:",
+		"postInitNotes": "1. Vous pouvez souhaiter init %1 ici avant de continuer (%2)\n2. Vous pouvez ajouter l'auteur, le nom du projet, le numéro de version à %3\n3. Vous pouvez vouloir des dépendances différentes. Utiliser ` %4 ` pour supprimer les deps non utilisés (facultatif)",
+		"writingConfig": "écriture de la configuration dans le nouveau fichier %1: %2",
+		"configExists": "%1 existe déjà ... ne sera pas remplacé",
+		"errIncorrectRangeFmt": "Plage de ports mal formatée. Format en tant que -- %1 = fin-début"
+	},
+	"options": {
+		"aide": {
+			"alias": "h",
+			"desc": "Imprimer ce menu d'aide",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky dans l'espace de travail spécifié par chemin, par défaut, cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"hôte": {
+			"alias": "a",
+			"desc": "Adresse à utiliser",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port à utiliser",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protocole à utiliser",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"plage": {
+			"desc": "Plage de ports (au cas où le port est pris). Format comme début-fin",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Chemin d'accès à la clé SSL",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Chemin d'accès au certificat SSL",
+			"en_US": "sslCert"
+		},
+		"ouvert": {
+			"alias": "o",
+			"desc": "Ouvrir le navigateur",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"surveillance": {
+			"alias": "w",
+			"desc": "Surveillance des modifications de fichier dans le répertoire [ staticDir ]",
+			"en_US": "watch"
+		}
+	}
+}

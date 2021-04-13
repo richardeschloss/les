@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Akhir dari Bantuan",
+		"usage": "penggunaan",
+		"servingStaticDir": "menyajikan dir statis %1",
+		"serverCfgsStarted": "Semua orang kepercayaan server mulai",
+		"browserOpened": "peramban dibuka",
+		"copyingFiles": "Menyalin berkas dari:%1 ke:%2",
+		"copiedFiles": "Berkas yang disalin",
+		"writingDeps": "menulis dependensi ke:%1",
+		"packageJsonExists": "%1 sudah eksisten...tidak akan menimpa",
+		"installingDeps": "Memasang deps di%1",
+		"doneInit": "Selesai menginisialisasi aplikasi lesky! Beberapa catatan:",
+		"postInitNotes": "1. Anda mungkin ingin init%1 di sini sebelum melanjutkan (%2)\n2. Anda mungkin ingin menambahkan penulis, nama proyek, nomor versi ke %3\n3. Anda mungkin ingin dependensi yang berbeda. Gunakan ` %4 ` untuk menghapus deps yang tidak digunakan (opsional)",
+		"writingConfig": "konfigurasi penulisan ke berkas%1 baru:%2",
+		"configExists": "%1 sudah eksisten...tidak akan menimpa",
+		"errIncorrectRangeFmt": "jangkauan port tidak benar diformat. Format sebagai --%1 = start-end"
+	},
+	"options": {
+		"bantuan": {
+			"alias": "h",
+			"desc": "Cetak menu bantuan ini",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky dalam ruang kerja dispesifikasikan oleh path, default ke cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Alamat yang akan digunakan",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port untuk digunakan",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokol yang akan digunakan",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"jangkauan": {
+			"desc": "Jangkauan port (dalam kasus port diambil). Format sebagai start-end",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Path ke Kunci SSL",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Path ke Sertifikat SSL",
+			"en_US": "sslCert"
+		},
+		"buka": {
+			"alias": "o",
+			"desc": "Buka browser",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"watch": {
+			"alias": "w",
+			"desc": "Perhatikan perubahan berkas di dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

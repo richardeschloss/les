@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Slutten av Hjelp",
+		"usage": "bruk",
+		"servingStaticDir": "serverer statisk dir %1",
+		"serverCfgsStarted": "Alle server-configs i gang",
+		"browserOpened": "nettleseren åpnes",
+		"copyingFiles": "Kopiering av filer fra: %1 til: %2",
+		"copiedFiles": "Kopierte filer",
+		"writingDeps": "skrive avhengigheter til: %1",
+		"packageJsonExists": "%1 finnes allerede...vil ikke overskrive",
+		"installingDeps": "Installere innskudd i %1",
+		"doneInit": "Gjort initialiserer lesky app! Noen merknader:",
+		"postInitNotes": "1. Du ønsker kanskje å init %1 her før du fortsetter (%2)\n2. Du ønsker kanskje å legge til forfatteren, prosjekt navn, versjonsnummer til %3\n3. Du kan ha forskjellige avhengigheter. Bruk \"%4 \" for å fjerne ubrukte deps (valgfritt)",
+		"writingConfig": "skrive config til nye %1-fil: %2",
+		"configExists": "%1 finnes allerede...vil ikke overskrive",
+		"errIncorrectRangeFmt": "port range feil formatert. Format som --%1=start - slutt"
+	},
+	"options": {
+		"hjelp": {
+			"alias": "h",
+			"desc": "Skriv ut denne hjelp-menyen",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky i arbeidsområdet som er angitt av banen, standard cd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"vert": {
+			"alias": "a",
+			"desc": "Adresse til bruk",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Porten til bruk",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokoll",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"utvalg": {
+			"desc": "Port Range (i tilfelle port er tatt). Format som start-slutt",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Veien til SSL-Tasten",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Veien til SSL-Sertifikat",
+			"en_US": "sslCert"
+		},
+		"åpen": {
+			"alias": "o",
+			"desc": "Åpne nettleseren",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"se": {
+			"alias": "w",
+			"desc": "Se for fil-endringer i dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

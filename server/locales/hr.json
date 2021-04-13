@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Kraj pomoći",
+		"usage": "upotreba",
+		"servingStaticDir": "posluživanje statičkog direktorija%1",
+		"serverCfgsStarted": "Sve konfiguracije poslužitelja pokrenu",
+		"browserOpened": "pretražitelj otvoren",
+		"copyingFiles": "Kopiranje datoteka iz: %1 na: %2",
+		"copiedFiles": "Kopirane datoteke",
+		"writingDeps": "pisanje zavisnosti u: %1",
+		"packageJsonExists": "%1 već postoji...neće pisati preko postojećeg",
+		"installingDeps": "Instaliram deps u%1",
+		"doneInit": "Gotovo je inicijalizacija lesky aplikacije! Neke bilješke:",
+		"postInitNotes": "1. Možda ćete htjeti staviti%1 ovdje prije nastavka (%2)\n2. Možda ćete htjeti dodati autora, ime projekta, broj verzije na %3\n3. Možda ćete htjeti različite zavisnosti. Koristite ` %4 ` za uklanjanje nekorištenih depa (opcijski)",
+		"writingConfig": "pisanje config na novu datoteku%1:%2",
+		"configExists": "%1 već postoji...neće pisati preko postojećeg",
+		"errIncorrectRangeFmt": "raspon portova neispravno formatiran. Format kao -- %1 = početak-kraj"
+	},
+	"options": {
+		"pomoć": {
+			"alias": "h",
+			"desc": "Ispiši ovaj izbornik pomoći",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky u radnom prostoru navedenu po stazi, postavlja se na default na cwd",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Adresa za korištenje",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"port": {
+			"alias": "p",
+			"desc": "Port za korištenje",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protokol za korištenje",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"raspon": {
+			"desc": "Raspon portova (u portu predmeta se uzima). Format kao početak-kraj",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Staza do SSL ključa",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Staza do SSL certifikata",
+			"en_US": "sslCert"
+		},
+		"otvori": {
+			"alias": "o",
+			"desc": "Otvori pretražitelj",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"sat": {
+			"alias": "w",
+			"desc": "Promatraj promjene datoteka u dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}

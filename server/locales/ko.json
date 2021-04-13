@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "도움말의 끝",
+		"usage": "용법",
+		"servingStaticDir": "%1 을 (를) 제공하는 중",
+		"serverCfgsStarted": "모든 서버 구성이 시작되었습니다.",
+		"browserOpened": "브라우저를 열었다",
+		"copyingFiles": "파일을 %1 에서 %2 %2 (로) 복사 중",
+		"copiedFiles": "복사된 파일",
+		"writingDeps": ": %1 에 대한 종속성을 작성하는 중",
+		"packageJsonExists": "%1 이 (가) 이미 존재하므로 겹쳐쓰지 않습니다.",
+		"installingDeps": "%1 에 deps 설치하기",
+		"doneInit": "레즈키 앱을 초기화하고 있어요! 몇 가지 참고 사항:",
+		"postInitNotes": "1. 계속 (%2) 하기 전에 %1 을 (를) 입력할 수 있습니다.\n2. 작성자, 프로젝트 이름, 버전 번호를 %3 에 추가할 수 있습니다.\n3. 다른 종속성을 원할 수 있습니다. 사용하지 않는 것을 제거하려면 \"%4\" 을 (를) 사용하십시오 (선택사항).",
+		"writingConfig": "새 %1 파일에 구성 작성 중: %2",
+		"configExists": "%1 이 (가) 이미 존재하므로 겹쳐쓰지 않습니다.",
+		"errIncorrectRangeFmt": "포트 범위가 잘못 형식화되었습니다. 형식 -- %1 = 시작-끝"
+	},
+	"options": {
+		"도와주다": {
+			"alias": "h",
+			"desc": "이 도움말 메뉴 인쇄",
+			"en_US": "help"
+		},
+		"불여": {
+			"alias": "i",
+			"desc": "경로에 의해 지정된 작업공간의 저장소이며 기본값은 cwd로 설정됩니다.",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"주최하다": {
+			"alias": "a",
+			"desc": "사용할 주소",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"항구": {
+			"alias": "p",
+			"desc": "사용할 포트",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"장신하다": {
+			"desc": "사용할 프로토콜",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"range": {
+			"desc": "포트 범위 (포트가 사용되는 경우) 시작점으로서의 형식 지정-종료",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "SSL에 대한 경로",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "SSL 인증서에 대한 경로",
+			"en_US": "sslCert"
+		},
+		"열려있다": {
+			"alias": "o",
+			"desc": "개방형 브라우저",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"보기": {
+			"alias": "w",
+			"desc": "dir [staticDir] 에서 파일 변경 사항을 감시한다.",
+			"en_US": "watch"
+		}
+	}
+}
