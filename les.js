@@ -4,11 +4,10 @@
  * Copyright 2021 Richard Schloss (https://github.com/richardeschloss)
  */
 
-// import gentlyCopy from 'gently-copy'
 import minimist from 'minimist'
 import serve from 'koa-static'
 import { existsSync, writeFileSync } from 'fs'
-import { resolve as pResolve } from 'path'
+import { resolve as pResolve, dirname } from 'path'
 import { gentlyCopy } from 'les-utils/utils/files.js'
 import { app, Server } from './server.js'
 import IOServer from './io/socketIO.js'
@@ -24,6 +23,7 @@ import process from 'process'
 const argv = minimist(process.argv.slice(2))
 const cwd = process.cwd()
 const options = {}
+const __dirname = pResolve(dirname(''))
 let LANG = 'en'
 
 /** @type {import('./les')._._mergeConfigs} */
@@ -61,7 +61,8 @@ function _mergeConfigs(cliCfg, options) {
 
     if (!serverCfg.port) {
       if (serverCfg.portRange) {
-        serverCfg.port = parseInt(serverCfg.portRange[0])
+        console.log('portRange', serverCfg.portRange)
+        serverCfg.port = serverCfg.portRange[0]
       } else {
         serverCfg.port = merged[fndCfgIdx].port || options[props.port].dflt
         if (idx !== fndCfgIdx) {
@@ -73,9 +74,11 @@ function _mergeConfigs(cliCfg, options) {
   return merged
 }
 
+/** @type {import('./les').CLI} */
 function CLI(cfg, msgs) {
   LANG = process.env.LANG
   cfg['_'] = cfg['_'] || []
+  /** @type {import('./les')._.buildCliCfg} */
   function buildCliCfg(options) {
     const cliCfg = {}
     const rangeKey = 'range'
@@ -110,9 +113,7 @@ function CLI(cfg, msgs) {
   }
 
   async function init({ dest, initCfg }) {
-    const srcDir = __dirname.includes('bin')
-      ? pResolve(__dirname, '..') // bin/les.js needs to go up one (test coverage will always miss this)
-      : __dirname // [src]/les.js uses __dirname
+    const srcDir =  __dirname
 
     console.log(msgs.copyingFiles.replace('%1', srcDir).replace('%2', dest))
     const packageJson = 'package.json'
@@ -150,8 +151,14 @@ function CLI(cfg, msgs) {
     }
     const skipFiles = ['bin', '.lesrc']
     const srcFiles = files
-      .filter((f) => !skipFiles.includes(f))
-      .map((f) => pResolve(srcDir, f))
+      .filter(
+        /** @param {string} f */
+        (f) => !skipFiles.includes(f)
+      )
+      .map(
+        /** @param {string} f */
+        (f) => pResolve(srcDir, f)
+      )
     gentlyCopy(srcFiles, dest)
     console.log(msgs.copiedFiles)
 
@@ -183,6 +190,7 @@ function CLI(cfg, msgs) {
     return browser
   }
 
+  /** @type {import('./les')._.run} */
   function run(options) {
     const cliCfg = buildCliCfg(options)
 
@@ -244,7 +252,9 @@ function CLI(cfg, msgs) {
   })
 }
 
+/** @type {import('./les')._._mergeConfigs} */
 export let mergeConfigs
+/** @type {import('./les').CLI} */
 export let testCLI
 if (process.env.TEST) {
   mergeConfigs = _mergeConfigs
