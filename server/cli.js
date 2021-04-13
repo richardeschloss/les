@@ -9,7 +9,7 @@ import serve from 'koa-static'
 import { existsSync, writeFileSync } from 'fs'
 import { resolve as pResolve, dirname } from 'path'
 import { gentlyCopy } from 'les-utils/utils/files.js'
-import { app, Server } from './server.js'
+import { app, Server } from './koa.js'
 import IOServer from './io/socketIO.js'
 import {
   attachSSL,
@@ -26,7 +26,7 @@ const options = {}
 const __dirname = pResolve(dirname(''))
 let LANG = 'en'
 
-/** @type {import('./les')._._mergeConfigs} */
+/** @type {import('./cli')._._mergeConfigs} */
 function _mergeConfigs(cliCfg, options) {
   LANG = process.env.LANG
   const merged = loadServerConfigs()
@@ -74,11 +74,11 @@ function _mergeConfigs(cliCfg, options) {
   return merged
 }
 
-/** @type {import('./les').CLI} */
+/** @type {import('./cli').CLI} */
 function CLI(cfg, msgs) {
   LANG = process.env.LANG
   cfg['_'] = cfg['_'] || []
-  /** @type {import('./les')._.buildCliCfg} */
+  /** @type {import('./cli')._.buildCliCfg} */
   function buildCliCfg(options) {
     const cliCfg = {}
     const rangeKey = 'range'
@@ -190,7 +190,7 @@ function CLI(cfg, msgs) {
     return browser
   }
 
-  /** @type {import('./les')._.run} */
+  /** @type {import('./cli')._.run} */
   function run(options) {
     const cliCfg = buildCliCfg(options)
 
@@ -252,9 +252,9 @@ function CLI(cfg, msgs) {
   })
 }
 
-/** @type {import('./les')._._mergeConfigs} */
+/** @type {import('./cli')._._mergeConfigs} */
 export let mergeConfigs
-/** @type {import('./les').CLI} */
+/** @type {import('./cli').CLI} */
 export let testCLI
 if (process.env.TEST) {
   mergeConfigs = _mergeConfigs

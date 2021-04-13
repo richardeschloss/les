@@ -1,12 +1,11 @@
 export default {
-  // require: ['@babel/register'],
   serial: true,
-  ignoredByWatcher: ['.ssl', 'locales'],
+  ignoredByWatcher: ['.ssl', 'server/locales'],
   files: [
-    // 'test/cli.js',
-    // 'test/les.js'
-    // 'test/server.js'
-    'test/utils.js'
+    'test/cli.js'
+    // 'test/koa.js'
+    // 'test/utils.js'
+    // 'test/language.js'
   ],
   tap: false,
   verbose: true

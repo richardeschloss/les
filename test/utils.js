@@ -1,5 +1,5 @@
 import test from 'ava'
-import * as Utils from '../utils.js'
+import * as Utils from '../server/utils.js'
 import { unlinkSync } from 'fs'
 
 test('attachSSL', (t) => {
@@ -61,7 +61,7 @@ test('importCLIOptions', async (t) => {
   const options3 = {}, msgs3 = {}
   await Utils.importCLIOptions(options3, msgs3)
   t.truthy(options3.ayuda)
-  t.is(msgs3.usage, 'el uso de')
+  t.true(msgs3.usage.includes('uso'))
 })
 
 test('loadServerConfigs', (t) => {
