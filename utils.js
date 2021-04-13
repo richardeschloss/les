@@ -2,7 +2,10 @@ import { existsSync, readFileSync, writeFileSync, unlinkSync } from 'fs'
 import { resolve as pResolve, dirname } from 'path'
 import { exec, spawn } from 'child_process'
 import { Rexter } from 'les-utils'
-// LangUtils needed
+import Debug from 'debug'
+import LangUtils from './rexters/language.js'
+
+const debug = Debug('les:utils')
 
 const __dirname = pResolve(dirname(''))
 
@@ -117,20 +120,20 @@ function loadServerConfigs() {
   return cfgs
 }
 
+/** @type {import('./utils').runCmdUntil} */
 function runCmdUntil({
-  cmd = 'node_modules/.bin/babel-node',
+  cmd = 'node',
   args = [],
-  regex,
-  debug = false
+  regex
 }) {
-  console.log('runCmdUntil', cmd, args, regex)
+  console.log('runCmdUntil> ', cmd, args, regex)
   return new Promise((resolve) => {
     const child = spawn(cmd, args)
     let resp = ''
     child.stdout.on('data', (d) => {
       const str = d.toString()
       resp += str
-      if (debug) console.log(str)
+      debug(str)
       if (resp.match(regex)) {
         exec(`pkill node -P ${child.pid}`, () => {
           child.kill()
@@ -141,14 +144,14 @@ function runCmdUntil({
   })
 }
 
-async function translateLocales({ api = 'ibm' }) {
+/** @type {import('./utils').translateLocales} */
+async function translateLocales({ api = 'IBM', to = 'all' }) {
   console.log('translateLocales...')
-  const svc = LangUtils({ api })
+  const svc = LangUtils(api)
   const localeDflt = 'en'
   const localeJson = `${__dirname}/locales/${localeDflt}.json`
-  const { default: imported } = await import(localeJson)
-  const { msgs, options } = imported
-
+  const { msgs, options } = JSON.parse(readFileSync(localeJson, { encoding: 'utf-8' }))
+  
   const msgsInKeys = Object.keys(msgs)
   const msgsInValues = Object.values(msgs)
 
@@ -157,64 +160,59 @@ async function translateLocales({ api = 'ibm' }) {
   const optsInDescs = optsInValues.map(({ desc }) => desc)
 
   const textIn = msgsInValues.concat(optsInKeys, optsInDescs)
-  const translatedLangs = []
-  await svc
-    .translateMany({
-      sequential: true,
-      texts: textIn,
-      langs: 'all',
-      notify({ lang, result }) {
-        translatedLangs.push(lang)
-        const msgsResp = result.slice(0, msgsInValues.length)
-        const optsOutKeys = result.slice(
-          msgsInValues.length,
-          msgsInValues.length + optsInKeys.length
-        )
-        const optsOutDescs = result.slice(
-          msgsInValues.length + optsInKeys.length
-        )
-        const msgsOut = msgsInKeys.reduce((result, key, idx) => {
-          result[key] = msgsResp[idx].replace(/%\s*/g, '%')
-          return result
-        }, {})
-
-        const badResp = new RegExp(/[!@#$%^&*(),.?":{}|<>'\-=\s]/)
-        const ignoreKeys = ['sslKey', 'sslCert']
-        const optsOut = optsOutKeys.reduce((result, key, idx) => {
-          const en_US = optsInKeys[idx]
-          const valKeys = Object.keys(optsInValues[idx])
-          valKeys.push('en_US')
-          let keyOut
-          if (!badResp.test(key) && !ignoreKeys.includes(en_US)) {
-            keyOut = key.toLowerCase()
-          } else {
-            keyOut = en_US
-          }
-          result[keyOut] = valKeys.reduce((valObj, valKey) => {
-            if (valKey === 'en_US') {
-              valObj[valKey] = en_US
-            } else if (valKey === 'desc') {
-              valObj[valKey] = optsOutDescs[idx]
-            } else {
-              valObj[valKey] = optsInValues[idx][valKey]
-            }
-            return valObj
-          }, {})
-          return result
-        }, {})
-
-        const localeOut = `${__dirname}/locales/${lang}.json`
-        const localeJsonOut = { msgs: msgsOut, options: optsOut }
-        console.log(`saving locale ${lang} to ${localeOut}`)
-        writeFileSync(localeOut, JSON.stringify(localeJsonOut, null, '\t'))
-
-        return { optsOut, msgsOut }
-      }
+  const translations = await svc
+    .batch({
+      concurrent: true,
+      text: textIn,
+      to
     })
     .catch(console.error)
 
-  console.log('translated', translatedLangs)
-  return translatedLangs
+  Object.entries(translations)
+    .forEach(([lang, result]) => {
+      const msgsResp = result.slice(0, msgsInValues.length)
+      const optsOutKeys = result.slice(
+        msgsInValues.length,
+        msgsInValues.length + optsInKeys.length
+      )
+      const optsOutDescs = result.slice(
+        msgsInValues.length + optsInKeys.length
+      )
+      const msgsOut = msgsInKeys.reduce((result, key, idx) => {
+        result[key] = msgsResp[idx].replace(/%\s*/g, '%')
+        return result
+      }, {})
+
+      const badResp = new RegExp(/[!@#$%^&*(),.?":{}|<>'\-=\s]/)
+      const ignoreKeys = ['sslKey', 'sslCert']
+      const optsOut = optsOutKeys.reduce((result, key, idx) => {
+        const en_US = optsInKeys[idx]
+        const valKeys = Object.keys(optsInValues[idx])
+        valKeys.push('en_US')
+        let keyOut
+        if (!badResp.test(key) && !ignoreKeys.includes(en_US)) {
+          keyOut = key.toLowerCase()
+        } else {
+          keyOut = en_US
+        }
+        result[keyOut] = valKeys.reduce((valObj, valKey) => {
+          if (valKey === 'en_US') {
+            valObj[valKey] = en_US
+          } else if (valKey === 'desc') {
+            valObj[valKey] = optsOutDescs[idx]
+          } else {
+            valObj[valKey] = optsInValues[idx][valKey]
+          }
+          return valObj
+        }, {})
+        return result
+      }, {})
+
+      const localeOut = `${__dirname}/locales/${lang}.json`
+      const localeJsonOut = { msgs: msgsOut, options: optsOut }
+      console.log(`saving locale ${lang} to ${localeOut}`)
+      writeFileSync(localeOut, JSON.stringify(localeJsonOut, null, '\t'))
+    })
 }
 
 export {

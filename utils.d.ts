@@ -35,3 +35,23 @@ export type importCLIOptions = typeof importCLIOptions;
 export function loadServerConfigs(): Array<lesCfg>;
 export type loadServerConfigs = typeof loadServerConfigs;
 
+/**
+ * Runs a command until a given regex pattern is found in 
+ * the response (useful for testing the CLI)
+ */
+
+export function runCmdUntil(opts: {
+  cmd?: string,
+  args?: Array<string>,
+  regex: { [Symbol.match](string: string): RegExpMatchArray | null; }
+}): Promise<string>;
+export type runCmdUntil = typeof runCmdUntil;
+
+/**
+ * Translates the CLI messages and options to the specified languages 
+ */
+export function translateLocales(opts: {
+  api?: string, 
+  to?: 'all' | string[]
+}): Promise<any>
+export type translateLocales = typeof translateLocales;

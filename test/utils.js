@@ -64,14 +64,23 @@ test('importCLIOptions', async (t) => {
   t.is(msgs3.usage, 'el uso de')
 })
 
-test.only('loadServerConfigs', (t) => {
+test('loadServerConfigs', (t) => {
   const cfgs = Utils.loadServerConfigs()
   t.true(Array.isArray(cfgs))
   t.true(cfgs.length > 0)
 })
 
-// test('Translate locales', async (t) => {
-//   t.timeout(3 * 60 * 1000)
-//   await translateLocales({ api: 'yandex' })
-//   t.pass()
-// })
+test('runCmdUntil', async (t) => {
+  const resp = await Utils.runCmdUntil({
+    args: ['-v'],
+    regex: /v[0-9]{2}\.[0-9]{2}/
+  })
+  console.log('resp', resp)
+  t.pass()
+})
+
+test('Translate locales', async (t) => {
+  t.timeout(3 * 60 * 1000)
+  await Utils.translateLocales({ to: ['es', 'fr'] })
+  t.pass()
+})
