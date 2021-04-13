@@ -20,7 +20,6 @@ import {
 import { spawn } from 'child_process'
 import process from 'process'
 
-const argv = minimist(process.argv.slice(2))
 const cwd = process.cwd()
 const options = {}
 const __dirname = pResolve(dirname(''))
@@ -261,8 +260,9 @@ if (process.env.TEST) {
   testCLI = CLI
 } else {
   (async function() {
+    const argv = minimist(process.argv.slice(2))
     const msgs = {}
-    await importCLIOptions(options, msgs)
+    await importCLIOptions(options, msgs)    
     const cli = CLI(argv, msgs)
     cli.run(options)
   })()

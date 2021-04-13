@@ -20,12 +20,14 @@ const msgs = {}
 const options2 = {}
 const msgs2 = {}
 
+/** @type {import('../server/cli').test.testCfg} */
 async function testCfg(cliCfg, msgs) {
-  const cli = testCLI(cliCfg, msgs)
+  const cli = testCLI({ _: [], ...cliCfg }, msgs)
   const { data } = await cli.run(options)
   return { cfgsLoaded: data }
 }
 
+/** @type {import('../server/cli').test.stopServers} */
 async function stopServers(cfgsLoaded) {
   return new Promise((resolve) => {
     let doneCnt = 0
@@ -41,14 +43,21 @@ async function stopServers(cfgsLoaded) {
   })
 }
 
+/** @type {import('../server/cli').test.validateCfgs} */
 function validateCfgs(cliCfg, cfgsLoaded, t, options) {
   const merged = mergeConfigs(cliCfg, options)
   const keys = ['proto', 'host', 'port']
-  merged.forEach((cfg, idx) => {
-    keys.forEach((key) => {
-      t.is(cfg[key], cfgsLoaded[idx][key])
-    })
-  })
+  merged.forEach(
+    /** 
+     * @param {import('../server/cli.js').lesCfg} cfg 
+     * @param {number} idx 
+     */
+    (cfg, idx) => {
+      keys.forEach((key) => {
+        t.is(cfg[key], cfgsLoaded[idx][key])
+      })
+    }
+  )
 }
 
 before('Generate Self-Signed Cert', async () => {
@@ -72,7 +81,7 @@ before('Import CLI options', async () => {
 test('Help menu (--help)', (t) => {
   const cliCfg = { help: true }
   const usage = buildCLIUsage('usage: les [path] [options]', options, msgs)
-  const cli = testCLI(cliCfg, msgs)
+  const cli = testCLI({ _: [], ...cliCfg }, msgs)
   const resp = cli.run(options)
   t.is(resp, usage)
 })
@@ -185,7 +194,7 @@ test('Watch dir (specify path)', async (t) => {
 
 test.skip('Lesky init (no config provided)', async (t) => {
   const cliCfg = { init: true, dest: '/tmp/lesky' }
-  const cli = testCLI(cliCfg, msgs)
+  const cli = testCLI({ _: [], ...cliCfg }, msgs)
   const sts = await cli.run(options)
   t.is(sts, 'done')
   t.pass()
@@ -193,7 +202,7 @@ test.skip('Lesky init (no config provided)', async (t) => {
 
 test.skip('Lesky init (repeated, verify no overwrite)', async (t) => {
   const cliCfg = { init: true, dest: '/tmp/lesky' }
-  const cli = testCLI(cliCfg, msgs)
+  const cli = testCLI({ _: [], ...cliCfg }, msgs)
   const sts = await cli.run(options)
   exec(`rm -rf ${cliCfg.dest}`)
   t.is(sts, 'done')
@@ -209,7 +218,7 @@ test('Spanish options', async (t) => {
     options2,
     msgs2
   )
-  const cli = testCLI(cliCfg, msgs2)
+  const cli = testCLI({ _: [], ...cliCfg }, msgs2)
   const resp = await cli.run(options2)
   t.is(resp, usage)
   process.env.LANG = 'en_US.UTF-8'
