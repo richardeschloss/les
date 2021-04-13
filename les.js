@@ -1,29 +1,32 @@
 #!/usr/bin/env node
 /*
  * les - CLI for lightweight koa server
- * Copyright 2019 Richard Schloss (https://github.com/richardeschloss)
+ * Copyright 2021 Richard Schloss (https://github.com/richardeschloss)
  */
 
-import gentlyCopy from 'gently-copy'
+// import gentlyCopy from 'gently-copy'
 import minimist from 'minimist'
 import serve from 'koa-static'
 import { existsSync, writeFileSync } from 'fs'
 import { resolve as pResolve } from 'path'
-import { app, Server } from '@/server'
-import { IOServer } from '@/io'
+import { gentlyCopy } from 'les-utils/utils/files.js'
+import { app, Server } from './server.js'
+import IOServer from './io/socketIO.js'
 import {
   attachSSL,
   buildCLIUsage,
   importCLIOptions,
   loadServerConfigs
-} from '@/utils'
+} from './utils.js'
 import { spawn } from 'child_process'
+import process from 'process'
 
 const argv = minimist(process.argv.slice(2))
 const cwd = process.cwd()
 const options = {}
 let LANG = 'en'
 
+/** @type {import('./les')._._mergeConfigs} */
 function _mergeConfigs(cliCfg, options) {
   LANG = process.env.LANG
   const merged = loadServerConfigs()
@@ -241,18 +244,16 @@ function CLI(cfg, msgs) {
   })
 }
 
-if (require.main === module) {
-  ;(async function() {
-    const msgs = {}
-    await importCLIOptions(options, msgs)
-    const cli = CLI(argv, msgs)
-    cli.run(options)
-  })()
-}
-
 export let mergeConfigs
 export let testCLI
 if (process.env.TEST) {
   mergeConfigs = _mergeConfigs
   testCLI = CLI
+} else {
+  (async function() {
+    const msgs = {}
+    await importCLIOptions(options, msgs)
+    const cli = CLI(argv, msgs)
+    cli.run(options)
+  })()
 }

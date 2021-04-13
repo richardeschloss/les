@@ -1,7 +1,9 @@
 import http from 'http' // Prod should use https
 import { readdirSync, watch } from 'fs'
-import { sync as globSync } from 'glob'
-import socketIO from 'socket.io'
+import glob from 'glob'
+import { Server } from 'socket.io'
+
+const { sync: globSync } = glob
 
 function IOServer({ host, port, server = http.createServer() }) {
   function registerIO(io) {
@@ -46,13 +48,13 @@ function IOServer({ host, port, server = http.createServer() }) {
       console.info('IO server not listening...will fix that...')
       await listen()
     }
-    const io = socketIO(server)
+    const io = new Server(server)
     registerIO(io)
     return io
   }
 
   function watchDir(dir = '.') {
-    const io = socketIO(server)
+    const io = new Server(server)
     const dirs = globSync(dir)
     const watchers = []
     io.on('connection', (socket) => {
@@ -76,4 +78,4 @@ function IOServer({ host, port, server = http.createServer() }) {
   })
 }
 
-export { IOServer }
+export default IOServer

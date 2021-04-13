@@ -1,9 +1,12 @@
-import { serial as test, before, after } from 'ava'
+import ava from 'ava'
 import { mkdirSync, rmdirSync, unlinkSync } from 'fs'
 import { exec } from 'child_process'
-import { buildCLIUsage, importCLIOptions } from '@/utils'
-import { mergeConfigs, testCLI } from '@/les'
 import { SecurityUtils } from 'les-utils'
+
+import { buildCLIUsage, importCLIOptions } from '../utils.js'
+import { mergeConfigs, testCLI } from '../les.js'
+
+const { serial: test, before, after } = ava
 
 const sslDir = './.ssl'
 const sslOptions = {
@@ -180,7 +183,7 @@ test('Watch dir (specify path)', async (t) => {
   })
 })
 
-test('Lesky init (no config provided)', async (t) => {
+test.skip('Lesky init (no config provided)', async (t) => {
   const cliCfg = { init: true, dest: '/tmp/lesky' }
   const cli = testCLI(cliCfg, msgs)
   const sts = await cli.run(options)
@@ -188,7 +191,7 @@ test('Lesky init (no config provided)', async (t) => {
   t.pass()
 })
 
-test('Lesky init (repeated, verify no overwrite)', async (t) => {
+test.skip('Lesky init (repeated, verify no overwrite)', async (t) => {
   const cliCfg = { init: true, dest: '/tmp/lesky' }
   const cli = testCLI(cliCfg, msgs)
   const sts = await cli.run(options)

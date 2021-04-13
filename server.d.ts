@@ -1,6 +1,7 @@
 import http from 'http'
 import https from 'https'
 import http2 from 'http2'
+import Koa from 'koa'
 
 export declare type serverCfg = {
   host?: string,
@@ -52,3 +53,5 @@ declare type serverInst = {
 
 export function Server(cfg: serverCfg): Readonly<serverInst>;
 export type Server = typeof Server;
+
+export const app: Koa<Koa.DefaultState, Koa.DefaultContext>
