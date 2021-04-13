@@ -14,7 +14,7 @@ const protos = {
   http2
 }
 
-/** @type {import('./server').Server} */
+/** @type {import('./koa').Server} */
 function Server({
   host = 'localhost',
   port = 8080,
