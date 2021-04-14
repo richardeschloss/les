@@ -2,6 +2,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2.0.1] - 2021-04-13
+- Major changes. Upgraded to ESM (native).
+
 ## [1.0.10] - 2020-05-06
 - Security audit (updated lodash, and other deps, as well as utils)
 

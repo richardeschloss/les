@@ -1,6 +1,6 @@
 {
   "name": "lesky",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Lightweight Express-ish (Koa) Server - Type les not More!",
   "main": "server/koa.js",
   "type": "module",
@@ -20,7 +20,6 @@
     "test",
     ".editorconfig",
     ".eslintrc.cjs",
-    ".gitignore",
     ".lesrc",
     "ava.config.js",
     "LICENSE"
