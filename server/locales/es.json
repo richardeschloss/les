@@ -1,0 +1,77 @@
+{
+	"msgs": {
+		"endOfHelp": "Fin de la ayuda",
+		"usage": "uso",
+		"servingStaticDir": "servicio de dir estático %1",
+		"serverCfgsStarted": "Se han iniciado todas las configuraciones del servidor",
+		"browserOpened": "navegador abierto",
+		"copyingFiles": "Copiando archivos de: %1 a: %2",
+		"copiedFiles": "Archivos copiados",
+		"writingDeps": "escribir dependencias en: %1",
+		"packageJsonExists": "%1 ya existe ... no sobrescribirá",
+		"installingDeps": "Instalación de deps en %1",
+		"doneInit": "¡Hecho de inicializar la aplicación menos! Algunas notas:",
+		"postInitNotes": "1. Es posible que desee init %1 aquí antes de continuar (%2)\n2. Es posible que desee añadir autor, nombre de proyecto, número de versión a %3\n3. Es posible que desee dependencias diferentes. Utilice ` %4 ` para eliminar los deps no utilizados (opcional)",
+		"writingConfig": "escribiendo config en nuevo archivo %1: %2",
+		"configExists": "%1 ya existe ... no sobrescribirá",
+		"errIncorrectRangeFmt": "rango de puerto incorrectamente formateado. Formato como -- %1 = inicio-fin"
+	},
+	"options": {
+		"ayuda": {
+			"alias": "h",
+			"desc": "Imprimir este menú de ayuda",
+			"en_US": "help"
+		},
+		"init": {
+			"alias": "i",
+			"desc": "Init lesky en el espacio de trabajo especificado por vía de acceso, toma el valor por omisión",
+			"dflt": "[cwd]",
+			"en_US": "init"
+		},
+		"host": {
+			"alias": "a",
+			"desc": "Dirección a utilizar",
+			"dflt": "localhost",
+			"en_US": "host"
+		},
+		"puerto": {
+			"alias": "p",
+			"desc": "Puerto a utilizar",
+			"dflt": 8080,
+			"en_US": "port"
+		},
+		"proto": {
+			"desc": "Protocolo a utilizar",
+			"dflt": "http",
+			"limitTo": "{ http, https, http2 }",
+			"en_US": "proto"
+		},
+		"rango": {
+			"desc": "Rango de puertos (en caso de que se tome el puerto). Formato como inicio-fin",
+			"dflt": [
+				8000,
+				9000
+			],
+			"en_US": "range"
+		},
+		"sslKey": {
+			"desc": "Vía de acceso a clave SSL",
+			"en_US": "sslKey"
+		},
+		"sslCert": {
+			"desc": "Vía de acceso al certificado SSL",
+			"en_US": "sslCert"
+		},
+		"abierto": {
+			"alias": "o",
+			"desc": "Navegador abierto",
+			"dflt": "OS default",
+			"en_US": "open"
+		},
+		"reloj": {
+			"alias": "w",
+			"desc": "Ver cambios de archivo en dir [staticDir]",
+			"en_US": "watch"
+		}
+	}
+}
