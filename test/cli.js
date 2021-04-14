@@ -1,6 +1,7 @@
 import ava from 'ava'
 import { mkdirSync, rmdirSync, unlinkSync } from 'fs'
 import { exec } from 'child_process'
+import { resolve as pResolve } from 'path'
 import { SecurityUtils } from 'les-utils'
 
 import { buildCLIUsage, importCLIOptions } from '../server/utils.js'
@@ -8,7 +9,8 @@ import { mergeConfigs, testCLI } from '../server/cli.js'
 
 const { serial: test, before, after } = ava
 
-const sslDir = './.ssl'
+const cwd = process.cwd()
+const sslDir = pResolve('./.ssl')
 const sslOptions = {
   keyout: `${sslDir}/localhost.key`,
   out: `${sslDir}/localhost.crt`
@@ -130,6 +132,10 @@ test('Server starts (http proto)', async (t) => {
   const cliCfg = { proto: 'http' }
   const { cfgsLoaded } = await testCfg(cliCfg, msgs)
   validateCfgs(cliCfg, cfgsLoaded, t, options)
+
+  const cliCfg2 = { proto: 'http', _: ['someDir'] }
+  const { cfgsLoaded: cfgsLoaded2 } = await testCfg(cliCfg2, msgs)
+  t.is(cfgsLoaded2[0].staticDir, 'someDir')
   await stopServers(cfgsLoaded)
 })
 
@@ -192,23 +198,6 @@ test('Watch dir (specify path)', async (t) => {
   })
 })
 
-test.skip('Lesky init (no config provided)', async (t) => {
-  const cliCfg = { init: true, dest: '/tmp/lesky' }
-  const cli = testCLI({ _: [], ...cliCfg }, msgs)
-  const sts = await cli.run(options)
-  t.is(sts, 'done')
-  t.pass()
-})
-
-test.skip('Lesky init (repeated, verify no overwrite)', async (t) => {
-  const cliCfg = { init: true, dest: '/tmp/lesky' }
-  const cli = testCLI({ _: [], ...cliCfg }, msgs)
-  const sts = await cli.run(options)
-  exec(`rm -rf ${cliCfg.dest}`)
-  t.is(sts, 'done')
-  t.pass()
-})
-
 test('Spanish options', async (t) => {
   process.env.LANG = 'es'
   await importCLIOptions(options2, msgs2)
@@ -240,4 +229,23 @@ test('Spanish options (.lesrc)', async (t) => {
   })
   await stopServers(cfgsLoaded)
   process.env.LANG = 'en_US.UTF-8'
+})
+
+test('Lesky init (no config provided)', async (t) => {
+  t.timeout(5*60*1000)
+  const cliCfg = { init: true, dest: '/tmp/lesky' }
+  const cli = testCLI({ _: null, ...cliCfg }, msgs)
+  const sts = await cli.run(options)
+  t.is(sts, 'done')
+})
+
+test('Lesky init (repeated, verify no overwrite)', async (t) => {
+  t.timeout(5*60*1000)
+  const cliCfg = { init: true, dest: '/tmp/lesky' }
+  const cli = testCLI({ _: [], ...cliCfg }, msgs)
+  const sts = await cli.run(options)
+  exec(`rm -rf ${cliCfg.dest}`)
+  process.chdir(cwd)
+  t.is(sts, 'done')
+  t.pass()
 })

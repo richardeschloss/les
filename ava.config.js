@@ -3,7 +3,7 @@ export default {
   ignoredByWatcher: ['.ssl', 'server/locales'],
   files: [
     'test/cli.js',
-    // 'test/koa.js'
+    'test/koa.js',
     // 'test/utils.js'
     // 'test/language.js'
     /* Run Last */

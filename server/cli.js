@@ -6,9 +6,13 @@
 
 import minimist from 'minimist'
 import serve from 'koa-static'
-import { existsSync, writeFileSync } from 'fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
+import { execSync, spawn } from 'child_process'
+import process from 'process'
+import { fileURLToPath } from 'url'
 import { resolve as pResolve, dirname } from 'path'
 import { gentlyCopy } from 'les-utils/utils/files.js'
+import { pick } from 'les-utils/utils/object.js'
 import { app, Server } from './koa.js'
 import IOServer from './io/socketIO.js'
 import {
@@ -17,12 +21,12 @@ import {
   importCLIOptions,
   loadServerConfigs
 } from './utils.js'
-import { spawn } from 'child_process'
-import process from 'process'
+
+// @xts-ignorex
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const cwd = process.cwd()
 const options = {}
-const __dirname = pResolve(dirname(''))
 let LANG = 'en'
 
 /** @type {import('./cli')._._mergeConfigs} */
@@ -79,7 +83,9 @@ function CLI(cfg, msgs) {
   cfg['_'] = cfg['_'] || []
   /** @type {import('./cli')._.buildCliCfg} */
   function buildCliCfg(options) {
-    const cliCfg = {}
+    const cliCfg = {
+      staticDir: 'public'
+    }
     const rangeKey = 'range'
     Object.entries(options).forEach(([option, { alias, en_US }]) => {
       const optionVal = cfg[option] || cfg[alias]
@@ -91,7 +97,10 @@ function CLI(cfg, msgs) {
       }
     })
 
-    cliCfg.staticDir = cfg['_'][0] || (cliCfg.init ? cwd : 'public')
+    if (cfg['_'][0] !== undefined) {
+      cliCfg.staticDir = cfg['_'][0]
+    }
+
     if (cliCfg.range && typeof cliCfg.range === 'string') {
       if (cliCfg.range.match(/[0-9]+-[0-9]+/)) {
         cliCfg.portRange = cliCfg.range.split('-').map((i) => parseInt(i))
@@ -111,23 +120,23 @@ function CLI(cfg, msgs) {
     return cliCfg
   }
 
-  async function init({ dest, initCfg }) {
-    const srcDir =  __dirname
+  /** @type {import('./cli')._.init} */
+  function init({ dest = cwd, initCfg }) {
+    const srcDir =  pResolve(__dirname, '..')
 
     console.log(msgs.copyingFiles.replace('%1', srcDir).replace('%2', dest))
     const packageJson = 'package.json'
-    const srcPackage = await import(pResolve(srcDir, packageJson))
-    const { files, dependencies, devDependencies } = srcPackage
+    const srcPackage = JSON.parse(
+      readFileSync(pResolve(srcDir, packageJson), {encoding: 'utf-8'})
+    )
+    const { files, dependencies, devDependencies, scripts: srcScripts } = srcPackage
     const destPackageFile = pResolve(dest, packageJson)
+    if (!existsSync(dest)) {
+      mkdirSync(dest)
+    }
     if (!existsSync(destPackageFile)) {
       console.log(msgs.writingDeps.replace('%1', destPackageFile))
-      const scripts = {
-        dev: 'nodemon --exec npm start',
-        start: 'babel-node app.js',
-        test: 'ava',
-        'test:watch': 'ava --watch',
-        'test:cov': 'nyc ava'
-      }
+      const scripts = pick(srcScripts, ['dev', 'start', 'test', 'test:watch', 'test:cov'])
       const destPackage = Object.assign(
         {},
         { scripts, dependencies, devDependencies }
@@ -148,7 +157,7 @@ function CLI(cfg, msgs) {
     } else {
       console.log(msgs.configExists.replace('%1', '.lesrc'))
     }
-    const skipFiles = ['bin', '.lesrc']
+    const skipFiles = ['.lesrc']
     const srcFiles = files
       .filter(
         /** @param {string} f */
@@ -160,10 +169,9 @@ function CLI(cfg, msgs) {
       )
     gentlyCopy(srcFiles, dest)
     console.log(msgs.copiedFiles)
-
+    
     console.log(msgs.installingDeps.replace('%1', dest))
     process.chdir(dest)
-    const { execSync } = await import('child_process')
     execSync('npm i', { stdio: [0, 1, 2] })
     console.log(msgs.doneInit)
     console.log(
@@ -176,6 +184,7 @@ function CLI(cfg, msgs) {
     return 'done'
   }
 
+  /** @type {import('./cli')._.open} */
   function open({ proto, host, port }) {
     const { platform } = process
     const cmdMap = {
@@ -192,6 +201,7 @@ function CLI(cfg, msgs) {
   /** @type {import('./cli')._.run} */
   function run(options) {
     const cliCfg = buildCliCfg(options)
+    console.log('cliCfg', cliCfg)
 
     if (cliCfg.help) {
       const usage = buildCLIUsage(
@@ -203,7 +213,8 @@ function CLI(cfg, msgs) {
       return usage
     } else if (cliCfg.init) {
       // eslint-disable-next-line no-unused-vars
-      const { staticDir: dest, init: initVal, ...initCfg } = cliCfg
+      const { staticDir: destX, init: initVal, ...initCfg } = cliCfg
+      const { dest } = cfg
       return init({ dest, initCfg })
     }
 
@@ -214,6 +225,7 @@ function CLI(cfg, msgs) {
       const cfgsLoaded = Array(mergedCfgs.length)
       let doneCnt = 0
       function onSuccess({ data, idx }) {
+        data.staticDir = cliCfg.staticDir
         if (cliCfg.open) {
           data.browser = open(data)
         }

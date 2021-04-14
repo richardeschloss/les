@@ -23,18 +23,25 @@ export declare type lesCfg = {
 }
 
 declare interface loadedCfg extends lesCfg {
-  server: http.Server | https.Server | http2.Server;
+  server: http.Server | https.Server | http2.Http2SecureServer;
   browser?: ChildProcessWithoutNullStreams;
   watchDir?: string;
 }
 
-function _mergeConfigs(
+declare function _mergeConfigs(
   cliCfg: lesCfg, 
   options: any
 ): Array<lesCfg>
 
-function run(options: any): 
-  string | function | Promise<{ evt: string, data: Array<lesCfg>}>
+/**
+ * Initializes a workspace with the specified config (provided by command line).
+ * If no destination will default to the current working
+ * directory
+ */
+declare function init(opts?: { dest: string, initCfg?: lesCfg }): string;
+
+declare function run(options: any): 
+  string | typeof init | Promise<{ evt: string, data: Array<lesCfg>}>
 
 export namespace _ {
   /** 
@@ -54,6 +61,13 @@ export namespace _ {
   function buildCliCfg(options: any): lesCfg;
 
   export type buildCliCfg = typeof buildCliCfg;
+
+
+  export type init = typeof init;
+
+  function open(opts?: { proto: string, host: string, port: number }): ChildProcessWithoutNullStreams;
+  export type open = typeof open;
+
   export type run = typeof run;
 }
 

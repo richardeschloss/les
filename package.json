@@ -7,19 +7,19 @@
   "scripts": {
     "dev": "nodemon server/cli.js --watch",
     "start": "server/cli.js",
-    "test:watch": "TEST=specs ava --watch",
-    "test:cov": "TEST=specs c8 ava"
+    "test": "TEST=true ava",
+    "test:watch": "TEST=specs ava --watch --timeout=10m",
+    "test:cov": "TEST=specs c8 ava --timeout=10m"
   },
   "bin": {
     "les": "./server/cli.js"
   },
   "files": [
-    "channels",
     "server",
     "public",
     "test",
     ".editorconfig",
-    ".eslintrc.js",
+    ".eslintrc.cjs",
     ".gitignore",
     ".lesrc",
     "ava.config.js",
