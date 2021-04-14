@@ -1,45 +1,29 @@
 {
   "name": "lesky",
-  "version": "1.0.10",
+  "version": "2.0.0",
   "description": "Lightweight Express-ish (Koa) Server - Type les not More!",
-  "main": "server.js",
+  "main": "server/koa.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon --exec babel-node les.js",
-    "build": "babel utils.js server.js io.js les.js -d bin && chmod u+x bin/les.js",
-    "start": "babel-node les.js",
-    "test:cov": "npm run test:unit:cov && npm run test:e2e:cov",
-    "test:watch": "TEST=specs ava --watch",
-    "test:e2e:watch": "ava --config e2e.config.js --colors --watch",
-    "test:e2e:cov": "nyc --no-clean ava --timeout=10m --config e2e.config.js --colors",
-    "test:unit": "TEST=specs ava --config unit.config.js --colors",
-    "test:unit:watch": "TEST=specs ava --config unit.config.js --colors --watch",
-    "test:unit:cov": "TEST=specs nyc ava --config unit.config.js --colors",
-    "test:cov:watch": "TEST=specs nyc ava --watch",
-    "kill:node": "pkill node",
-    "deploy:local": "cp -r bin/* ~/.npm-global/lib/node_modules/lesky/bin",
-    "deploy:public": "npm run build && npm publish",
-    "git:push": "git push origin HEAD"
+    "dev": "nodemon server/cli.js --watch",
+    "start": "server/cli.js",
+    "test": "TEST=true ava",
+    "test:watch": "TEST=specs ava --watch --timeout=10m",
+    "test:cov": "TEST=specs c8 ava --timeout=10m"
   },
   "bin": {
-    "les": "./bin/les.js"
+    "les": "./server/cli.js"
   },
   "files": [
-    "bin",
-    "channels",
-    "locales/en.json",
+    "server",
     "public",
     "test",
-    ".babelrc",
     ".editorconfig",
-    ".eslintrc.js",
+    ".eslintrc.cjs",
     ".gitignore",
     ".lesrc",
-    "app.js",
     "ava.config.js",
-    "io.js",
-    "LICENSE",
-    "server.js",
-    "utils.js"
+    "LICENSE"
   ],
   "keywords": [
     "les",
@@ -51,31 +35,21 @@
   "author": "Richard Schloss",
   "license": "MIT",
   "dependencies": {
-    "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.6.4",
-    "@babel/node": "^7.6.3",
-    "@babel/preset-env": "^7.6.3",
-    "babel-plugin-module-resolver": "^3.2.0",
-    "gently-copy": "^3.2.0",
     "glob": "^7.1.6",
-    "koa": "^2.11.0",
+    "koa": "^2.13.1",
     "koa-static": "^5.0.0",
-    "les-utils": "^1.0.4",
+    "les-utils": "^2.0.0",
     "minimist": "^1.2.5",
     "node-netstat": "^1.8.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^4.0.0"
   },
   "devDependencies": {
-    "@ava/babel": "^1.0.1",
-    "@babel/register": "^7.10.5",
-    "ava": "^3.10.1",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.6.0",
-    "eslint-config-prettier": "^6.5.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "kind-of": ">=6.0.3",
-    "nodemon": "^2.0.4",
-    "nyc": "^14.1.1",
-    "prettier": "^1.19.1"
+    "ava": "^3.15.0",
+    "c8": "^7.6.0",
+    "eslint": "^7.22.0",
+    "nodemon": "^2.0.7"
+  },
+  "imports": {
+    "#@/*": "./*"
   }
 }

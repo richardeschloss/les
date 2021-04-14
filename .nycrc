@@ -2,6 +2,6 @@
   "all": false,
   "reporter": ["html", "text"],
   "exclude": ["node_modules"],
-  "include": ["les.js", "server.js"],
+  "include": ["server/cli.js", "server/koa.js"],
   "extension": [".js"]
 }
