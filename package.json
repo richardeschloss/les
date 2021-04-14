@@ -38,7 +38,7 @@
     "glob": "^7.1.6",
     "koa": "^2.13.1",
     "koa-static": "^5.0.0",
-    "les-utils": "file:../les-utils",
+    "les-utils": "^2.0.0",
     "minimist": "^1.2.5",
     "node-netstat": "^1.8.0",
     "socket.io": "^4.0.0"
